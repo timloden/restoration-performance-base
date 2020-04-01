@@ -45,9 +45,8 @@ function watch() {
 
 	gulp.watch( config.watchPhp, reload ); // Reload on PHP file changes.
 	gulp.watch( config.watchStyles, gulp.parallel( 'styles' ) ); // Reload on SCSS file changes.
-	//gulp.watch( config.watchJsVendor, gulp.series( 'vendorsJS', reload ) ); // Reload on vendorsJS file changes.
+	gulp.watch( config.watchJsVendor, gulp.series( 'vendorsJS', reload ) ); // Reload on vendorsJS file changes.
 	gulp.watch( config.watchJsCustom, gulp.series( 'customJS', reload ) ); // Reload on customJS file changes.
-	//gulp.watch( config.imgSRC, gulp.series( 'images', reload ) ); // Reload on customJS file changes.
 
 }
 
@@ -110,15 +109,46 @@ function customJS() {
 		.pipe( gulp.dest( config.jsCustomDestination ) )
 }
 
+function vendorJS() {
+	return gulp
+		.src( config.jsVendorSRC, { since: gulp.lastRun( 'customJS' ) }) // Only run on changed files.
+		.pipe(
+			babel({
+				presets: [
+					[
+						'@babel/preset-env', // Preset to compile your modern JS to ES5.
+						{
+							targets: { browsers: config.BROWSERS_LIST } // Target browser list to support.
+						}
+					]
+				]
+			})
+		)
+		.pipe( remember( config.jsVendorSRC, ) ) // Bring all files back to stream.
+		.pipe( concat( config.jsVendorFile + '.js' ) )
+		.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+		.pipe( gulp.dest( config.jsVendorDestination ) )
+		.pipe(
+			rename({
+				basename: config.jsVendorFile,
+				suffix: '.min'
+			})
+		)
+		.pipe( uglify() )
+		.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+		.pipe( gulp.dest( config.jsVendorDestination ) )
+}
+
 // Don't forget to expose the tasks!
 exports.watch = watch;
 exports.styles = styles;
 exports.customJS = customJS;
+exports.vendorJS = vendorJS;
 
 /*
  * Specify if tasks run in series or parallel using `gulp.series` and `gulp.parallel`
  */
-var build = gulp.parallel(styles, customJS, watch);
+var build = gulp.parallel(styles, customJS, vendorJS, watch);
  
 /*
  * You can still use `gulp.task` to expose tasks
