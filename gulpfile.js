@@ -45,7 +45,7 @@ function watch() {
 
 	gulp.watch( config.watchPhp, reload ); // Reload on PHP file changes.
 	gulp.watch( config.watchStyles, gulp.parallel( 'styles' ) ); // Reload on SCSS file changes.
-	gulp.watch( config.watchJsVendor, gulp.series( 'vendorsJS', reload ) ); // Reload on vendorsJS file changes.
+	gulp.watch( config.watchJsVendor, gulp.series( 'vendorJS', reload ) ); // Reload on vendorsJS file changes.
 	gulp.watch( config.watchJsCustom, gulp.series( 'customJS', reload ) ); // Reload on customJS file changes.
 
 }
@@ -111,7 +111,10 @@ function customJS() {
 
 function vendorJS() {
 	return gulp
-		.src( config.jsVendorSRC, { since: gulp.lastRun( 'customJS' ) }) // Only run on changed files.
+		.src(['node_modules/bootstrap/dist/js/bootstrap.min.js',
+				'node_modules/@popperjs/core/dist/umd/popper.min.js', 
+				config.jsVendorSRC 
+			], { since: gulp.lastRun( 'customJS' ) }) // Only run on changed files.
 		.pipe(
 			babel({
 				presets: [
