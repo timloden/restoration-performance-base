@@ -32,7 +32,7 @@ function ymm_init()
         'edit_item'                  => __('Edit YMM', 'YOUR-TEXTDOMAIN'),
         'update_item'                => __('Update YMM', 'YOUR-TEXTDOMAIN'),
         'view_item'                  => __('View YMM', 'YOUR-TEXTDOMAIN'),
-        'add_new_item'               => __('Add New YMM', 'YOUR-TEXTDOMAIN'),
+        'add_new_item'               => __('Add New', 'YOUR-TEXTDOMAIN'),
         'new_item_name'              => __('New YMM', 'YOUR-TEXTDOMAIN'),
         'separate_items_with_commas' => __('Separate ymms with commas', 'YOUR-TEXTDOMAIN'),
         'add_or_remove_items'        => __('Add or remove ymms', 'YOUR-TEXTDOMAIN'),
