@@ -8,13 +8,7 @@
  */
 
 if (! function_exists('theme_setup') ) :
-    /**
-     * Sets up theme defaults and registers support for various WordPress features.
-     *
-     * Note that this function is hooked into the after_setup_theme hook, which
-     * runs before the init hook. The init hook is too late for some features, such
-     * as indicating support for post thumbnails.
-     */
+
     function theme_setup()
     {
 
@@ -43,6 +37,9 @@ if (! function_exists('theme_setup') ) :
         // Add theme support for selective refresh for widgets.
         add_theme_support('customize-selective-refresh-widgets');
 
+        // bootstrap - custom nav walker
+        include_once get_template_directory() . '/vendor/class-wp-bootstrap-navwalker.php';
+
     }
 endif;
 
@@ -62,12 +59,3 @@ function includes_autoload()
 }
 
 add_action('after_setup_theme', 'includes_autoload');
-
-/**
- * Register Custom Navigation Walker
- */
-function register_navwalker()
-{
-    include_once get_template_directory() . '/vendor/class-wp-bootstrap-navwalker.php';
-}
-add_action('after_setup_theme', 'register_navwalker');

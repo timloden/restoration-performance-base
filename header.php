@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package underscores
+ * @package restoration-performance
  */
 
 ?>
@@ -46,9 +46,15 @@
                 ) 
             );
             ?>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <form action="/" method="get" class="form-inline">
+            <div class="input-group mb-3">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="s" id="search" value="<?php the_search_query(); ?>" >
+                <div class="input-group-append">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                </div>
+            </div>
+               
+               
             </form>
         </div>
         </nav>
