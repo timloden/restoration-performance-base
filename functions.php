@@ -1,10 +1,10 @@
 <?php
 /**
- * underscores functions and definitions
+ *  functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package underscores
+ * @package restoration-performance
  */
 
 if (! function_exists('theme_setup') ) :
@@ -39,6 +39,13 @@ if (! function_exists('theme_setup') ) :
 
         // bootstrap - custom nav walker
         include_once get_template_directory() . '/vendor/class-wp-bootstrap-navwalker.php';
+
+        // woocommerce support
+        add_theme_support( 'woocommerce' );
+        add_theme_support('wc-product-gallery-zoom');
+        add_theme_support('wc-product-gallery-lightbox');
+        add_theme_support('wc-product-gallery-slider');
+
 
     }
 endif;

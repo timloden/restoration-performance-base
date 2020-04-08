@@ -22,7 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! empty( $breadcrumb ) ) {
 
-	echo $wrap_before;
+	//echo $wrap_before;
+	echo '<div class="container py-3">';
 
 	foreach ( $breadcrumb as $key => $crumb ) {
 
@@ -41,6 +42,7 @@ if ( ! empty( $breadcrumb ) ) {
 		}
 	}
 
-	echo $wrap_after;
+	//echo $wrap_after;
+	echo '</div>';
 
 }

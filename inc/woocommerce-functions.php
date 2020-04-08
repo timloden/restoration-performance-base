@@ -7,22 +7,24 @@
  * @package underscores
  */
 
-/**
- * WooCommerce setup function.
- *
- * @link https://docs.woocommerce.com/document/third-party-custom-theme-compatibility/
- * @link https://github.com/woocommerce/woocommerce/wiki/Enabling-product-gallery-features-(zoom,-swipe,-lightbox)
- *
- * @return void
- */
-function woocommerce_setup()
-{
-    add_theme_support('woocommerce');
-    add_theme_support('wc-product-gallery-zoom');
-    add_theme_support('wc-product-gallery-lightbox');
-    add_theme_support('wc-product-gallery-slider');
+
+ // loop product title
+ 
+remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
+add_action( 'woocommerce_shop_loop_item_title', 'loop_product_title', 10 );
+
+function loop_product_title() {
+    echo '<h3 class="text-dark ' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '"><strong>' . get_the_title() . '</strong></h3>';
 }
-add_action('after_setup_theme', 'woocommerce_setup');
+
+// loop product image
+
+remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
+add_action( 'woocommerce_before_shop_loop_item_title', 'loop_product_image', 10 );
+
+function loop_product_image() {
+    echo woocommerce_get_product_thumbnail(); // WPCS: XSS ok.
+}
 
 /**
  * Disable the default WooCommerce stylesheet.
@@ -100,74 +102,6 @@ function woocommerce_related_products_args( $args )
 }
 add_filter('woocommerce_output_related_products_args', 'woocommerce_related_products_args');
 
-if (! function_exists('woocommerce_product_columns_wrapper') ) {
-    /**
-     * Product columns wrapper.
-     *
-     * @return void
-     */
-    function woocommerce_product_columns_wrapper()
-    {
-        $columns = woocommerce_loop_columns();
-        echo '<div class="columns-' . absint($columns) . '">';
-    }
-}
-add_action('woocommerce_before_shop_loop', 'woocommerce_product_columns_wrapper', 40);
-
-if (! function_exists('woocommerce_product_columns_wrapper_close') ) {
-    /**
-     * Product columns wrapper close.
-     *
-     * @return void
-     */
-    function woocommerce_product_columns_wrapper_close()
-    {
-        echo '</div>';
-    }
-}
-add_action('woocommerce_after_shop_loop', 'woocommerce_product_columns_wrapper_close', 40);
-
-/**
- * Remove default WooCommerce wrapper.
- */
-remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
-
-if (! function_exists('woocommerce_wrapper_before') ) {
-    /**
-     * Before Content.
-     *
-     * Wraps all WooCommerce content in wrappers which match the theme markup.
-     *
-     * @return void
-     */
-    function woocommerce_wrapper_before()
-    {
-        ?>
-        <div id="primary" class="content-area">
-            <main id="main" class="site-main" role="main">
-        <?php
-    }
-}
-add_action('woocommerce_before_main_content', 'woocommerce_wrapper_before');
-
-if (! function_exists('woocommerce_wrapper_after') ) {
-    /**
-     * After Content.
-     *
-     * Closes the wrapping divs.
-     *
-     * @return void
-     */
-    function woocommerce_wrapper_after()
-    {
-        ?>
-            </main><!-- #main -->
-        </div><!-- #primary -->
-        <?php
-    }
-}
-add_action('woocommerce_after_main_content', 'woocommerce_wrapper_after');
 
 /**
  * Sample implementation of the WooCommerce Mini Cart.
