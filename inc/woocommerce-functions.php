@@ -57,6 +57,19 @@ function ymm_fitment_product_page() {
     return wp_list_categories( $args );
 }
 
+// cart - remove suggestions from cart collateral
+
+remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+
+
+// cart - remove country list
+
+//add_filter( 'woocommerce_shipping_calculator_enable_country', '__return_false' );
+
+// cart - remove city list
+
+//add_filter( 'woocommerce_shipping_calculator_enable_city', '__return_false' );
+
 /**
  * Disable the default WooCommerce stylesheet.
  *
