@@ -4,7 +4,7 @@
  *
  * @link https://woocommerce.com/
  *
- * @package underscores
+ * @package restoration-performance
  */
 
 
@@ -24,6 +24,37 @@ add_action( 'woocommerce_before_shop_loop_item_title', 'loop_product_image', 10 
 
 function loop_product_image() {
     echo woocommerce_get_product_thumbnail(); // WPCS: XSS ok.
+}
+
+// YMM to show on product page
+
+/**
+ * YMM to show on product page
+ *
+ * @see get_object_taxonomies()
+ */
+function ymm_fitment_product_page() {
+    // Get post by post ID.
+    if ( ! $post = get_post() ) {
+        return '';
+    }
+
+    $walker = new WPQuestions_Walker;
+    
+    $args = array(
+    'taxonomy'     => 'ymm',
+    'orderby'      => 'name',
+    'show_count'   =>  false,
+    'pad_counts'   => false,
+    'hierarchical' => true,
+    'use_desc_for_title' => 0,
+    'hide_title_if_empty' => true,
+    'title_li' => 'Vehicle Fitment: ',
+    'style' => 'list',
+    'walker' => $walker,
+    );
+
+    return wp_list_categories( $args );
 }
 
 /**
@@ -113,50 +144,52 @@ add_filter('woocommerce_output_related_products_args', 'woocommerce_related_prod
             woocommerce_header_cart();
         }
     ?>
- */
+*/
 
 if (! function_exists('woocommerce_cart_link_fragment') ) {
-    /**
-     * Cart Fragments.
-     *
-     * Ensure cart contents update when products are added to the cart via AJAX.
-     *
-     * @param  array $fragments Fragments to refresh via AJAX.
-     * @return array Fragments to refresh via AJAX.
-     */
-    function woocommerce_cart_link_fragment( $fragments )
-    {
-        ob_start();
-        woocommerce_cart_link();
-        $fragments['a.cart-contents'] = ob_get_clean();
+/**
+* Cart Fragments.
+*
+* Ensure cart contents update when products are added to the cart via AJAX.
+*
+* @param array $fragments Fragments to refresh via AJAX.
+* @return array Fragments to refresh via AJAX.
+*/
+function woocommerce_cart_link_fragment( $fragments )
+{
+ob_start();
+woocommerce_cart_link();
+$fragments['a.cart-contents'] = ob_get_clean();
 
-        return $fragments;
-    }
+return $fragments;
+}
 }
 add_filter('woocommerce_add_to_cart_fragments', 'woocommerce_cart_link_fragment');
 
 if (! function_exists('woocommerce_cart_link') ) {
-    /**
-     * Cart Link.
-     *
-     * Displayed a link to the cart including the number of items present and the cart total.
-     *
-     * @return void
-     */
-    function woocommerce_cart_link()
-    {
-        ?>
-        <a class="cart-contents" href="<?php echo esc_url(wc_get_cart_url()); ?>" title="<?php esc_attr_e('View your shopping cart', 'underscores'); ?>">
-        <?php
+/**
+* Cart Link.
+*
+* Displayed a link to the cart including the number of items present and the cart total.
+*
+* @return void
+*/
+function woocommerce_cart_link()
+{
+?>
+<a class="cart-contents" href="<?php echo esc_url(wc_get_cart_url()); ?>"
+    title="<?php esc_attr_e('View your shopping cart', 'underscores'); ?>">
+    <?php
         $item_count_text = sprintf(
             /* translators: number of items in the mini cart. */
             _n('%d item', '%d items', WC()->cart->get_cart_contents_count(), 'underscores'),
             WC()->cart->get_cart_contents_count()
         );
         ?>
-            <span class="amount"><?php echo wp_kses_data(WC()->cart->get_cart_subtotal()); ?></span> <span class="count"><?php echo esc_html($item_count_text); ?></span>
-        </a>
-        <?php
+    <span class="amount"><?php echo wp_kses_data(WC()->cart->get_cart_subtotal()); ?></span> <span
+        class="count"><?php echo esc_html($item_count_text); ?></span>
+</a>
+<?php
     }
 }
 
@@ -174,11 +207,11 @@ if (! function_exists('woocommerce_header_cart') ) {
             $class = '';
         }
         ?>
-        <ul id="site-header-cart" class="site-header-cart">
-            <li class="<?php echo esc_attr($class); ?>">
+<ul id="site-header-cart" class="site-header-cart">
+    <li class="<?php echo esc_attr($class); ?>">
         <?php woocommerce_cart_link(); ?>
-            </li>
-            <li>
+    </li>
+    <li>
         <?php
         $instance = array(
         'title' => '',
@@ -186,8 +219,8 @@ if (! function_exists('woocommerce_header_cart') ) {
 
         the_widget('WC_Widget_Cart', $instance);
         ?>
-            </li>
-        </ul>
-        <?php
+    </li>
+</ul>
+<?php
     }
 }

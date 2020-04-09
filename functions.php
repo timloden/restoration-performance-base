@@ -40,6 +40,9 @@ if (! function_exists('theme_setup') ) :
         // bootstrap - custom nav walker
         include_once get_template_directory() . '/vendor/class-wp-bootstrap-navwalker.php';
 
+        // ymm - taxonomy walker
+        include_once get_template_directory() . '/vendor/class-wp-ymm-walker.php';
+
         // woocommerce support
         add_theme_support( 'woocommerce' );
         add_theme_support('wc-product-gallery-zoom');
