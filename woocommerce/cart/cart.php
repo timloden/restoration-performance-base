@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_before_cart' ); ?>
 
 <div class="row">
-	<div class="col-12 col-lg-7">
+	<div class="col-12 col-lg-8">
 		<h2><?php esc_html_e( 'Your Cart', 'woocommerce' ); ?></h2>
 		<form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 			<?php do_action( 'woocommerce_before_cart_table' ); ?>
@@ -168,7 +168,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 			<?php do_action( 'woocommerce_after_cart_table' ); ?>
 		</form>
 	</div>
-	<div class="col-12 col-lg-5">							
+	<div class="col-12 col-lg-4">							
 		<?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
 
 		<div class="cart-collaterals">

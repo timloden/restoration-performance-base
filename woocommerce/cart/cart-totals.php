@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<h2><?php //esc_html_e( 'Cart totals', 'woocommerce' ); ?>&nbsp;</h2>
 
-	<table cellspacing="0" class="shop_table shop_table_responsive table table-responsive">
+	<table cellspacing="0" class="shop_table shop_table_responsive table">
 
 		<tr class="cart-subtotal">
 			<th><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
@@ -85,7 +85,7 @@ defined( 'ABSPATH' ) || exit;
 				?>
 				<tr class="tax-total">
 					<th><?php echo esc_html( WC()->countries->tax_or_vat() ) . $estimated_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></th>
-					<td data-title="<?php echo esc_attr( WC()->countries->tax_or_vat() ); ?>"><?php wc_cart_totals_taxes_total_html(); ?></td>
+					<td class="text-right" data-title="<?php echo esc_attr( WC()->countries->tax_or_vat() ); ?>"><?php wc_cart_totals_taxes_total_html(); ?></td>
 				</tr>
 				<?php
 			}
