@@ -1,0 +1,22 @@
+.payment_method_braintree_credit_card {
+    .form-row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .wc-braintree-credit-card-new-payment-method-form {
+        background-color: #fff;
+    
+        .form-row {
+            padding: 0 !important;
+            margin-bottom: 1rem;
+           
+    
+            .wc-braintree-hosted-field {
+                @extend .form-control;
+                height: calc(1.5em + .75rem + 2px) !important;
+            }
+        }
+    } 
+}
+

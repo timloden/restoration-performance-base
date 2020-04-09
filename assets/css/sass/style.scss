@@ -20,8 +20,15 @@ Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
 
-//Bootstrap styles 
+// Bootstrap styles 
 @import "node_modules/bootstrap/scss/bootstrap";
 
-//Custom Variables
+// line-awesome
+$la-font-path: "node_modules/line-awesome/dist/line-awesome/fonts";
+@import "node_modules/line-awesome/dist/line-awesome/scss/line-awesome";
+
+// Custom Variables
 @import "global/_variables";
+
+// Pages
+@import "pages/cart";
