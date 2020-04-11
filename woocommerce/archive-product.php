@@ -74,7 +74,7 @@ if ( woocommerce_product_loop() ) {
 		</div>
 		<div class="col-12 col-md-6 col-lg-9">
 			<div class="row">
-				<div class="col-12 col-md-6 col-lg-4">
+				
 					<?php
 
 					woocommerce_product_loop_start();
@@ -118,7 +118,6 @@ if ( woocommerce_product_loop() ) {
 
 					?>
 
-				</div>
 			</div>
 		</div>
 

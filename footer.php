@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying the footer
  *
@@ -11,16 +12,17 @@
 
 ?>
 
-	</div><!-- #content -->
+</div><!-- #content -->
 
-	<footer class="site-footer">
-		<div class="container">
-			&copy; Classic Body Parts 2020
-		</div>
-	</footer>
+<footer class="site-footer">
+    <div class="container border-top py-3 mt-5">
+        &copy; Classic Body Parts 2020
+    </div>
+</footer>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
 
 </body>
+
 </html>

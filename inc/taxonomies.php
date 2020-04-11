@@ -39,7 +39,7 @@ function ymm_init()
         'choose_from_most_used'      => __('Choose from the most used ymms', 'YOUR-TEXTDOMAIN'),
         'not_found'                  => __('No ymms found.', 'YOUR-TEXTDOMAIN'),
         'no_terms'                   => __('No ymms', 'YOUR-TEXTDOMAIN'),
-        'menu_name'                  => __('Ymms', 'YOUR-TEXTDOMAIN'),
+        'menu_name'                  => __('Year / Make / Model', 'YOUR-TEXTDOMAIN'),
         'items_list_navigation'      => __('Ymms list navigation', 'YOUR-TEXTDOMAIN'),
         'items_list'                 => __('Ymms list', 'YOUR-TEXTDOMAIN'),
         'most_used'                  => _x('Most Used', 'ymm', 'YOUR-TEXTDOMAIN'),

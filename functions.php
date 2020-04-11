@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  functions and definitions
  *
@@ -7,7 +8,7 @@
  * @package restoration-performance
  */
 
-if (! function_exists('theme_setup') ) :
+if (!function_exists('theme_setup')) :
 
     function theme_setup()
     {
@@ -20,18 +21,19 @@ if (! function_exists('theme_setup') ) :
         // This theme uses wp_nav_menu() in one location.
         register_nav_menus(
             array(
-            'header-primary' => esc_html__('Header Primary', 'restoration-performance'),
-            ) 
+                'header-primary' => esc_html__('Header Primary', 'restoration-performance'),
+            )
         );
 
         add_theme_support(
-            'html5', array(
-            'search-form',
-            'comment-form',
-            'comment-list',
-            'gallery',
-            'caption',
-            ) 
+            'html5',
+            array(
+                'search-form',
+                'comment-form',
+                'comment-list',
+                'gallery',
+                'caption',
+            )
         );
 
         // Add theme support for selective refresh for widgets.
@@ -43,13 +45,14 @@ if (! function_exists('theme_setup') ) :
         // ymm - taxonomy walker
         include_once get_template_directory() . '/vendor/class-wp-ymm-walker.php';
 
+        // bootstrap - category walker
+        include_once get_template_directory() . '/vendor/class-wp-category-walker.php';
+
         // woocommerce support
-        add_theme_support( 'woocommerce' );
-        add_theme_support('wc-product-gallery-zoom');
+        add_theme_support('woocommerce');
+        //add_theme_support('wc-product-gallery-zoom');
         add_theme_support('wc-product-gallery-lightbox');
         add_theme_support('wc-product-gallery-slider');
-
-
     }
 endif;
 
@@ -63,7 +66,7 @@ function includes_autoload()
 {
     $function_path = pathinfo(__FILE__);
 
-    foreach ( glob($function_path['dirname'] . '/inc/*.php') as $file ) {
+    foreach (glob($function_path['dirname'] . '/inc/*.php') as $file) {
         include_once $file;
     }
 }

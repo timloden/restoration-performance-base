@@ -32,7 +32,9 @@ if ( ! empty( $product_tabs ) ) : ?>
 
 	<div class="woocommerce-tabs wc-tabs-wrapper">
 		<ul class="nav nav-tabs" role="tablist">
-			<?php foreach ( $product_tabs as $key => $product_tab ) : $count++; ?>
+			<?php 
+			$count = 0;
+			foreach ( $product_tabs as $key => $product_tab ) : $count++; ?>
 				<li class="<?php echo esc_attr( $key ); ?>_tab nav-item" id="tab-title-<?php echo esc_attr( $key ); ?>" role="tab" aria-controls="tab-<?php echo esc_attr( $key ); ?>">
 					<a class="nav-link <?php if ($count == 1) { echo 'active'; } ?>" href="#tab-<?php echo esc_attr( $key ); ?>" data-toggle="tab">
 						<?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?>
@@ -44,7 +46,7 @@ if ( ! empty( $product_tabs ) ) : ?>
 			<?php 
 			$count = 0;
 			foreach ( $product_tabs as $key => $product_tab ) : $count++; ?>
-				<div class="tab-pane fade <?php if ($count == 1) { echo 'show active'; } ?>" id="tab-<?php echo esc_attr( $key ); ?>" role="tabpanel" aria-labelledby="tab-title-<?php echo esc_attr( $key ); ?>">
+				<div class="tab-pane p-3 fade <?php if ($count == 1) { echo 'show active'; } ?>" id="tab-<?php echo esc_attr( $key ); ?>" role="tabpanel" aria-labelledby="tab-title-<?php echo esc_attr( $key ); ?>">
 					<?php
 					if ( isset( $product_tab['callback'] ) ) {
 						call_user_func( $product_tab['callback'], $key, $product_tab );

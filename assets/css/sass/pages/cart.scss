@@ -1,3 +1,27 @@
+.cart {
+    .product-thumbnail {
+        .size-woocommerce_thumbnail {
+            width: 100px;
+            height: auto;
+        }
+    }
+
+    .product-quantity {
+        // width: 50px;
+    }
+}
+
+// mini cart
+
+.woocommerce-mini-cart {
+    .woocommerce-mini-cart-item {
+        .size-woocommerce_thumbnail {
+            width: 50px;
+            height: auto;
+        }
+    }
+}
+// braintree overrides
 .payment_method_braintree_credit_card {
     .form-row {
         margin-left: 0;
@@ -6,17 +30,15 @@
 
     .wc-braintree-credit-card-new-payment-method-form {
         background-color: #fff;
-    
+
         .form-row {
             padding: 0 !important;
             margin-bottom: 1rem;
-           
-    
+
             .wc-braintree-hosted-field {
                 @extend .form-control;
-                height: calc(1.5em + .75rem + 2px) !important;
+                height: calc(1.5em + 0.75rem + 2px) !important;
             }
         }
-    } 
+    }
 }
-

@@ -1,0 +1,33 @@
+.top-bar {
+    font-size: 12px;
+}
+
+.header-categories {
+    .dropdown-submenu {
+        position: relative;
+
+        a {
+            &:after {
+                display: inline-block;
+                margin-left: 1em;
+                content: '\f105';
+                font-family: 'Line Awesome Free';
+                font-weight: 900;
+            }
+        }
+
+        ul.children {
+            @extend .dropdown-menu;
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+            display: none;
+        }
+
+        &:hover {
+            > ul.children {
+                display: block;
+            }
+        }
+    }
+}

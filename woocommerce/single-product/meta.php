@@ -10,37 +10,45 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see         https://docs.woocommerce.com/document/template-structure/
- * @package     WooCommerce/Templates
- * @version     3.0.0
+ * @see     https://docs.woocommerce.com/document/template-structure/
+ * @package WooCommerce/Templates
+ * @version 3.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+if (! defined('ABSPATH') ) {
+    exit;
 }
 
 global $product;
 ?>
 <div class="product_meta">
 
-	<?php do_action( 'woocommerce_product_meta_start' ); ?>
+    <?php do_action('woocommerce_product_meta_start'); ?>
 
-	<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
+    <?php if (wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type('variable') ) ) : ?>
 
-		<div class="sku_wrapper d-block"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></div>
+    <div class="sku_wrapper d-block"><?php esc_html_e('SKU:', 'woocommerce'); ?> <span
+            class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__('N/A', 'woocommerce'); ?></span>
+    </div>
 
-	<?php endif; ?>
+    <?php endif; ?>
 
-	<?php echo wc_get_product_category_list( $product->get_id(), ', ', '<div class="posted_in d-block">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</div>' ); ?>
+    <?php echo wc_get_product_category_list($product->get_id(), ', ', '<div class="posted_in d-block">' . _n('Category:', 'Categories:', count($product->get_category_ids()), 'woocommerce') . ' ', '</div>'); ?>
 
-	<?php //echo wc_get_product_tag_list( $product->get_id(), ', ', '<div class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</div>' ); ?>
+    <?php //echo wc_get_product_tag_list( $product->get_id(), ', ', '<div class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</div>' ); ?>
 
-	
-	<ul class="ymm-list">
-		<?php 
-		echo ymm_fitment_product_page(); 
-	?>
-	</ul>
+    <?php
+    $shipping_class = $product->get_shipping_class();
+    if (strpos($shipping_class, '-freight')) {
+        echo '<div class="d-block py-3"><i class="las la-shipping-fast"></i> Freight Item</div>';
+    }
+    ?>
 
-	<?php do_action( 'woocommerce_product_meta_end' ); ?>
+    <ul class="ymm-list">
+        <?php 
+    //echo ymm_fitment_product_page(); 
+    ?>
+    </ul>
+
+    <?php do_action('woocommerce_product_meta_end'); ?>
 </div>

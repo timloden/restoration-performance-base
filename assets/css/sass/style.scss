@@ -20,15 +20,22 @@ Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
 
-// Bootstrap styles 
-@import "node_modules/bootstrap/scss/bootstrap";
+// Bootstrap styles
+@import 'global/_variables';
+@import 'node_modules/bootstrap/scss/bootstrap';
 
 // line-awesome
-$la-font-path: "node_modules/line-awesome/dist/line-awesome/fonts";
-@import "node_modules/line-awesome/dist/line-awesome/scss/line-awesome";
+$la-font-path: 'node_modules/line-awesome/dist/line-awesome/fonts';
+@import 'node_modules/line-awesome/dist/line-awesome/scss/line-awesome';
 
-// Custom Variables
-@import "global/_variables";
+// tiny-slider
+@import 'node_modules/tiny-slider/dist/tiny-slider.css';
+
+// Global
+@import 'global/header';
+@import 'global/typography';
 
 // Pages
-@import "pages/cart";
+@import 'pages/shop';
+@import 'pages/product';
+@import 'pages/cart';

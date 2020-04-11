@@ -1,3 +1,5 @@
 {
-    "phpcbf.onsave": true
+    "phpcbf.onsave": true,
+    "phpcbf.debug": true,
+    "editor.formatOnSave": true
 }
