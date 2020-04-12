@@ -10751,4 +10751,3 @@ var tns = function () {
 "use strict";
 
 console.log('vendor js');
-"use strict";

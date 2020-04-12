@@ -13,14 +13,20 @@ console.log('custom js');
 })(jQuery);
 "use strict";
 
-(function ($) {})(jQuery);
+(function ($) {
+  var home = $('body.home');
+
+  if (home.length === 1) {
+    var homeSlider = tns({
+      container: '.home-slider',
+      items: 1,
+      slideBy: 'page',
+      autoplay: true,
+      controlsPosition: 'bottom',
+      navPosition: 'bottom'
+    });
+  }
+})(jQuery);
 "use strict";
 
-var homeSlider = tns({
-  container: '.home-slider',
-  items: 1,
-  slideBy: 'page',
-  autoplay: true,
-  controlsPosition: 'bottom',
-  navPosition: 'bottom'
-});
+(function ($) {})(jQuery);
