@@ -25,11 +25,11 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import 'node_modules/bootstrap/scss/bootstrap';
 
 // line-awesome
-$la-font-path: 'node_modules/line-awesome/dist/line-awesome/fonts';
+$la-font-path: '/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome';
 @import 'node_modules/line-awesome/dist/line-awesome/scss/line-awesome';
 
 // tiny-slider
-@import 'node_modules/tiny-slider/dist/tiny-slider.css';
+@import 'node_modules/tiny-slider/dist/tiny-slider';
 
 // Global
 @import 'global/header';

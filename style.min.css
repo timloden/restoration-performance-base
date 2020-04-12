@@ -1,4 +1,4 @@
-@import url(node_modules/tiny-slider/dist/tiny-slider.css);/*!
+/*!
 Theme Name: Restoration Performance Base
 Theme URI: https://www.restorationperformance.com/
 Author: Restoration Performance
@@ -1140,11 +1140,11 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .visible{visibility:visible !important}
 .invisible{visibility:hidden !important}
 .lar,.las,.lab{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;line-height:1}
-@font-face{font-family:Line Awesome Brands;font-style:normal;font-weight:normal;font-display:auto;src:url("node_modules/line-awesome/dist/line-awesome/fonts/la-brands-400.eot");src:url("node_modules/line-awesome/dist/line-awesome/fonts/la-brands-400.eot?#iefix") format("embedded-opentype"),url("node_modules/line-awesome/dist/line-awesome/fonts/la-brands-400.woff2") format("woff2"),url("node_modules/line-awesome/dist/line-awesome/fonts/la-brands-400.woff") format("woff"),url("node_modules/line-awesome/dist/line-awesome/fonts/la-brands-400.ttf") format("truetype"),url("node_modules/line-awesome/dist/line-awesome/fonts/la-brands-400.svg#lineawesome") format("svg")}
+@font-face{font-family:Line Awesome Brands;font-style:normal;font-weight:normal;font-display:auto;src:url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-brands-400.eot");src:url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-brands-400.eot?#iefix") format("embedded-opentype"),url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-brands-400.woff2") format("woff2"),url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-brands-400.woff") format("woff"),url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-brands-400.ttf") format("truetype"),url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-brands-400.svg#lineawesome") format("svg")}
 .lab{font-family:Line Awesome Brands;font-weight:400}
-@font-face{font-family:Line Awesome Free;font-style:normal;font-weight:400;font-display:auto;src:url("node_modules/line-awesome/dist/line-awesome/fonts/la-regular-400.eot");src:url("node_modules/line-awesome/dist/line-awesome/fonts/la-regular-400.eot?#iefix") format("embedded-opentype"),url("node_modules/line-awesome/dist/line-awesome/fonts/la-regular-400.woff2") format("woff2"),url("node_modules/line-awesome/dist/line-awesome/fonts/la-regular-400.woff") format("woff"),url("node_modules/line-awesome/dist/line-awesome/fonts/la-regular-400.ttf") format("truetype"),url("node_modules/line-awesome/dist/line-awesome/fonts/la-regular-400.svg#lineawesome") format("svg")}
+@font-face{font-family:Line Awesome Free;font-style:normal;font-weight:400;font-display:auto;src:url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-regular-400.eot");src:url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-regular-400.eot?#iefix") format("embedded-opentype"),url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-regular-400.woff2") format("woff2"),url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-regular-400.woff") format("woff"),url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-regular-400.ttf") format("truetype"),url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-regular-400.svg#lineawesome") format("svg")}
 .lar{font-family:Line Awesome Free;font-weight:400}
-@font-face{font-family:Line Awesome Free;font-style:normal;font-weight:900;font-display:auto;src:url("node_modules/line-awesome/dist/line-awesome/fonts/la-solid-900.eot");src:url("node_modules/line-awesome/dist/line-awesome/fonts/la-solid-900.eot?#iefix") format("embedded-opentype"),url("node_modules/line-awesome/dist/line-awesome/fonts/la-solid-900.woff2") format("woff2"),url("node_modules/line-awesome/dist/line-awesome/fonts/la-solid-900.woff") format("woff"),url("node_modules/line-awesome/dist/line-awesome/fonts/la-solid-900.ttf") format("truetype"),url("node_modules/line-awesome/dist/line-awesome/fonts/la-solid-900.svg#lineawesome") format("svg")}
+@font-face{font-family:Line Awesome Free;font-style:normal;font-weight:900;font-display:auto;src:url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-solid-900.eot");src:url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-solid-900.eot?#iefix") format("embedded-opentype"),url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-solid-900.woff2") format("woff2"),url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-solid-900.woff") format("woff"),url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-solid-900.ttf") format("truetype"),url("/wp-content/themes/restoration-performance-base/assets/fonts/line-awesome/la-solid-900.svg#lineawesome") format("svg")}
 .las{font-family:Line Awesome Free;font-weight:900}
 .la-lg{font-size:1.33333em;line-height:.75em;vertical-align:-.0667em}
 .la-xs{font-size:.75em}
@@ -2584,6 +2584,36 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .la-buy-n-large:before{content:"\f8a6"}
 .sr-only{border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}
 .sr-only-focusable:active,.sr-only-focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto}
+.tns-outer{padding:0 !important}
+.tns-outer [hidden]{display:none !important}
+.tns-outer [aria-controls],.tns-outer [data-action]{cursor:pointer}
+.tns-slider{-webkit-transition:all 0s;transition:all 0s}
+.tns-slider>.tns-item{-webkit-box-sizing:border-box;box-sizing:border-box}
+.tns-horizontal.tns-subpixel{white-space:nowrap}
+.tns-horizontal.tns-subpixel>.tns-item{display:inline-block;vertical-align:top;white-space:normal}
+.tns-horizontal.tns-no-subpixel:after{content:'';display:table;clear:both}
+.tns-horizontal.tns-no-subpixel>.tns-item{float:left}
+.tns-horizontal.tns-carousel.tns-no-subpixel>.tns-item{margin-right:-100%}
+.tns-no-calc{position:relative;left:0}
+.tns-gallery{position:relative;left:0;min-height:1px}
+.tns-gallery>.tns-item{position:absolute;left:-100%;-webkit-transition:transform 0s,opacity 0s;-webkit-transition:opacity 0s,-webkit-transform 0s;transition:opacity 0s,-webkit-transform 0s;transition:transform 0s,opacity 0s;transition:transform 0s,opacity 0s,-webkit-transform 0s}
+.tns-gallery>.tns-slide-active{position:relative;left:auto !important}
+.tns-gallery>.tns-moving{-webkit-transition:all .25s;transition:all .25s}
+.tns-autowidth{display:inline-block}
+.tns-lazy-img{-webkit-transition:opacity .6s;transition:opacity .6s;opacity:.6}
+.tns-lazy-img.tns-complete{opacity:1}
+.tns-ah{-webkit-transition:height 0s;transition:height 0s}
+.tns-ovh{overflow:hidden}
+.tns-visually-hidden{position:absolute;left:-10000em}
+.tns-transparent{opacity:0;visibility:hidden}
+.tns-fadeIn{opacity:1;filter:alpha(opacity=100);z-index:0}
+.tns-normal,.tns-fadeOut{opacity:0;filter:alpha(opacity=0);z-index:-1}
+.tns-vpfix{white-space:nowrap}
+.tns-vpfix>div,.tns-vpfix>li{display:inline-block}
+.tns-t-subp2{margin:0 auto;width:310px;position:relative;height:10px;overflow:hidden}
+.tns-t-ct{width:2333.3333333%;width:calc(100% * 70 / 3);position:absolute;right:0}
+.tns-t-ct:after{content:'';display:table;clear:both}
+.tns-t-ct>div{width:1.4285714%;width:calc(100% / 70);height:10px;float:left}
 .top-bar{font-size:12px}
 .header-categories .dropdown-submenu{position:relative}
 .header-categories .dropdown-submenu a:after{display:inline-block;margin-left:1em;content:'\f105';font-family:'Line Awesome Free';font-weight:900}
