@@ -23,5 +23,6 @@ global $product;
 ?>
 
 <?php if ( $price_html = $product->get_price_html() ) : ?>
-	<span class="price"><?php echo $price_html; ?></span>
+<p class="price"><?php echo $price_html; ?></p>
 <?php endif; ?>
+<p>SKU: <?php echo $product->get_sku(); ?></p>
