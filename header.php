@@ -58,25 +58,25 @@
                         </form>
                     </div>
                     <div class="col-4 text-right">
-                        <div class="d-flex">
-                            <div class="col-12">
-                                <span class="dropdown">
-                                    <a class="dropdown-toggle" role="button" id="dropdown-mini-cart"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-                                        <i class="las la-shopping-cart"></i>Cart
-                                        <span id="cart-customlocation"
-                                            class="badge badge-danger"><?php echo  $woocommerce->cart->cart_contents_count; ?>
-                                        </span>
-                                    </a>
+                        <div class="d-flex align-items-center justify-content-end">
 
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-mini-cart">
-                                        <?php woocommerce_mini_cart(); ?>
-                                    </div>
+                            <div class="dropdown w-100">
+                                <a class="dropdown-toggle" role="button" id="dropdown-mini-cart" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" href="#">
+                                    <i class="las la-shopping-cart"></i>Cart
+                                    <span id="cart-customlocation"
+                                        class="badge badge-danger"><?php echo  $woocommerce->cart->cart_contents_count; ?>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-mini-cart">
+                                    <?php woocommerce_mini_cart(); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+    </div>
     </div>
     <div class="nav-wrapper bg-primary">
         <div class="container">
