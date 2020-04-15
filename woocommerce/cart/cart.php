@@ -162,10 +162,13 @@ do_action('woocommerce_before_cart');
                     </tbody>
                 </table>
             </div>
-            <div class="row">
-                <div class="col-12">
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <a href="#" onClick="history.go(-1)"><i class="las la-arrow-left"></i> Continue shopping</a>
+                </div>
+                <div class="col-6">
                     <?php if (wc_coupons_enabled()) { ?>
-                    <label for="coupon_code"><?php esc_html_e('Coupon code:', 'woocommerce'); ?></label>
+                    <label class="sr-only" for="coupon_code"><?php esc_html_e('Coupon code:', 'woocommerce'); ?></label>
                     <div class="coupon input-group">
                         <input type="text" name="coupon_code" class="input-text form-control" id="coupon_code" value=""
                             placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" />
