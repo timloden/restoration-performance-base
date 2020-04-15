@@ -19,7 +19,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
 
-    <?php wp_head(); ?>
+    <?php wp_head(); 
+    global $woocommerce;
+    ?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -45,8 +47,9 @@
                     <div class="col-5">
                         <form action="/" method="get" class="form">
                             <div class="input-group">
-                                <input class="form-control" type="search" placeholder="Search" aria-label="Search"
-                                    name="s" id="search" value="<?php the_search_query(); ?>">
+                                <input class="form-control" type="search"
+                                    placeholder="Search by Vehicle, Part Number..." aria-label="Search" name="s"
+                                    id="search" value="<?php the_search_query(); ?>">
                                 <div class="input-group-append">
                                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                                 </div>
@@ -57,32 +60,36 @@
                     <div class="col-4 text-right">
                         <div class="d-flex">
                             <div class="col-12">
-                                <div class="dropdown">
+                                <span class="dropdown">
                                     <a class="dropdown-toggle" role="button" id="dropdown-mini-cart"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><i
-                                            class="las la-shopping-cart"></i>Cart</a>
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                                        <i class="las la-shopping-cart"></i>Cart
+                                        <span id="cart-customlocation"
+                                            class="badge badge-danger"><?php echo  $woocommerce->cart->cart_contents_count; ?>
+                                        </span>
+                                    </a>
+
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-mini-cart">
                                         <?php woocommerce_mini_cart(); ?>
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="nav-wrapper bg-primary">
-                <div class="container">
+    </div>
+    <div class="nav-wrapper bg-primary">
+        <div class="container">
 
-                    <ul class="d-flex list-unstyled w-100 mb-0 text-center">
-                        <li class="col">
-                            <div class="dropdown">
-                                <a class="nav-link dropdown-toggle text-white" href="#" role="button"
-                                    id="dropdown-categories" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">Categories</a>
-                                <ul class="dropdown-menu header-categories" id="dropdown-categories-list"
-                                    aria-labelledby="dropdown-categories">
+            <ul class="d-flex list-unstyled w-100 mb-0 text-center">
+                <li class="col">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" id="dropdown-categories"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                        <ul class="dropdown-menu header-categories" id="dropdown-categories-list"
+                            aria-labelledby="dropdown-categories">
 
-                                    <?php
+                            <?php
                                     $args = array(
                                         'taxonomy'           => 'product_cat',
                                         'hide_empty'         => true,
@@ -100,31 +107,31 @@
                                         printf('%s', $categories);
                                     }
                                     ?>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="col">
+                        </ul>
+                    </div>
+                </li>
+                <li class="col">
 
-                            <div class="dropdown">
-                                <a class="nav-link text-white" href="/shop">Search by Vehicle</a>
-                            </div>
-                        </li>
-                        <li class="col">
-                            <a class="nav-link  text-white" href="#">Specials</a>
-                        </li>
-                        <li class="col">
-                            <a class="nav-link text-white" href="#">About</a>
-                        </li>
-                        <li class="col">
-                            <a class="nav-link  text-white" href="#">Contact</a>
-                        </li>
-                    </ul>
-
-
-                </div>
-            </div>
+                    <div class="dropdown">
+                        <a class="nav-link text-white" href="/shop">Search by Vehicle</a>
+                    </div>
+                </li>
+                <li class="col">
+                    <a class="nav-link  text-white" href="#">Specials</a>
+                </li>
+                <li class="col">
+                    <a class="nav-link text-white" href="#">About</a>
+                </li>
+                <li class="col">
+                    <a class="nav-link  text-white" href="#">Contact</a>
+                </li>
+            </ul>
 
 
-        </header><!-- #masthead -->
+        </div>
+    </div>
 
-        <div id="content" class="site-content">
+
+    </header><!-- #masthead -->
+
+    <div id="content" class="site-content">

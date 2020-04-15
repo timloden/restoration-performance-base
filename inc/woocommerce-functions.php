@@ -9,6 +9,24 @@
  */
 
 
+ // header - cart item count update
+
+ add_filter( 'woocommerce_add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
+
+ function woocommerce_header_add_to_cart_fragment( $fragments ) {
+    global $woocommerce;
+
+    ob_start();
+
+    ?>
+<span id="cart-customlocation"
+    class="badge badge-danger animated swing"><?php echo $woocommerce->cart->cart_contents_count;?></span>
+<?php
+    $fragments['span#cart-customlocation'] = ob_get_clean();
+
+    return $fragments;
+ }
+
 // loop - product title
 
 remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
