@@ -481,6 +481,12 @@ function checkout_place_order_button_text($order_button_text)
     return 'Securely Place Order'; // new text is here
 }
 
+// checkout - remove coupon form before checkout hook
+
+//remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+
+//add_action('woocommerce_checkout_before_order_review', 'woocommerce_checkout_coupon_form', 10);
+
 /**
  * Disable the default WooCommerce stylesheet.
  *
