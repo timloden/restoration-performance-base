@@ -227,6 +227,9 @@ function added_to_cart_message_html($message, $products)
 }
 add_filter('wc_add_to_cart_message_html', 'added_to_cart_message_html', 10, 2);
 
+// cart - remove city field from shipping calc
+add_filter( 'woocommerce_shipping_calculator_enable_city', '__return_false' );
+
 // checkout - custom fields
 
 function custom_woocommerce_form_field($key, $args, $value = null)

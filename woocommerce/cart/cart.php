@@ -33,11 +33,12 @@ do_action('woocommerce_before_cart');
                     cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="product-remove" scope="col">&nbsp;</th>
+
                             <th class="product-thumbnail" scope="col">&nbsp;</th>
                             <th class="product-name" scope="col"><?php esc_html_e('Product', 'woocommerce'); ?></th>
                             <th class="product-price" scope="col"><?php esc_html_e('Price', 'woocommerce'); ?></th>
                             <th class="product-quantity" scope="col"><?php esc_html_e('Qty', 'woocommerce'); ?></th>
+                            <th class="product-remove" scope="col">&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,21 +55,7 @@ do_action('woocommerce_before_cart');
                         <tr
                             class="woocommerce-cart-form__cart-item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
 
-                            <td class="product-remove">
-                                <?php
-										echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-											'woocommerce_cart_item_remove_link',
-											sprintf(
-												'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
-												esc_url(wc_get_cart_remove_url($cart_item_key)),
-												esc_html__('Remove this item', 'woocommerce'),
-												esc_attr($product_id),
-												esc_attr($_product->get_sku())
-											),
-											$cart_item_key
-										);
-										?>
-                            </td>
+
 
                             <td class="product-thumbnail">
                                 <?php
@@ -127,6 +114,21 @@ do_action('woocommerce_before_cart');
 										}
 
 										echo apply_filters('woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item); // PHPCS: XSS ok.
+										?>
+                            </td>
+                            <td class="product-remove">
+                                <?php
+										echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+											'woocommerce_cart_item_remove_link',
+											sprintf(
+												'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">Remove</a>',
+												esc_url(wc_get_cart_remove_url($cart_item_key)),
+												esc_html__('Remove this item', 'woocommerce'),
+												esc_attr($product_id),
+												esc_attr($_product->get_sku())
+											),
+											$cart_item_key
+										);
 										?>
                             </td>
                         </tr>
