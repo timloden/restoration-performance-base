@@ -45,6 +45,7 @@
                         <a href="/">Classic Body Parts</a>
                     </div>
                     <div class="col-5">
+                        <!-- /?s=subframe&post_type=product&fwp_year_make_model=1967%2Cchevrolet-1967%2Ccamaro-chevrolet-1967 -->
                         <form action="/" method="get" class="form">
                             <div class="input-group">
                                 <input class="form-control" type="search"
@@ -56,6 +57,7 @@
                             </div>
                             <input type="hidden" name="post_type" value="product" />
                         </form>
+                        <?php //echo facetwp_display('facet', 'product_search'); ?>
                     </div>
                     <div class="col-4 text-right">
                         <div class="d-flex align-items-center justify-content-end">

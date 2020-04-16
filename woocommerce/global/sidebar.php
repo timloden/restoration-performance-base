@@ -24,9 +24,11 @@ if (!defined('ABSPATH')) {
 //dynamic_sidebar('shop');
 ?>
 
-<section>
+
+<section class="current-vehicle-section">
     <p class="h5">Current Vehicle</p>
-    <p class="current-vehicle"></p>
+    <p class="current-vehicle text-bold"></p>
+    <button id="clear-vehicle" class="btn btn-outline-secondary btn-sm">Clear Vehicle</button>
 </section>
 
 <section class="widget_text widget widget_custom_html">
@@ -44,4 +46,4 @@ if (!defined('ABSPATH')) {
 </section>
 
 
-<button class="btn btn-outline-secondary" onclick="FWP.reset()">Reset Filters</button>
+<button id="reset-all-filters" class="btn btn-outline-secondary">Reset All Filters</button>

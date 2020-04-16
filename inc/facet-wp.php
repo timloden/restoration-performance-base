@@ -27,3 +27,8 @@ add_filter(
     10,
     2
 );
+
+add_filter( 'facetwp_render_params', function( $params ) {
+    $params['http_params']['uri'] = 'foo/bar';
+    return $params;
+});
