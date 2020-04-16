@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <p>
-	<?php
+    <?php
 	printf(
 		/* translators: 1: user display name 2: logout url */
 		__( 'Hello %1$s (not %1$s? <a href="%2$s">Log out</a>)', 'woocommerce' ),
@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 </p>
 
 <p>
-	<?php
+    <?php
 	printf(
 		__( 'From your account dashboard you can view your <a href="%1$s">recent orders</a>, manage your <a href="%2$s">shipping and billing addresses</a>, and <a href="%3$s">edit your password and account details</a>.', 'woocommerce' ),
 		esc_url( wc_get_endpoint_url( 'orders' ) ),

@@ -16,16 +16,20 @@
  */
 
 defined( 'ABSPATH' ) || exit;
-
+?>
+<div class="row pt-4">
+    <div class="col-12 col-lg-3">
+        <?php
 /**
  * My Account navigation.
  *
  * @since 2.6.0
  */
 do_action( 'woocommerce_account_navigation' ); ?>
-
-<div class="woocommerce-MyAccount-content">
-	<?php
+    </div>
+    <div class="col-12 col-lg-9">
+        <div class="woocommerce-MyAccount-content">
+            <?php
 		/**
 		 * My Account content.
 		 *
@@ -33,4 +37,6 @@ do_action( 'woocommerce_account_navigation' ); ?>
 		 */
 		do_action( 'woocommerce_account_content' );
 	?>
+        </div>
+    </div>
 </div>

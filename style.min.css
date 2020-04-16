@@ -725,15 +725,15 @@ a.badge-dark:focus,a.badge-dark.focus{outline:0;-webkit-box-shadow:0 0 0 .2rem r
 .list-group-item:first-child{border-top-left-radius:.25rem;border-top-right-radius:.25rem}
 .list-group-item:last-child{border-bottom-right-radius:.25rem;border-bottom-left-radius:.25rem}
 .list-group-item.disabled,.list-group-item:disabled{color:#6c757d;pointer-events:none;background-color:#fff}
-.list-group-item.active{z-index:2;color:#fff;background-color:#005ca9;border-color:#005ca9}
+.list-group-item.active,.woocommerce-MyAccount-navigation .list-group-item.is-active{z-index:2;color:#fff;background-color:#005ca9;border-color:#005ca9}
 .list-group-item+.list-group-item{border-top-width:0}
-.list-group-item+.list-group-item.active{margin-top:-1px;border-top-width:1px}
+.list-group-item+.list-group-item.active,.woocommerce-MyAccount-navigation .list-group-item+.list-group-item.is-active{margin-top:-1px;border-top-width:1px}
 .list-group-horizontal{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}
 .list-group-horizontal .list-group-item:first-child{border-bottom-left-radius:.25rem;border-top-right-radius:0}
 .list-group-horizontal .list-group-item:last-child{border-top-right-radius:.25rem;border-bottom-left-radius:0}
-.list-group-horizontal .list-group-item.active{margin-top:0}
+.list-group-horizontal .list-group-item.active,.list-group-horizontal .woocommerce-MyAccount-navigation .list-group-item.is-active,.woocommerce-MyAccount-navigation .list-group-horizontal .list-group-item.is-active{margin-top:0}
 .list-group-horizontal .list-group-item+.list-group-item{border-top-width:1px;border-left-width:0}
-.list-group-horizontal .list-group-item+.list-group-item.active{margin-left:-1px;border-left-width:1px}
+.list-group-horizontal .list-group-item+.list-group-item.active,.list-group-horizontal .woocommerce-MyAccount-navigation .list-group-item+.list-group-item.is-active,.woocommerce-MyAccount-navigation .list-group-horizontal .list-group-item+.list-group-item.is-active{margin-left:-1px;border-left-width:1px}
 .list-group-flush .list-group-item{border-right-width:0;border-left-width:0;border-radius:0}
 .list-group-flush .list-group-item:first-child{border-top-width:0}
 .list-group-flush:last-child .list-group-item:last-child{border-bottom-width:0}
@@ -2827,9 +2827,9 @@ a:hover{text-decoration:none}
 .list-group-horizontal-sm{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}
 .list-group-horizontal-sm .list-group-item:first-child{border-bottom-left-radius:.25rem;border-top-right-radius:0}
 .list-group-horizontal-sm .list-group-item:last-child{border-top-right-radius:.25rem;border-bottom-left-radius:0}
-.list-group-horizontal-sm .list-group-item.active{margin-top:0}
+.list-group-horizontal-sm .list-group-item.active,.list-group-horizontal-sm .woocommerce-MyAccount-navigation .list-group-item.is-active,.woocommerce-MyAccount-navigation .list-group-horizontal-sm .list-group-item.is-active{margin-top:0}
 .list-group-horizontal-sm .list-group-item+.list-group-item{border-top-width:1px;border-left-width:0}
-.list-group-horizontal-sm .list-group-item+.list-group-item.active{margin-left:-1px;border-left-width:1px}
+.list-group-horizontal-sm .list-group-item+.list-group-item.active,.list-group-horizontal-sm .woocommerce-MyAccount-navigation .list-group-item+.list-group-item.is-active,.woocommerce-MyAccount-navigation .list-group-horizontal-sm .list-group-item+.list-group-item.is-active{margin-left:-1px;border-left-width:1px}
 .modal-dialog{max-width:500px;margin:1.75rem auto}
 .modal-dialog-scrollable{max-height:calc(100% - 3.5rem)}
 .modal-dialog-scrollable .modal-content{max-height:calc(100vh - 3.5rem)}
@@ -3036,9 +3036,9 @@ a:hover{text-decoration:none}
 .list-group-horizontal-md{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}
 .list-group-horizontal-md .list-group-item:first-child{border-bottom-left-radius:.25rem;border-top-right-radius:0}
 .list-group-horizontal-md .list-group-item:last-child{border-top-right-radius:.25rem;border-bottom-left-radius:0}
-.list-group-horizontal-md .list-group-item.active{margin-top:0}
+.list-group-horizontal-md .list-group-item.active,.list-group-horizontal-md .woocommerce-MyAccount-navigation .list-group-item.is-active,.woocommerce-MyAccount-navigation .list-group-horizontal-md .list-group-item.is-active{margin-top:0}
 .list-group-horizontal-md .list-group-item+.list-group-item{border-top-width:1px;border-left-width:0}
-.list-group-horizontal-md .list-group-item+.list-group-item.active{margin-left:-1px;border-left-width:1px}
+.list-group-horizontal-md .list-group-item+.list-group-item.active,.list-group-horizontal-md .woocommerce-MyAccount-navigation .list-group-item+.list-group-item.is-active,.woocommerce-MyAccount-navigation .list-group-horizontal-md .list-group-item+.list-group-item.is-active{margin-left:-1px;border-left-width:1px}
 .d-md-none{display:none !important}
 .d-md-inline{display:inline !important}
 .d-md-inline-block{display:inline-block !important}
@@ -3239,9 +3239,9 @@ a:hover{text-decoration:none}
 .list-group-horizontal-lg{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}
 .list-group-horizontal-lg .list-group-item:first-child{border-bottom-left-radius:.25rem;border-top-right-radius:0}
 .list-group-horizontal-lg .list-group-item:last-child{border-top-right-radius:.25rem;border-bottom-left-radius:0}
-.list-group-horizontal-lg .list-group-item.active{margin-top:0}
+.list-group-horizontal-lg .list-group-item.active,.list-group-horizontal-lg .woocommerce-MyAccount-navigation .list-group-item.is-active,.woocommerce-MyAccount-navigation .list-group-horizontal-lg .list-group-item.is-active{margin-top:0}
 .list-group-horizontal-lg .list-group-item+.list-group-item{border-top-width:1px;border-left-width:0}
-.list-group-horizontal-lg .list-group-item+.list-group-item.active{margin-left:-1px;border-left-width:1px}
+.list-group-horizontal-lg .list-group-item+.list-group-item.active,.list-group-horizontal-lg .woocommerce-MyAccount-navigation .list-group-item+.list-group-item.is-active,.woocommerce-MyAccount-navigation .list-group-horizontal-lg .list-group-item+.list-group-item.is-active{margin-left:-1px;border-left-width:1px}
 .modal-lg,.modal-xl{max-width:800px}
 .d-lg-none{display:none !important}
 .d-lg-inline{display:inline !important}
@@ -3443,9 +3443,9 @@ a:hover{text-decoration:none}
 .list-group-horizontal-xl{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}
 .list-group-horizontal-xl .list-group-item:first-child{border-bottom-left-radius:.25rem;border-top-right-radius:0}
 .list-group-horizontal-xl .list-group-item:last-child{border-top-right-radius:.25rem;border-bottom-left-radius:0}
-.list-group-horizontal-xl .list-group-item.active{margin-top:0}
+.list-group-horizontal-xl .list-group-item.active,.list-group-horizontal-xl .woocommerce-MyAccount-navigation .list-group-item.is-active,.woocommerce-MyAccount-navigation .list-group-horizontal-xl .list-group-item.is-active{margin-top:0}
 .list-group-horizontal-xl .list-group-item+.list-group-item{border-top-width:1px;border-left-width:0}
-.list-group-horizontal-xl .list-group-item+.list-group-item.active{margin-left:-1px;border-left-width:1px}
+.list-group-horizontal-xl .list-group-item+.list-group-item.active,.list-group-horizontal-xl .woocommerce-MyAccount-navigation .list-group-item+.list-group-item.is-active,.woocommerce-MyAccount-navigation .list-group-horizontal-xl .list-group-item+.list-group-item.is-active{margin-left:-1px;border-left-width:1px}
 .modal-xl{max-width:1140px}
 .d-xl-none{display:none !important}
 .d-xl-inline{display:inline !important}
