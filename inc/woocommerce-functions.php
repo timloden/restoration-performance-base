@@ -15,7 +15,7 @@
 
  function woocommerce_header_add_to_cart_fragment( $fragments ) {
     global $woocommerce;
-
+    
     ob_start();
 
     ?>
@@ -23,7 +23,7 @@
     class="badge badge-danger animated swing"><?php echo $woocommerce->cart->cart_contents_count;?></span>
 <?php
     $fragments['span#cart-customlocation'] = ob_get_clean();
-
+    
     return $fragments;
  }
 

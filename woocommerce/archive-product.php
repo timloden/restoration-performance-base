@@ -61,9 +61,9 @@ if ( woocommerce_product_loop() ) {
 
 	?>
 <div class="container">
-	<div class="row">
-		<div class="col-12 col-md-6 col-lg-3">
-			<?php
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-3">
+            <?php
 			/**
 			 * Hook: woocommerce_sidebar.
 			 *
@@ -71,11 +71,11 @@ if ( woocommerce_product_loop() ) {
 			 */
 			do_action( 'woocommerce_sidebar' );
 			?>
-		</div>
-		<div class="col-12 col-md-6 col-lg-9">
-			<div class="row">
-				
-					<?php
+        </div>
+        <div class="col-12 col-md-6 col-lg-9">
+            <div class="row">
+
+                <?php
 
 					woocommerce_product_loop_start();
 
@@ -118,10 +118,10 @@ if ( woocommerce_product_loop() ) {
 
 					?>
 
-			</div>
-		</div>
+            </div>
+        </div>
 
-	</div>
+    </div>
 </div>
 
 
