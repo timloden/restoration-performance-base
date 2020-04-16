@@ -46,17 +46,9 @@ console.log('custom js');
 
 (function ($) {
   $(function () {
-    function getUrlParameter(name) {
-      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-      var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-      var results = regex.exec(location.search);
-      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    }
     /*
     After FacetWP reloads, store any updates into a cookie
     */
-
-
     $(document).on('facetwp-loaded', function () {
       var date = new Date();
       var facets = FWP_HTTP.get.fwp_year_make_model;
