@@ -57,9 +57,16 @@
                     '' != facetdata &&
                     facets != facetdata
                 ) {
-                    document.cookie =
-                        'facetdata=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
-                    window.location.search = window.location.search + facetdata;
+                    // document.cookie =
+                    //     'facetdata=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+                    if (facets.includes('?')) {
+                        facetdata = facetdata.replace('?', '&');
+                        window.location.search =
+                            window.location.search + facetdata;
+                    } else {
+                        window.location.search =
+                            window.location.search + facetdata;
+                    }
                 }
             }
         });

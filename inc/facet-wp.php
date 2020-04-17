@@ -27,3 +27,5 @@ add_filter(
     10,
     2
 );
+
+// if we have vehicle cookie add it to search filter
