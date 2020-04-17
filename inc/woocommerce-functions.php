@@ -9,6 +9,16 @@
  */
 
 
+ //order number
+
+ add_filter( 'woocommerce_order_number', 'change_woocommerce_order_number' );
+
+function change_woocommerce_order_number( $order_id ) {
+    $prefix = 'CBP-';
+    $new_order_id = $prefix . $order_id;
+    return $new_order_id;
+}
+
  // header - cart item count update
 
  add_filter( 'woocommerce_add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
