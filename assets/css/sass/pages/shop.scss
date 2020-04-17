@@ -7,4 +7,15 @@
     .added_to_cart {
         display: none;
     }
+
+    .add_to_cart_button.loading {
+        &:before {
+            position: absolute;
+            left: 0;
+            width: 16px;
+            height: 16px;
+            content: '';
+            background: url('/wp-content/themes/restoration-performance-base/assets/images/wp-loading.gif');
+        }
+    }
 }

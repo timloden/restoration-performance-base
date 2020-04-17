@@ -2718,6 +2718,7 @@ a{text-decoration:none}
 a:hover{text-decoration:none}
 .products .size-woocommerce_thumbnail{max-width:100%;height:auto}
 .products .added_to_cart{display:none}
+.products .add_to_cart_button.loading:before{position:absolute;left:0;width:16px;height:16px;content:'';background:url("/wp-content/themes/restoration-performance-base/assets/images/wp-loading.gif")}
 .product img.wp-post-image{max-width:100%;height:auto}
 .woocommerce-notices-wrapper{width:100%}
 .cart .product-thumbnail .size-woocommerce_thumbnail{width:100px;height:auto}
