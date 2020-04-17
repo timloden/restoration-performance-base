@@ -22,10 +22,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="container">
-	<div class="row">
-		<div class="col-6">
-			<p class="woocommerce-result-count">
-				<?php
+    <div class="row">
+        <div class="col-6">
+            <p class="woocommerce-result-count">
+                <?php
 				if ( 1 === $total ) {
 					_e( 'Showing the single result', 'woocommerce' );
 				} elseif ( $total <= $per_page || -1 === $per_page ) {
@@ -38,5 +38,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 					printf( _nx( 'Showing %1$d&ndash;%2$d of %3$d result', 'Showing %1$d&ndash;%2$d of %3$d results', $total, 'with first and last result', 'woocommerce' ), $first, $last, $total );
 				}
 				?>
-			</p>
-		</div>
+            </p>
+        </div>

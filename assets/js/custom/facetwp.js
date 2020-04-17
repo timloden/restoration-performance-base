@@ -8,8 +8,11 @@
             var date = new Date();
             var facets = FWP_HTTP.get.fwp_year_make_model;
             date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
+            var facetCookie = readCookie('facetdata');
 
             if (facets) {
+                //console.log(facetCookie);
+
                 var vehicle = '';
 
                 $('.facetwp-type-hierarchy_select option:selected').each(
@@ -26,7 +29,7 @@
                     date.toGMTString() +
                     '; path=/';
 
-                $('.current-vehicle').html(vehicle);
+                $('#clear-vehicle').toggle();
 
                 facets = '?fwp_year_make_model=' + facets;
 
@@ -48,6 +51,7 @@
             if (!FWP.loaded) {
                 var facets = window.location.search;
                 var facetdata = readCookie('facetdata');
+                console.log(facetdata);
                 if (
                     null != facetdata &&
                     '' != facetdata &&
@@ -94,7 +98,7 @@
                 document.cookie =
                     'facetdata=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
 
-                $('.current-vehicle-section').html('');
+                $('#clear-vehicle').toggle();
             }
 
             console.log('cleared');
