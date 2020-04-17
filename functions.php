@@ -63,7 +63,7 @@ if (!function_exists('theme_setup')) :
         include_once get_template_directory() . '/vendor/class-wp-category-walker.php';
 
          // custom tracking shortcode
-         include_once get_template_directory() . '/vendor/class-wp-custom-order-tracking.php';
+         //include_once get_template_directory() . '/vendor/class-wp-custom-order-tracking.php';
 
         // woocommerce support
         add_theme_support('woocommerce');
