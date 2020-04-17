@@ -62,6 +62,9 @@ if (!function_exists('theme_setup')) :
         // bootstrap - category walker
         include_once get_template_directory() . '/vendor/class-wp-category-walker.php';
 
+         // custom tracking shortcode
+         include_once get_template_directory() . '/vendor/class-wp-custom-order-tracking.php';
+
         // woocommerce support
         add_theme_support('woocommerce');
         //add_theme_support('wc-product-gallery-zoom');
