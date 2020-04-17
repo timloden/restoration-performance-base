@@ -20,11 +20,26 @@ defined( 'ABSPATH' ) || exit;
 global $post;
 
 $heading = apply_filters( 'woocommerce_product_description_heading', __( 'Details', 'woocommerce' ) );
+global $product;
+$brands = wp_get_object_terms( $product->get_id(), 'pwb-brand' );
 
+foreach( $brands as $brand ) {
+$image_size = get_option('wc_pwb_admin_tab_brand_logo_size', 'thumbnail');
+$brand_logo = get_term_meta( $brand->term_id, 'pwb_brand_image', true );
+$brand_logo = wp_get_attachment_image_src( $brand_logo, apply_filters( 'pwb_product_tab_brand_logo_size', $image_size ) );
+}
+	
 ?>
 
+
 <?php if ( $heading ) : ?>
-	<h2><?php echo esc_html( $heading ); ?></h2>
+<h2><?php echo esc_html( $heading ); ?></h2>
 <?php endif; ?>
 
 <?php the_content(); ?>
+
+<?php if( !empty($brand->description) ) echo do_shortcode($brand->description);?>
+
+<?php if( !empty($brand_logo) ) :?>
+<img class="img-fluid" src="<?php echo $brand_logo[0]; ?>">
+<?php endif; ?>
