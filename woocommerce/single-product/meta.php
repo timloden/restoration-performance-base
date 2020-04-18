@@ -42,13 +42,8 @@ global $product;
     if (strpos($shipping_class, '-freight')) {
         echo '<div class="d-block py-3"><i class="las la-shipping-fast"></i> Freight Item</div>';
     }
-    
-    $brand = wp_get_object_terms( $product->get_id(), 'pwb-brand' );
-    if ($brand) {
-        echo '<div class="d-block">Brand: ' . $brand[0]->name . '</div>';
-    }
     ?>
-
+    <div class="d-block">Brand: <?php echo get_brand_name($product->get_id()); ?></div>
     <ul class="ymm-list">
         <?php 
     //echo ymm_fitment_product_page(); 

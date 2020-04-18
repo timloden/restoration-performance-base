@@ -47,6 +47,13 @@ function loop_product_title()
     echo '<a class="mt-2" href="' . get_the_permalink()  . '"><p class="h5 text-dark ' . esc_attr(apply_filters('woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title')) . '"><strong>' . get_the_title() . '</strong></p></a>';
 }
 
+// loop / brand - get brand name
+
+function get_brand_name($product_id) {
+    $brand = wp_get_object_terms( $product_id, 'pwb-brand' );
+    echo $brand[0]->name;
+}
+
 // loop - remove link
 
 remove_action('woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10);

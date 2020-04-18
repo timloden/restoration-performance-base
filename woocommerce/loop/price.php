@@ -26,3 +26,4 @@ global $product;
 <p class="price"><?php echo $price_html; ?></p>
 <?php endif; ?>
 <p>SKU: <?php echo $product->get_sku(); ?></p>
+<p>Brand: <?php echo get_brand_name($product->get_id()); ?></p>
