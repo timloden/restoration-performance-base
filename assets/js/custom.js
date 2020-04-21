@@ -75,30 +75,23 @@ console.log('custom js');
     When FacetWP first initializes, look for the "facetdata" cookie
     If it exists, set window.location.search= facetdata
     */
-    // $(document).on('facetwp-refresh', function () {
-    //     if (!FWP.loaded) {
-    //         var facets = window.location.search;
-    //         var facetdata = readCookie('facetdata');
-    //         //console.log(facetdata);
-    //         if (
-    //             null != facetdata &&
-    //             '' != facetdata &&
-    //             facets != facetdata
-    //         ) {
-    //             // document.cookie =
-    //             //     'facetdata=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
-    //             if (facets.includes('?')) {
-    //                 facetdata = facetdata.replace('?', '&');
-    //                 window.location.search =
-    //                     window.location.search + facetdata;
-    //             } else {
-    //                 window.location.search =
-    //                     window.location.search + facetdata;
-    //             }
-    //         }
-    //     }
-    // });
 
+    $(document).on('facetwp-refresh', function () {
+      if (!FWP.loaded) {
+        var facets = FWP_HTTP.get._year_make_model;
+        var facetdata = readCookie('facetdata');
+
+        if (null != facetdata && '' != facetdata && facets != facetdata) {
+          // if we are on a search page, change the ? to a &
+          if (!window.location.href.indexOf('s=') !== 1 && !facets) {
+            facetdata = facetdata.replace('?', '&');
+            window.location.search = window.location.search + facetdata;
+          } else if (!window.location.search) {
+            window.location.search = window.location.search + facetdata;
+          }
+        }
+      }
+    });
     $('#reset-all-filters').on('click', function () {
       FWP.reset();
       clearVehicle();
