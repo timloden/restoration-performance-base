@@ -6,15 +6,12 @@
 
         $(document).on('facetwp-loaded', function () {
             var date = new Date();
-            var facets = FWP_HTTP.get.fwp_year_make_model;
+            var facets = FWP_HTTP.get._year_make_model;
             date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
-            var facetCookie = readCookie('facetdata');
+            var vehicle = '';
 
             if (facets) {
-                //console.log(facetCookie);
-
-                var vehicle = '';
-
+                // get vehicle form selected ymm facets
                 $('.facetwp-type-hierarchy_select option:selected').each(
                     function () {
                         var item = $(this).text() + ' ';
@@ -22,6 +19,7 @@
                     }
                 );
 
+                // set cookie for vehicle
                 document.cookie =
                     'vehicle=' +
                     vehicle +
@@ -29,10 +27,13 @@
                     date.toGMTString() +
                     '; path=/';
 
+                // show clear vehicle button
                 $('#clear-vehicle').toggle();
 
-                facets = '?fwp_year_make_model=' + facets;
+                // set ymm facet with proper query string
+                facets = '?_year_make_model=' + facets;
 
+                // set ymm facet cookie
                 document.cookie =
                     'facetdata=' +
                     facets +
@@ -47,29 +48,29 @@
         If it exists, set window.location.search= facetdata
         */
 
-        $(document).on('facetwp-refresh', function () {
-            if (!FWP.loaded) {
-                var facets = window.location.search;
-                var facetdata = readCookie('facetdata');
-                console.log(facetdata);
-                if (
-                    null != facetdata &&
-                    '' != facetdata &&
-                    facets != facetdata
-                ) {
-                    // document.cookie =
-                    //     'facetdata=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
-                    if (facets.includes('?')) {
-                        facetdata = facetdata.replace('?', '&');
-                        window.location.search =
-                            window.location.search + facetdata;
-                    } else {
-                        window.location.search =
-                            window.location.search + facetdata;
-                    }
-                }
-            }
-        });
+        // $(document).on('facetwp-refresh', function () {
+        //     if (!FWP.loaded) {
+        //         var facets = window.location.search;
+        //         var facetdata = readCookie('facetdata');
+        //         //console.log(facetdata);
+        //         if (
+        //             null != facetdata &&
+        //             '' != facetdata &&
+        //             facets != facetdata
+        //         ) {
+        //             // document.cookie =
+        //             //     'facetdata=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+        //             if (facets.includes('?')) {
+        //                 facetdata = facetdata.replace('?', '&');
+        //                 window.location.search =
+        //                     window.location.search + facetdata;
+        //             } else {
+        //                 window.location.search =
+        //                     window.location.search + facetdata;
+        //             }
+        //         }
+        //     }
+        // });
 
         $('#reset-all-filters').on('click', function () {
             FWP.reset();
