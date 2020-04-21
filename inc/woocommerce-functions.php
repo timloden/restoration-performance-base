@@ -24,17 +24,23 @@ function change_woocommerce_order_number( $order_id ) {
  add_filter( 'woocommerce_add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
 
  function woocommerce_header_add_to_cart_fragment( $fragments ) {
-    global $woocommerce;
+     
+    //$fragments['span#cart-customlocation'] = '<span id="cart-customlocation" class="badge badge-danger animated swing">' . WC()->cart->get_cart_contents_count() . '</span>';
     
     ob_start();
+    echo '<div id="cart-dropdown" class="dropdown w-100">';
+    echo '<a class="dropdown-toggle" role="button" id="dropdown-mini-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">';
+    echo '<i class="las la-shopping-cart"></i>Cart <span id="cart-customlocation" class="badge badge-danger animated swing">' . WC()->cart->get_cart_contents_count() . '</span></a>';
 
-    ?>
-<span id="cart-customlocation"
-    class="badge badge-danger animated swing"><?php echo $woocommerce->cart->cart_contents_count;?></span>
-<?php
-    $fragments['span#cart-customlocation'] = ob_get_clean();
+    echo '<div id="custom-mini-cart" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-mini-cart">';
+    woocommerce_mini_cart(); 
+    echo '</div>';
+    echo '</div>';
+    
+    $fragments['div#cart-dropdown'] = ob_get_clean();
     
     return $fragments;
+
  }
 
 // loop - product title
