@@ -164,6 +164,10 @@ function custom_related_products($product)
     return $related_posts;
 }
 
+// product - dont redirect on single search result
+
+add_filter( 'woocommerce_redirect_single_search_result', '__return_false' );
+
 // cart - remove suggestions from cart collateral
 
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
