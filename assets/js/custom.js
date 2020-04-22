@@ -70,6 +70,8 @@ console.log('custom js');
 
         document.cookie = 'facetdata=' + facets + '; expires=' + date.toGMTString() + '; path=/';
       }
+
+      $('.facetwp-template .is-loading').remove();
     });
     /*
     When FacetWP first initializes, look for the "facetdata" cookie
@@ -77,6 +79,8 @@ console.log('custom js');
     */
 
     $(document).on('facetwp-refresh', function () {
+      $('.facetwp-template').prepend('<div class="is-loading position-absolute w-100 h-100"> <div class="d-flex w-100 h-100 justify-content-center align-items-center"><div class="spinner-border text-light" role="status"><span class="sr-only">Loading...</span></div></div></div>');
+
       if (!FWP.loaded) {
         var facets = FWP_HTTP.get._year_make_model;
         var facetdata = readCookie('facetdata');
