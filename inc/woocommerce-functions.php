@@ -514,6 +514,15 @@ function checkout_place_order_button_text($order_button_text)
 
 //add_action('woocommerce_checkout_before_order_review', 'woocommerce_checkout_coupon_form', 10);
 
+// my account - remove downloads from my account 
+
+add_filter( 'woocommerce_account_menu_items', 'custom_remove_downloads_my_account', 999 );
+ 
+function custom_remove_downloads_my_account( $items ) {
+unset($items['downloads']);
+return $items;
+}
+
 /**
  * Disable the default WooCommerce stylesheet.
  *
