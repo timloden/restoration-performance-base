@@ -9,13 +9,14 @@
     }
 
     .add_to_cart_button.loading {
+        opacity: 0.5;
         &:before {
-            position: absolute;
-            left: 0;
-            width: 16px;
-            height: 16px;
+            margin-right: 5px;
             content: '';
-            background: url('/wp-content/themes/restoration-performance-base/assets/images/wp-loading.gif');
+            @extend .spinner-border;
+            height: 18px;
+            width: 18px;
+            border-width: 0.2em;
         }
     }
 }

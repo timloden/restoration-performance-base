@@ -862,7 +862,7 @@ a.close.disabled{pointer-events:none}
 .carousel-indicators li{-webkit-box-sizing:content-box;box-sizing:content-box;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:0 1 auto;width:30px;height:3px;margin-right:3px;margin-left:3px;text-indent:-999px;cursor:pointer;background-color:#fff;background-clip:padding-box;border-top:10px solid transparent;border-bottom:10px solid transparent;opacity:.5;-webkit-transition:opacity .6s ease;transition:opacity .6s ease}
 .carousel-indicators .active{opacity:1}
 .carousel-caption{position:absolute;right:15%;bottom:20px;left:15%;z-index:10;padding-top:20px;padding-bottom:20px;color:#fff;text-align:center}
-.spinner-border{display:inline-block;width:2rem;height:2rem;vertical-align:text-bottom;border:.25em solid currentColor;border-right-color:transparent;border-radius:50%;-webkit-animation:spinner-border .75s linear infinite;animation:spinner-border .75s linear infinite}
+.spinner-border,.products .add_to_cart_button.loading:before{display:inline-block;width:2rem;height:2rem;vertical-align:text-bottom;border:.25em solid currentColor;border-right-color:transparent;border-radius:50%;-webkit-animation:spinner-border .75s linear infinite;animation:spinner-border .75s linear infinite}
 .spinner-border-sm{width:1rem;height:1rem;border-width:.2em}
 .spinner-grow{display:inline-block;width:2rem;height:2rem;vertical-align:text-bottom;background-color:currentColor;border-radius:50%;opacity:0;-webkit-animation:spinner-grow .75s linear infinite;animation:spinner-grow .75s linear infinite}
 .spinner-grow-sm{width:1rem;height:1rem}
@@ -2719,7 +2719,8 @@ a:hover{text-decoration:none}
 .is-loading{z-index:9999;background-color:rgba(255,255,255,0.9)}
 .products .size-woocommerce_thumbnail{max-width:100%;height:auto}
 .products .added_to_cart{display:none}
-.products .add_to_cart_button.loading:before{position:absolute;left:0;width:16px;height:16px;content:'';background:url("/wp-content/themes/restoration-performance-base/assets/images/wp-loading.gif")}
+.products .add_to_cart_button.loading{opacity:.5}
+.products .add_to_cart_button.loading:before{margin-right:5px;content:'';height:18px;width:18px;border-width:.2em}
 .product img.wp-post-image{max-width:100%;height:auto}
 .woocommerce-notices-wrapper{width:100%}
 .cart .product-thumbnail .size-woocommerce_thumbnail{width:100px;height:auto}
