@@ -1,0 +1,6 @@
+.woocommerce-checkout {
+    .woocommerce-error {
+        @extend .alert;
+        @extend .alert-danger;
+    }
+}
