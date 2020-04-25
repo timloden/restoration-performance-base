@@ -104,6 +104,10 @@ console.log('custom js');
       FWP.reset('year_make_model');
       clearVehicle();
     });
+    $('#remove-vehicle').on('click', function () {
+      clearVehicle();
+      $(this).html('<i class="las la-check"></i> Cleared!');
+    });
     /*
     Cookie handler
     */

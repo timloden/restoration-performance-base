@@ -8,7 +8,6 @@
  * @package restoration-performance
  */
 
-
  //order number
 
 add_filter( 'woocommerce_order_number', 'change_woocommerce_order_number' );
