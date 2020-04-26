@@ -32,7 +32,11 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
     <?php 
 echo $order->get_shipping_first_name() . ' ';
 echo $order->get_shipping_last_name() . '<br>';
-echo $order->get_shipping_company() . '<br>';
+
+if ($order->get_shipping_company() != '') {
+    echo $order->get_shipping_company() . '<br>';
+}
+
 echo $order->get_shipping_address_1() . '<br>';
 
 if ($order->get_shipping_address_2() != '') {
