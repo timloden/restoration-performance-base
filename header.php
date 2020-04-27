@@ -29,6 +29,7 @@
     <div id="page" class="site">
         <header class="header">
             <div class="container">
+                <!-- top bar -->
                 <div class="row align-items-center top-bar border-bottom py-2">
                     <div class="col-lg-6 d-none d-lg-block">
                         <span class="border-right mr-2 pr-2"><strong>Orders over $99 ship for $4.50!</strong></span>
@@ -40,8 +41,9 @@
                         <a href="/help">Help</a>
                     </div>
                 </div>
+                <!-- main header -->
                 <div class="row align-items-center py-3">
-                    <div class="col-6 col-lg-3">
+                    <div class="col-12 col-lg-3 text-center text-lg-left">
                         <a href="/">Classic Body Parts</a>
                     </div>
                     <div class="col-lg-5 d-none d-lg-block">
@@ -57,8 +59,16 @@
                             <input type="hidden" name="post_type" value="product" />
                         </form>
                     </div>
-                    <div class="col-6 col-lg-4 text-right">
+                    <div class="col-12 col-lg-4 text-right">
                         <div class="d-flex align-items-center justify-content-end">
+                            <a class="d-lg-none mr-3" data-toggle="collapse" href="#mobile-nav" role="button"
+                                aria-expanded="false" aria-controls="mobile-nav">
+                                <i class="las la-bars"></i>
+                            </a>
+                            <a class="d-lg-none" data-toggle="collapse" href="#mobile-search" role="button"
+                                aria-expanded="false" aria-controls="mobile-search">
+                                <i class="las la-search"></i>
+                            </a>
                             <div id="cart-dropdown" class="dropdown w-100">
                                 <a class="dropdown-toggle" role="button" id="dropdown-mini-cart" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false" href="#">
@@ -72,15 +82,12 @@
                                     <?php woocommerce_mini_cart(); ?>
                                 </div>
                             </div>
-                            <a class="d-lg-none ml-3" data-toggle="collapse" href="#mobile-nav" role="button"
-                                aria-expanded="false" aria-controls="mobile-nav">
-                                <i class="las la-bars"></i>
-                            </a>
+
                         </div>
                     </div>
                 </div>
                 <!-- mobile search -->
-                <div class="row d-lg-none pb-3">
+                <div class="row d-lg-none pb-3 collapse" id="mobile-search">
                     <div class="col-12">
                         <form action="/" method="get" class="form">
                             <div class="input-group">
