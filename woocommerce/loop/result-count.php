@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div class="container">
+<div class="container d-none d-lg-block">
     <div class="row">
         <div class="col-6">
             <p class="woocommerce-result-count">
