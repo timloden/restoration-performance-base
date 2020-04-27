@@ -186,7 +186,7 @@
     <div class="nav-wrapper bg-primary d-none d-lg-block">
         <div class="container">
 
-            <ul class="nav nav-pills nav-fill">
+            <ul class="nav nav-pills nav-fill justify-content-between">
                 <li>
                     <div class="dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="#" role="button" id="dropdown-categories"
