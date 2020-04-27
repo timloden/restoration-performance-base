@@ -2721,6 +2721,7 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 a{text-decoration:none}
 a:hover{text-decoration:none}
 .is-loading{z-index:9999;background-color:rgba(255,255,255,0.9)}
+.facetwp-facet{margin-bottom:1em !important}
 .products .size-woocommerce_thumbnail{max-width:100%;height:auto}
 .products .added_to_cart{display:none}
 .products .add_to_cart_button.loading{opacity:.5}

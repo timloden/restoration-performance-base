@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
 //dynamic_sidebar('shop');
 ?>
 
-<section class="widget_text widget widget_custom_html mb-3">
+<section class="widget_text widget widget_custom_html mb-4 mt-3 mt-lg-0">
     <p class="h6">Filter by Vehicle</p>
     <div class="textwidget custom-html-widget">
         <?php echo facetwp_display('facet', 'year_make_model'); ?>
@@ -40,4 +40,4 @@ if (!defined('ABSPATH')) {
 </section>
 
 
-<button id="reset-all-filters" class="btn btn-outline-secondary btn-sm">Reset All Filters</button>
+<button id="reset-all-filters" class="btn btn-outline-secondary btn-sm mb-3 mb-lg-3">Reset All Filters</button>
