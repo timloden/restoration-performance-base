@@ -40,6 +40,9 @@
                     '; expires=' +
                     date.toGMTString() +
                     '; path=/';
+            } else {
+                $('#filter-categories').addClass('d-none');
+                $('#reset-all-filters').addClass('d-none');
             }
 
             $('.facetwp-template .is-loading').remove();
@@ -73,6 +76,11 @@
                             window.location.search + facetdata;
                     }
                 }
+            }
+
+            if (FWP_HTTP.get._year_make_model) {
+                $('#filter-categories').removeClass('d-none');
+                $('#reset-all-filters').removeClass('d-none');
             }
         });
 

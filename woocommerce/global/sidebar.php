@@ -24,16 +24,16 @@ if (!defined('ABSPATH')) {
 //dynamic_sidebar('shop');
 ?>
 
-<section class="widget_text widget widget_custom_html mb-4">
-    <p class=" h5">Filter by Vehicle</p>
+<section class="widget_text widget widget_custom_html mb-3">
+    <p class="h6">Filter by Vehicle</p>
     <div class="textwidget custom-html-widget">
         <?php echo facetwp_display('facet', 'year_make_model'); ?>
     </div>
     <button id="clear-vehicle" style="display: none;" class="btn btn-outline-secondary btn-sm">Clear Vehicle</button>
 </section>
 
-<section class="widget_text widget widget_custom_html">
-    <p class="h5">Filter by Category</p>
+<section id="filter-categories" class="widget_text widget widget_custom_html">
+    <p class="h6">Filter by Category</p>
     <div class="textwidget custom-html-widget">
         <?php echo facetwp_display('facet', 'categories'); ?>
     </div>

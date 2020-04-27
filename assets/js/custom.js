@@ -69,6 +69,9 @@ console.log('custom js');
         facets = '?_year_make_model=' + facets; // set ymm facet cookie
 
         document.cookie = 'facetdata=' + facets + '; expires=' + date.toGMTString() + '; path=/';
+      } else {
+        $('#filter-categories').addClass('d-none');
+        $('#reset-all-filters').addClass('d-none');
       }
 
       $('.facetwp-template .is-loading').remove();
@@ -94,6 +97,11 @@ console.log('custom js');
             window.location.search = window.location.search + facetdata;
           }
         }
+      }
+
+      if (FWP_HTTP.get._year_make_model) {
+        $('#filter-categories').removeClass('d-none');
+        $('#reset-all-filters').removeClass('d-none');
       }
     });
     $('#reset-all-filters').on('click', function () {
