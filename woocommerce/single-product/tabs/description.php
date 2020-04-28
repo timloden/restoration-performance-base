@@ -32,9 +32,6 @@ $brand_logo = wp_get_attachment_image_src( $brand_logo, apply_filters( 'pwb_prod
 ?>
 
 
-<?php if ( $heading ) : ?>
-<h2><?php echo esc_html( $heading ); ?></h2>
-<?php endif; ?>
 
 <?php the_content(); ?>
 

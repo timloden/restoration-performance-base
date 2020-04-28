@@ -181,6 +181,15 @@ function custom_show_product_images() {
     echo wp_get_attachment_image( $image_id, 'full', "", array( "class" => "img-fluid" ) );
 } 
 
+// product - remove additional information tab
+
+add_filter( 'woocommerce_product_tabs', 'remove_product_tabs', 9999 );
+  
+function remove_product_tabs( $tabs ) {
+    unset( $tabs['additional_information'] ); 
+    return $tabs;
+}
+
 // cart - remove suggestions from cart collateral
 
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
