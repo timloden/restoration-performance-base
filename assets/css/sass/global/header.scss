@@ -32,6 +32,16 @@
     }
 }
 
+#cart-dropdown {
+    .dropdown-toggle {
+        @extend .h5;
+
+        &:after {
+            display: none;
+        }
+    }
+}
+
 #mobile-categories-button {
     a {
         &:after {

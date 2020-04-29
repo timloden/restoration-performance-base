@@ -36,15 +36,18 @@
                         <span>Freight shipping starting at $135</span>
                     </div>
                     <div class="col-12 col-lg-6 text-center text-lg-right">
-                        <a href="/my-account" class="border-right pr-2 mr-2">My Account</a>
-                        <a href="/track-order" class="border-right pr-2 mr-2">Track Order</a>
-                        <a href="/help">Help</a>
+                        <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"
+                            class="border-right pr-2 mr-2">My Account</a>
+                        <a href="<?php echo site_url(); ?>/tracking" class="border-right pr-2 mr-2">Track Order</a>
+                        <a href="<?php echo site_url(); ?>/help">Help</a>
                     </div>
                 </div>
                 <!-- main header -->
                 <div class="row align-items-center py-3">
                     <div class="col-12 col-lg-3 text-center text-lg-left">
-                        <a href="/">Classic Body Parts</a>
+                        <a class="d-block mb-2" href="/"><img
+                                src="<?php echo get_template_directory_uri(); ?>/assets/images/classic-body-parts-logo.png"
+                                class="img-fluid" alt="Classic Discount Parts Logo"></a>
                     </div>
                     <div class="col-lg-5 d-none d-lg-block">
                         <form action="/" method="get" class="form">
@@ -61,18 +64,18 @@
                     </div>
                     <div class="col-12 col-lg-4 text-right">
                         <div class="d-flex align-items-center justify-content-end">
-                            <a class="d-lg-none mr-3" data-toggle="collapse" href="#mobile-nav" role="button"
+                            <a class="d-lg-none mr-3 p-1" data-toggle="collapse" href="#mobile-nav" role="button"
                                 aria-expanded="false" aria-controls="mobile-nav">
-                                <i class="las la-bars"></i>
+                                <i class="las la-bars h4 mb-0"></i>
                             </a>
-                            <a class="d-lg-none" data-toggle="collapse" href="#mobile-search" role="button"
+                            <a class="d-lg-none p-1" data-toggle="collapse" href="#mobile-search" role="button"
                                 aria-expanded="false" aria-controls="mobile-search">
-                                <i class="las la-search"></i>
+                                <i class="las la-search h5 mb-0"></i>
                             </a>
                             <div id="cart-dropdown" class="dropdown w-100">
                                 <a class="dropdown-toggle" role="button" id="dropdown-mini-cart" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false" href="#">
-                                    <i class="las la-shopping-cart"></i>Cart
+                                    <i class="las la-shopping-cart h5"></i>Cart
                                     <span id="cart-customlocation"
                                         class="badge badge-danger"><?php echo  $woocommerce->cart->cart_contents_count; ?>
                                 </a>
@@ -93,7 +96,7 @@
                             <div class="input-group">
                                 <input class="form-control" type="search"
                                     placeholder="Search by Vehicle, Part Number..." aria-label="Search" name="s"
-                                    id="search" value="<?php the_search_query(); ?>">
+                                    id="mobile-search" value="<?php the_search_query(); ?>">
                                 <div class="input-group-append">
                                     <button class="btn btn-secondary" type="submit">Search</button>
                                 </div>
@@ -103,9 +106,9 @@
                     </div>
                 </div>
                 <!-- mobile nav -->
-                <div class="row d-lg-none border-bottom pb-2">
+                <div class="row d-lg-none border-bottom">
                     <div class="col-12">
-                        <div class="collapse card" id="mobile-nav">
+                        <div class="collapse card mb-2" id="mobile-nav">
 
                             <div class="accordion" id="mobile-nav-items">
 

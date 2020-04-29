@@ -30,7 +30,7 @@ do_action('woocommerce_before_mini_cart'); ?>
         </p>
     </div>
     <div class="col-6 text-right">
-        <button id="close-mini-cart" type="button" class="close" data-toggle="dropdown" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true"><i class="las la-times"></i></span>
         </button>
     </div>

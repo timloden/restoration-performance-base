@@ -23,13 +23,11 @@ function change_woocommerce_order_number( $order_id ) {
  add_filter( 'woocommerce_add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
 
  function woocommerce_header_add_to_cart_fragment( $fragments ) {
-     
-    //$fragments['span#cart-customlocation'] = '<span id="cart-customlocation" class="badge badge-danger animated swing">' . WC()->cart->get_cart_contents_count() . '</span>';
-    
+
     ob_start();
     echo '<div id="cart-dropdown" class="dropdown w-100">';
-    echo '<a class="dropdown-toggle" role="button" id="dropdown-mini-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">';
-    echo '<i class="las la-shopping-cart"></i>Cart <span id="cart-customlocation" class="badge badge-danger animated swing">' . WC()->cart->get_cart_contents_count() . '</span></a>';
+    echo '<a class="dropdown-toggle h4" role="button" id="dropdown-mini-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">';
+    echo '<i class="las la-shopping-cart "></i>Cart <span id="cart-customlocation" class="badge badge-danger animated swing">' . WC()->cart->get_cart_contents_count() . '</span></a>';
 
     echo '<div id="custom-mini-cart" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-mini-cart">';
     woocommerce_mini_cart(); 
@@ -620,87 +618,3 @@ function woocommerce_related_products_args($args)
     return $args;
 }
 add_filter('woocommerce_output_related_products_args', 'woocommerce_related_products_args');
-
-
-/**
- * Sample implementation of the WooCommerce Mini Cart.
- *
- * You can add the WooCommerce Mini Cart to header.php like so ...
- *
-<?php
-        if ( function_exists( 'woocommerce_header_cart' ) ) {
-            woocommerce_header_cart();
-        }
-    ?>
-*/
-
-if (!function_exists('woocommerce_cart_link_fragment')) {
-/**
-
-
-*/
-function woocommerce_cart_link_fragment($fragments)
-{
-ob_start();
-woocommerce_cart_link();
-$fragments['a.cart-contents'] = ob_get_clean();
-
-return $fragments;
-}
-}
-add_filter('woocommerce_add_to_cart_fragments', 'woocommerce_cart_link_fragment');
-
-if (!function_exists('woocommerce_cart_link')) {
-/**
-
-*/
-function woocommerce_cart_link()
-{
-?>
-<a class="cart-contents" href="<?php echo esc_url(wc_get_cart_url()); ?>"
-    title="<?php esc_attr_e('View your shopping cart', 'underscores'); ?>">
-    <?php
-            $item_count_text = sprintf(
-                /* translators: number of items in the mini cart. */
-                _n('%d item', '%d items', WC()->cart->get_cart_contents_count(), 'underscores'),
-                WC()->cart->get_cart_contents_count()
-            );
-            ?>
-    <span class="amount"><?php echo wp_kses_data(WC()->cart->get_cart_subtotal()); ?></span> <span
-        class="count"><?php echo esc_html($item_count_text); ?></span>
-</a>
-<?php
-    }
-}
-
-if (!function_exists('woocommerce_header_cart')) {
-    /**
-     * Display Header Cart.
-     *
-     * @return void
-     */
-    function woocommerce_header_cart()
-    {
-        if (is_cart()) {
-            $class = 'current-menu-item';
-        } else {
-            $class = '';
-        }
-    ?>
-<ul id="site-header-cart" class="site-header-cart">
-    <li class="<?php echo esc_attr($class); ?>">
-        <?php woocommerce_cart_link(); ?>
-    </li>
-    <li>
-        <?php
-                $instance = array(
-                    'title' => '',
-                );
-
-                the_widget('WC_Widget_Cart', $instance);
-                ?>
-    </li>
-</ul>
-<?php
-    }
-}
