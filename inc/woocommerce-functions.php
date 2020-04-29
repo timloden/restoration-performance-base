@@ -165,6 +165,11 @@ function custom_related_products($product)
 
 add_filter( 'woocommerce_redirect_single_search_result', '__return_false' );
 
+// product - remove related products
+
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+
+
 // product - image modification
 
 remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);

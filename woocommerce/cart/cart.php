@@ -200,10 +200,9 @@ do_action('woocommerce_before_cart');
         </div>
     </div>
 </div>
-<div class="row">
-    <?php
+<?php
 	do_action('woocommerce_cross_sell_display');
 	?>
-</div>
+
 
 <?php do_action('woocommerce_after_cart'); ?>
