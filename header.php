@@ -219,10 +219,7 @@
                     </div>
                 </li>
                 <li>
-
-                    <div class="dropdown">
-                        <a class="nav-link text-white" href="/shop">Search by Vehicle</a>
-                    </div>
+                    <a class="nav-link text-white" href="/shop">Shop by Vehicle</a>
                 </li>
                 <li>
                     <a class="nav-link  text-white" href="#">Specials</a>
