@@ -2723,7 +2723,7 @@ a{text-decoration:none}
 a:hover{text-decoration:none}
 .is-loading{z-index:9999;background-color:rgba(255,255,255,0.9)}
 .facetwp-facet{margin-bottom:1em !important}
-.products .size-woocommerce_thumbnail{max-width:100%;height:auto}
+.products .size-woocommerce_thumbnail{max-width:100%;height:auto;max-height:200px}
 .products .added_to_cart{display:none}
 .products .add_to_cart_button.loading{opacity:.5}
 .products .add_to_cart_button.loading:before{margin-right:5px;content:'';height:18px;width:18px;border-width:.2em}
