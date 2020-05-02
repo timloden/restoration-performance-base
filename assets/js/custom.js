@@ -30,7 +30,8 @@ console.log('custom js');
           vehicle += item;
         }); // set cookie for vehicle
 
-        document.cookie = 'vehicle=' + vehicle + '; expires=' + date.toGMTString() + '; path=/'; // show clear vehicle button
+        document.cookie = 'vehicle=' + vehicle + '; expires=' + date.toGMTString() + '; path=/';
+        $('#your-vehicle').html('Your vehicle: <strong>' + vehicle + '</strong>'); // show clear vehicle button
 
         $('#clear-vehicle').toggle(); // set ymm facet with proper query string
 
@@ -112,6 +113,7 @@ console.log('custom js');
         document.cookie = 'vehicle=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
         document.cookie = 'facetdata=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
         $('#clear-vehicle').toggle();
+        $('#your-vehicle').html('');
       }
 
       console.log('cleared');
