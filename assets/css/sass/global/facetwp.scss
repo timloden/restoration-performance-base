@@ -8,6 +8,35 @@
 }
 
 .facetwp-facet-categories {
+    border-radius: $border-radius;
+    border: 1px solid #dee2e6;
+
+    .facetwp-link {
+        border-bottom: 1px solid #dee2e6;
+        padding: 0.5em;
+        &.checked {
+            background-color: $primary;
+            color: #fff;
+        }
+    }
+
+    .facetwp-depth {
+        margin-left: 0;
+
+        .facetwp-link {
+        }
+
+        .facetwp-depth {
+            .facetwp-link {
+                padding-left: 1em;
+            }
+        }
+    }
+
+    .facetwp-toggle {
+        padding: 0.5em;
+        color: $primary;
+    }
 }
 
 .facetwp-facet-pagination {
