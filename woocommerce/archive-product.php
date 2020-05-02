@@ -99,7 +99,7 @@ if ( woocommerce_product_loop() ) {
 					 *
 					 * @hooked woocommerce_pagination - 10
 					 */
-					do_action( 'woocommerce_after_shop_loop' );
+					//do_action( 'woocommerce_after_shop_loop' );
 					} else {
 						/**
 						 * Hook: woocommerce_no_products_found.
@@ -115,7 +115,7 @@ if ( woocommerce_product_loop() ) {
 					 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
 					 */
 					do_action( 'woocommerce_after_main_content' );
-
+					echo facetwp_display('facet', 'pagination');
 					?>
 
             </div>

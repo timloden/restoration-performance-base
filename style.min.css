@@ -2723,6 +2723,10 @@ a{text-decoration:none}
 a:hover{text-decoration:none}
 .is-loading{z-index:9999;background-color:rgba(255,255,255,0.9)}
 .facetwp-facet{margin-bottom:1em !important}
+.facetwp-facet-pagination{display:block}
+.facetwp-facet-pagination .facetwp-pager{margin:1em 0;display:-webkit-box;display:-ms-flexbox;display:flex}
+.facetwp-facet-pagination .facetwp-pager .facetwp-page{position:relative;display:block;padding:.5rem .75rem;margin-left:-1px;line-height:1.25;color:#005ca9;background-color:#fff;border:1px solid #dee2e6;margin-right:0}
+.facetwp-facet-pagination .facetwp-pager .facetwp-page.active{background-color:#005ca9;color:#fff}
 .products .size-woocommerce_thumbnail{max-width:100%;height:auto;max-height:200px}
 .products .added_to_cart{display:none}
 .products .add_to_cart_button.loading{opacity:.5}

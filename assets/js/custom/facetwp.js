@@ -5,6 +5,14 @@
         */
 
         $(document).on('facetwp-loaded', function () {
+            if (FWP.loaded) {
+                $('html, body').animate(
+                    {
+                        scrollTop: $('.facetwp-template').offset().top,
+                    },
+                    500
+                );
+            }
             var date = new Date();
             var facets = FWP_HTTP.get._year_make_model;
             date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
