@@ -70,7 +70,14 @@ add_action('woocommerce_before_shop_loop_item_title', 'loop_product_image', 10);
 
 function loop_product_image()
 {
-    echo woocommerce_get_product_thumbnail(); // WPCS: XSS ok.
+    global $post, $woocommerce;
+    if ( has_post_thumbnail() ) {
+        echo woocommerce_get_product_thumbnail();
+    } else {
+        echo '<img class="img-fluid" src="' . get_template_directory_uri() . '/assets/images/woocommerce-placeholder.png">';
+    }
+
+    //echo woocommerce_get_product_thumbnail();
 }
 
 // YMM to show on product page
@@ -107,59 +114,60 @@ function ymm_fitment_product_page()
 
 // product - get related products by category 
 
-// Get Related Products from SAME Sub-category
-add_filter('woocommerce_product_related_posts', 'custom_related_products');
+//Get Related Products from SAME Sub-category
+// add_filter('woocommerce_product_related_posts', 'custom_related_products');
 
-function custom_related_products($product)
-{
-    global $woocommerce;
-    // Related products are found from category and tag
-    $tags_array = array(0);
-    $cats_array = array(0);
-    // Get tags
-    $terms = wp_get_post_terms($product->id, 'product_tag');
-    foreach ($terms as $term) $tags_array[] = $term->term_id;
-    // Get categories
-    $terms = wp_get_post_terms($product->id, 'product_cat');
-    foreach ($terms as $key => $term) {
-        $check_for_children = get_categories(array('parent' => $term->term_id, 'taxonomy' => 'product_cat'));
-        if (empty($check_for_children)) {
-            $cats_array[] = $term->term_id;
-        }
-    }
-    // Don't bother if none are set
-    if (sizeof($cats_array) == 1 && sizeof($tags_array) == 1) return array();
-    // Meta query
-    $meta_query = array();
-    $meta_query[] = $woocommerce->query->visibility_meta_query();
-    $meta_query[] = $woocommerce->query->stock_status_meta_query();
-    $meta_query   = array_filter($meta_query);
-    // Get the posts
-    $related_posts = get_posts(
-        array(
-            'orderby'        => 'rand',
-            'posts_per_page' => $limit,
-            'post_type'      => 'product',
-            'fields'         => 'ids',
-            'meta_query'     => $meta_query,
-            'tax_query'      => array(
-                'relation'      => 'OR',
-                array(
-                    'taxonomy'     => 'product_cat',
-                    'field'        => 'id',
-                    'terms'        => $cats_array
-                ),
-                array(
-                    'taxonomy'     => 'product_tag',
-                    'field'        => 'id',
-                    'terms'        => $tags_array
-                )
-            )
-        )
-    );
-    $related_posts = array_diff($related_posts, array($product->id), $product->get_upsells());
-    return $related_posts;
-}
+// function custom_related_products($product)
+// {
+//     global $woocommerce;
+//     // Related products are found from category and tag
+//     $tags_array = array(0);
+//     $cats_array = array(0);
+//     // Get tags
+//     $terms = wp_get_post_terms($product->id, 'year_make_model');
+//     foreach ($terms as $term) $tags_array[] = $term->term_id;
+//     print_r($tags_array);
+//     // Get categories
+//     $terms = wp_get_post_terms($product->id, 'product_cat');
+//     foreach ($terms as $key => $term) {
+//         $check_for_children = get_categories(array('parent' => $term->term_id, 'taxonomy' => 'product_cat'));
+//         if (empty($check_for_children)) {
+//             $cats_array[] = $term->term_id;
+//         }
+//     }
+//     // Don't bother if none are set
+//     if (sizeof($cats_array) == 1 && sizeof($tags_array) == 1) return array();
+//     // Meta query
+//     $meta_query = array();
+//     $meta_query[] = $woocommerce->query->visibility_meta_query();
+//     $meta_query[] = $woocommerce->query->stock_status_meta_query();
+//     $meta_query   = array_filter($meta_query);
+//     // Get the posts
+//     $related_posts = get_posts(
+//         array(
+//             'orderby'        => 'rand',
+//             'posts_per_page' => $limit,
+//             'post_type'      => 'product',
+//             'fields'         => 'ids',
+//             'meta_query'     => $meta_query,
+//             'tax_query'      => array(
+//                 'relation'      => 'AND',
+//                 array(
+//                     'taxonomy'     => 'product_cat',
+//                     'field'        => 'id',
+//                     'terms'        => $cats_array
+//                 ),
+//                 array(
+//                     'taxonomy'     => 'year_make_model',
+//                     'field'        => 'id',
+//                     'terms'        => $tags_array
+//                 )
+//             )
+//         )
+//     );
+//     $related_posts = array_diff($related_posts, array($product->id), $product->get_upsells());
+//     return $related_posts;
+// }
 
 // product - dont redirect on single search result
 
@@ -167,7 +175,7 @@ add_filter( 'woocommerce_redirect_single_search_result', '__return_false' );
 
 // product - remove related products
 
-remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+//remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 
 
 // product - image modification
@@ -180,8 +188,12 @@ function custom_show_product_images() {
     global $product;
     $attachment_ids = $product->get_gallery_image_ids();
     $image_id = $product->get_image_id();
-
-    echo wp_get_attachment_image( $image_id, 'full', "", array( "class" => "img-fluid" ) );
+    if ($image_id) {
+        echo wp_get_attachment_image( $image_id, 'full', "", array( "class" => "img-fluid" ) );
+    } else {
+        echo '<img class="img-fluid" src="' . get_template_directory_uri() . '/assets/images/woocommerce-placeholder.png">';
+    }
+    
 } 
 
 // product - remove additional information tab
