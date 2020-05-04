@@ -46,7 +46,7 @@ global $product;
     <div class="d-block">Brand: <?php echo get_brand_name($product->get_id()); ?></div>
     <ul class="ymm-list">
         <?php 
-    //echo ymm_fitment_product_page(); 
+    echo ymm_fitment_product_page(); 
     ?>
     </ul>
 

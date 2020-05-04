@@ -76,17 +76,11 @@ function loop_product_image()
     } else {
         echo '<img class="img-fluid" src="' . get_template_directory_uri() . '/assets/images/woocommerce-placeholder.png">';
     }
-
-    //echo woocommerce_get_product_thumbnail();
 }
 
 // YMM to show on product page
 
-/**
- * YMM to show on product page
- *
- * @see get_object_taxonomies()
- */
+
 function ymm_fitment_product_page()
 {
     // Get post by post ID.
@@ -94,22 +88,61 @@ function ymm_fitment_product_page()
         return '';
     }
 
-    $walker = new WPQuestions_Walker;
+    $output = [];
 
-    $args = array(
-        'taxonomy'     => 'ymm',
-        'orderby'      => 'name',
-        'show_count'   =>  false,
-        'pad_counts'   => false,
-        'hierarchical' => true,
-        'use_desc_for_title' => 0,
-        'hide_title_if_empty' => true,
-        'title_li' => 'Vehicle Fitment: ',
-        'style' => 'list',
-        'walker' => $walker,
-    );
+    $terms = get_the_terms($post->ID, 'ymm');
+    if ( ! is_array( $terms ) || empty( $terms ) ) {
+        return false;
+    }
 
-    return wp_list_categories($args);
+    // $parent_terms = array();
+
+    // // get only parents
+    // foreach ( $terms as $term ) {
+    //     if ($term->parent === 0) {
+    //         $term->child = Array();
+    //         $parent_terms[] = $term;
+    //     }
+    // }
+
+    // // compare and nested
+    // foreach ( $terms as $term ) {
+    //     if ($term->parent != 0) {
+    //         foreach ($parent_terms as $key => $value) {
+    //             if ($term->parent === $value->term_id) {
+    //                 $parent_terms[$key]->child[] = $term;
+    //             } 
+    //         }
+    //     }
+    // }
+
+    // output results
+    // foreach ( $parent_terms as $term ) {
+
+    //     //parent term
+    //     echo '<span class="d-block">'.$term->name.'';
+
+    //     if ($term->child) {
+    //         $i = 1;
+    //         foreach ( $term->child as $child ) {
+    //             //echo '<span class="text-danger">'.$i.'</span>';
+    //             echo ($i <= 1)? ": " : "";
+    //             echo '<span class="font-weight-normal">'.$child->name.'</span>';
+    //             echo ($i < count($term->child))? ", " : "";
+    //         $i++;                
+    //         }          
+    //     }
+    //     echo '.<span>';
+    // }
+
+   
+    // echo '<hr>';
+    // echo '<pre>';
+    // print_r($parent_terms);
+    // echo '</pre>';
+    
+    //return $out;
+
 }
 
 // product - get related products by category 
