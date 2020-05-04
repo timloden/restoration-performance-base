@@ -22,32 +22,32 @@
                     <div class="col-6">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Shop by Vehicle</a>
+                                <a class="nav-link" href="<?php echo site_url(); ?>/shop">Shop by Vehicle</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Specials</a>
+                                <a class="nav-link" href="<?php echo site_url(); ?>/product-tag/specials">Specials</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
+                                <a class="nav-link" href="<?php echo site_url(); ?>/about">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
+                                <a class="nav-link" href="<?php echo site_url(); ?>/contact">Contact</a>
                             </li>
                         </ul>
                     </div>
                     <div class="col-6">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">My Account</a>
+                                <a class="nav-link" href="<?php echo site_url(); ?>/my-account">My Account</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Tracking</a>
+                                <a class="nav-link" href="<?php echo site_url(); ?>/tracking">Tracking</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Help</a>
+                                <a class="nav-link" href="<?php echo site_url(); ?>/help">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Cart</a>
+                                <a class="nav-link" href="<?php echo site_url(); ?>/cart">Cart</a>
                             </li>
                         </ul>
                     </div>
