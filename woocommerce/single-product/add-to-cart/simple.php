@@ -36,8 +36,10 @@ if ( $product->is_in_stock() ) : ?>
     <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
     <div class="row">
-        <div class="col-3 col-lg-2 px-0">
-            <?php
+        <div class="col-12">
+
+            <div class="input-group mb-3">
+                <?php
 				do_action( 'woocommerce_before_add_to_cart_quantity' );
 
 				woocommerce_quantity_input(
@@ -50,10 +52,12 @@ if ( $product->is_in_stock() ) : ?>
 
 				do_action( 'woocommerce_after_add_to_cart_quantity' );
 				?>
-        </div>
-        <div class="col-9">
-            <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"
-                class="single_add_to_cart_button btn btn-primary px-5"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+                <div class="input-group-append">
+                    <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"
+                        class="single_add_to_cart_button btn btn-primary px-5"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+                </div>
+            </div>
+
         </div>
     </div>
 

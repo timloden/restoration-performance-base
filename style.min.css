@@ -2745,6 +2745,7 @@ a:hover{text-decoration:none}
 .payment_method_braintree_credit_card .wc-braintree-credit-card-new-payment-method-form{background-color:#fff}
 .payment_method_braintree_credit_card .wc-braintree-credit-card-new-payment-method-form .form-row{padding:0 !important;margin-bottom:1rem}
 .payment_method_braintree_credit_card .wc-braintree-credit-card-new-payment-method-form .form-row .wc-braintree-hosted-field{height:calc(1.5em + 0.75rem + 2px) !important}
+.quantity{width:60px}
 @media(prefers-reduced-motion:reduce){.form-control,.payment_method_braintree_credit_card .wc-braintree-credit-card-new-payment-method-form .form-row .wc-braintree-hosted-field{-webkit-transition:none;transition:none}
 .btn{-webkit-transition:none;transition:none}
 .fade{-webkit-transition:none;transition:none}
