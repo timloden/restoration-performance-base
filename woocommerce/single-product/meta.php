@@ -35,7 +35,7 @@ global $product;
 
     <?php echo wc_get_product_category_list($product->get_id(), ', ', '<div class="posted_in d-block">' . _n('Category:', 'Categories:', count($product->get_category_ids()), 'woocommerce') . ' ', '</div>'); ?>
 
-    <?php //echo wc_get_product_tag_list( $product->get_id(), ', ', '<div class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</div>' ); ?>
+    <?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<div class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</div>' ); ?>
 
     <?php
     $shipping_class = $product->get_shipping_class();
@@ -44,11 +44,6 @@ global $product;
     }
     ?>
     <div class="d-block">Brand: <?php echo get_brand_name($product->get_id()); ?></div>
-    <ul class="ymm-list">
-        <?php 
-    echo ymm_fitment_product_page(); 
-    ?>
-    </ul>
 
     <?php do_action('woocommerce_product_meta_end'); ?>
 </div>

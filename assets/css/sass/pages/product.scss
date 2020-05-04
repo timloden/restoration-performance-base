@@ -8,3 +8,159 @@
 .woocommerce-notices-wrapper {
     width: 100%;
 }
+
+.woocommerce .star-rating,
+.woocommerce p.stars [class^='star-'],
+.woocommerce p.stars [class*=' star-'] {
+    font-family: Line Awesome Free;
+    font-weight: 900;
+    speak: none;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1em;
+}
+.woocommerce .star-rating {
+    overflow: hidden;
+    position: relative;
+    height: 1em;
+    width: 5em;
+}
+.woocommerce .star-rating:before {
+    content: '\f005\f005\f005\f005\f005';
+    float: left;
+    top: 0;
+    left: 0;
+    position: absolute;
+    color: #999;
+}
+.woocommerce .star-rating span {
+    overflow: hidden;
+    float: left;
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding-top: 1.5em;
+}
+.woocommerce .star-rating span:before {
+    content: '\f005\f005\f005\f005\f005';
+    top: 0;
+    position: absolute;
+    left: 0;
+    color: $primary;
+    font-family: Line Awesome Free;
+    font-weight: 900;
+}
+/* rating block specific to single product summary area */
+.woocommerce .woocommerce-product-rating {
+    display: block;
+    width: 100%;
+}
+.woocommerce .woocommerce-product-rating .star-rating {
+    margin: 0 auto;
+    float: left;
+    font-size: 1em;
+}
+.woocommerce .woocommerce-product-rating .woocommerce-review-link {
+    font-size: 85%;
+    width: 100%;
+    margin: 0.5em 0;
+    float: left;
+}
+/* rating block specific to review submit form */
+.woocommerce p.stars {
+    position: relative;
+    padding: 0.75em;
+}
+.woocommerce p.stars a {
+    display: inline-block;
+    margin-right: 1em;
+    text-indent: -9999px;
+    position: relative;
+    border-bottom: 0 !important;
+    outline: 0;
+    color: #999;
+}
+.woocommerce p.stars a:hover,
+.woocommerce p.stars a.active {
+    color: $primary;
+}
+.woocommerce p.stars a:last-child {
+    border-right: 0;
+}
+.woocommerce p.stars [class^='star-'],
+.woocommerce p.stars [class*=' star-'] {
+    border-right: 1px solid #ccc;
+}
+.woocommerce p.stars [class^='star-']:after,
+.woocommerce p.stars [class*=' star-']:after {
+    text-indent: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.woocommerce p.stars a.star-1 {
+    width: 2em;
+}
+.woocommerce p.stars a.star-1:after {
+    content: '\f005';
+}
+.woocommerce p.stars a.star-1.active:after,
+.woocommerce p.stars a.star-1:hover:after {
+    content: '\f005';
+}
+.woocommerce p.stars a.star-2 {
+    width: 3em;
+}
+.woocommerce p.stars a.star-2:after {
+    content: '\f005\f005';
+}
+.woocommerce p.stars a.star-2.active:after,
+.woocommerce p.stars a.star-2:hover:after {
+    content: '\f005\f005';
+}
+.woocommerce p.stars a.star-3 {
+    width: 4em;
+}
+.woocommerce p.stars a.star-3:after {
+    content: '\f005\f005\f005';
+}
+.woocommerce p.stars a.star-3.active:after,
+.woocommerce p.stars a.star-3:hover:after {
+    content: '\f005\f005\f005';
+}
+.woocommerce p.stars a.star-4 {
+    width: 5em;
+}
+.woocommerce p.stars a.star-4:after {
+    content: '\f005\f005\f005\f005';
+}
+.woocommerce p.stars a.star-4.active:after,
+.woocommerce p.stars a.star-4:hover:after {
+    content: '\f005\f005\f005\f005';
+}
+.woocommerce p.stars a.star-5 {
+    width: 6em;
+}
+.woocommerce p.stars a.star-5:after {
+    content: '\f005\f005\f005\f005\f005';
+}
+.woocommerce p.stars a.star-5.active:after,
+.woocommerce p.stars a.star-5:hover:after {
+    content: '\f005\f005\f005\f005\f005';
+}
+/* rating block specific to product listing */
+.woocommerce ul.products li.product .star-rating {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+/* rating block specific to sidebar widgets */
+.woocommerce ul.cart_list li .star-rating,
+.woocommerce ul.product_list_widget li .star-rating {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+/* end of review stars */
