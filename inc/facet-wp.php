@@ -28,4 +28,13 @@ add_filter(
     2
 );
 
-// if we have vehicle cookie add it to search filter
+// staging site protection bypass
+
+add_filter( 'http_request_args', function( $args, $url ) {
+    if ( 0 === strpos( $url, get_site_url() ) ) {
+        $args['headers'] = array(
+            'Authorization' => 'Basic ' . base64_encode( 'staging_xnixx2:ruGfCjccDcJS' )
+        );
+    }
+    return $args;
+}, 10, 2 );

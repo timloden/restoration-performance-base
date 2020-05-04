@@ -45,7 +45,7 @@
                 <!-- main header -->
                 <div class="row align-items-center py-3">
                     <div class="col-12 col-lg-3 text-center text-lg-left">
-                        <a class="d-block mb-2" href="/"><img
+                        <a class="d-block mb-2" href="<?php echo site_url(); ?>"><img
                                 src="<?php echo get_template_directory_uri(); ?>/assets/images/classic-body-parts-logo.png"
                                 class="img-fluid" alt="Classic Discount Parts Logo"></a>
                     </div>
@@ -111,6 +111,12 @@
                         <div class="collapse card mb-2" id="mobile-nav">
 
                             <div class="accordion" id="mobile-nav-items">
+                                <div class="border-bottom">
+
+                                    <a class="d-block py-1 px-2" href="<?php echo site_url(); ?>/shop">Search by
+                                        Vehicle</a>
+
+                                </div>
 
                                 <div class="border-bottom" id="mobile-categories-button">
 
@@ -154,25 +160,19 @@
 
                                 <div class="border-bottom">
 
-                                    <a class="d-block py-1 px-2" href="/shop">Search by Vehicle</a>
+                                    <a class="d-block py-1 px-2" href="<?php echo site_url(); ?>/specials">Specials</a>
 
                                 </div>
 
                                 <div class="border-bottom">
 
-                                    <a class="d-block py-1 px-2" href="/specials">Specials</a>
-
-                                </div>
-
-                                <div class="border-bottom">
-
-                                    <a class="d-block py-1 px-2" href="/about">About</a>
+                                    <a class="d-block py-1 px-2" href="<?php echo site_url(); ?>/about">About</a>
 
                                 </div>
 
                                 <div>
 
-                                    <a class="d-block py-1 px-2" href="/contact">Contact</a>
+                                    <a class="d-block py-1 px-2" href="<?php echo site_url(); ?>/contact">Contact</a>
 
                                 </div>
 
@@ -190,6 +190,9 @@
         <div class="container">
 
             <ul class="nav nav-pills nav-fill justify-content-between">
+                <li>
+                    <a class="nav-link text-white" href="<?php echo site_url(); ?>/shop">Shop by Vehicle</a>
+                </li>
                 <li>
                     <div class="dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="#" role="button" id="dropdown-categories"
@@ -218,17 +221,15 @@
                         </ul>
                     </div>
                 </li>
+
                 <li>
-                    <a class="nav-link text-white" href="/shop">Shop by Vehicle</a>
+                    <a class="nav-link  text-white" href="<?php echo site_url(); ?>/product-tag/specials/">Specials</a>
                 </li>
                 <li>
-                    <a class="nav-link  text-white" href="#">Specials</a>
+                    <a class="nav-link text-white" href="<?php echo site_url(); ?>/about">About</a>
                 </li>
                 <li>
-                    <a class="nav-link text-white" href="#">About</a>
-                </li>
-                <li>
-                    <a class="nav-link  text-white" href="#">Contact</a>
+                    <a class="nav-link  text-white" href="<?php echo site_url(); ?>/contact">Contact</a>
                 </li>
             </ul>
 

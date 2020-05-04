@@ -61,6 +61,10 @@ if ( woocommerce_product_loop() ) {
 
 	?>
 <div class="container">
+    <?php if (is_product_tag( 'specials' )) : ?>
+    <h1>Classic Body Parts Specials</h1>
+    <p>All parts in specials are heavily discounted and limited stock so make sure to check back regularly!</p>
+    <?php endif; ?>
     <div class="row">
         <div class="col-12 col-md-6 col-lg-3">
             <?php
