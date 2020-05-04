@@ -2740,6 +2740,7 @@ a:hover{text-decoration:none}
 .product img.wp-post-image{max-width:100%;height:auto}
 .woocommerce-notices-wrapper{width:100%}
 .cart .product-thumbnail .size-woocommerce_thumbnail{width:100px;height:auto}
+.cart .cart_item td{vertical-align:middle}
 .woocommerce-mini-cart .woocommerce-mini-cart-item .size-woocommerce_thumbnail{width:50px;height:auto}
 .payment_method_braintree_credit_card .form-row{margin-left:0;margin-right:0}
 .payment_method_braintree_credit_card .wc-braintree-credit-card-new-payment-method-form{background-color:#fff}
