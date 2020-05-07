@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
 ?>
 
 <section class="widget_text widget widget_custom_html mb-4 mt-3 mt-lg-0">
-    <p class="h6">Filter by Vehicle</p>
+    <p class="h6">Search by Vehicle</p>
     <div class="textwidget custom-html-widget">
         <?php echo facetwp_display('facet', 'year_make_model'); ?>
     </div>
@@ -33,7 +33,7 @@ if (!defined('ABSPATH')) {
 </section>
 
 <section id="filter-categories" class="widget_text widget widget_custom_html">
-    <p class="h6">Filter by Category</p>
+    <p class="h6">Filter Results by Category</p>
     <div class="textwidget custom-html-widget">
         <?php echo facetwp_display('facet', 'categories'); ?>
     </div>
