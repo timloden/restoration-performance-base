@@ -54,7 +54,7 @@
                             <div class="input-group">
                                 <input class="form-control" type="search"
                                     placeholder="Search by Vehicle, Part Number..." aria-label="Search" name="s"
-                                    id="search" value="<?php the_search_query(); ?>">
+                                    id="search" data-swplive="true" value="<?php the_search_query(); ?>">
                                 <div class="input-group-append">
                                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                                 </div>
@@ -96,7 +96,7 @@
                             <div class="input-group">
                                 <input class="form-control" type="search"
                                     placeholder="Search by Vehicle, Part Number..." aria-label="Search" name="s"
-                                    id="mobile-search" value="<?php the_search_query(); ?>">
+                                    id="mobile-search" data-swplive="true" value="<?php the_search_query(); ?>">
                                 <div class="input-group-append">
                                     <button class="btn btn-secondary" type="submit">Search</button>
                                 </div>
