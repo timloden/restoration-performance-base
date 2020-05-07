@@ -2729,7 +2729,7 @@ a:hover{text-decoration:none}
 .facetwp-facet-categories .facetwp-link{border-bottom:1px solid #dee2e6;padding:.5em}
 .facetwp-facet-categories .facetwp-link.checked{background-color:#005ca9;color:#fff}
 .facetwp-facet-categories .facetwp-depth{margin-left:0}
-.facetwp-facet-categories .facetwp-depth .facetwp-depth .facetwp-link{padding-left:1em}
+.facetwp-facet-categories .facetwp-depth .facetwp-depth .facetwp-link{padding-left:1.5em}
 .facetwp-facet-categories .facetwp-toggle{padding:.5em;color:#005ca9}
 .facetwp-facet-pagination{display:block}
 .facetwp-facet-pagination .facetwp-pager{margin:1em 0;display:-webkit-box;display:-ms-flexbox;display:flex}
