@@ -22,9 +22,10 @@ if ( $title === '' ) {
 	return;
 }
 
-?><h4 class="bundled_product_title product_title"><?php
+?><h5 class="bundled_product_title product_title"><?php
 		$optional = $optional && $bundle->contains( 'mandatory' ) ? apply_filters( 'woocommerce_bundles_optional_bundled_item_suffix', __( 'optional', 'woocommerce-product-bundles' ), $bundled_item, $bundle ) : '';
-		$title    = '<span class="bundled_product_title_inner">' . WC_PB_Helpers::format_product_shop_title( $title, $quantity, '', $optional ) . '</span>';
+		$title    = '<span class="bundled_product_title_inner pb-1">' . WC_PB_Helpers::format_product_shop_title( $title, $quantity, '', $optional ) . '</span>';
 		$link     = $permalink ? apply_filters( 'woocommerce_bundled_item_link_html', ' <span class="bundled_product_title_link"><a class="bundled_product_permalink" href="' . $permalink . '" target="_blank" aria-label="' . __( 'View product', 'woocommerce-product-bundles' ) . '"></a></span>', $bundled_item, $bundle ) : '';
-		echo $title . $link;
-?></h4>
+		echo $title;
+		echo '<p class="mb-0 pt-2">SKU: ' . $bundled_item->product->get_sku() . '</p>';
+?></h5>

@@ -19,7 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** WC Core action. */
 do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
-<form method="post" enctype="multipart/form-data" class="cart cart_group bundle_form <?php echo esc_attr( $classes ); ?>"><?php
+<form method="post" enctype="multipart/form-data"
+    class="cart cart_group bundle_form <?php echo esc_attr( $classes ); ?>">
+    <div class="card my-3">
+        <div class="card-body">
+            <h4 class="card-title">Included:</h4>
+            <?php
 
 	/**
 	 * 'woocommerce_before_bundled_items' action.
@@ -52,6 +57,11 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 	 */
 	do_action( 'woocommerce_after_bundled_items', $product );
 
+		?>
+        </div>
+    </div>
+    <?php
+
 	/**
 	 * 'woocommerce_bundles_add_to_cart_wrap' action.
 	 *
@@ -61,7 +71,10 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 	 */
 	do_action( 'woocommerce_bundles_add_to_cart_wrap', $product );
 
-?></form><?php
+?>
+</form>
+
+<?php
 	/** WC Core action. */
 	do_action( 'woocommerce_after_add_to_cart_form' );
 ?>

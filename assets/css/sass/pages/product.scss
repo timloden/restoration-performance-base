@@ -3,6 +3,21 @@
         max-width: 100%;
         height: auto;
     }
+
+    .bundled_product_summary {
+        display: flex;
+        .bundled_product_images {
+            width: auto;
+            img {
+                max-width: 100px;
+            }
+        }
+        .details {
+            h5.bundled_product_title {
+                font-size: 16px;
+            }
+        }
+    }
 }
 
 .woocommerce-notices-wrapper {
