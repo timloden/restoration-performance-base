@@ -41,9 +41,9 @@
             "maxlength": ""
         },
         {
-            "key": "field_5eb3988f2e81f",
-            "label": "Fitment",
-            "name": "fitment",
+            "key": "field_5eb6dcf6a492e",
+            "label": "Vehicle Fitment",
+            "name": "vehicle_fitment",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -57,50 +57,12 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "Add Fitment",
+            "button_label": "",
             "sub_fields": [
                 {
-                    "key": "field_5eb398af2e820",
-                    "label": "Year",
-                    "name": "year",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_5eb398b82e821",
-                    "label": "Make",
-                    "name": "make",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_5eb398bd2e822",
-                    "label": "Model",
-                    "name": "model",
+                    "key": "field_5eb6dd0ca492f",
+                    "label": "vehicle",
+                    "name": "vehicle",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -136,5 +98,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1588828556
+    "modified": 1589042514
 }
