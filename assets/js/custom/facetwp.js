@@ -39,9 +39,6 @@
                     'Your vehicle: <strong>' + vehicle + '</strong>'
                 );
 
-                // show clear vehicle button
-                $('#clear-vehicle').toggle();
-
                 // set ymm facet with proper query string
                 facets = '?_year_make_model=' + facets;
 
@@ -55,6 +52,7 @@
             } else {
                 $('#filter-categories').addClass('d-none');
                 $('#reset-all-filters').addClass('d-none');
+                $('#clear-vehicle').addClass('d-none');
             }
 
             $('.facetwp-template .is-loading').remove();
@@ -67,7 +65,7 @@
 
         $(document).on('facetwp-refresh', function () {
             $('.facetwp-template').prepend(
-                '<div class="is-loading position-absolute w-100 h-100"> <div class="d-flex w-100 h-100 justify-content-center align-items-center"><div class="spinner-border text-light" role="status"><span class="sr-only">Loading...</span></div></div></div>'
+                '<div class="is-loading position-absolute w-100 h-100"> <div class="d-flex w-100 h-100 justify-content-center align-items-center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div></div>'
             );
             if (!FWP.loaded) {
                 var facets = FWP_HTTP.get._year_make_model;
@@ -93,6 +91,7 @@
             if (FWP_HTTP.get._year_make_model) {
                 $('#filter-categories').removeClass('d-none');
                 $('#reset-all-filters').removeClass('d-none');
+                $('#clear-vehicle').removeClass('d-none');
             }
         });
 
@@ -135,7 +134,7 @@
                 document.cookie =
                     'facetdata=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
 
-                $('#clear-vehicle').toggle();
+                $('#clear-vehicle').addClass('d-none');
                 $('#your-vehicle').html('');
             }
 

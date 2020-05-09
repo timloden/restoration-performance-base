@@ -31,9 +31,7 @@ console.log('custom js');
         }); // set cookie for vehicle
 
         document.cookie = 'vehicle=' + vehicle + '; expires=' + date.toGMTString() + '; path=/';
-        $('#your-vehicle').html('Your vehicle: <strong>' + vehicle + '</strong>'); // show clear vehicle button
-
-        $('#clear-vehicle').toggle(); // set ymm facet with proper query string
+        $('#your-vehicle').html('Your vehicle: <strong>' + vehicle + '</strong>'); // set ymm facet with proper query string
 
         facets = '?_year_make_model=' + facets; // set ymm facet cookie
 
@@ -41,6 +39,7 @@ console.log('custom js');
       } else {
         $('#filter-categories').addClass('d-none');
         $('#reset-all-filters').addClass('d-none');
+        $('#clear-vehicle').addClass('d-none');
       }
 
       $('.facetwp-template .is-loading').remove();
@@ -51,7 +50,7 @@ console.log('custom js');
     */
 
     $(document).on('facetwp-refresh', function () {
-      $('.facetwp-template').prepend('<div class="is-loading position-absolute w-100 h-100"> <div class="d-flex w-100 h-100 justify-content-center align-items-center"><div class="spinner-border text-light" role="status"><span class="sr-only">Loading...</span></div></div></div>');
+      $('.facetwp-template').prepend('<div class="is-loading position-absolute w-100 h-100"> <div class="d-flex w-100 h-100 justify-content-center align-items-center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div></div>');
 
       if (!FWP.loaded) {
         var facets = FWP_HTTP.get._year_make_model;
@@ -71,6 +70,7 @@ console.log('custom js');
       if (FWP_HTTP.get._year_make_model) {
         $('#filter-categories').removeClass('d-none');
         $('#reset-all-filters').removeClass('d-none');
+        $('#clear-vehicle').removeClass('d-none');
       }
     });
     $('#reset-all-filters').on('click', function () {
@@ -112,7 +112,7 @@ console.log('custom js');
       if (currentVehicle) {
         document.cookie = 'vehicle=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
         document.cookie = 'facetdata=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
-        $('#clear-vehicle').toggle();
+        $('#clear-vehicle').addClass('d-none');
         $('#your-vehicle').html('');
       }
 

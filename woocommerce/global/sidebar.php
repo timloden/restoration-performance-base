@@ -29,7 +29,7 @@ if (!defined('ABSPATH')) {
     <div class="textwidget custom-html-widget">
         <?php echo facetwp_display('facet', 'year_make_model'); ?>
     </div>
-    <button id="clear-vehicle" style="display: none;" class="btn btn-outline-secondary btn-sm">Clear Vehicle</button>
+    <button id="clear-vehicle" class="btn btn-outline-secondary btn-sm">Clear Vehicle</button>
 </section>
 
 <section id="filter-categories" class="widget_text widget widget_custom_html">
