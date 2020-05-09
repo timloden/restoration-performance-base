@@ -114,6 +114,22 @@ function remove_product_tabs( $tabs ) {
 
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 
+// cart - remove other shipping options if we have $4.50 shipping
+
+add_filter('woocommerce_package_rates', 'custom_shipping_option', 20, 2 );
+
+function custom_shipping_option($rates){
+
+    // Only unset rates if $4.50 shipping is available
+
+    if ( isset( $rates['flexible_shipping_1_2'] ) ) {
+        unset( $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY'] );
+    }     
+        
+    return $rates;
+ 
+}
+
 // cart - mini cart button classes
 
 remove_action('woocommerce_widget_shopping_cart_buttons', 'woocommerce_widget_shopping_cart_button_view_cart', 10);
