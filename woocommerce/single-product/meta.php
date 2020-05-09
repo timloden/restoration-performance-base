@@ -33,6 +33,11 @@ global $product;
 
     <?php endif; ?>
 
+    <p class="mb-1"><strong>Stock
+            Status:</strong>
+        <?php echo ( $product->is_in_stock() === true ) ? 'In stock' : esc_html__('Soon to be in stock', 'woocommerce'); ?>
+    </p>
+
     <?php echo wc_get_product_category_list($product->get_id(), ', ', '<p class="posted_in mb-1">' . _n('<strong>Category:</strong>', '<strong>Categories:</strong>', count($product->get_category_ids()), 'woocommerce') . ' ', '</p>'); ?>
 
     <?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<p class="tagged_as mb-1">' . _n( '<strong>Tag:</strong>', '<strong>Tags:</strong>', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</p>' ); ?>
@@ -50,12 +55,8 @@ global $product;
     <ul>
 
         <?php while( have_rows('vehicle_fitment') ): the_row(); 
-
-            // vars
             $vehicle = get_sub_field('vehicle');
-
-
-            ?>
+        ?>
 
         <li>
             <?php echo $vehicle; ?>
