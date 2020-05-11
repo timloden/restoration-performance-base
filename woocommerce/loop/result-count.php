@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 <div class="container d-none d-lg-block">
-    <div class="row pb-3">
+    <div class="row py-3">
         <div class="col-6">
             <p id="your-vehicle" class="mb-0"></p>
         </div>

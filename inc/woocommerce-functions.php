@@ -40,6 +40,18 @@ function change_woocommerce_order_number( $order_id ) {
 
  }
 
+// loop - remove breadcrumbs from shop page
+
+add_action('template_redirect', 'remove_shop_breadcrumbs' );
+
+function remove_shop_breadcrumbs(){
+ 
+    if (is_shop())
+        remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
+ 
+}
+
+
 // loop - product title
 
 remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);

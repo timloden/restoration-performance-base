@@ -138,8 +138,11 @@ console.log('custom js');
       items: 1,
       slideBy: 'page',
       autoplay: true,
-      controlsPosition: 'bottom',
-      navPosition: 'bottom'
+      controlsContainer: '.slide-arrows',
+      nav: false,
+      prevButton: '.slide-prev',
+      nextButton: '.slide-next',
+      autoplayButtonOutput: false
     });
   }
 })(jQuery);

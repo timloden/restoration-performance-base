@@ -1,0 +1,26 @@
+.slide-arrows {
+    z-index: 99;
+    top: 40%;
+}
+.home-slider {
+    .slide-content {
+        height: 370px;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: center center;
+        background-size: cover;
+
+        @include media-breakpoint-up(xl) {
+            height: 470px;
+        }
+
+        h2 {
+            font-weight: bold;
+            color: $white;
+        }
+
+        p {
+            color: $white;
+        }
+    }
+}
