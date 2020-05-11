@@ -1,0 +1,18 @@
+.wc-block-grid {
+    ul.wc-block-grid__products {
+        li.wc-block-grid__product {
+            a.wc-block-grid__product-link {
+                @extend .card;
+                margin-bottom: 1.5em;
+                padding-right: 0.75rem;
+                padding-left: 0.75rem;
+
+                img {
+                    max-width: 100%;
+                    height: auto;
+                    max-height: 200px;
+                }
+            }
+        }
+    }
+}

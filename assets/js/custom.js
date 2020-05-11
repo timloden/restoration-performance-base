@@ -12,7 +12,9 @@ console.log('custom js');
     After FacetWP reloads, store any updates into a cookie
     */
     $(document).on('facetwp-loaded', function () {
-      if (FWP.loaded) {
+      var home = $('body.home');
+
+      if (FWP.loaded && home.length != 1) {
         $('html, body').animate({
           scrollTop: $('.facetwp-template').offset().top
         }, 500);
@@ -64,6 +66,14 @@ console.log('custom js');
           } else if (!window.location.search) {
             window.location.search = window.location.search + facetdata;
           }
+        }
+      }
+
+      var home = $('body.home');
+
+      if (home.length === 1 && FWP.facets.year_make_model.length === 3) {
+        if (!facetdata) {
+          window.location.href = window.location.hostname + '/shop';
         }
       }
 

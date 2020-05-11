@@ -58,7 +58,41 @@ get_header();
 <?php endif; ?>
 
 <div class="container">
-    <?php
+    <div class="card mt-5">
+
+        <div class="card-body">
+            <h3 class="card-title">Choose your vehicle</h3>
+            <div class="home-ymm">
+
+                <?php echo facetwp_display('facet', 'year_make_model'); ?>
+
+                <div class="d-none">
+                    <?php
+                    $args = array(
+                        'post_type' => 'product',
+                        'posts_per_page' => 12,
+                    
+                        );
+                    $loop = new WP_Query( $args );
+                    
+                    if ( $loop->have_posts() ) {
+                        while ( $loop->have_posts() ) : $loop->the_post();
+                            wc_get_template_part( 'content', 'product' );
+                        endwhile;
+                    }
+                    wp_reset_postdata();
+                    ?>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="home-content pt-3 pb-5">
+        <?php
 		while ( have_posts() ) :
 			the_post();
 
@@ -70,8 +104,61 @@ get_header();
 			endif;
 
 		endwhile; // End of the loop.
-		?>
-</div><!-- #primary -->
+        ?>
+    </div>
+
+
+    <div class="home-featured mb-5">
+
+        <h3 class="pb-2">Featured Products</h3>
+        <?php
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => 12,
+        'tax_query' => array(
+                array(
+                    'taxonomy' => 'product_visibility',
+                    'field'    => 'name',
+                    'terms'    => 'featured',
+                ),
+            ),
+        );
+    $loop = new WP_Query( $args );
+    
+    if ( $loop->have_posts() ) {
+        echo '<div class="row products">';
+        while ( $loop->have_posts() ) : $loop->the_post();
+            wc_get_template_part( 'content', 'product' );
+        endwhile;
+        echo '</div">';
+    }
+    wp_reset_postdata();
+    ?>
+    </div>
+
+    <div class="home-new">
+        <h3 class="pb-2">New Products</h3>
+        <?php
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => 6,
+        'orderby' =>'date',
+        'order' => 'DESC'
+        );
+    $loop = new WP_Query( $args );
+    
+    if ( $loop->have_posts() ) {
+        echo '<div class="row products">';
+        while ( $loop->have_posts() ) : $loop->the_post();
+            wc_get_template_part( 'content', 'product' );
+        endwhile;
+        echo '</div">';
+    }
+    wp_reset_postdata();
+    ?>
+    </div>
+</div>
+</div>
 
 <?php
 //get_sidebar();

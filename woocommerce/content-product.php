@@ -25,9 +25,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 }
 ?>
 <div class="col-12 col-md-6 col-lg-4 mb-4">
-	<div class="card h-100 d-block">
-		<div class="card-body flex-wrap justify-content-between no-gutters h-100">
-			<?php
+    <div class="card h-100 d-block">
+        <div class="card-body flex-wrap justify-content-between no-gutters h-100">
+            <?php
 			/**
 			 * Hook: woocommerce_before_shop_loop_item.
 			 *
@@ -36,8 +36,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 			do_action( 'woocommerce_before_shop_loop_item' );
 			?>
 
-			<div class="col-12 h-50">
-				<?php
+            <div class="col-12 h-50">
+                <?php
 				/**
 				 * Hook: woocommerce_before_shop_loop_item_title.
 				 *
@@ -46,9 +46,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 				 */
 				do_action( 'woocommerce_before_shop_loop_item_title' );
 				?>
-			</div>
-			<div class="col-12 h-50 d-flex flex-column justify-content-end">
-				<?php
+            </div>
+            <div class="col-12 h-50 d-flex flex-column text-center justify-content-end">
+                <?php
 				/**
 				 * Hook: woocommerce_shop_loop_item_title.
 				 *
@@ -73,8 +73,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 				 */
 				do_action( 'woocommerce_after_shop_loop_item' )
 				?>
-			</div>
+            </div>
 
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
