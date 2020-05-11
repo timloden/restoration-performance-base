@@ -70,6 +70,7 @@ defined( 'ABSPATH' ) || exit;
     </div>
 
     <?php endif; ?>
+    <a href="<?php echo site_url(); ?>/cart"><i class="las la-arrow-left"></i> Back to your cart</a>
 
     <?php do_action( 'woocommerce_after_order_notes', $checkout ); ?>
 </div>
