@@ -58,10 +58,10 @@ get_header();
 <?php endif; ?>
 
 <div class="container">
-    <div class="card mt-5">
+    <div class="card mt-5 bg-light">
 
         <div class="card-body">
-            <h3 class="card-title">Choose your vehicle</h3>
+            <h3 class="card-title"><strong>Choose your vehicle:</strong></h3>
             <div class="home-ymm">
 
                 <?php echo facetwp_display('facet', 'year_make_model'); ?>
