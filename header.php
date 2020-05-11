@@ -15,6 +15,7 @@
 <html <?php language_attributes(); ?>>
 
 <head>
+    <?php the_field('header_embed', 'option'); ?>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">

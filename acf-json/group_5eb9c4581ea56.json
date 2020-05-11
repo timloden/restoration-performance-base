@@ -1,0 +1,62 @@
+{
+    "key": "group_5eb9c4581ea56",
+    "title": "Site Options",
+    "fields": [
+        {
+            "key": "field_5eb9c463e03d6",
+            "label": "Header Embed",
+            "name": "header_embed",
+            "type": "textarea",
+            "instructions": "This is for embeds in the header",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5eb9c487e03d7",
+            "label": "Footer Embed",
+            "name": "footer_embed",
+            "type": "textarea",
+            "instructions": "This is for embeds before < \/body>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "site-options"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1589232901
+}
