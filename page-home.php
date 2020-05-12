@@ -56,18 +56,21 @@ get_header();
 </div>
 
 <?php endif; ?>
+<div class="bg-light border-bottom">
+    <div class="container py-3">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-2">
+                <span><strong>Choose your vehicle:</strong></span>
+            </div>
+            <div class="col-12 col-lg-10">
+                <div class="home-ymm">
 
-<div class="container">
-    <div class="card mt-5 bg-light">
-
-        <div class="card-body">
-            <h3 class="card-title"><strong>Choose your vehicle:</strong></h3>
-            <div class="home-ymm">
-
-                <?php echo facetwp_display('facet', 'year_make_model'); ?>
-
-                <div class="d-none">
-                    <?php
+                    <?php echo facetwp_display('facet', 'year_make_model'); ?>
+                </div>
+            </div>
+        </div>
+        <div class="d-none">
+            <?php
                     $args = array(
                         'post_type' => 'product',
                         'posts_per_page' => 12,
@@ -82,12 +85,12 @@ get_header();
                     }
                     wp_reset_postdata();
                     ?>
-                </div>
-
-            </div>
         </div>
     </div>
+</div>
 
+
+<div class="container">
 
 
 
@@ -157,7 +160,6 @@ get_header();
     wp_reset_postdata();
     ?>
     </div>
-</div>
 </div>
 
 <?php

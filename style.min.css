@@ -2740,8 +2740,8 @@ a:hover{text-decoration:none}
 .home-slider .slide-content{height:370px;background-repeat:no-repeat;background-attachment:scroll;background-position:center center;background-size:cover}
 .home-slider .slide-content h2{font-weight:bold;color:#fff}
 .home-slider .slide-content p{color:#fff}
-.home-ymm .facetwp-facet-year_make_model{display:-webkit-box;display:-ms-flexbox;display:flex}
-.home-ymm .facetwp-facet-year_make_model .facetwp-hierarchy_select{height:calc(1.5em + .75rem + 2px);margin-right:1em}
+.home-ymm .facetwp-facet-year_make_model{display:-webkit-box;display:-ms-flexbox;display:flex;margin-bottom:0 !important}
+.home-ymm .facetwp-facet-year_make_model .facetwp-hierarchy_select{height:calc(1.5em + .75rem + 2px);margin-right:1em;margin-bottom:0 !important}
 .products .size-woocommerce_thumbnail{max-width:100%;height:auto;max-height:200px}
 .products .added_to_cart{display:none}
 .products .add_to_cart_button.loading{opacity:.5}
