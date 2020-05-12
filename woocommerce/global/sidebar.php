@@ -20,17 +20,9 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
 
-//get_sidebar( 'shop' );
-//dynamic_sidebar('shop');
 ?>
 
-<section class="widget_text widget widget_custom_html mb-4 mt-3 mt-lg-0">
-    <p class="h6">Search by Vehicle</p>
-    <div class="textwidget custom-html-widget">
-        <?php echo facetwp_display('facet', 'year_make_model'); ?>
-    </div>
-    <button id="clear-vehicle" class="btn btn-outline-secondary btn-sm">Clear Vehicle</button>
-</section>
+
 
 <section id="filter-categories" class="widget_text widget widget_custom_html">
     <p class="h6">Filter Results by Category</p>
@@ -38,6 +30,5 @@ if (!defined('ABSPATH')) {
         <?php echo facetwp_display('facet', 'categories'); ?>
     </div>
 </section>
-
 
 <button id="reset-all-filters" class="btn btn-outline-secondary btn-sm mb-3 mb-lg-3">Reset All Filters</button>

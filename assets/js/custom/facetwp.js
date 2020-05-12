@@ -7,14 +7,16 @@
         $(document).on('facetwp-loaded', function () {
             var home = $('body.home');
 
+            // scroll to content if facets loaded
             if (FWP.loaded && home.length != 1) {
                 $('html, body').animate(
                     {
-                        scrollTop: $('.facetwp-template').offset().top,
+                        scrollTop: $('#content').offset().top,
                     },
                     500
                 );
             }
+
             var date = new Date();
             var facets = FWP_HTTP.get._year_make_model;
             date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
@@ -37,9 +39,8 @@
                     date.toGMTString() +
                     '; path=/';
 
-                $('#your-vehicle').html(
-                    'Your vehicle: <strong>' + vehicle + '</strong>'
-                );
+                // update the your vehicle with facet selection
+                $('#your-vehicle').html(vehicle);
 
                 // set ymm facet with proper query string
                 facets = '?_year_make_model=' + facets;
@@ -52,11 +53,13 @@
                     date.toGMTString() +
                     '; path=/';
             } else {
+                // hide all our buttons and categories if no facets loaded
                 $('#filter-categories').addClass('d-none');
                 $('#reset-all-filters').addClass('d-none');
-                $('#clear-vehicle').addClass('d-none');
+                //$('#clear-vehicle').addClass('d-none');
             }
 
+            // remove loader
             $('.facetwp-template .is-loading').remove();
         });
 
@@ -66,6 +69,7 @@
         */
 
         $(document).on('facetwp-refresh', function () {
+            // add loading screen
             $('.facetwp-template').prepend(
                 '<div class="is-loading position-absolute w-100 h-100"> <div class="d-flex w-100 h-100 justify-content-center align-items-center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div></div>'
             );
@@ -92,16 +96,20 @@
 
             var home = $('body.home');
 
+            // if home, redirect us to shop after selecting ymm
             if (home.length === 1 && FWP.facets.year_make_model.length === 3) {
                 if (!facetdata) {
                     window.location.href = window.location.hostname + '/shop';
                 }
             }
 
-            if (FWP_HTTP.get._year_make_model) {
+            // un hide categories and buttons if we have facets
+            if (FWP.facets.year_make_model.length === 3) {
                 $('#filter-categories').removeClass('d-none');
                 $('#reset-all-filters').removeClass('d-none');
-                $('#clear-vehicle').removeClass('d-none');
+                //$('#clear-vehicle').removeClass('d-none');
+                $('#selected-vehicle').removeClass('d-none');
+                $('#ymm-bar').addClass('d-none');
             }
         });
 
@@ -144,8 +152,10 @@
                 document.cookie =
                     'facetdata=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
 
-                $('#clear-vehicle').addClass('d-none');
+                //$('#clear-vehicle').addClass('d-none');
                 $('#your-vehicle').html('');
+                $('#selected-vehicle').addClass('d-none');
+                $('#ymm-bar').removeClass('d-none');
             }
 
             console.log('cleared');

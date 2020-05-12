@@ -29,6 +29,32 @@ get_header( 'shop' );
 do_action( 'woocommerce_before_main_content' );
 
 ?>
+<div id="ymm-bar" class="bg-light border-bottom">
+    <div class="container py-3">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-2">
+                <p class="mb-0"><strong>Choose your vehicle:</strong></p>
+            </div>
+            <div class="col-12 col-lg-10">
+                <div class="home-ymm">
+                    <?php echo facetwp_display('facet', 'year_make_model'); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="selected-vehicle" class="bg-light border-bottom d-none mb-3 mb-lg-0">
+    <div class="container py-3">
+        <div class="row align-items-center">
+            <div class="col-12">
+                <div class="d-flex justify-content-between">
+                    <p class="mb-0"><strong>Your Vehicle:</strong><span id="your-vehicle" class="pl-2"></span></p>
+                    <button id="clear-vehicle" class="btn btn-outline-secondary btn-sm">Clear Vehicle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- <header class="woocommerce-products-header">
 	<div class="container">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
@@ -60,6 +86,7 @@ if ( woocommerce_product_loop() ) {
 	do_action( 'woocommerce_before_shop_loop' );
 
 	?>
+
 <div class="container">
     <?php if (is_product_tag( 'specials' )) : ?>
     <h1>Classic Body Parts Specials</h1>
