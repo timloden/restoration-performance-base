@@ -60,45 +60,41 @@ get_header();
     <div class="container py-3">
         <div class="row align-items-center">
             <div class="col-12 col-lg-2">
-                <span><strong>Choose your vehicle:</strong></span>
+                <p id="your-vehicle" class="mb-0"><strong>Choose your vehicle:</strong></p>
             </div>
             <div class="col-12 col-lg-10">
                 <div class="home-ymm">
-
                     <?php echo facetwp_display('facet', 'year_make_model'); ?>
                 </div>
             </div>
         </div>
         <div class="d-none">
             <?php
-                    $args = array(
-                        'post_type' => 'product',
-                        'posts_per_page' => 12,
-                    
-                        );
-                    $loop = new WP_Query( $args );
-                    
-                    if ( $loop->have_posts() ) {
-                        while ( $loop->have_posts() ) : $loop->the_post();
-                            wc_get_template_part( 'content', 'product' );
-                        endwhile;
-                    }
-                    wp_reset_postdata();
-                    ?>
+            $args = array(
+                'post_type' => 'product',
+                'posts_per_page' => 12,
+            
+                );
+            $loop = new WP_Query( $args );
+            
+            if ( $loop->have_posts() ) {
+                while ( $loop->have_posts() ) : $loop->the_post();
+                    wc_get_template_part( 'content', 'product' );
+                endwhile;
+            }
+            wp_reset_postdata();
+            ?>
         </div>
     </div>
 </div>
 
 
 <div class="container">
-
-
-
     <div class="home-content pt-3 pb-5">
         <?php
 		while ( have_posts() ) :
 			the_post();
-
+            
 			get_template_part( 'template-parts/content', 'page' );
 
 			// If comments are open or we have at least one comment, load up the comment template.
@@ -111,10 +107,7 @@ get_header();
     </div>
 
 
-    <div class="home-featured mb-5">
-
-        <h3 class="pb-2">Featured Products</h3>
-        <?php
+    <?php
     $args = array(
         'post_type' => 'product',
         'posts_per_page' => 12,
@@ -129,19 +122,21 @@ get_header();
     $loop = new WP_Query( $args );
     
     if ( $loop->have_posts() ) {
+        echo '<div class="home-featured mb-5">';
+        echo '<h3 class="pb-2">Featured Products</h3>';
         echo '<div class="row products">';
         while ( $loop->have_posts() ) : $loop->the_post();
             wc_get_template_part( 'content', 'product' );
         endwhile;
-        echo '</div">';
+        echo '</div></div>';
     }
     wp_reset_postdata();
     ?>
-    </div>
 
-    <div class="home-new">
-        <h3 class="pb-2">New Products</h3>
-        <?php
+
+
+
+    <?php
     $args = array(
         'post_type' => 'product',
         'posts_per_page' => 6,
@@ -151,15 +146,17 @@ get_header();
     $loop = new WP_Query( $args );
     
     if ( $loop->have_posts() ) {
+        echo '<div class="home-new">';
+        echo '<h3 class="pb-2">New Products</h3>';
         echo '<div class="row products">';
         while ( $loop->have_posts() ) : $loop->the_post();
             wc_get_template_part( 'content', 'product' );
         endwhile;
-        echo '</div">';
+        echo '</div></div>';
     }
     wp_reset_postdata();
     ?>
-    </div>
+
 </div>
 
 <?php
