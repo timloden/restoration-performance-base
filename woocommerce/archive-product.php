@@ -55,13 +55,9 @@ do_action( 'woocommerce_before_main_content' );
         </div>
     </div>
 </div>
-<!-- <header class="woocommerce-products-header">
-	<div class="container">
-	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-	<?php endif; ?>
 
-	<?php
+<div id="product-content">
+    <?php
 	/**
 	 * Hook: woocommerce_archive_description.
 	 *
@@ -70,10 +66,10 @@ do_action( 'woocommerce_before_main_content' );
 	 */
 	do_action( 'woocommerce_archive_description' );
 	?>
-	</div>
-</header> -->
 
-<?php
+
+
+    <?php
 if ( woocommerce_product_loop() ) {
 
 	/**
@@ -87,14 +83,14 @@ if ( woocommerce_product_loop() ) {
 
 	?>
 
-<div class="container">
-    <?php if (is_product_tag( 'specials' )) : ?>
-    <h1>Classic Body Parts Specials</h1>
-    <p>All parts in specials are heavily discounted and limited stock so make sure to check back regularly!</p>
-    <?php endif; ?>
-    <div class="row">
-        <div class="col-12 col-md-6 col-lg-3">
-            <?php
+    <div class="container">
+        <?php if (is_product_tag( 'specials' )) : ?>
+        <h1>Classic Body Parts Specials</h1>
+        <p>All parts in specials are heavily discounted and limited stock so make sure to check back regularly!</p>
+        <?php endif; ?>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-3">
+                <?php
 			/**
 			 * Hook: woocommerce_sidebar.
 			 *
@@ -102,11 +98,11 @@ if ( woocommerce_product_loop() ) {
 			 */
 			do_action( 'woocommerce_sidebar' );
 			?>
-        </div>
-        <div class="col-12 col-md-6 col-lg-9">
-            <div class="row">
+            </div>
+            <div class="col-12 col-md-6 col-lg-9">
+                <div class="row">
 
-                <?php
+                    <?php
 
 					woocommerce_product_loop_start();
 
@@ -149,12 +145,12 @@ if ( woocommerce_product_loop() ) {
 					echo facetwp_display('facet', 'pagination');
 					?>
 
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </div>
-
 
 <?php
 get_footer( 'shop' );

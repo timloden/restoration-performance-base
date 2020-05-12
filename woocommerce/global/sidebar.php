@@ -22,10 +22,8 @@ if (!defined('ABSPATH')) {
 
 ?>
 
-
-
 <section id="filter-categories" class="widget_text widget widget_custom_html">
-    <p class="h6">Filter Results by Category</p>
+    <p class="h6">Categories</p>
     <div class="textwidget custom-html-widget">
         <?php echo facetwp_display('facet', 'categories'); ?>
     </div>

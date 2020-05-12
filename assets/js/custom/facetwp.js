@@ -54,7 +54,7 @@
                     '; path=/';
             } else {
                 // hide all our buttons and categories if no facets loaded
-                $('#filter-categories').addClass('d-none');
+                //$('#filter-categories').addClass('d-none');
                 $('#reset-all-filters').addClass('d-none');
                 //$('#clear-vehicle').addClass('d-none');
             }
@@ -105,7 +105,7 @@
 
             // un hide categories and buttons if we have facets
             if (FWP.facets.year_make_model.length === 3) {
-                $('#filter-categories').removeClass('d-none');
+                //$('#filter-categories').removeClass('d-none');
                 $('#reset-all-filters').removeClass('d-none');
                 //$('#clear-vehicle').removeClass('d-none');
                 $('#selected-vehicle').removeClass('d-none');
@@ -119,7 +119,7 @@
         });
 
         $('#clear-vehicle').on('click', function () {
-            FWP.reset('year_make_model');
+            FWP.reset();
             clearVehicle();
         });
 
