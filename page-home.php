@@ -110,7 +110,7 @@ get_header();
     <?php
     $args = array(
         'post_type' => 'product',
-        'posts_per_page' => 12,
+        'posts_per_page' => 6,
         'tax_query' => array(
                 array(
                     'taxonomy' => 'product_visibility',
@@ -141,8 +141,15 @@ get_header();
         'post_type' => 'product',
         'posts_per_page' => 6,
         'orderby' =>'date',
-        'order' => 'DESC'
-        );
+        'order' => 'DESC',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'product_tag',
+                'field'    => 'name',
+                'terms'    => 'new',
+            ),
+        ),
+    );
     $loop = new WP_Query( $args );
     
     if ( $loop->have_posts() ) {

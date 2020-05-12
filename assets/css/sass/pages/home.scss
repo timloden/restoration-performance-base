@@ -36,3 +36,12 @@
         }
     }
 }
+
+.home-featured,
+.home-new {
+    .products {
+        .size-woocommerce_thumbnail {
+            max-height: unset;
+        }
+    }
+}
