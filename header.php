@@ -19,9 +19,14 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
-
+    <?php 
+    if (is_single() && !is_product()) {
+        article_structured_data($post->ID);
+    }
+    ?>
     <?php wp_head(); 
     global $woocommerce;
+    $logo = get_field('logo', 'option');
     ?>
 </head>
 
@@ -46,9 +51,11 @@
                 <!-- main header -->
                 <div class="row align-items-center py-3">
                     <div class="col-12 col-lg-3 text-center text-lg-left">
-                        <a class="d-block mb-2" href="<?php echo site_url(); ?>"><img
-                                src="<?php echo get_template_directory_uri(); ?>/assets/images/classic-body-parts-logo.png"
-                                class="img-fluid" alt="Classic Discount Parts Logo"></a>
+                        <a class="d-block mb-2" href="<?php echo site_url(); ?>">
+                            <?php if ($logo) : ?>
+                            <img src="<?php echo $logo['url'] ?>" class="img-fluid"
+                                alt="<?php echo $logo['alt'] ?>"></a>
+                        <?php endif; ?>
                     </div>
                     <div class="col-lg-5 d-none d-lg-block">
                         <form action="/" method="get" class="form">

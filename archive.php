@@ -10,19 +10,27 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
 
-		<?php if ( have_posts() ) : ?>
+<div id="primary" class="content-area">
+    <main id="main" class="site-main">
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+        <?php if ( have_posts() ) : ?>
 
-			<?php
+        <div class="bg-light border-bottom mb-3">
+            <div class="container py-3">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <header class="page-header">
+                            <h1 class="page-title text-center"><?php single_term_title(); ?></h1>
+                            <?php the_archive_description( '<div class="archive-description text-center">', '</div>' ); ?>
+                        </header><!-- .page-header -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+
+            <?php
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
@@ -44,10 +52,10 @@ get_header();
 
 		endif;
 		?>
+        </div>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+    </main><!-- #main -->
+</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

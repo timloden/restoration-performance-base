@@ -70,6 +70,9 @@ if (!function_exists('theme_setup')) :
         //add_theme_support('wc-product-gallery-zoom');
         add_theme_support('wc-product-gallery-lightbox');
         add_theme_support('wc-product-gallery-slider');
+
+        // remove emojis 
+        remove_action( 'wp_head',  'print_emoji_detection_script',     7    );
         
     }
 endif;
@@ -88,6 +91,19 @@ if( function_exists('acf_add_options_page') ) {
 	
 	
 }
+
+// disable comments for posts 
+
+function my_prefix_comments_open( $open, $post_id ) {
+    $post_type = get_post_type( $post_id );
+    // allow comments for built-in "post" post type
+    if ( $post_type == 'post' ) {
+        return false;
+    }
+    // disable comments for any other post types
+    return true;
+}
+add_filter( 'comments_open', 'my_prefix_comments_open', 10 , 2 );
 
 /**
  * Load includes

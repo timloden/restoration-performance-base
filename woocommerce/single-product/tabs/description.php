@@ -35,8 +35,14 @@ $brand_logo = wp_get_attachment_image_src( $brand_logo, apply_filters( 'pwb_prod
 
 <?php the_content(); ?>
 
-<?php if( !empty($brand->description) ) echo do_shortcode($brand->description);?>
 
-<?php if( !empty($brand_logo) ) :?>
-<img class="img-fluid" src="<?php echo $brand_logo[0]; ?>">
-<?php endif; ?>
+<div class="row">
+    <div class="col-12 col-lg-8 order-2 order-lg-1">
+        <?php if( !empty($brand->description) ) echo do_shortcode($brand->description);?>
+    </div>
+    <div class="col-12 col-lg-4 order-1 order-lg-2">
+        <?php if( !empty($brand_logo) ) :?>
+        <img class="img-fluid" src="<?php echo $brand_logo[0]; ?>">
+        <?php endif; ?>
+    </div>
+</div>

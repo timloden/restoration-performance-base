@@ -25,10 +25,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 <?php /* translators: %s: Customer first name */ ?>
-<p><?php printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
+<?php //printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ); ?>
 <?php /* translators: %s: Order number */ ?>
-<p><?php printf( esc_html__( 'Just to let you know &mdash; we\'ve received your order #%s, and it is now being processed:', 'woocommerce' ), esc_html( $order->get_order_number() ) ); ?></p>
-
+<p><?php printf( esc_html__( 'Your Classic Body Parts order %s has been received.', 'woocommerce' ), esc_html( $order->get_order_number() ) ); ?>
+</p>
+<p>Hi this is Jon, In Customer Service here at Classic Body Parts.</p>
+<p><?php printf( esc_html__( 'Thank you for your order! Your order number is %s.', 'woocommerce' ), esc_html( $order->get_order_number() ) ); ?>
+</p>
+<p>Most items ship out within one to two business days. We will email you with tracking information once your order is
+    on its way. </p>
+<p>If you have any questions about your shipping times you can go to <a
+        href="<?php echo site_url(); ?>/tracking">www.classicbodyparts.com/tracking</a></p>
+<p>It's totally fine to get excited now! We love buying car parts too!</p>
 <?php
 
 /*

@@ -14,46 +14,99 @@
 
 get_header();
 ?>
+<div class="bg-light border-bottom">
+    <div class="container py-3">
+        <div class="row align-items-center">
+            <div class="col-12">
+                <header class="page-header">
+                    <h1 class="page-title text-center">Classic Body Parts Resources</h1>
+                    <div class="archive-description text-center"></div>
+                </header><!-- .page-header -->
+            </div>
+        </div>
+    </div>
+</div>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+<div class="container">
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main">
 
-		<?php
-		if ( have_posts() ) :
+            <?php
+			$args = array(
+				'posts_per_page' => 4, // How many items to display
+				//'post__not_in'   => array( get_the_ID() ), // Exclude current post
+				//'no_found_rows'  => true, // We don't ned pagination so this speeds up the query
+			);
+			$cats = get_terms( array(
+				'taxonomy' => 'category',
+				'hide_empty' => true,
+			) );
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
+			$cats_ids = array();  
+			foreach( $cats as $cat ) {
 
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+				$args['category__in'] = $cat;
+				$loop = new WP_Query( $args );
+			
+				if ( $loop->have_posts() ) {
+					echo '<h3 class="py-3">' . $cat->name . '</h3>';
+					echo '<div class="row">';
+					while ( $loop->have_posts() ) : $loop->the_post();
+						get_template_part( 'template-parts/content', get_post_type() );
+					endwhile;
+					echo '</div>';
+				}
+				wp_reset_postdata();
+				}
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
 
-			endwhile;
 
-			the_posts_navigation();
+			// if ( ! empty( $cats_ids ) ) {
+			// 	$args['category__in'] = $cats_ids;
+			// }
+			// $loop = new WP_Query( $args );
+			
+			// if ( $loop->have_posts() ) {
+			// 	echo '<h3 class="py-3">Related Articles:</h3>';
+			// 	echo '<div class="row">';
+			// 	while ( $loop->have_posts() ) : $loop->the_post();
+			// 		get_template_part( 'template-parts/content', get_post_type() );
+			// 	endwhile;
+			// 	echo '</div>';
+			// }
+			// wp_reset_postdata();
+			?>
 
-		else :
 
-			get_template_part( 'template-parts/content', 'none' );
+            <?php
+		// if ( have_posts() ) :
 
-		endif;
+		// 	/* Start the Loop */
+		// 	while ( have_posts() ) :
+		// 		the_post();
+
+		// 		/*
+		// 		 * Include the Post-Type-specific template for the content.
+		// 		 * If you want to override this in a child theme, then include a file
+		// 		 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
+		// 		 */
+		// 		get_template_part( 'template-parts/content', get_post_type() );
+
+		// 	endwhile;
+
+		// 	the_posts_navigation();
+
+		// else :
+
+		// 	get_template_part( 'template-parts/content', 'none' );
+
+		// endif;
 		?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+        </main><!-- #main -->
+    </div><!-- #primary -->
+</div>
+
 
 <?php
-get_sidebar();
 get_footer();
