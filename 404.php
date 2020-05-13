@@ -9,52 +9,53 @@
 
 get_header();
 ?>
+<div class="container">
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'underscores' ); ?></h1>
-				</header><!-- .page-header -->
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main">
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'underscores' ); ?></p>
+            <section class="error-404 not-found">
+                <header class="page-header pt-3">
+                    <h1 class="page-title">
+                        <?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'underscores' ); ?>
+                    </h1>
+                </header><!-- .page-header -->
 
-					<?php
-					get_search_form();
+                <div class="page-content">
+                    <?php
+			$args = array(
+				'posts_per_page' => 3, // How many items to display
+				'no_found_rows'  => true, // We don't ned pagination so this speeds up the query
+			);
+			$cats = get_terms( array(
+				'taxonomy' => 'category',
+				'hide_empty' => true,
+			) );
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
+			$cats_ids = array();  
+			foreach( $cats as $cat ) {
 
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'underscores' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-							?>
-						</ul>
-					</div><!-- .widget -->
+				$args['category__in'] = $cat;
+				$loop = new WP_Query( $args );
+			
+				if ( $loop->have_posts() ) {
+					echo '<h3 class="py-3">' . $cat->name . '</h3>';
+					echo '<div class="row">';
+					while ( $loop->have_posts() ) : $loop->the_post();
+						get_template_part( 'template-parts/content', get_post_type() );
+					endwhile;
+					echo '</div>';
+					echo '<a href="' . site_url() . '\category/' . $cat->slug . '">Browse all ' . $cat->name . ' articles</a>';
+				}
+				wp_reset_postdata();
+				}
+			?>
+                </div><!-- .page-content -->
+            </section><!-- .error-404 -->
 
-					<?php
-					/* translators: %1$s: smiley */
-					$underscores_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'underscores' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$underscores_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
+        </main><!-- #main -->
+    </div><!-- #primary -->
+</div>
 <?php
 get_footer();

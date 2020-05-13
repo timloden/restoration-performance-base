@@ -97,7 +97,7 @@ if( function_exists('acf_add_options_page') ) {
 function my_prefix_comments_open( $open, $post_id ) {
     $post_type = get_post_type( $post_id );
     // allow comments for built-in "post" post type
-    if ( $post_type == 'post' ) {
+    if ( $post_type == 'post' || $post_type == 'page' ) {
         return false;
     }
     // disable comments for any other post types

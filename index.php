@@ -33,9 +33,8 @@ get_header();
 
             <?php
 			$args = array(
-				'posts_per_page' => 4, // How many items to display
-				//'post__not_in'   => array( get_the_ID() ), // Exclude current post
-				//'no_found_rows'  => true, // We don't ned pagination so this speeds up the query
+				'posts_per_page' => 6, // How many items to display
+				'no_found_rows'  => true, // We don't ned pagination so this speeds up the query
 			);
 			$cats = get_terms( array(
 				'taxonomy' => 'category',
@@ -50,58 +49,16 @@ get_header();
 			
 				if ( $loop->have_posts() ) {
 					echo '<h3 class="py-3">' . $cat->name . '</h3>';
-					echo '<div class="row">';
+					echo '<div class="row pb-3">';
 					while ( $loop->have_posts() ) : $loop->the_post();
 						get_template_part( 'template-parts/content', get_post_type() );
 					endwhile;
 					echo '</div>';
+					echo '<a class="text-right d-block" href="' . site_url() . '\category/' . $cat->slug . '">Browse all ' . $cat->name . ' articles <i class="las la-arrow-right"></i></a>';
 				}
 				wp_reset_postdata();
 				}
-
-
-
-			// if ( ! empty( $cats_ids ) ) {
-			// 	$args['category__in'] = $cats_ids;
-			// }
-			// $loop = new WP_Query( $args );
-			
-			// if ( $loop->have_posts() ) {
-			// 	echo '<h3 class="py-3">Related Articles:</h3>';
-			// 	echo '<div class="row">';
-			// 	while ( $loop->have_posts() ) : $loop->the_post();
-			// 		get_template_part( 'template-parts/content', get_post_type() );
-			// 	endwhile;
-			// 	echo '</div>';
-			// }
-			// wp_reset_postdata();
 			?>
-
-
-            <?php
-		// if ( have_posts() ) :
-
-		// 	/* Start the Loop */
-		// 	while ( have_posts() ) :
-		// 		the_post();
-
-		// 		/*
-		// 		 * Include the Post-Type-specific template for the content.
-		// 		 * If you want to override this in a child theme, then include a file
-		// 		 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-		// 		 */
-		// 		get_template_part( 'template-parts/content', get_post_type() );
-
-		// 	endwhile;
-
-		// 	the_posts_navigation();
-
-		// else :
-
-		// 	get_template_part( 'template-parts/content', 'none' );
-
-		// endif;
-		?>
 
         </main><!-- #main -->
     </div><!-- #primary -->

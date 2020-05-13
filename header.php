@@ -234,6 +234,36 @@
                     <a class="nav-link  text-white" href="<?php echo site_url(); ?>/product-tag/specials/">Specials</a>
                 </li>
                 <li>
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" id="dropdown-resources"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
+                        <ul class="dropdown-menu header-resources" id="dropdown-resources-list"
+                            aria-labelledby="dropdown-categories">
+                            <?php
+                                    $args = array(
+                                        'taxonomy'           => 'category',
+                                        'hide_empty'         => true,
+                                        'orderby'            => 'name',
+                                        'order'              => 'ASC',
+                                        'title_li'           => false,
+                                        'style'              => 'list',
+                                        'separator'              => '',
+                                        'echo'               => false,
+                                        'walker'       => new Walker_Category_Bootstrap(),
+                                    );
+                                    $categories = wp_list_categories($args);
+
+                                    if ($categories) {
+                                        printf('%s', $categories);
+                                    }
+                                    ?>
+                            <li class="cat-item">
+                                <a href="<?php echo site_url(); ?>/resources" class="dropdown-item">All Resources</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
                     <a class="nav-link text-white" href="<?php echo site_url(); ?>/about">About</a>
                 </li>
                 <li>

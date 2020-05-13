@@ -8,46 +8,41 @@
  */
 
 ?>
+<div class="container">
+    <section class="no-results not-found">
+        <header class="page-header">
+            <h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'underscores' ); ?></h1>
+        </header><!-- .page-header -->
 
-<section class="no-results not-found">
-    <header class="page-header">
-        <h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'underscores' ); ?></h1>
-    </header><!-- .page-header -->
-
-    <div class="page-content">
-        <?php
-		if ( is_home() && current_user_can( 'publish_posts' ) ) :
-
-			printf(
-				'<p>' . wp_kses(
-					/* translators: 1: link to WP admin new post page. */
-					__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'underscores' ),
-					array(
-						'a' => array(
-							'href' => array(),
-						),
-					)
-				) . '</p>',
-				esc_url( admin_url( 'post-new.php' ) )
+        <div class="page-content">
+            <?php
+			$args = array(
+				'posts_per_page' => 3, // How many items to display
+				'no_found_rows'  => true, // We don't ned pagination so this speeds up the query
 			);
+			$cats = get_terms( array(
+				'taxonomy' => 'category',
+				'hide_empty' => true,
+			) );
 
-		elseif ( is_search() ) :
+			$cats_ids = array();  
+			foreach( $cats as $cat ) {
+
+				$args['category__in'] = $cat;
+				$loop = new WP_Query( $args );
+			
+				if ( $loop->have_posts() ) {
+					echo '<h3 class="py-3">' . $cat->name . '</h3>';
+					echo '<div class="row">';
+					while ( $loop->have_posts() ) : $loop->the_post();
+						get_template_part( 'template-parts/content', get_post_type() );
+					endwhile;
+					echo '</div>';
+					echo '<a href="' . site_url() . '\category/' . $cat->slug . '">Browse all ' . $cat->name . ' articles</a>';
+				}
+				wp_reset_postdata();
+				}
 			?>
-
-        <p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'underscores' ); ?>
-        </p>
-        <?php
-			get_search_form();
-
-		else :
-			?>
-
-        <p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'underscores' ); ?>
-        </p>
-        <?php
-			get_search_form();
-
-		endif;
-		?>
-    </div><!-- .page-content -->
-</section><!-- .no-results -->
+        </div><!-- .page-content -->
+    </section><!-- .no-results -->
+</div>
