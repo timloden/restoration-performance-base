@@ -38,7 +38,7 @@ $categories = get_the_category();
 
             <?php
 			$args = array(
-				'posts_per_page' => 4, // How many items to display
+				'posts_per_page' => 3, // How many items to display
 				'post__not_in'   => array( get_the_ID() ), // Exclude current post
 				'no_found_rows'  => true, // We don't ned pagination so this speeds up the query
 			);
@@ -53,7 +53,7 @@ $categories = get_the_category();
 			$loop = new WP_Query( $args );
 			
 			if ( $loop->have_posts() ) {
-				echo '<h3 class="py-3">Related Articles:</h3>';
+				echo '<h3 class="pt-5 pb-3 mb-3 title-border">Related Articles</h3>';
 				echo '<div class="row">';
 				while ( $loop->have_posts() ) : $loop->the_post();
 					get_template_part( 'template-parts/content', get_post_type() );
