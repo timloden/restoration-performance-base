@@ -29,7 +29,7 @@ get_header();
             </div>
         </div>
         <div class="container">
-            <div class="row">
+            <div class="row row-cols-1 row-cols-md-3">
                 <?php
 			/* Start the Loop */
 			while ( have_posts() ) :
