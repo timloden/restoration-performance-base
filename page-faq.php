@@ -11,7 +11,7 @@
 get_header();
 ?>
 <div class="container">
-    <h1 class="py-3 mb-3 title-border">Frequently Asked Questions</h1>
+    <h1 class="py-3 mb-3 title-border"><?php the_title(); ?></h1>
     <div class="row">
         <div class="col-12">
             <div class="accordion" id="accordionExample">

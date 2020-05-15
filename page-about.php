@@ -1,11 +1,7 @@
 <?php
+
 /**
- * The template for displaying all pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
+ * Template Name: About Page
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -14,10 +10,11 @@
 
 get_header();
 ?>
-
-<div class="container py-3">
+<div class="container">
     <h1 class="py-3 mb-3 title-border"><?php the_title(); ?></h1>
-    <?php
+    <div class="row">
+        <div class="col-12 col-lg-8">
+            <?php
 		while ( have_posts() ) :
 			the_post();
 
@@ -25,7 +22,16 @@ get_header();
 
 		endwhile; // End of the loop.
 		?>
-</div><!-- #primary -->
+        </div>
+        <div class="col-12 col-lg-4">
+
+            <img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/assets/images/warehouse-2.jpg">
+        </div>
+    </div>
+</div>
+
+
+
 
 <?php
 get_footer();
