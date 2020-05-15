@@ -35,7 +35,7 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
     action="<?php echo esc_url(wc_get_checkout_url()); ?>" enctype="multipart/form-data">
     <div class="row">
         <div class="col-12 col-lg-7">
-            <h1 class="border-bottom mb-3 pb-3">Checkout</h1>
+            <h1 class="pb-3 mb-3 title-border">Checkout</h1>
             <?php if ($checkout->get_checkout_fields()) : ?>
 
             <?php do_action('woocommerce_checkout_before_customer_details'); ?>

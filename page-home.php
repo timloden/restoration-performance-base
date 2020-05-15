@@ -35,7 +35,7 @@ get_header();
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-lg-6">
-                            <div class="slide-text">
+                            <div class="slide-text text-center text-lg-left">
                                 <?php echo $text; ?>
                                 <a class="btn btn-primary"
                                     href="<?php echo $button_link; ?>"><?php echo $button_text; ?></a>
@@ -88,7 +88,7 @@ get_header();
     </div>
 </div>
 
-<div class="bg-white py-5">
+<div class="bg-white py-lg-5">
     <div class="container py-5">
         <div class="row home-benefits">
             <div class="col-12 pb-5">
@@ -126,22 +126,26 @@ get_header();
 </div>
 
 <div class="row align-items-center no-gutters py-5">
-    <div class="col-6">
+    <div class=" col-12 col-lg-6 order-2 order-lg-1">
         <img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/assets/images/shelby-cobra.jpg">
 
     </div>
-    <div class="col-6">
-        <h2 class="pb-3 mb-3 title-border">Why we should be your first choice for restoration &amp; muscle car parts
-        </h2>
-        <p>We have a history as one of the largest dealers for Dynacorn International. Dynacorn has been supplying
-            the classic muscle car enthusiast quality sheet metal, bright trim and molding since 1984.
-        </p>
-        <p>
-            We strive to meet all your classic car and truck vehicles needs. Don&#39;t be fooled by other companies that
-            offer monthly or weekend sells offering discounts at 15 - 25% off RETAIL price! We have the lowest
-            prices every month all year long! Just try us and you will see.</p>
+    <div class="col-12 col-lg-6 order-1 order-lg-2 mb-5 mb-lg-5">
+        <div class="px-3">
+            <h2 class="pb-3 mb-3 title-border">Why we should be your first choice for restoration &amp; muscle car parts
+            </h2>
+            <p>We have a history as one of the largest dealers for Dynacorn International. Dynacorn has been supplying
+                the classic muscle car enthusiast quality sheet metal, bright trim and molding since 1984.
+            </p>
+            <p>
+                We strive to meet all your classic car and truck vehicles needs. Don&#39;t be fooled by other companies
+                that
+                offer monthly or weekend sells offering discounts at 15 - 25% off RETAIL price! We have the lowest
+                prices every month all year long! Just try us and you will see.</p>
 
-        <a href="<?php echo site_url(); ?>/shop#ymm-bar" class="btn btn-primary">Browse parts for your vehicle</a>
+            <a href="<?php echo site_url(); ?>/shop#ymm-bar" class="btn btn-primary">Browse parts for your vehicle</a>
+        </div>
+
     </div>
 </div>
 
@@ -151,7 +155,7 @@ get_header();
         <p class="text-center pb-5">The Classic Body Parts resource center is here to help answer all of your
             restoration questions.</p>
         <div class="row">
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-6 mb-5 mb-lg-0">
                 <div class="card home-resource py-5"
                     style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/images/classic-car-is-in-a-workshop.jpg);">
                     <div class="card-body position-relative">

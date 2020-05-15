@@ -24,7 +24,7 @@ do_action('woocommerce_before_cart');
 
 <div class="row pt-3">
     <div class="col-12 col-lg-8">
-        <h2><?php esc_html_e('Your Cart', 'woocommerce'); ?></h2>
+        <h1 class="pb-3 mb-3 title-border"><?php esc_html_e('Your Cart', 'woocommerce'); ?></h1>
         <form class="woocommerce-cart-form" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
             <?php echo on_action_cart_updated(); ?>
             <?php do_action('woocommerce_before_cart_table'); ?>
