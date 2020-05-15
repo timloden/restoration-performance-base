@@ -98,6 +98,7 @@ console.log('custom js');
       clearVehicle();
     });
     $('#remove-vehicle').on('click', function () {
+      FWP.reset();
       clearVehicle();
       $(this).html('<i class="las la-check"></i> Cleared!');
     });
@@ -123,7 +124,7 @@ console.log('custom js');
     }
 
     function clearVehicle() {
-      var currentVehicle = readCookie('vehicle');
+      var currentVehicle = readCookie('facetdata');
 
       if (currentVehicle) {
         document.cookie = 'vehicle=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
@@ -160,7 +161,8 @@ console.log('custom js');
       nav: false,
       prevButton: '.slide-prev',
       nextButton: '.slide-next',
-      autoplayButtonOutput: false
+      autoplayButtonOutput: false,
+      lazyload: true
     });
   }
 })(jQuery);
@@ -179,3 +181,5 @@ console.log('custom js');
     }, 2000);
   });
 })(jQuery);
+//ScrollReveal().reveal('.title-border');
+"use strict";

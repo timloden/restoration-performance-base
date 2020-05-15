@@ -34,20 +34,26 @@
     <?php wp_body_open(); ?>
     <div id="page" class="site">
         <header class="header">
-            <div class="container">
-                <!-- top bar -->
-                <div class="row align-items-center top-bar border-bottom py-2">
-                    <div class="col-lg-6 d-none d-lg-block">
-                        <span class="border-right mr-2 pr-2"><strong>Orders over $99 ship for $4.50!</strong></span>
-                        <span>Freight shipping starting at $135</span>
-                    </div>
-                    <div class="col-12 col-lg-6 text-center text-lg-right">
-                        <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"
-                            class="border-right pr-2 mr-2">My Account</a>
-                        <a href="<?php echo site_url(); ?>/tracking" class="border-right pr-2 mr-2">Track Order</a>
-                        <a href="<?php echo site_url(); ?>/help">Help</a>
+            <!-- top bar -->
+            <div class="top-bar border-bottom">
+                <div class="container">
+                    <div class="row align-items-center py-2">
+                        <div class="col-lg-6 d-none d-lg-block">
+                            <span class="border-right mr-2 pr-2"><strong>Orders over $99 ship for $4.50!</strong></span>
+                            <span>Freight shipping starting at $135</span>
+                        </div>
+                        <div class="col-12 col-lg-6 text-center text-lg-right">
+                            <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"
+                                class="border-right pr-2 mr-2">My Account</a>
+                            <a href="<?php echo site_url(); ?>/tracking" class="border-right pr-2 mr-2">Track Order</a>
+                            <a href="<?php echo site_url(); ?>/help">Help</a>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="container">
+
                 <!-- main header -->
                 <div class="row align-items-center py-3">
                     <div class="col-12 col-lg-3 text-center text-lg-left">
@@ -61,7 +67,7 @@
                         <form action="/" method="get" class="form">
                             <div class="input-group">
                                 <input class="form-control" type="search"
-                                    placeholder="Search by Vehicle, Part Number..." aria-label="Search" name="s"
+                                    placeholder="Search by Keyword, Part Number..." aria-label="Search" name="s"
                                     id="search" data-swplive="true" value="<?php the_search_query(); ?>">
                                 <div class="input-group-append">
                                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
@@ -103,7 +109,7 @@
                         <form action="/" method="get" class="form">
                             <div class="input-group">
                                 <input class="form-control" type="search"
-                                    placeholder="Search by Vehicle, Part Number..." aria-label="Search" name="s"
+                                    placeholder="Search by Keyword, Part Number..." aria-label="Search" name="s"
                                     id="mobile-search" data-swplive="true" value="<?php the_search_query(); ?>">
                                 <div class="input-group-append">
                                     <button class="btn btn-secondary" type="submit">Search</button>
@@ -192,19 +198,24 @@
                     </div>
                 </div>
             </div>
+        </header>
     </div>
-    </div>
-    <div class="nav-wrapper bg-primary d-none d-lg-block">
-        <div class="container">
+    <!-- Desktop nav -->
+    <div class="nav-wrapper bg-primary d-none d-lg-block border-top">
+        <div class="container py-2">
 
             <ul class="nav nav-pills nav-fill justify-content-between">
                 <li>
-                    <a class="nav-link text-white" href="<?php echo site_url(); ?>/shop">Shop by Vehicle</a>
+                    <a class="nav-link text-white font-weight-bold px-lg-4 px-xl-5"
+                        href="<?php echo site_url(); ?>/shop">Shop
+                        by
+                        Vehicle</a>
                 </li>
                 <li>
                     <div class="dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" id="dropdown-categories"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                        <a class="nav-link dropdown-toggle text-white px-lg-4 px-xl-5" href="#" role="button"
+                            id="dropdown-categories" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">Categories</a>
                         <ul class="dropdown-menu header-categories" id="dropdown-categories-list"
                             aria-labelledby="dropdown-categories">
 
@@ -231,12 +242,14 @@
                 </li>
 
                 <li>
-                    <a class="nav-link  text-white" href="<?php echo site_url(); ?>/product-tag/specials/">Specials</a>
+                    <a class="nav-link text-white px-lg-4 px-xl-5"
+                        href="<?php echo site_url(); ?>/product-tag/specials/">Specials</a>
                 </li>
                 <li>
                     <div class="dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" id="dropdown-resources"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
+                        <a class="nav-link dropdown-toggle text-white px-lg-4 px-xl-5" href="#" role="button"
+                            id="dropdown-resources" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">Resources</a>
                         <ul class="dropdown-menu header-resources" id="dropdown-resources-list"
                             aria-labelledby="dropdown-categories">
                             <?php
@@ -264,10 +277,10 @@
                     </div>
                 </li>
                 <li>
-                    <a class="nav-link text-white" href="<?php echo site_url(); ?>/about">About</a>
+                    <a class="nav-link text-white px-lg-4 px-xl-5" href="<?php echo site_url(); ?>/about">About</a>
                 </li>
                 <li>
-                    <a class="nav-link  text-white" href="<?php echo site_url(); ?>/contact">Contact</a>
+                    <a class="nav-link  text-white px-lg-4 px-xl-5" href="<?php echo site_url(); ?>/contact">Contact</a>
                 </li>
             </ul>
 

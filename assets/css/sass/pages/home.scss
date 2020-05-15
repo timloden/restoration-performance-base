@@ -1,6 +1,12 @@
 .slide-arrows {
     z-index: 99;
-    top: 40%;
+    top: 50%;
+
+    a {
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }
 .home-slider {
     .slide-content {
@@ -37,11 +43,32 @@
     }
 }
 
-.home-featured,
-.home-new {
-    .products {
-        .size-woocommerce_thumbnail {
-            max-height: unset;
+.home-benefits {
+    i {
+        font-size: 50px;
+    }
+}
+
+.home-slider {
+    opacity: 0;
+
+    &.tns-slider {
+        opacity: 1;
+    }
+}
+
+.home-resource {
+    background-size: cover;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .card-body {
+        z-index: 99;
+
+        a {
+            text-decoration: underline;
         }
     }
 }

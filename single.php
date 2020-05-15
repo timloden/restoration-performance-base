@@ -18,7 +18,7 @@ $categories = get_the_category();
             style="background-image: url(<?php the_post_thumbnail_url('full'); ?>); background-position: center center; background-size: cover; position: relative">
 
             <div class="container">
-                <h1 class="display-4 text-white"><?php the_title(); ?></h1>
+                <h1 class="display-4 text-white font-weight-bold"><?php the_title(); ?></h1>
                 <p class="lead text-light">Posted on: <?php echo $post_date ?> in
                     <?php echo esc_html( $categories[0]->name ); ?>
                 </p>

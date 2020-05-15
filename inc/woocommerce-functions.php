@@ -46,7 +46,7 @@ add_action('template_redirect', 'remove_shop_breadcrumbs' );
 
 function remove_shop_breadcrumbs(){
  
-    if (is_shop())
+    if (!is_product())
         remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
  
 }

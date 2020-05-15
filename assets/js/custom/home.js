@@ -12,6 +12,7 @@
             prevButton: '.slide-prev',
             nextButton: '.slide-next',
             autoplayButtonOutput: false,
+            lazyload: true,
         });
     }
 })(jQuery);

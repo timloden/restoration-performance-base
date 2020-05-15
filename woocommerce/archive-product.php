@@ -27,8 +27,12 @@ get_header( 'shop' );
  * @hooked WC_Structured_Data::generate_website_data() - 30
  */
 do_action( 'woocommerce_before_main_content' );
-$vehicle = $_COOKIE['vehicle'];
+
+if(isset($_COOKIE['vehicle'])) {
+	$vehicle = $_COOKIE['vehicle'];
+}
 ?>
+
 <div id="ymm-bar" class="bg-light border-bottom">
     <div class="container py-3">
         <div class="row align-items-center">
@@ -43,6 +47,7 @@ $vehicle = $_COOKIE['vehicle'];
         </div>
     </div>
 </div>
+
 <div id="selected-vehicle" class="bg-light border-bottom d-none mb-3 mb-lg-0">
     <div class="container py-3">
         <div class="row align-items-center">

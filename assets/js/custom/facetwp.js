@@ -124,6 +124,7 @@
         });
 
         $('#remove-vehicle').on('click', function () {
+            FWP.reset();
             clearVehicle();
             $(this).html('<i class="las la-check"></i> Cleared!');
         });
@@ -144,7 +145,7 @@
         }
 
         function clearVehicle() {
-            var currentVehicle = readCookie('vehicle');
+            var currentVehicle = readCookie('facetdata');
 
             if (currentVehicle) {
                 document.cookie =
