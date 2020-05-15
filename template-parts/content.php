@@ -8,7 +8,7 @@
  */
 
 ?>
-<div class="col">
+<div class="col mb-3">
 
     <div class="card h-100 post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <a href="<?php the_permalink(); ?>">
