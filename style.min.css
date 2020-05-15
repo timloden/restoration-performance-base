@@ -2715,7 +2715,9 @@ a.text-dark:hover,a.text-dark:focus{color:#121416 !important}
 .header-categories .dropdown-submenu ul.children{top:0;left:100%;margin-top:-1px;display:none}
 .header-categories .dropdown-submenu:hover>ul.children{display:block}
 #cart-dropdown .dropdown-toggle:after{display:none}
+#mobile-nav a{color:#343a40}
 #mobile-categories-button a:after{margin-left:1em;content:'\f067';font-family:'Line Awesome Free';font-weight:900;float:right}
+#mobile-categories-button a[aria-expanded='true']{background-color:#005ca9;color:#fff}
 #mobile-categories-button a[aria-expanded='true']:after{content:'\f068'}
 #mobile-categories .dropdown-submenu{position:relative}
 #mobile-categories .dropdown-submenu a:after{float:right}

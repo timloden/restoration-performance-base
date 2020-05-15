@@ -15,8 +15,8 @@
 get_header();
 ?>
 
-	<div class="container">
-		<?php
+<div class="container py-3">
+    <?php
 		while ( have_posts() ) :
 			the_post();
 
@@ -29,7 +29,7 @@ get_header();
 
 		endwhile; // End of the loop.
 		?>
-	</div><!-- #primary -->
+</div><!-- #primary -->
 
 <?php
 get_sidebar();

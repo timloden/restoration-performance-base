@@ -47,7 +47,8 @@
                                 <a class="nav-link pl-0" href="<?php echo site_url(); ?>/tracking">Tracking</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/help">Help</a>
+                                <a class="nav-link pl-0"
+                                    href="<?php echo site_url(); ?>/frequently-asked-questions">Help</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link pl-0" href="<?php echo site_url(); ?>/cart">Cart</a>
@@ -64,7 +65,11 @@
                                 <a class="nav-link pl-0" href="<?php echo site_url(); ?>/tracking">Tech Tips</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/help">FAQ's</a>
+                                <a class="nav-link pl-0"
+                                    href="<?php echo site_url(); ?>/frequently-asked-questions">FAQ's</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/shipping">Shipping</a>
                             </li>
                         </ul>
                     </div>
@@ -129,7 +134,10 @@
     </div>
     <div class="copyright bg-primary">
         <div class="container">
-            <p class="text-white m-0 p-2 text-center">&copy; Classic Body Parts <?php echo date("Y"); ?> | Classic Body
+            <p class="text-white m-0 p-2 text-center">&copy; Classic Body Parts <?php echo date("Y"); ?> | <a
+                    href="<?php echo site_url(); ?>/policies" class="text-white">Policies</a> <a
+                    href="<?php echo site_url(); ?>/terms-and-conditions" class="text-white">Terms and Conditions</a> |
+                Classic Body
                 Parts is solely owned division of Restoration Performance LLC.</p>
 
         </div>

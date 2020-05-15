@@ -46,7 +46,7 @@
                             <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"
                                 class="border-right pr-2 mr-2">My Account</a>
                             <a href="<?php echo site_url(); ?>/tracking" class="border-right pr-2 mr-2">Track Order</a>
-                            <a href="<?php echo site_url(); ?>/help">Help</a>
+                            <a href="<?php echo site_url(); ?>/frequently-asked-questions">Help</a>
                         </div>
                     </div>
                 </div>
@@ -178,6 +178,45 @@
 
                                 </div>
 
+                                <div class="border-bottom" id="mobile-categories-button">
+
+                                    <a class="collapsed d-block py-1 px-2" data-toggle="collapse"
+                                        data-target="#mobile-resources" aria-expanded="false"
+                                        aria-controls="collapseTwo">
+                                        Resources
+                                    </a>
+
+                                </div>
+
+                                <div id="mobile-resources" class="collapse" aria-labelledby="mobile-resources-button"
+                                    data-parent="#mobile-nav-items">
+                                    <div class="border-bottom">
+                                        <ul class="header-categories list-unstyled mb-0" id="dropdown-resources-list"
+                                            aria-labelledby="dropdown-resources">
+
+                                            <?php
+                                            $args = array(
+                                                'taxonomy'           => 'category',
+                                                'hide_empty'         => true,
+                                                'orderby'            => 'name',
+                                                'order'              => 'ASC',
+                                                'title_li'           => false,
+                                                'style'              => 'list',
+                                                'depth'              => 1,
+                                                'separator'              => '',
+                                                'echo'               => false,
+                                                'walker'       => new Walker_Category_Bootstrap(),
+                                            );
+                                            $categories = wp_list_categories($args);
+
+                                            if ($categories) {
+                                                printf('%s', $categories);
+                                            }
+                                            ?>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <div class="border-bottom">
 
                                     <a class="d-block py-1 px-2" href="<?php echo site_url(); ?>/about">About</a>
@@ -272,6 +311,10 @@
                                     ?>
                             <li class="cat-item">
                                 <a href="<?php echo site_url(); ?>/resources" class="dropdown-item">All Resources</a>
+                            </li>
+                            <li class="cat-item">
+                                <a href="<?php echo site_url(); ?>/frequently-asked-questions"
+                                    class="dropdown-item">FAQs</a>
                             </li>
                         </ul>
                     </div>
