@@ -29,8 +29,8 @@ get_header();
             </div>
         </div>
         <div class="container">
-
-            <?php
+            <div class="row">
+                <?php
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
@@ -49,7 +49,8 @@ get_header();
 			get_template_part( 'template-parts/content', 'none' );
 
 		endif;
-		?>
+        ?>
+            </div>
         </div>
 
     </main><!-- #main -->
