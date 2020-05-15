@@ -15,49 +15,68 @@
 </div><!-- #content -->
 
 <footer class="site-footer border-top mt-5">
-    <div class="container py-3">
+    <div class="container py-5">
         <div class="row">
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-8">
                 <div class="d-flex">
-                    <div class="col-6">
+                    <div class="col-4">
+                        <h6>Shop</h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url(); ?>/shop">Shop by Vehicle</a>
+                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/shop">Shop by Vehicle</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url(); ?>/product-tag/specials">Specials</a>
+                                <a class="nav-link pl-0"
+                                    href="<?php echo site_url(); ?>/product-tag/specials">Specials</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url(); ?>/about">About</a>
+                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/about">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url(); ?>/contact">Contact</a>
+                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/contact">Contact</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="col-6">
+                    <div class="col-4">
+                        <h6>Account</h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url(); ?>/my-account">My Account</a>
+                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/my-account">My Account</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url(); ?>/tracking">Tracking</a>
+                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/tracking">Tracking</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url(); ?>/help">Help</a>
+                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/help">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url(); ?>/cart">Cart</a>
+                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/cart">Cart</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-4">
+                        <h6>Resources</h6>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/my-account">All Resources</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/tracking">Tech Tips</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/help">FAQ's</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-4 py-3 py-lg-0">
-                <p class="mb-2">Get all the latest product updates, specials and coupons!
-                </p>
+            <div class="col-12 col-lg-4">
+                <p mb-0>Classic Body Parts is a reseller and dealer of replacement restoration parts relating to the
+                    Licensed
+                    trademark Chevy, Chevrolet, Ford and Mopar.</p>
+                <p class="mb-2 font-weight-bold">Get all the latest product updates, specials and coupons!</p>
 
-                <div id="mc_embed_signup">
+                <div class="mb-3" id="mc_embed_signup">
                     <form
                         action="https://classicbodyparts.us8.list-manage.com/subscribe/post?u=7f3a72c126eb4512af40c4195&amp;id=7af00b4ad6"
                         method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
@@ -94,14 +113,18 @@
                 var $mcj = jQuery.noConflict(true);
                 </script>
                 <!--End mc_embed_signup-->
+
             </div>
-            <div class="col-12 col-lg-4">
-                <p mb-0>Classic Body Parts is a reseller and dealer of replacement restoration parts relating to the
-                    Licensed
-                    trademark Chevy, Chevrolet, Ford and Mopar.</p>
+        </div>
+        <div class="row pt-3">
+            <div class="col-12 text-center">
                 <img class="img-fluid cc-logos"
-                    src="<?php echo get_template_directory_uri(); ?>/assets/images/cc-logos.png">
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/cc-logos.png"
+                    alt="credit card logos">
+                <img class="pl-3" src="<?php echo get_template_directory_uri(); ?>/assets/images/paypal-logo.png"
+                    alt="PayPal Logo">
             </div>
+
         </div>
     </div>
     <div class="copyright bg-primary">
