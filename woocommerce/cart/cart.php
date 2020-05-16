@@ -21,12 +21,9 @@ defined('ABSPATH') || exit;
 do_action('woocommerce_before_cart');
 ?>
 
-
-<div class="row pt-3">
+<div class="row">
     <div class="col-12 col-lg-8">
-        <h1 class="pb-3 mb-3 title-border"><?php esc_html_e('Your Cart', 'woocommerce'); ?></h1>
         <form class="woocommerce-cart-form" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
-            <?php echo on_action_cart_updated(); ?>
             <?php do_action('woocommerce_before_cart_table'); ?>
             <div class="table-responsive-sm">
                 <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents table"
@@ -70,7 +67,8 @@ do_action('woocommerce_before_cart');
                             </td>
 
                             <td class="product-name" data-title="<?php esc_attr_e('Product', 'woocommerce'); ?>">
-                                <?php
+                                <p class="mb-1">
+                                    <?php
 										if (!$product_permalink) {
 											echo wp_kses_post(apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key) . '&nbsp;');
 										} else {
@@ -86,7 +84,9 @@ do_action('woocommerce_before_cart');
 										if ($_product->backorders_require_notification() && $_product->is_on_backorder($cart_item['quantity'])) {
 											echo wp_kses_post(apply_filters('woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__('Available on backorder', 'woocommerce') . '</p>', $product_id));
 										}
-										?>
+                                        ?>
+                                </p>
+                                <span style="font-size: 12px;">SKU: <?php echo  $_product->get_sku(); ?></span>
                             </td>
 
                             <td class="product-price" data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>">
@@ -140,21 +140,30 @@ do_action('woocommerce_before_cart');
                         <?php do_action('woocommerce_cart_contents'); ?>
 
                         <tr>
-                            <td colspan="3" class="actions">
+                            <td colspan="2" class="actions">
 
-                                <button type="submit" class="btn btn-sm btn-secondary" name="update_cart"
+                                <button type="submit" class="btn btn-sm btn-outline-secondary" name="update_cart"
                                     value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>"><?php esc_html_e('Update cart', 'woocommerce'); ?></button>
 
                                 <?php do_action('woocommerce_cart_actions'); ?>
 
                                 <?php wp_nonce_field('woocommerce-cart', 'woocommerce-cart-nonce'); ?>
                             </td>
-                            <td colspan="3" class="product-subtotal text-right"
-                                data-title="<?php esc_attr_e('Subtotal', 'woocommerce'); ?>">
-                                <strong>Subtotal: </strong>
-                                <?php
-								echo apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key); // PHPCS: XSS ok.
-								?>
+                            <td colspan="4" class="product-subtotal text-right">
+                                <?php if (wc_coupons_enabled()) { ?>
+                                <label class="sr-only"
+                                    for="coupon_code"><?php esc_html_e('Coupon code:', 'woocommerce'); ?></label>
+                                <div class="coupon input-group">
+                                    <input type="text" name="coupon_code" class="input-text form-control"
+                                        id="coupon_code" value=""
+                                        placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" />
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-secondary" name="apply_coupon"
+                                            value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>"><?php esc_attr_e('Apply coupon', 'woocommerce'); ?></button>
+                                    </div>
+                                    <?php do_action('woocommerce_cart_coupon'); ?>
+                                </div>
+                                <?php } ?>
                             </td>
                         </tr>
 
@@ -162,23 +171,17 @@ do_action('woocommerce_before_cart');
                     </tbody>
                 </table>
             </div>
+            <div class="row">
+                <div class="col-12">
+                    <?php echo on_action_cart_updated(); ?>
+                </div>
+            </div>
             <div class="row align-items-center">
                 <div class="col-6">
                     <a href="#" onClick="history.go(-1)"><i class="las la-arrow-left"></i> Continue shopping</a>
                 </div>
                 <div class="col-6">
-                    <?php if (wc_coupons_enabled()) { ?>
-                    <label class="sr-only" for="coupon_code"><?php esc_html_e('Coupon code:', 'woocommerce'); ?></label>
-                    <div class="coupon input-group">
-                        <input type="text" name="coupon_code" class="input-text form-control" id="coupon_code" value=""
-                            placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" />
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-secondary" name="apply_coupon"
-                                value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>"><?php esc_attr_e('Apply coupon', 'woocommerce'); ?></button>
-                        </div>
-                        <?php do_action('woocommerce_cart_coupon'); ?>
-                    </div>
-                    <?php } ?>
+
                 </div>
             </div>
             <?php do_action('woocommerce_after_cart_table'); ?>
