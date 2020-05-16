@@ -54,7 +54,7 @@ $categories = get_the_category();
 			
 			if ( $loop->have_posts() ) {
 				echo '<h3 class="pt-5 pb-3 mb-3 title-border">Related Articles</h3>';
-				echo '<div class="row">';
+				echo '<div class="row row-cols-1 row-cols-md-3">';
 				while ( $loop->have_posts() ) : $loop->the_post();
 					get_template_part( 'template-parts/content', get_post_type() );
 				endwhile;
