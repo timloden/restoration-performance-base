@@ -28,8 +28,3 @@ if (!defined('ABSPATH')) {
         <?php echo facetwp_display('facet', 'categories'); ?>
     </div>
 </section>
-
-
-
-
-<button id="reset-all-filters" class="btn btn-outline-secondary btn-sm mb-3 mb-lg-3">Reset All Filters</button>
