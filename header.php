@@ -213,6 +213,18 @@
                                                 printf('%s', $categories);
                                             }
                                             ?>
+                                            <li class="cat-item">
+                                                <a href="<?php echo site_url(); ?>/resources" class="dropdown-item">All
+                                                    Resources</a>
+                                            </li>
+                                            <li class="cat-item">
+                                                <a href="<?php echo site_url(); ?>/frequently-asked-questions"
+                                                    class="dropdown-item">FAQs</a>
+                                            </li>
+                                            <li class="cat-item">
+                                                <a href="<?php echo site_url(); ?>/shipping"
+                                                    class="dropdown-item">Shipping</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -315,6 +327,9 @@
                             <li class="cat-item">
                                 <a href="<?php echo site_url(); ?>/frequently-asked-questions"
                                     class="dropdown-item">FAQs</a>
+                            </li>
+                            <li class="cat-item">
+                                <a href="<?php echo site_url(); ?>/shipping" class="dropdown-item">Shipping</a>
                             </li>
                         </ul>
                     </div>
