@@ -87,11 +87,106 @@ get_header();
                         <h2 class="mb-0">
                             <a class="h5 d-block mb-0 collapsed" type="button" data-toggle="collapse"
                                 data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Sheet Metal Body Parts
+                                Product Availability
                             </a>
                         </h2>
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+
+                            <p>Availability of all items in this catalog are subject to change without notice. We
+                                reserve the right to discontinue products, services or accessories without notice. Price
+                                changes are due to manufacturers and material fluctuating costs. In the event of extreme
+                                increases, you will be notified promptly before we ship. If there is only a slight
+                                increase, you parts will be shipped at the prevailing prices. We assume no liability for
+                                errors herein. Some parts may not be legal for sale or use in some states including
+                                California on any pollution controlled motor vehicle</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h2 class="mb-0">
+                            <a class="h5 d-block mb-0 collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Back Orders
+                            </a>
+                        </h2>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+
+                            <p>The invoice located in the packing slip of your order will notate any items that were out
+                                of stock at the time of shipping. The unavailable items will be back ordered unless
+                                otherwise specified on your order form or verbally to a sales representative when
+                                placing your order by phone. Back orders are usually shipped when the products arrive at
+                                our warehouse without prior notification. Restoration Performance will make an effort to
+                                contact the customer if the back order is more than 90 days old. If you wish to cancel a
+                                back order, please notify our customer service department immediately. The customer will
+                                be responsible for a restocking fee and freight charges if the back order is cancelled
+                                or returned after the items are shipped.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingFive">
+                        <h2 class="mb-0">
+                            <a class="h5 d-block mb-0 collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Billing and Shipping Address
+                            </a>
+                        </h2>
+                    </div>
+                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+
+                            <p>Please have the billing address if using a credit card to pay for your order. All credit
+                                cards are verified by the name and address before shipping. You may have your order
+                                shipped to a different address providing the cardholders name and address matches the
+                                credit card you are using. You may be asked to contact your credit card company and have
+                                your shipping address added to your account.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingSix">
+                        <h2 class="mb-0">
+                            <a class="h5 d-block mb-0 collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                Payment
+                            </a>
+                        </h2>
+                    </div>
+                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                        <div class="card-body">
+
+                            <p>We Accept major credit cards including Visa, MasterCard and PayPal. Please have your
+                                credit card readily available before ordering. A security code and address of the card
+                                holder is required on all credit card orders. All truck orders and special order
+                                products must be pre-paid.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="headingSeven">
+                        <h2 class="mb-0">
+                            <a class="h5 d-block mb-0 collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                Sheet Metal Body Parts
+                            </a>
+                        </h2>
+                    </div>
+                    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
                         data-parent="#accordionExample">
                         <div class="card-body">
                             <p>The sheet metal you receive may have scratches, dings, small dents and other minor
@@ -121,15 +216,15 @@ get_header();
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header" id="headingFour">
+                    <div class="card-header" id="headingEight">
                         <h2 class="mb-0">
                             <a class="h5 d-block mb-0 collapsed" type="button" data-toggle="collapse"
-                                data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
                                 Classic Car Make / Model Identification Guide
                             </a>
                         </h2>
                     </div>
-                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                    <div id="collapseEight" class="collapse" aria-labelledby="headingEight"
                         data-parent="#accordionExample">
                         <div class="card-body">
                             <p>During the 1960’s and 1970’s, the automakers used letter codes to designate which car
