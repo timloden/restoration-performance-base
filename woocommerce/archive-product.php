@@ -32,7 +32,7 @@ if(isset($_COOKIE['vehicle'])) {
 	$vehicle = $_COOKIE['vehicle'];
 }
 ?>
-
+<?php if (wc_get_loop_prop( 'total' ) != 0) : ?>
 <div id="ymm-bar" class="bg-light border-bottom">
     <div class="container py-3">
         <div class="row align-items-center">
@@ -65,7 +65,7 @@ if(isset($_COOKIE['vehicle'])) {
         </div>
     </div>
 </div>
-
+<?php endif; ?>
 <div id="product-content">
     <?php
 	/**
