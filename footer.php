@@ -15,7 +15,7 @@
 </div><!-- #content -->
 
 <footer class="site-footer border-top mt-5">
-    <div class="container py-5">
+    <div class="container pt-5 pb-4">
         <div class="row">
             <div class="col-12 col-lg-8">
                 <div class="d-flex">
@@ -128,15 +128,19 @@
                     alt="credit card logos">
                 <img class="pl-3" src="<?php echo get_template_directory_uri(); ?>/assets/images/paypal-logo.png"
                     alt="PayPal Logo">
+
+                <p class="mt-4" style="font-size: 14px;">
+                    <a href="<?php echo site_url(); ?>/policies" class="text-dark">Policies</a> | <a
+                        href="<?php echo site_url(); ?>/terms-and-conditions" class="text-dark">Terms and
+                        Conditions</a>
+                </p>
             </div>
 
         </div>
     </div>
     <div class="copyright bg-primary">
         <div class="container">
-            <p class="text-white m-0 p-2 text-center">&copy; Classic Body Parts <?php echo date("Y"); ?> | <a
-                    href="<?php echo site_url(); ?>/policies" class="text-white">Policies</a> <a
-                    href="<?php echo site_url(); ?>/terms-and-conditions" class="text-white">Terms and Conditions</a> |
+            <p class="text-white m-0 p-2 text-center">&copy; Classic Body Parts <?php echo date("Y"); ?> |
                 Classic Body
                 Parts is solely owned division of Restoration Performance LLC.</p>
 
