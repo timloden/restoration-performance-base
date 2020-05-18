@@ -55,7 +55,7 @@
             } else {
                 // hide all our buttons and categories if no facets loaded
                 //$('#filter-categories').addClass('d-none');
-                $('#reset-all-filters').addClass('d-none');
+                //$('#reset-all-filters').addClass('d-none');
                 //$('#clear-vehicle').addClass('d-none');
             }
 
@@ -104,19 +104,19 @@
             }
 
             // un hide categories and buttons if we have facets
-            if (FWP.facets.year_make_model.length === 3) {
-                //$('#filter-categories').removeClass('d-none');
-                $('#reset-all-filters').removeClass('d-none');
-                //$('#clear-vehicle').removeClass('d-none');
-                $('#selected-vehicle').removeClass('d-none');
-                $('#ymm-bar').addClass('d-none');
-            }
+            // if (FWP.facets.year_make_model.length === 3) {
+            //     //$('#filter-categories').removeClass('d-none');
+            //     //$('#reset-all-filters').removeClass('d-none');
+            //     //$('#clear-vehicle').removeClass('d-none');
+            //     //$('#selected-vehicle').removeClass('d-none');
+            //     //$('#ymm-bar').addClass('d-none');
+            // }
         });
 
-        $('#reset-all-filters').on('click', function () {
-            FWP.reset();
-            clearVehicle();
-        });
+        // $('#reset-all-filters').on('click', function () {
+        //     FWP.reset();
+        //     clearVehicle();
+        // });
 
         $('#clear-vehicle').on('click', function () {
             FWP.reset();

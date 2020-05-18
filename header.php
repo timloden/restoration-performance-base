@@ -174,7 +174,8 @@
 
                                 <div class="border-bottom">
 
-                                    <a class="d-block py-1 px-2" href="<?php echo site_url(); ?>/specials">Specials</a>
+                                    <a class="d-block py-1 px-2"
+                                        href="<?php echo site_url(); ?>/product-tag/special/">Specials</a>
 
                                 </div>
 
@@ -294,7 +295,7 @@
 
                 <li>
                     <a class="nav-link text-white px-lg-4 px-xl-5"
-                        href="<?php echo site_url(); ?>/product-tag/specials/">Specials</a>
+                        href="<?php echo site_url(); ?>/product-tag/special/">Specials</a>
                 </li>
                 <li>
                     <div class="dropdown">
