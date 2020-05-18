@@ -24,6 +24,8 @@ $formatted_destination    = isset($formatted_destination) ? $formatted_destinati
 $has_calculated_shipping  = !empty($has_calculated_shipping);
 $show_shipping_calculator = !empty($show_shipping_calculator);
 $calculator_text          = '';
+
+$shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
 ?>
 <tr class="woocommerce-shipping-totals shipping">
     <th><?php echo wp_kses_post($package_name); ?></th>
@@ -42,10 +44,21 @@ $calculator_text          = '';
 							printf('<label class="form-check-label d-flex justify-content-between" for="shipping_method_%1$s_%2$s">%3$s</label>', $index, esc_attr(sanitize_title($method->id)), wc_cart_totals_shipping_method_label($method)); // WPCS: XSS ok.
 							do_action('woocommerce_after_shipping_rate', $method, $index);
 							?>
+
                 </div>
             </li>
             <?php endforeach; ?>
         </ul>
+
+        <!-- are we commercial freight?     -->
+        <?php if ($shipping_method === 'flexible_shipping_1_1') : ?>
+        <div class="d-block">
+            <small class="pb-3 d-block"><a href="<?php echo site_url(); ?>/shipping">Address must be a commerical
+                    business, see shipping info for more
+                    details</a></small>
+        </div>
+        <?php endif; ?>
+
         <?php if (is_cart()) : ?>
         <p class="woocommerce-shipping-destination">
             <?php

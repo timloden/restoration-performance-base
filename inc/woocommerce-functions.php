@@ -482,7 +482,7 @@ function checkout_place_order_button_text($order_button_text)
 
 //remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 
-//add_action('woocommerce_checkout_before_order_review', 'woocommerce_checkout_coupon_form', 10);
+//add_action('woocommerce_checkout_after_customer_details', 'woocommerce_checkout_coupon_form', 10);
 
 // my account - remove downloads from my account 
 

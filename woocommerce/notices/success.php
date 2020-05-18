@@ -25,10 +25,11 @@ if (!$notices) {
 }
 
 ?>
+
+<?php foreach ($notices as $notice) : ?>
 <div class="alert alert-success">
-    <?php foreach ($notices as $notice) : ?>
     <div class="woocommerce-message mb-2" <?php echo wc_get_notice_data_attr($notice); ?> role="alert">
         <?php echo wc_kses_notice($notice['notice']); ?>
     </div>
-    <?php endforeach; ?>
 </div>
+<?php endforeach; ?>
