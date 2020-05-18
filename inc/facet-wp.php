@@ -1,11 +1,14 @@
 <?php
 
-add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
-    if ( 'product_query' != $query->get( 'wc_query' ) ) {
-        $is_main_query = false;
-    }
-    return $is_main_query;
-}, 10, 2 );
+// add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
+//     if (!is_front_page() ) {
+//         if ( 'product_query' != $query->get( 'wc_query')) {
+//             $is_main_query = false;
+//         }
+//     }
+   
+//     return $is_main_query;
+// }, 10, 2 );
 
 // add bootstrap class to selects
 
