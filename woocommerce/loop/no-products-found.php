@@ -22,6 +22,70 @@ if(isset($_COOKIE['vehicle'])){
 }
 ?>
 <div class="container py-5">
+    <?php if (is_product_tag('special')) :?>
+    <h2 class="pb-1">Sorry, we don&apos;t have any items on special at the moment</h2>
+    <p class="mb-5 pb-5">Be sure to check back regularly as we update our specials often!</p>
+
+    <?php
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => 4,
+        'tax_query' => array(
+                array(
+                    'taxonomy' => 'product_visibility',
+                    'field'    => 'name',
+                    'terms'    => 'featured',
+                ),
+            ),
+        );
+    $loop = new WP_Query( $args );
+    
+    if ( $loop->have_posts() ) {
+        echo '<div class="home-featured mb-5">';
+        echo '<h3>Featured Products</h3>';
+        echo '<p class="pb-3 mb-3 title-border">Here are some products hand picked by our staff</p>';
+        echo '<div class="row products">';
+        while ( $loop->have_posts() ) : $loop->the_post();
+            wc_get_template_part( 'content', 'product-homepage' );
+        endwhile;
+        echo '</div></div>';
+    }
+    wp_reset_postdata();
+    ?>
+
+
+
+
+    <?php
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => 4,
+        'orderby' =>'date',
+        'order' => 'DESC',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'product_tag',
+                'field'    => 'name',
+                'terms'    => 'new',
+            ),
+        ),
+    );
+    $loop = new WP_Query( $args );
+    
+    if ( $loop->have_posts() ) {
+        echo '<div class="home-new">';
+        echo '<h3>New Products</h3>';
+        echo '<p class="pb-3 mb-3 title-border">Browse the latest products from our high quality manufacturers</p>';
+        echo '<div class="row products">';
+        while ( $loop->have_posts() ) : $loop->the_post();
+            wc_get_template_part( 'content', 'product-homepage' );
+        endwhile;
+        echo '</div></div>';
+    }
+    wp_reset_postdata();
+    ?>
+
+    <?php else : ?>
     <h2 class="pb-3">Sorry, no results were found for "<?php echo get_search_query(); ?>"</h2>
     <div class="row">
         <div class="col-12 col-lg-8">
@@ -58,4 +122,6 @@ if(isset($_COOKIE['vehicle'])){
             </ul>
         </div>
     </div>
+
+    <?php endif; ?>
 </div>
