@@ -3,6 +3,11 @@
         @extend .alert;
         @extend .alert-secondary;
     }
+
+    .woocommerce-info {
+        @extend .alert;
+        @extend .alert-secondary;
+    }
 }
 
 .cart {
