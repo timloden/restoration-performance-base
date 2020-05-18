@@ -493,6 +493,18 @@ unset($items['downloads']);
 return $items;
 }
 
+// my account - rename orders
+
+add_filter ( 'woocommerce_account_menu_items', 'account_rename_orders' );
+ 
+function account_rename_orders( $menu_links ){
+ 
+	// $menu_links['TAB ID HERE'] = 'NEW TAB NAME HERE';
+	$menu_links['orders'] = 'My Orders';
+ 
+	return $menu_links;
+}
+
 /**
  * Disable the default WooCommerce stylesheet.
  *

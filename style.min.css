@@ -6,7 +6,7 @@ Theme URI: https://www.restorationperformance.com/
 Author: Restoration Performance
 Author URI: https://www.restorationperformance.com/
 Description: Description
-Version: 0.1.2
+Version: 0.1.3
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: underscores
@@ -2804,6 +2804,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,#cart-dropdown .dropdown-toggle,.h6{font-w
 .woocommerce ul.cart_list li .star-rating,.woocommerce ul.product_list_widget li .star-rating{display:block;text-align:center;margin:0 auto}
 .cart .product-thumbnail .size-woocommerce_thumbnail{width:100px;height:auto}
 .cart .cart_item td{vertical-align:middle}
+.woocommerce-shipping-totals small{font-size:12px}
 .woocommerce-mini-cart .woocommerce-mini-cart-item .size-woocommerce_thumbnail{width:50px;height:auto}
 .payment_method_braintree_credit_card .form-row{margin-left:0;margin-right:0}
 .payment_method_braintree_credit_card .wc-braintree-credit-card-new-payment-method-form{background-color:#fff}

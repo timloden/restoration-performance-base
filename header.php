@@ -127,7 +127,7 @@
                             <div class="accordion" id="mobile-nav-items">
                                 <div class="border-bottom">
 
-                                    <a class="d-block py-1 px-2" href="<?php echo site_url(); ?>/shop">Search by
+                                    <a class="d-block py-1 px-2" href="<?php echo site_url(); ?>/shop">Shop by
                                         Vehicle</a>
 
                                 </div>

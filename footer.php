@@ -59,10 +59,11 @@
                         <h6>Resources</h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/my-account">All Resources</a>
+                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/resources">All Resources</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/tracking">Tech Tips</a>
+                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/category/tech-tips/">Tech
+                                    Tips</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link pl-0"

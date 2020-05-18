@@ -60,7 +60,7 @@ get_header();
     <div class="container py-3">
         <div class="row align-items-center">
             <div class="col-12 col-lg-2">
-                <p class="mb-0 text-primary"><strong>Choose your vehicle:</strong></p>
+                <p class="mb-0 text-primary font-weight-bolder">Choose your vehicle:</p>
             </div>
             <div class="col-12 col-lg-10">
                 <div class="home-ymm">

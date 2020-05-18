@@ -37,7 +37,7 @@ if(isset($_COOKIE['vehicle'])) {
     <div class="container py-3">
         <div class="row align-items-center">
             <div class="col-12 col-lg-2">
-                <p class="mb-0 text-primary"><strong>Choose your vehicle:</strong></p>
+                <p class="mb-0 text-primary font-weight-bolder">Choose your vehicle:</p>
             </div>
             <div class="col-12 col-lg-10">
                 <div class="home-ymm">
@@ -53,7 +53,7 @@ if(isset($_COOKIE['vehicle'])) {
         <div class="row align-items-center">
             <div class="col-12">
                 <div class="d-flex justify-content-between">
-                    <p class="mb-0"><strong><span class="text-primary">Your Vehicle:</span></strong><span
+                    <p class="mb-0"><span class="text-primary font-weight-bolder">Your Vehicle:</span><span
                             id="your-vehicle" class="pl-2 font-weight-bold">
                             <?php if(isset($vehicle)) {
 								echo $vehicle;
