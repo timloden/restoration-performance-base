@@ -1,14 +1,19 @@
 <?php
 
-// add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
-//     if (!is_front_page() ) {
-//         if ( 'product_query' != $query->get( 'wc_query')) {
-//             $is_main_query = false;
-//         }
-//     }
+add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
+    // if ( 'product_query' != $query->get( 'wc_query') ) {
+    //     $is_main_query = false;
+    // }
+
+    if ('product-tag/special' == FWP()->helper->get_uri()) {
+        $is_main_query = false;
+    }
+
+
+    //echo FWP()->helper->get_uri();
    
-//     return $is_main_query;
-// }, 10, 2 );
+    return $is_main_query;
+}, 10, 2 );
 
 // add bootstrap class to selects
 

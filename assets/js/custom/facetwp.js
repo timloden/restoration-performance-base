@@ -116,15 +116,18 @@
                 isMobile = true;
             }
 
-            console.log(isMobile);
+            //console.log(isMobile);
 
             // un hide categories and buttons if we have facets
-            if (FWP.facets.year_make_model.length === 3) {
-                //$('#filter-categories').removeClass('d-none');
-                //$('#reset-all-filters').removeClass('d-none');
-                //$('#clear-vehicle').removeClass('d-none');
-                $('#selected-vehicle').removeClass('d-none');
-                $('#ymm-bar').addClass('d-none');
+
+            if (FWP.facets.year_make_model) {
+                if (FWP.facets.year_make_model.length === 3) {
+                    //$('#filter-categories').removeClass('d-none');
+                    //$('#reset-all-filters').removeClass('d-none');
+                    //$('#clear-vehicle').removeClass('d-none');
+                    $('#selected-vehicle').removeClass('d-none');
+                    $('#ymm-bar').addClass('d-none');
+                }
             }
         });
 

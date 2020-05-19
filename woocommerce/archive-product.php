@@ -32,8 +32,9 @@ if(isset($_COOKIE['vehicle'])) {
 	$vehicle = $_COOKIE['vehicle'];
 }
 ?>
-<?php if (wc_get_loop_prop( 'total' ) != 0) : ?>
-<div id="ymm-bar" class="bg-light border-bottom">
+
+<div id="ymm-bar"
+    class="bg-light border-bottom <?php if (wc_get_loop_prop( 'total' ) == 0 || is_product_tag( 'special' )) { echo 'd-none'; } ?>">
     <div class="container py-3">
         <div class="row align-items-center">
             <div class="col-12 col-lg-2">
@@ -65,7 +66,7 @@ if(isset($_COOKIE['vehicle'])) {
         </div>
     </div>
 </div>
-<?php endif; ?>
+
 <div id="product-content">
     <?php
 	/**
@@ -94,10 +95,6 @@ if ( woocommerce_product_loop() ) {
 	?>
 
     <div class="container">
-        <?php if (is_product_tag( 'specials' )) : ?>
-        <h1>Classic Body Parts Specials</h1>
-        <p>All parts in specials are heavily discounted and limited stock so make sure to check back regularly!</p>
-        <?php endif; ?>
         <div class="row">
             <div class="col-12 col-md-6 col-lg-3">
                 <?php

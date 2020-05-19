@@ -23,8 +23,8 @@ if(isset($_COOKIE['vehicle'])){
 ?>
 <div class="container py-5">
     <?php if (is_product_tag('special')) :?>
-    <h2 class="pb-1">Sorry, we don&apos;t have any items on special at the moment</h2>
-    <p class="mb-5 pb-5">Be sure to check back regularly as we update our specials often!</p>
+    <h2 class="pb-1 text-center">Sorry, we don&apos;t have any items on special at the moment</h2>
+    <p class="mb-5 pb-5 text-center">Be sure to check back regularly as we update our specials often!</p>
 
     <?php
     $args = array(
