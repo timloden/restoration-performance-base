@@ -60,8 +60,12 @@ if(isset($_COOKIE['vehicle'])) {
 								echo $vehicle;
 							}?>
                         </span></p>
+
                     <button id="clear-vehicle" class="btn btn-outline-secondary btn-sm">Clear Vehicle</button>
                 </div>
+            </div>
+            <div class="col-12">
+                <small>You can now search by category OR search by keyword for the part you&apos;re looking for</small>
             </div>
         </div>
     </div>
