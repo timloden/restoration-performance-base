@@ -127,7 +127,8 @@
                             <div class="accordion" id="mobile-nav-items">
                                 <div class="border-bottom">
 
-                                    <a class="d-block py-1 px-2" href="<?php echo site_url(); ?>/shop">Shop by
+                                    <a class="d-block py-1 px-2" href="<?php echo site_url(); ?>/shop"><i
+                                            class="las la-flag-checkered"></i> Shop by
                                         Vehicle</a>
 
                                 </div>
@@ -214,14 +215,13 @@
     </div>
     <!-- Desktop nav -->
     <div class="nav-wrapper bg-primary d-none d-lg-block border-top">
-        <div class="container py-2">
+        <div class="container">
 
-            <ul class="nav nav-pills nav-fill justify-content-between">
+            <ul class="nav nav-fill justify-content-between">
                 <li>
-                    <a class="nav-link text-white font-weight-bold px-lg-4 px-xl-5"
-                        href="<?php echo site_url(); ?>/shop">Shop
-                        by
-                        Vehicle</a>
+                    <a class="bg-dark-25 nav-link text-white font-weight-bold px-lg-4 px-xl-5"
+                        href="<?php echo site_url(); ?>/shop"><i class="las la-car" style="font-size: 20px;"></i> Shop
+                        by Vehicle</a>
                 </li>
                 <li>
                     <a class="nav-link text-white px-lg-4 px-xl-5"
