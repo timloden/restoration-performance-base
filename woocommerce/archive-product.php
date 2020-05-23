@@ -34,7 +34,7 @@ if(isset($_COOKIE['vehicle'])) {
 ?>
 
 <div id="ymm-bar"
-    class="bg-light border-bottom <?php if (wc_get_loop_prop( 'total' ) == 0 || is_product_tag( 'special' )) { echo 'd-none'; } ?>">
+    class="bg-light border-bottom border-top <?php if (wc_get_loop_prop( 'total' ) == 0 || is_product_tag( 'special' )) { echo 'd-none'; } ?>">
     <div class="container py-3">
         <div class="row align-items-center">
             <div class="col-12 col-lg-2">
@@ -49,7 +49,7 @@ if(isset($_COOKIE['vehicle'])) {
     </div>
 </div>
 
-<div id="selected-vehicle" class="bg-light border-bottom d-none mb-3 mb-lg-0">
+<div id="selected-vehicle" class="bg-light border-bottom border-top  d-none mb-3 mb-lg-0">
     <div class="container py-3">
         <div class="row align-items-center">
             <div class="col-12">

@@ -120,7 +120,7 @@
                     </div>
                 </div>
                 <!-- mobile nav -->
-                <div class="row d-lg-none border-bottom">
+                <div class="row d-lg-none">
                     <div class="col-12">
                         <div class="collapse card mb-2" id="mobile-nav">
 
@@ -131,46 +131,6 @@
                                         Vehicle</a>
 
                                 </div>
-
-                                <div class="border-bottom" id="mobile-categories-button">
-
-                                    <a class="collapsed d-block py-1 px-2" data-toggle="collapse"
-                                        data-target="#mobile-categories" aria-expanded="false"
-                                        aria-controls="collapseOne">
-                                        Categories
-                                    </a>
-
-                                </div>
-
-                                <div id="mobile-categories" class="collapse" aria-labelledby="mobile-categories-button"
-                                    data-parent="#mobile-nav-items">
-                                    <div class="border-bottom">
-                                        <ul class="header-categories list-unstyled mb-0" id="dropdown-categories-list"
-                                            aria-labelledby="dropdown-categories">
-
-                                            <?php
-                                            $args = array(
-                                                'taxonomy'           => 'product_cat',
-                                                'hide_empty'         => true,
-                                                'orderby'            => 'name',
-                                                'order'              => 'ASC',
-                                                'title_li'           => false,
-                                                'style'              => 'list',
-                                                'depth'              => 1,
-                                                'separator'              => '',
-                                                'echo'               => false,
-                                                'walker'       => new Walker_Category_Bootstrap(),
-                                            );
-                                            $categories = wp_list_categories($args);
-
-                                            if ($categories) {
-                                                printf('%s', $categories);
-                                            }
-                                            ?>
-                                        </ul>
-                                    </div>
-                                </div>
-
 
                                 <div class="border-bottom">
 
@@ -263,36 +223,6 @@
                         by
                         Vehicle</a>
                 </li>
-                <li>
-                    <div class="dropdown">
-                        <a class="nav-link dropdown-toggle text-white px-lg-4 px-xl-5" href="#" role="button"
-                            id="dropdown-categories" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">Categories</a>
-                        <ul class="dropdown-menu header-categories" id="dropdown-categories-list"
-                            aria-labelledby="dropdown-categories">
-
-                            <?php
-                                    $args = array(
-                                        'taxonomy'           => 'product_cat',
-                                        'hide_empty'         => true,
-                                        'orderby'            => 'name',
-                                        'order'              => 'ASC',
-                                        'title_li'           => false,
-                                        'style'              => 'list',
-                                        'separator'              => '',
-                                        'echo'               => false,
-                                        'walker'       => new Walker_Category_Bootstrap(),
-                                    );
-                                    $categories = wp_list_categories($args);
-
-                                    if ($categories) {
-                                        printf('%s', $categories);
-                                    }
-                                    ?>
-                        </ul>
-                    </div>
-                </li>
-
                 <li>
                     <a class="nav-link text-white px-lg-4 px-xl-5"
                         href="<?php echo site_url(); ?>/product-tag/special/">Specials</a>
