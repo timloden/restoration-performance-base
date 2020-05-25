@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-12 col-lg-6 text-center text-lg-right">
                             <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"
-                                class="border-right pr-2 mr-2">My Account</a>
+                                class="border-right pr-2 mr-2"><?php echo (is_user_logged_in() ? 'My Account' : 'Login'); ?></a>
                             <a href="<?php echo site_url(); ?>/tracking" class="border-right pr-2 mr-2">Track Order</a>
                             <a href="<?php echo site_url(); ?>/frequently-asked-questions">Help</a>
                         </div>
