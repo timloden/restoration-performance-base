@@ -52,7 +52,9 @@ defined('ABSPATH') || exit;
 
     <div class="row">
         <div class="col-12 col-lg-4">
-
+            <p>Your account login and password have been emailed to:
+                <strong><?php echo $order->get_billing_email(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></strong>
+            </p>
             <ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
 
                 <li class="woocommerce-order-overview__order order pb-2">
