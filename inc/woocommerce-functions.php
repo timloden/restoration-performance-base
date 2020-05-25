@@ -493,6 +493,64 @@ unset($items['downloads']);
 return $items;
 }
 
+// thank you google analytics
+
+function push_to_datalayer($order_id) {
+    
+    $order = wc_get_order( $order_id );
+    ?>
+<script type='text/javascript'>
+window.dataLayer = window.dataLayer || [];
+dataLayer.push({
+    'event': 'transaction',
+    'ecommerce': {
+        'purchase': {
+            'actionField': {
+                'id': '<?php echo $order->get_order_number(); ?>',
+                'affiliation': '<?php echo get_option("blogname"); ?>',
+                'revenue': '<?php echo number_format($order->get_subtotal(), 2, ".", ""); ?>',
+                'tax': '<?php echo number_format($order->get_total_tax(), 2 ,".", ""); ?>',
+                'shipping': '<?php echo number_format($order->calculate_shipping(), 2 , ".", ""); ?>',
+                <
+                ? php
+                if ($order - > get_used_coupons()): ? >
+                    'coupon' : '<?php echo implode("-", $order->get_used_coupons()); ?>' <
+                    ? php endif; ? >
+            },
+            'products': [ <
+                ? php
+                foreach($order - > get_items() as $key => $item) :
+                $product = $order - > get_product_from_item($item);
+                $variant_name = ($item['variation_id']) ? wc_get_product($item['variation_id']) : ''; ?
+                > {
+                    'name': '<?php echo $item['
+                    name ']; ?>',
+                    'id': '<?php echo $item['
+                    product_id ']; ?>',
+                    'price': '<?php echo number_format($order->get_line_subtotal($item), 2, ".", ""); ?>',
+                    'brand': '',
+                    'category': '<?php echo strip_tags($product->get_categories(',
+                    ', '
+                    ', '
+                    ')); ?>',
+                    'variant': '<?php echo ($variant_name) ? implode("-" , $variant_name->get_variation_attributes()) : '
+                    '; ?>',
+                    'quantity': < ? php echo $item['qty']; ? > ,
+                    'coupon' : ''
+                }, <
+                ? php endforeach; ? >
+            ]
+        }
+
+    }
+});
+</script>
+
+<?php
+}
+
+add_action('woocommerce_thankyou' , 'push_to_datalayer');
+
 // my account - rename orders
 
 add_filter ( 'woocommerce_account_menu_items', 'account_rename_orders' );
