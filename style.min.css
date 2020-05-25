@@ -2813,6 +2813,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,#cart-dropdown .dropdown-toggle,.h6{font-w
 .payment_method_braintree_credit_card .wc-braintree-credit-card-new-payment-method-form .form-row{padding:0 !important;margin-bottom:1rem}
 .payment_method_braintree_credit_card .wc-braintree-credit-card-new-payment-method-form .form-row .wc-braintree-hosted-field{height:calc(1.5em + 0.75rem + 2px) !important}
 .quantity{width:60px}
+#wc_braintree_paypal_container{padding-top:1em}
 .article-single .jumbotron .container{position:relative;z-index:999}
 .hero-overlay{position:absolute;top:0;height:100%;width:100%;background-color:rgba(0,0,0,0.5)}
 @media(prefers-reduced-motion:reduce){.form-control,.gform_wrapper input[type='email'],.gform_wrapper input[type='date'],.gform_wrapper input[type='datetime'],.gform_wrapper input[type='datetime-local'],.gform_wrapper input[type='month'],.gform_wrapper input[type='number'],.gform_wrapper input[type='password'],.gform_wrapper input[type='search'],.gform_wrapper input[type='tel'],.gform_wrapper input[type='text'],.gform_wrapper input[type='time'],.gform_wrapper input[type='week'],.gform_wrapper input[type='url'],.gform_wrapper select,.gform_wrapper textarea,.payment_method_braintree_credit_card .wc-braintree-credit-card-new-payment-method-form .form-row .wc-braintree-hosted-field{-webkit-transition:none;transition:none}
