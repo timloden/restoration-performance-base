@@ -85,7 +85,7 @@ add_filter('term_updated_messages', 'ymm_updated_messages');
 function vendor_init()
 {
     register_taxonomy(
-        'vendor', array( 'shop_order' ), array(
+        'vendor', array( 'product', 'shop_order' ), array(
         'hierarchical'      => false,
         'public'            => true,
         'show_in_nav_menus' => true,
