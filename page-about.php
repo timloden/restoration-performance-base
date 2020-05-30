@@ -11,6 +11,7 @@
 get_header();
 ?>
 <div class="container">
+    <?php echo dynacorn_stock_status(1000, 100); ?>
     <h1 class="py-3 mb-3 title-border"><?php the_title(); ?></h1>
     <div class="row">
         <div class="col-12 col-lg-8">
