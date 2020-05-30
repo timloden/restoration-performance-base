@@ -1,4 +1,7 @@
 <?php
+
+// Dynacorn import functions
+
 function dynacorn_pricing( $cost = null, $model = '' ) {
 
     // Ensure a cost was provided.
@@ -31,10 +34,43 @@ function dynacorn_pricing( $cost = null, $model = '' ) {
 
 function dynacorn_stock_status( $ca = null, $pa = null ) {
 
-    // $ca_stock = max($ca, 0);
-    // $pa_stock = max($pa, 0);
-
     if ($ca <= 0 && $pa <= 0) {
+        $stock = 'outofstock';
+    } else {
+        $stock = 'instock';
+    }
+
+    return $stock;
+}
+
+
+// OER import functions
+
+function oer_pricing( $cost = null ) {
+
+    // Ensure a cost was provided.
+    if ( !empty( $cost ) ) {
+		
+        // Remove unwanted characters from price.
+        $cost = preg_replace("/[^0-9,.]/", "", $cost);
+	
+		if ($cost <= 20) {
+			$calculated_price = (round($cost * 1.45)) - 0.05;
+		} elseif ($cost > 20 && $cost <= 50) {
+			$calculated_price = (round($cost * 1.35)) - 0.05;
+		} elseif ($cost > 50) {
+			$calculated_price = (round($cost * 1.25)) - 0.05;
+		}
+
+        // Return price otherwise.
+        return $calculated_price;
+
+    }
+}
+
+function oer_stock_status( $ca = null ) {
+
+    if ($ca <= 0 ) {
         $stock = 'outofstock';
     } else {
         $stock = 'instock';
