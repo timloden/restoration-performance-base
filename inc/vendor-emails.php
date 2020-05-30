@@ -43,6 +43,9 @@ function bbloomer_status_custom_notification( $order ) {
   
     // get the acf field for the email from that term
     $vendor_email = get_field( 'contact_email', 'vendor_' . $termid ); 
+    
+    // MMR01
+    $vendor_account_number = get_field( 'account_number', 'vendor_' . $termid ); 
 
     // check if we have a vendor
     if ($vendor_email != '') {
@@ -54,7 +57,7 @@ function bbloomer_status_custom_notification( $order ) {
     // load the mailer class
     $mailer = WC()->mailer();
 
-    $subject = 'Classic Body Parts Order #' . esc_html( $order->get_order_number() );
+    $subject = 'Classic Body Parts/Restoration Performance Order #' . esc_html( $order->get_order_number() );
     $content = iconic_get_processing_notification_content( $order, $subject, $mailer );
     $headers = "Content-Type: text/html\r\n";
  
