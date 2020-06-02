@@ -27,6 +27,9 @@ if (!function_exists('theme_setup')) :
     function theme_setup()
     {
 
+        // title tag
+        add_theme_support( 'title-tag' );
+
         // Add default posts and comments RSS feed links to head.
         add_theme_support('automatic-feed-links');
 
