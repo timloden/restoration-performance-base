@@ -31,8 +31,8 @@ $term_obj_list = get_the_terms( $order->get_id(), 'vendor' );
 $termid  = join(', ', wp_list_pluck($term_obj_list, 'term_id'));
 $vendor_account_number = get_field( 'account_number', 'vendor_' . $termid ); 
 ?>
-<p><strong>Classic Body Parts/Restoration Performance</strong></p>
-<p>Account #: <?php echo $vendor_account_number ?></p>
+<p style="font-size: 16px;"><strong>Classic Body Parts/Restoration Performance</strong></p>
+<p style="font-size: 16px;">Account #: <strong><?php echo $vendor_account_number ?></strong></p>
 <br />
 <hr>
 <p><strong>Please drop ship this order</strong></p>
