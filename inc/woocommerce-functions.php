@@ -84,7 +84,7 @@ function loop_product_image()
 {
     global $post, $woocommerce;
     if ( has_post_thumbnail() ) {
-        echo woocommerce_get_product_thumbnail();
+        echo '<a href="' . get_the_permalink() . '">' .  woocommerce_get_product_thumbnail() . '</a>';
     } else {
         echo '<img class="img-fluid" src="' . get_template_directory_uri() . '/assets/images/woocommerce-placeholder.png">';
     }
