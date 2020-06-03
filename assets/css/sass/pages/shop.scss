@@ -26,3 +26,30 @@
         //display: none;
     }
 }
+
+.woocommerce-pagination {
+    display: block;
+
+    ul {
+        margin: 1em 0;
+        display: flex;
+        list-style: none;
+
+        .page-numbers {
+            position: relative;
+            display: block;
+            padding: 0.5rem 0.75rem;
+            margin-left: -1px;
+            line-height: 1.25;
+            color: $primary;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            margin-right: 0;
+
+            &.current {
+                background-color: $primary;
+                color: #fff;
+            }
+        }
+    }
+}
