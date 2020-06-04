@@ -83,7 +83,7 @@
                                 aria-expanded="false" aria-controls="mobile-nav">
                                 <i class="las la-bars h4 mb-0"></i>
                             </a>
-                            <a class="d-lg-none p-1 w-50" href="<?php echo site_url(); ?>/shop">
+                            <a class="d-lg-none p-1 w-100" href="<?php echo site_url(); ?>/shop">
                                 <i class="las la-car h5 mb-0"></i> Shop
                                 by Vehicle</a>
                             </a>
