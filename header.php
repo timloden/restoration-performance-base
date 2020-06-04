@@ -26,6 +26,7 @@
     ?>
     <?php wp_head(); 
     global $woocommerce;
+    
     $logo = get_field('logo', 'option');
     ?>
 </head>
@@ -78,15 +79,15 @@
                     </div>
                     <div class="col-12 col-lg-4 text-right">
                         <div class="d-flex align-items-center justify-content-end">
-                            <a class="d-lg-none mr-3 p-1" data-toggle="collapse" href="#mobile-nav" role="button"
+                            <a class="d-lg-none p-1" data-toggle="collapse" href="#mobile-nav" role="button"
                                 aria-expanded="false" aria-controls="mobile-nav">
                                 <i class="las la-bars h4 mb-0"></i>
                             </a>
-                            <a class="d-lg-none p-1" data-toggle="collapse" href="#mobile-search" role="button"
-                                aria-expanded="false" aria-controls="mobile-search">
-                                <i class="las la-search h5 mb-0"></i>
+                            <a class="d-lg-none p-1 w-50" href="<?php echo site_url(); ?>/shop">
+                                <i class="las la-car h5 mb-0"></i> Shop
+                                by Vehicle</a>
                             </a>
-                            <div id="cart-dropdown" class="dropdown w-100">
+                            <div id="cart-dropdown" class="dropdown w-50">
                                 <a class="dropdown-toggle" role="button" id="dropdown-mini-cart" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false" href="#">
                                     <i class="las la-shopping-cart h5"></i>Cart
@@ -104,7 +105,7 @@
                     </div>
                 </div>
                 <!-- mobile search -->
-                <div class="row d-lg-none pb-3 collapse" id="mobile-search">
+                <div class="row d-lg-none pb-3" id="mobile-search">
                     <div class="col-12">
                         <form action="/" method="get" class="form">
                             <div class="input-group">
@@ -125,13 +126,6 @@
                         <div class="collapse card mb-2" id="mobile-nav">
 
                             <div class="accordion" id="mobile-nav-items">
-                                <div class="border-bottom">
-
-                                    <a class="d-block py-1 px-2" href="<?php echo site_url(); ?>/shop"><i
-                                            class="las la-flag-checkered"></i> Shop by
-                                        Vehicle</a>
-
-                                </div>
 
                                 <div class="border-bottom">
 
