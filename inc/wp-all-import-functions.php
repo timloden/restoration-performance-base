@@ -35,7 +35,7 @@ function dynacorn_pricing( $cost = null, $model = '' ) {
 function dynacorn_stock_status( $ca = null, $pa = null ) {
 
     if ($ca <= 0 && $pa <= 0) {
-        $stock = 'outofstock';
+        $stock = 'onbackorder';
     } else {
         $stock = 'instock';
     }
@@ -71,7 +71,7 @@ function oer_pricing( $cost = null ) {
 function oer_stock_status( $ca = null ) {
 
     if ($ca <= 0 ) {
-        $stock = 'outofstock';
+        $stock = 'onbackorder';
     } else {
         $stock = 'instock';
     }

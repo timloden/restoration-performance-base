@@ -33,10 +33,19 @@ global $product;
 
     <?php endif; ?>
 
-    <p class="mb-1"><strong>Stock
-            Status:</strong>
-        <?php echo ( $product->is_in_stock() === true ) ? 'In stock' : esc_html__('Soon to be in stock', 'woocommerce'); ?>
-    </p>
+    <?php 
+     $stock_status = $product->get_stock_status();
+    
+        if ( $stock_status === 'instock' ) {
+        echo '<p class="mb-1"><strong>Stock Status: </strong> In Stock</p>';
+        } elseif ( $stock_status === 'onbackorder' ) {
+            echo '<p class="mb-1"><strong>Stock Status: </strong> On Backorder</p><p class="text-primary font-weight-bold"><i class="las la-exclamation-circle"></i> Backorder items could take up to 30 days to ship</p>';
+        } else {
+            echo '<p class="mb-1"><strong>Stock Status: </strong> Out of Stock</p>';
+        }
+
+    ?>
+
 
     <?php echo wc_get_product_category_list($product->get_id(), ', ', '<p class="posted_in mb-1">' . _n('<strong>Category:</strong>', '<strong>Categories:</strong>', count($product->get_category_ids()), 'woocommerce') . ' ', '</p>'); ?>
 
