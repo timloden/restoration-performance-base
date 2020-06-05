@@ -81,19 +81,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 	do_action( 'woocommerce_after_composited_bundled_items', $product, $component_id, $composite_product );
 
-	?><div class="cart bundle_data bundle_data_<?php echo $product->get_id(); ?>" data-bundle_price_data="<?php echo esc_attr( json_encode( $bundle_price_data ) ); ?>" data-bundle_id="<?php echo $product->get_id(); ?>"><?php
+	?><div class="cart bundle_data bundle_data_<?php echo $product->get_id(); ?>"
+        data-bundle_price_data="<?php echo esc_attr( json_encode( $bundle_price_data ) ); ?>"
+        data-bundle_id="<?php echo $product->get_id(); ?>"><?php
 
 		do_action( 'woocommerce_composited_product_add_to_cart', $product, $component_id, $composite_product );
 
 		?><div class="bundle_wrap component_wrap">
-			<div class="bundle_price"></div>
-			<div class="bundle_availability"><?php
+            <div class="bundle_price"></div>
+            <div class="bundle_availability"><?php
 
 				// Availability html.
 				echo $composited_product->get_availability_html();
 
 			?></div>
-			<div class="bundle_button"><?php
+            <div class="bundle_button"><?php
 
 				wc_get_template( 'composited-product/quantity.php', array(
 					'quantity_min'      => $quantity_min,
@@ -104,6 +106,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 				), '', WC_CP()->plugin_path() . '/templates/' );
 
 			?></div>
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
