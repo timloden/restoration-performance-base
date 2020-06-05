@@ -87,6 +87,11 @@ do_action('woocommerce_before_cart');
                                         ?>
                                 </p>
                                 <span style="font-size: 12px;">SKU: <?php echo  $_product->get_sku(); ?></span>
+                                <?php if ($_product->get_stock_status() === 'onbackorder') : ?>
+                                <p style="font-size: 12px;" class="text-primary font-weight-bold"><i
+                                        class="las la-exclamation-circle"></i>
+                                    Backordered - could take up to 30 days to ship</p>
+                                <?php endif; ?>
                             </td>
 
                             <td class="product-price" data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>">
