@@ -26,7 +26,7 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 <div class="col-12 col-lg-6">
     <div class="border rounded p-2">
         <div class="woocommerce-form-coupon-toggle">
-            <?php wc_print_notice( apply_filters( 'woocommerce_checkout_coupon_message', esc_html__( 'Have a coupon?', 'woocommerce' ) . ' <a href="#" class="showcoupon">' . esc_html__( 'Click here to enter your code', 'woocommerce' ) . '</a>' ), 'notice' ); ?>
+            <p class="mb-0">Have a coupon? <a href="#" class="showcoupon">Click here to enter your code</a></p>
         </div>
 
         <form class="checkout_coupon woocommerce-form-coupon pt-2" method="post" style="display:none">

@@ -1,15 +1,3 @@
-.woocommerce-cart {
-    .woocommerce-message {
-        @extend .alert;
-        @extend .alert-secondary;
-    }
-
-    .woocommerce-info {
-        @extend .alert;
-        @extend .alert-secondary;
-    }
-}
-
 .cart {
     .product-thumbnail {
         .size-woocommerce_thumbnail {
