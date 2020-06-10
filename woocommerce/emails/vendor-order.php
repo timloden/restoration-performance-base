@@ -84,7 +84,7 @@ foreach ( $order->get_items() as $item_id => $item ) {
 
 <p>
     Thank you,<br>
-    Please send conformation to:
+    Please send confirmation to:
 </p>
 
 <p>Classic Body Parts<br>
