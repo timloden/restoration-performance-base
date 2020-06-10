@@ -181,6 +181,13 @@ do_action('woocommerce_before_cart');
                     <?php echo on_action_cart_updated(); ?>
                 </div>
             </div>
+            <div class="row pb-4">
+                <div class="col-12">
+                    <p class="mb-1"><strong>Having trouble with a coupon? Shipping seems off?</strong></p>
+                    <p>Please email us at <a href="mailto:sales@classicbodyparts.com">sales@classicbodyparts.com</a> and
+                        we will help!</p>
+                </div>
+            </div>
             <div class="row align-items-center">
                 <div class="col-6">
                     <a href="<?php echo site_url();?>/shop"><i class="las la-arrow-left"></i> Continue shopping</a>
