@@ -57,8 +57,10 @@ if ($order->get_shipping_address_2() != '') {
 echo $order->get_shipping_city() . ' ';
 echo $order->get_shipping_state() . ', ';
 echo $order->get_shipping_postcode() . '<br>';
+
 ?>
 </p>
+<p>Phone: <?php echo $order->get_billing_phone(); ?></p>
 <table>
     <tr>
         <th style="text-align:left">Qty</th>
