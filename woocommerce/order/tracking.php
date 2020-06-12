@@ -21,7 +21,7 @@ $notes = $order->get_customer_order_notes();
 ?>
 
 <p class="order-info">
-	<?php
+    <?php
 	echo wp_kses_post(
 		apply_filters(
 			'woocommerce_order_tracking_status',
@@ -38,23 +38,25 @@ $notes = $order->get_customer_order_notes();
 </p>
 
 <?php if ( $notes ) : ?>
-	<h2><?php esc_html_e( 'Order updates', 'woocommerce' ); ?></h2>
-	<ol class="commentlist notes">
-		<?php foreach ( $notes as $note ) : ?>
-		<li class="comment note">
-			<div class="comment_container">
-				<div class="comment-text">
-					<p class="meta"><?php echo date_i18n( esc_html__( 'l jS \o\f F Y, h:ia', 'woocommerce' ), strtotime( $note->comment_date ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-					<div class="description">
-						<?php echo wpautop( wptexturize( $note->comment_content ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					</div>
-					<div class="clear"></div>
-				</div>
-				<div class="clear"></div>
-			</div>
-		</li>
-		<?php endforeach; ?>
-	</ol>
+<h2><?php esc_html_e( 'Order updates', 'woocommerce' ); ?></h2>
+<ol class="commentlist notes">
+    <?php foreach ( $notes as $note ) : ?>
+    <li class="comment note">
+        <div class="comment_container">
+            <div class="comment-text">
+                <p class="meta">
+                    <?php echo date_i18n( esc_html__( 'l jS \o\f F Y, h:ia', 'woocommerce' ), strtotime( $note->comment_date ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                </p>
+                <div class="description">
+                    <?php echo wpautop( wptexturize( $note->comment_content ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </li>
+    <?php endforeach; ?>
+</ol>
 <?php endif; ?>
 
 <?php do_action( 'woocommerce_view_order', $order->get_id() ); ?>
