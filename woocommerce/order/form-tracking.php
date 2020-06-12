@@ -26,7 +26,9 @@ global $post;
 
 <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
-        <p>Please allow up to 48 hours from tracking information to update</p>
+        <div class="alert alert-primary" role="alert"><i class="las la-info-circle"></i> Please allow additional time
+            for shipping due to reduced warehouse staffing to the Covid-19.</div>
+        <p>Please allow up to 48 - 72 hours from tracking information to update</p>
         <form action="<?php echo esc_url( get_permalink( $post->ID ) ); ?>" method="post"
             class="woocommerce-form woocommerce-form-track-order track_order border rounded p-3">
 
