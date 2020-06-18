@@ -501,6 +501,8 @@ unset($items['downloads']);
 return $items;
 }
 
+// checkout - add vehicle to user profile
+
 // my account - rename orders
 
 add_filter ( 'woocommerce_account_menu_items', 'account_rename_orders' );
