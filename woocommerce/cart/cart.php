@@ -92,6 +92,15 @@ do_action('woocommerce_before_cart');
                                         class="las la-exclamation-circle"></i>
                                     Backordered - could take up to 30 days to ship</p>
                                 <?php endif; ?>
+                                <?php if ($_product->get_shipping_class() === 'ground-oversized'): ?>
+                                <p style="font-size: 12px;" class="text-primary font-weight-bold"><i
+                                        class="las la-box"></i> <a data-toggle="tooltip" data-placement="top"
+                                        title="This product does not qualify for $7.50 shipping">Oversized Ground</a>
+                                </p>
+                                <?php elseif ($_product->get_shipping_class() === 'dynacorn-freight' || $_product->get_shipping_class() === 'oer-freight'): ?>
+                                <p style="font-size: 12px;" class="text-primary font-weight-bold"><i
+                                        class="las la-shipping-fast"></i> Freight Item</p>
+                                <?php endif; ?>
                             </td>
 
                             <td class="product-price" data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>">
@@ -215,6 +224,11 @@ do_action('woocommerce_before_cart');
         </div>
     </div>
 </div>
+<script>
+jQuery(function() {
+    jQuery('[data-toggle="tooltip"]').tooltip()
+})
+</script>
 <?php
 	do_action('woocommerce_cross_sell_display');
 	?>
