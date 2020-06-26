@@ -166,13 +166,29 @@ function my_woocommerce_widget_shopping_cart_proceed_to_checkout()
 //add_action( 'woocommerce_widget_shopping_cart_buttons', 'my_woocommerce_widget_shopping_cart_button_view_cart', 10 );
 add_action('woocommerce_widget_shopping_cart_buttons', 'my_woocommerce_widget_shopping_cart_proceed_to_checkout', 20);
 
-
 // cart - check for shipping discount
 
 add_action('woocommerce_update_cart_action_cart_updated', 'on_action_cart_updated', 20, 1);
 
 function on_action_cart_updated()
 {
+    if( is_cart() || is_checkout() ) {
+
+        // HERE Set minimum cart total amount
+        $min_total = 15;
+
+        // Total (before taxes and shipping charges)
+        $total = WC()->cart->subtotal;
+
+        // Add an error notice is cart total is less than the minimum required
+        if( $total < $min_total  ) {
+            // Display an error message
+            echo '<div class="alert alert-danger mt-3" role="alert">Minimum order subtotal of
+            <strong>$15.00 required</strong>.</div>';
+            remove_action( 'woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);
+        }
+    }
+
     $has_freight = false;
 
     // check each cart item for our category
@@ -475,6 +491,21 @@ function custom_woocommerce_form_field($key, $args, $value = null)
     } else {
         echo $field;
     }
+}
+
+// checkout - redirect if cart min is not met
+
+add_action( 'template_redirect', 'redirect_to_cart_if_checkout' );
+
+function redirect_to_cart_if_checkout() {
+
+    if ( !is_checkout() ) return;
+    global $woocommerce;
+
+    if( is_checkout() && WC()->cart->subtotal < 15) {
+        wp_redirect( $woocommerce->cart->get_cart_url() ); 
+    } 
+
 }
 
 // checkout - place order button text
