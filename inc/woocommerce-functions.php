@@ -172,7 +172,7 @@ add_action('woocommerce_update_cart_action_cart_updated', 'on_action_cart_update
 
 function on_action_cart_updated()
 {
-    if( is_cart() || is_checkout() ) {
+    if( is_cart() || is_checkout() && !is_wc_endpoint_url( 'order-pay' ) ) {
 
         // HERE Set minimum cart total amount
         $min_total = 15;
@@ -502,8 +502,8 @@ function redirect_to_cart_if_checkout() {
     if ( !is_checkout() ) return;
     global $woocommerce;
 
-    if( is_checkout() && WC()->cart->subtotal < 15) {
-        wp_redirect( $woocommerce->cart->get_cart_url() ); 
+    if( is_checkout() && WC()->cart->subtotal < 15 && !is_wc_endpoint_url( 'order-pay' )) {
+        wp_redirect( $woocommerce->cart->wc_get_cart_url() ); 
     } 
 
 }
