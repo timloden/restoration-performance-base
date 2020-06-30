@@ -503,7 +503,7 @@ function redirect_to_cart_if_checkout() {
     global $woocommerce;
 
     if( is_checkout() && WC()->cart->subtotal < 15 && !is_wc_endpoint_url( 'order-pay' )) {
-        wp_redirect( $woocommerce->cart->wc_get_cart_url() ); 
+        wp_redirect( wc_get_cart_url() ); 
     } 
 
 }
