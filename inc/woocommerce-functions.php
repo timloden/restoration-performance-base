@@ -140,7 +140,7 @@ function custom_shipping_option($rates){
         unset( $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY'] );
     }     
 
-    if ( isset( $rates['flexible_shipping_1_1'] ) ) {
+    if ( isset( $rates['flexible_shipping_1_1'] ) || isset( $rates['flexible_shipping_1_4'] ) ) {
         unset( $rates['flexible_shipping_fedex:fallback'] );
     }   
 
