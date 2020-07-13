@@ -18,6 +18,50 @@ function change_woocommerce_order_number( $order_id ) {
     return $new_order_id;
 }
 
+// Order status - https://www.wpblog.com/woocommerce-custom-order-status/
+
+// register the status
+function wpblog_wc_register_post_statuses() {
+    register_post_status( 'wc-ready-shipping', array(
+    'label' => _x( 'Ready for shipping', 'WooCommerce Order status', 'text_domain' ),
+    'public' => true,
+    'exclude_from_search' => false,
+    'show_in_admin_all_list' => true,
+    'show_in_admin_status_list' => true,
+    'label_count' => _n_noop( 'Ready for shipping (%s)', 'Ready for shipping (%s)', 'text_domain' )
+    ) );
+    }
+add_filter( 'init', 'wpblog_wc_register_post_statuses' );
+
+// add status to list
+function wpblog_wc_add_order_statuses( $order_statuses ) {
+    $order_statuses['wc-ready-shipping'] = _x( 'Ready for shipping', 'WooCommerce Order status', 'text_domain' );
+    return $order_statuses;
+    }
+add_filter( 'wc_order_statuses', 'wpblog_wc_add_order_statuses' );
+
+// add custom color for status
+add_action('admin_head', 'styling_admin_order_list' );
+function styling_admin_order_list() {
+    global $pagenow, $post;
+
+    if( $pagenow != 'edit.php') return; // Exit
+    if( get_post_type($post->ID) != 'shop_order' ) return; // Exit
+
+    // HERE we set your custom status
+    $order_status = 'ready-shipping'; // <==== HERE
+    ?>
+<style>
+.order-status.status-<?php echo sanitize_title($order_status);
+
+?> {
+    background: #d7f8a7;
+    color: #0c942b;
+}
+</style>
+<?php
+}
+
  // header - cart item count update
 
  add_filter( 'woocommerce_add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
