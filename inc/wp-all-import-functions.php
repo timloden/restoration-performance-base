@@ -11,15 +11,15 @@ function dynacorn_pricing( $cost = null, $model = '' ) {
         $cost = preg_replace("/[^0-9,.]/", "", $cost);
 	
 		if ($cost <= 15) {
-			$calculated_price = (round($cost * 1.5)) - 0.05;
+			$calculated_price = (round($cost * 1.53)) - 0.05;
 		} elseif ($cost > 15 && $cost <= 70) {
-			$calculated_price = (round($cost * 1.4)) - 0.05;
+			$calculated_price = (round($cost * 1.43)) - 0.05;
 		} elseif ($cost > 70 && $cost <= 175) {
-			$calculated_price = (round($cost * 1.3)) - 0.05;
+			$calculated_price = (round($cost * 1.33)) - 0.05;
 		} elseif ($cost > 175 && $cost <= 800) {
-			$calculated_price = (round($cost * 1.25)) - 0.05;
+			$calculated_price = (round($cost * 1.28)) - 0.05;
 		} elseif ($cost > 800) {
-			$calculated_price = (round($cost * 1.22)) - 0.05;
+			$calculated_price = (round($cost * 1.25)) - 0.05;
 		}
 		
 		if ( $model == 'MUSTANG' ) {
