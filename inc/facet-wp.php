@@ -15,6 +15,16 @@ add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
     return $is_main_query;
 }, 10, 2 );
 
+
+// product bundles
+
+add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
+    if ( 'product' == $query->get( 'post_type' ) && 'product_query' != $query->get( 'wc_query' ) ) {
+        $is_main_query = false;
+    }
+    return $is_main_query;
+}, 10, 2 );
+
 // add bootstrap class to selects
 
 add_filter(
