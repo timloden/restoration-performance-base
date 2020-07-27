@@ -32,8 +32,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 <p>Hi this is Jon, In Customer Service here at Classic Body Parts.</p>
 <p><?php printf( esc_html__( 'Thank you for your order! Your order number is %s.', 'woocommerce' ), esc_html( $order->get_order_number() ) ); ?>
 </p>
-<p>Most items ship out within one to two business days. We will email you with tracking information once your order is
-    on its way. </p>
+<p>We will email you with tracking information once your order is on its way. </p>
 <p>If you have any questions about your shipping times you can go to <a
         href="<?php echo site_url(); ?>/tracking">www.classicbodyparts.com/tracking</a></p>
 <p>It's totally fine to get excited now! We love buying car parts too!</p>
