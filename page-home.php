@@ -59,12 +59,14 @@ get_header();
 <div id="choose-your-vehicle" class="bg-light border-bottom">
     <div class="container py-3">
         <div class="row align-items-center">
-            <div class="col-12 col-lg-2">
-                <p class="mb-0 text-primary font-weight-bolder">Choose your vehicle:</p>
-            </div>
-            <div class="col-12 col-lg-10">
+            <!-- <div class="col-12 col-lg-2">
+                <p class="mb-0 text-primary font-weight-bolder">Start here:</p>
+            </div> -->
+            <div class="col-12">
                 <div class="home-ymm">
-                    <?php echo facetwp_display('facet', 'year_make_model'); ?>
+                    <?php //echo facetwp_display('facet', 'year_make_model'); ?>
+                    <p class="mb-0 text-center"><a class="btn-lg btn btn-primary"
+                            href="<?php echo site_url(); ?>/shop#ymm-bar">Choose your Vehicle</a></p>
                 </div>
             </div>
         </div>
