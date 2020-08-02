@@ -73,7 +73,7 @@ get_header();
             $args = array(
                 'post_type' => 'product',
                 'posts_per_page' => 12,
-            
+                'facetwp' => true,
                 );
             $loop = new WP_Query( $args );
             

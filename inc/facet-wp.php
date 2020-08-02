@@ -1,29 +1,44 @@
 <?php
 
 add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
-    // if ( 'product_query' != $query->get( 'wc_query') ) {
-    //     $is_main_query = false;
-    // }
+    
+    //echo FWP()->helper->get_uri();
+    
+    $front_page_id = get_option( 'page_on_front' );
 
+   
+
+    // echo '<pre>';
+    // print_r($query);
+    // echo '</pre>';
+
+    // dont show on specials page
     if ('product-tag/special' == FWP()->helper->get_uri()) {
         $is_main_query = false;
     }
 
-
-    //echo FWP()->helper->get_uri();
-   
-    return $is_main_query;
-}, 10, 2 );
-
-
-// product bundles
-
-add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
-    if ( 'product' == $query->get( 'post_type' ) && 'product_query' != $query->get( 'wc_query' ) ) {
+    // product bundles fix
+    if ( 'product' == $query->get( 'post_type' ) && 'product_query' != $query->get( 'wc_query' )) {
         $is_main_query = false;
     }
+
+    // if ($front_page_id == $query->get( 'page_id' )) {
+    //     $query->set( 'facetwp', true );
+    // }
+
+    // if (is_front_page()) {
+    //     $is_main_query = true;
+    // }
+
     return $is_main_query;
 }, 10, 2 );
+
+// add_filter( 'pre_get_posts', function( $query ) {
+//     if ( $query->is_front_page() && $query->is_main_query() ) {
+//         $query->set( 'facetwp', true );
+//     }
+// }, 9 );
+
 
 // add bootstrap class to selects
 
