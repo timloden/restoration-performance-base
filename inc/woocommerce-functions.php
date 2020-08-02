@@ -111,7 +111,7 @@ function loop_product_title()
 function get_brand_name($product_id) {
     $brand = wp_get_object_terms( $product_id, 'pwb-brand' );
     if($brand) {
-        echo 'Brand: ' . $brand[0]->name;
+        echo $brand[0]->name;
     }
 }
 
