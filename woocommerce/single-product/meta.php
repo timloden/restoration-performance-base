@@ -20,8 +20,15 @@ if (! defined('ABSPATH') ) {
 }
 
 global $product;
+$brand_name = get_brand_name($product->get_id());
 ?>
 <div class="product_meta">
+
+    <?php if ($brand_name == 'Dynacorn'): ?>
+    <div class="alert alert-info">
+        <i class="las la-exclamation-circle"></i> Dynacorn parts can take up to an extra 7-10 business days to ship
+    </div>
+    <?php endif; ?>
 
     <?php do_action('woocommerce_product_meta_start'); ?>
 
@@ -57,7 +64,7 @@ global $product;
         echo '<p class="mb-1"><i class="las la-shipping-fast"></i> Freight Item</p>';
     }
     ?>
-    <p class="mb-1"><strong>Brand:</strong> <?php echo get_brand_name($product->get_id()); ?></p>
+    <p class="mb-1"><strong>Brand:</strong> <?php echo $brand_name; ?></p>
 
     <?php if( have_rows('vehicle_fitment') ): ?>
     <p class="mb-1"><strong>Fitment:</strong></p>
