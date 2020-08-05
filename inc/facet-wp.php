@@ -6,12 +6,6 @@ add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
     
     $front_page_id = get_option( 'page_on_front' );
 
-   
-
-    // echo '<pre>';
-    // print_r($query);
-    // echo '</pre>';
-
     // dont show on specials page
     if ('product-tag/special' == FWP()->helper->get_uri()) {
         $is_main_query = false;
@@ -22,23 +16,17 @@ add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
         $is_main_query = false;
     }
 
-    // if ($front_page_id == $query->get( 'page_id' )) {
-    //     $query->set( 'facetwp', true );
-    // }
-
-    // if (is_front_page()) {
-    //     $is_main_query = true;
-    // }
-
     return $is_main_query;
 }, 10, 2 );
 
-// add_filter( 'pre_get_posts', function( $query ) {
-//     if ( $query->is_front_page() && $query->is_main_query() ) {
-//         $query->set( 'facetwp', true );
-//     }
-// }, 9 );
+// universal products
 
+// add_filter( 'facetwp_facet_render_args', function( $args ) {
+//     if ( 'year_make_model' == $args['facet']['name'] ) {
+//         $args['selected_values'] = array( 'universal' );
+//     }
+//     return $args;
+// });
 
 // add bootstrap class to selects
 

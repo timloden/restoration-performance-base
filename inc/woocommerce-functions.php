@@ -46,7 +46,7 @@ function styling_admin_order_list() {
     global $pagenow, $post;
 
     if( $pagenow != 'edit.php') return; // Exit
-    if( get_post_type($post->ID) != 'shop_order' ) return; // Exit
+    //if( get_post_type($post->ID) != 'shop_order' ) return; // Exit
 
     // HERE we set your custom status
     $order_status = 'ready-shipping'; // <==== HERE

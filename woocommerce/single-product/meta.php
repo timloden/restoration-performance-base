@@ -21,12 +21,13 @@ if (! defined('ABSPATH') ) {
 
 global $product;
 $brand_name = get_brand_name($product->get_id());
+$dynacorn_message = get_field('dynacorn_shipping_notice', 'option');
 ?>
 <div class="product_meta">
 
-    <?php if ($brand_name == 'Dynacorn'): ?>
+    <?php if ($brand_name == 'Dynacorn' && $dynacorn_message): ?>
     <div class="alert alert-info">
-        <i class="las la-exclamation-circle"></i> Dynacorn parts can take up to an extra 7-10 business days to ship
+        <i class="las la-exclamation-circle"></i> <?php echo $dynacorn_message; ?>
     </div>
     <?php endif; ?>
 
