@@ -21,12 +21,28 @@ add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
 
 // universal products
 
-// add_filter( 'facetwp_facet_render_args', function( $args ) {
-//     if ( 'year_make_model' == $args['facet']['name'] ) {
-//         $args['selected_values'] = array( 'universal' );
-//     }
-//     return $args;
-// });
+add_filter( 'facetwp_filtered_post_ids', function( $post_ids, $class ) {
+    
+    // get products from the universal category
+    $universal_args = array(
+        'fields' => 'ids',
+        'facetwp' => false,
+        'post_type' => 'product',
+        'post_status' => 'publish',
+        'posts_per_page' => -1,
+        'product_cat' => 'universal',
+    );
+
+    $universal_query = new WP_Query( $universal_args );
+    $universal_ids = $universal_query->posts;
+
+    // if facet selected add universal products to results
+    if ( isset( FWP()->facet->facets['year_make_model'] ) ) {
+        $post_ids = array_merge( $post_ids, $universal_ids );
+    }
+
+    return $post_ids;
+}, 15, 2 );
 
 // add bootstrap class to selects
 
