@@ -53,9 +53,8 @@ $shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
         <!-- are we commercial freight?     -->
         <?php if ($shipping_method === 'flexible_shipping_1_1') : ?>
         <div class="d-block">
-            <small class="pb-3 d-block"><a href="<?php echo site_url(); ?>/shipping">Address must be a commerical
-                    business, see shipping info for more
-                    details</a></small>
+            <p class="pb-3 pt-2 d-block"><strong>Address must be a commercial business</strong><br>
+                <a target="_blank" href="<?php echo site_url(); ?>/shipping">See shipping info for more details</a></p>
         </div>
         <?php endif; ?>
 
