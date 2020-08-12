@@ -30,7 +30,14 @@ add_filter( 'facetwp_filtered_post_ids', function( $post_ids, $class ) {
         'post_type' => 'product',
         'post_status' => 'publish',
         'posts_per_page' => -1,
-        'product_cat' => 'universal',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'ymm',
+                'field' => 'slug',
+                'terms' => array( 'universal' )
+    
+            ),
+        ),
     );
 
     $universal_query = new WP_Query( $universal_args );
