@@ -23,7 +23,7 @@ add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
 
 add_filter( 'facetwp_filtered_post_ids', function( $post_ids, $class ) {
     
-    // get products from the universal category
+    // get products from the universal ymm taxonomy
     $universal_args = array(
         'fields' => 'ids',
         'facetwp' => false,
