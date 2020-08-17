@@ -178,24 +178,26 @@ remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 
 add_filter('woocommerce_package_rates', 'custom_shipping_option', 20, 2 );
 
-function custom_shipping_option($rates){
+if (!function_exists('custom_shipping_option')) {
+    function custom_shipping_option($rates){
 
-    // unset rates if $4.50 shipping is available
+        // unset rates if $4.50 shipping is available
 
-    if ( isset( $rates['flexible_shipping_1_2'] ) ) {
-        unset( $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY'] );
-    }  
+        if ( isset( $rates['flexible_shipping_1_2'] ) ) {
+            unset( $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY'] );
+        }  
+        
+        // if freight or heavy-freight, remove fedex fallback
+
+        if ( isset( $rates['flexible_shipping_1_1'] ) || isset( $rates['flexible_shipping_1_4'] ) ) {
+            unset( $rates['flexible_shipping_fedex:fallback'] );
+        }   
+
+        
+
+        return $rates;
     
-    // if freight or heavy-freight, remove fedex fallback
-
-    if ( isset( $rates['flexible_shipping_1_1'] ) || isset( $rates['flexible_shipping_1_4'] ) ) {
-        unset( $rates['flexible_shipping_fedex:fallback'] );
-    }   
-
-    
-
-    return $rates;
- 
+    }
 }
 
 // cart - mini cart button classes
