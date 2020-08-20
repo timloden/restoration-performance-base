@@ -51,7 +51,14 @@ console.log('custom js');
       } // remove loader
 
 
-      $('.facetwp-template .is-loading').remove();
+      $('.facetwp-template .is-loading').remove(); // check if have a facet cookie
+
+      var facetdata = readCookie('facetdata'); // if on a search page, have facets but are missing facet in the url, add it
+
+      if (window.location.href.indexOf('s=') && facetdata && !facets) {
+        facetdata = facetdata.replace('?', '&');
+        window.location.search = window.location.search + facetdata;
+      }
     });
     /*
     When FacetWP first initializes, look for the "facetdata" cookie

@@ -66,6 +66,15 @@
 
             // remove loader
             $('.facetwp-template .is-loading').remove();
+
+            // check if have a facet cookie
+            var facetdata = readCookie('facetdata');
+
+            // if on a search page, have facets but are missing facet in the url, add it
+            if (window.location.href.indexOf('s=') && facetdata && !facets) {
+                facetdata = facetdata.replace('?', '&');
+                window.location.search = window.location.search + facetdata;
+            }
         });
 
         /*
@@ -78,6 +87,7 @@
             $('.facetwp-template').prepend(
                 '<div class="is-loading position-absolute w-100 h-100"> <div class="d-flex w-100 h-100 justify-content-center align-items-center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div></div>'
             );
+
             if (!FWP.loaded) {
                 var facets = FWP_HTTP.get._year_make_model;
                 var facetdata = readCookie('facetdata');
