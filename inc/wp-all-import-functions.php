@@ -60,7 +60,7 @@ function oer_pricing( $cost = null ) {
 			$calculated_price = (round($cost * 1.35)) - 0.05;
 		} elseif ($cost > 50 && $cost <= 150) {
             $calculated_price = (round($cost * 1.30)) - 0.05;
-        } elseif ($cost > 50) {
+        } elseif ($cost > 150) {
 			$calculated_price = (round($cost * 1.25)) - 0.05;
 		}
 
