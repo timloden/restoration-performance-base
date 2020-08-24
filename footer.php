@@ -9,7 +9,7 @@
  *
  * @package underscores
  */
-
+$newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option'); 
 ?>
 
 </div><!-- #content -->
@@ -80,10 +80,13 @@
                 <p mb-0>Classic Body Parts is a reseller and dealer of replacement restoration parts relating to the
                     Licensed
                     trademark Chevy, Chevrolet, Ford and Mopar.</p>
-                <p class="mb-2 font-weight-bold">Get all the latest product updates, specials and coupons!</p>
-
                 <div class="mb-3">
-                    <?php gravity_form( 2, false, false, false, '', true, 12 ); ?>
+                    <?php 
+                    if ($newsletter_form_id) {
+                        echo '<p class="mb-2 font-weight-bold">Get all the latest product updates, specials and coupons!</p>';
+                        gravity_form( $newsletter_form_id, false, false, false, '', true, 12 );
+                    }
+                     ?>
                 </div>
 
             </div>
