@@ -95,3 +95,57 @@ function get_oer_product_by_sku( $sku = '' ) {
 
     return null;
 }
+
+
+// RPUI import functions
+
+function get_rpui_product_by_sku( $sku = '', $brand ) {
+    // Append brand to SKU
+    
+    if ($brand == 'Trim Parts') {
+        $sku .= "-TP";
+    } else if ($brand == 'PUI') {
+        $sku .= "-PUI";
+    } else if ($brand == 'TRSD') {
+        $sku .= "-RSD";
+    } else if ($brand == 'Soffseal') {
+        $sku .= "-SS";
+    }
+
+    $product_id = wc_get_product_id_by_sku($sku);
+
+    // If a match was found return its ID.
+    if ( $product_id ) return $product_id;
+
+    return null;
+}
+
+// Goodmark import functions
+
+function goodmark_pricing( $cost = null ) {
+
+    // Ensure a cost was provided.
+    if ( !empty( $cost ) ) {
+		
+        // Remove unwanted characters from price.
+        $cost = preg_replace("/[^0-9,.]/", "", $cost);
+	
+		if ($cost <= 20) {
+			$calculated_price = (round($cost * 1.6)) - 0.05;
+		} elseif ($cost > 20 && $cost <= 60) {
+			$calculated_price = (round($cost * 1.55)) - 0.05;
+		} elseif ($cost > 60 && $cost <= 130) {
+			$calculated_price = (round($cost * 1.45)) - 0.05;
+		} elseif ($cost > 130 && $cost <= 200) {
+			$calculated_price = (round($cost * 1.4)) - 0.05;
+		} elseif ($cost > 200 && $cost <= 600) {
+			$calculated_price = (round($cost * 1.35)) - 0.05;
+		} elseif ($cost > 600) {
+			$calculated_price = (round($cost * 1.3)) - 0.05;
+		}
+		
+        // Return price otherwise.
+        return $calculated_price;
+
+    }
+}
