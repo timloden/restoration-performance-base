@@ -2741,6 +2741,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,#cart-dropdown .dropdown-toggle,.h6{font-w
 .facetwp-facet-pagination .facetwp-pager .facetwp-page{position:relative;display:block;padding:.5rem .75rem;margin-left:-1px;line-height:1.25;color:#005ca9;background-color:#fff;border:1px solid #dee2e6;margin-right:0}
 .facetwp-facet-pagination .facetwp-pager .facetwp-page.active{background-color:#005ca9;color:#fff}
 .custom-html-widget .facetwp-facet-year_make_model .facetwp-hierarchy_select{height:calc(1.5em + .75rem + 2px)}
+.searchwp-revised-search-notice{display:block;width:100%}
 .gform_wrapper form{margin-bottom:0}
 .gform_wrapper .gfield_required{padding-left:1px;color:#dc3545}
 .validation_message{display:none}
