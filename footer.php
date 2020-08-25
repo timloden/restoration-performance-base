@@ -7,7 +7,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package underscores
+ * @package restoration-performance-base
  */
 $newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option'); 
 ?>
