@@ -95,17 +95,11 @@ console.log('custom js');
 
       if (FWP.facets.year_make_model) {
         if (FWP.facets.year_make_model.length === 3) {
-          //$('#filter-categories').removeClass('d-none');
-          //$('#reset-all-filters').removeClass('d-none');
-          //$('#clear-vehicle').removeClass('d-none');
           $('#selected-vehicle').removeClass('d-none');
           $('#ymm-bar').addClass('d-none');
         }
       }
-    }); // $('#reset-all-filters').on('click', function () {
-    //     FWP.reset();
-    //     clearVehicle();
-    // });
+    }); // shown in YMM bar
 
     $('#clear-vehicle').on('click', function () {
       clearVehicle();

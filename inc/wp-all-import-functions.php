@@ -120,6 +120,23 @@ function get_rpui_product_by_sku( $sku = '', $brand ) {
     return null;
 }
 
+function pui_pricing( $cost = null ) {
+
+    // Ensure a cost was provided.
+    if ( !empty( $cost ) ) {
+		
+        // Remove unwanted characters from price.
+        $cost = preg_replace("/[^0-9,.]/", "", $cost);
+	
+		$calculated_price = (round($cost * 1.4)) - 0.05;
+
+        // Return price otherwise.
+        return $calculated_price;
+
+    }
+}
+
+
 // Goodmark import functions
 
 function goodmark_pricing( $cost = null ) {
