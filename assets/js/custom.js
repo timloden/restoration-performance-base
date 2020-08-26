@@ -108,12 +108,13 @@ console.log('custom js');
     // });
 
     $('#clear-vehicle').on('click', function () {
-      FWP.reset();
       clearVehicle();
-    });
+      FWP.reset('year_make_model');
+    }); // shown on search page
+
     $('#remove-vehicle').on('click', function () {
-      FWP.reset();
       clearVehicle();
+      $('#ymm-bar').addClass('d-none');
       $(this).html('<i class="las la-check"></i> Cleared!');
     });
     /*
