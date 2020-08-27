@@ -1,5 +1,9 @@
 <?php
 
+// exclude products without images
+
+add_filter( 'woocommerce_gpf_hide_if_no_images_google', '__return_true' );
+
 // change weight to use lbs
 
 add_filter( 'woocommerce_gpf_shipping_weight_unit', function ( $unit ) {
