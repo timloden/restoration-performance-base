@@ -17,9 +17,9 @@ function dynacorn_pricing( $cost = null, $model = '' ) {
 		} elseif ($cost > 70 && $cost <= 175) {
 			$calculated_price = (round($cost * 1.33)) - 0.05;
 		} elseif ($cost > 175 && $cost <= 800) {
-			$calculated_price = (round($cost * 1.28)) - 0.05;
-		} elseif ($cost > 800) {
 			$calculated_price = (round($cost * 1.25)) - 0.05;
+		} elseif ($cost > 800) {
+			$calculated_price = (round($cost * 1.22)) - 0.05;
 		}
 		
 		if ( $model == 'MUSTANG' ) {
