@@ -148,17 +148,17 @@ function goodmark_pricing( $cost = null ) {
         $cost = preg_replace("/[^0-9,.]/", "", $cost);
 	
 		if ($cost <= 20) {
-			$calculated_price = (round($cost * 1.6)) - 0.05;
+			$calculated_price = (round($cost * 1.57)) - 0.05;
 		} elseif ($cost > 20 && $cost <= 60) {
-			$calculated_price = (round($cost * 1.55)) - 0.05;
+			$calculated_price = (round($cost * 1.52)) - 0.05;
 		} elseif ($cost > 60 && $cost <= 130) {
-			$calculated_price = (round($cost * 1.45)) - 0.05;
+			$calculated_price = (round($cost * 1.42)) - 0.05;
 		} elseif ($cost > 130 && $cost <= 200) {
-			$calculated_price = (round($cost * 1.4)) - 0.05;
+			$calculated_price = (round($cost * 1.37)) - 0.05;
 		} elseif ($cost > 200 && $cost <= 600) {
-			$calculated_price = (round($cost * 1.35)) - 0.05;
+			$calculated_price = (round($cost * 1.32)) - 0.05;
 		} elseif ($cost > 600) {
-			$calculated_price = (round($cost * 1.3)) - 0.05;
+			$calculated_price = (round($cost * 1.27)) - 0.05;
 		}
 		
         // Return price otherwise.
