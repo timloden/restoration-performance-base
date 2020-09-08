@@ -170,6 +170,12 @@ function remove_product_tabs( $tabs ) {
     return $tabs;
 }
 
+// cart custom image size
+
+if ( function_exists( 'add_image_size' ) ) {
+    add_image_size( 'custom-thumb', 100, 100 ); // 100 wide and 100 high
+}
+
 // cart - remove suggestions from cart collateral
 
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
