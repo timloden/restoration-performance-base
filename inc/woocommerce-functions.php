@@ -193,9 +193,9 @@ if (!function_exists('custom_shipping_option')) {
             unset( $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY'] );
         }  
         
-        // if freight or heavy-freight, remove fedex fallback
+        // if freight, heavy-freight or free shipping, remove fedex fallback
 
-        if ( isset( $rates['flexible_shipping_1_1'] ) || isset( $rates['flexible_shipping_1_4'] ) ) {
+        if ( isset( $rates['flexible_shipping_1_1'] ) || isset( $rates['flexible_shipping_1_4'] ) || isset( $rates['flexible_shipping_1_5'] ) ) {
             unset( $rates['flexible_shipping_fedex:fallback'] );
         }   
 
