@@ -187,9 +187,9 @@ add_filter('woocommerce_package_rates', 'custom_shipping_option', 20, 2 );
 if (!function_exists('custom_shipping_option')) {
     function custom_shipping_option($rates){
 
-        // unset rates if $4.50 shipping is available
+        // unset rates if $4.50 shipping is available or free shipping
 
-        if ( isset( $rates['flexible_shipping_1_2'] ) ) {
+        if ( isset( $rates['flexible_shipping_1_2'] ) || isset( $rates['flexible_shipping_1_5']) ) {
             unset( $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY'] );
         }  
         
