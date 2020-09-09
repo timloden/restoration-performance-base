@@ -42,7 +42,7 @@
                         <div class="col-lg-6 d-none d-lg-block">
                             <span class="border-right mr-2 pr-2"><strong>Orders over $150 ship for
                                     $7.50!</strong></span>
-                            <span>Freight shipping starting at $129</span>
+                            <span>Freight shipping starting at $135</span>
                         </div>
                         <div class="col-12 col-lg-6 text-center text-lg-right">
                             <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"
