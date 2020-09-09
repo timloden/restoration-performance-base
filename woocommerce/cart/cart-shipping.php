@@ -31,7 +31,7 @@ $shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
     <th><?php echo wp_kses_post($package_name); ?></th>
     <td data-title="<?php echo esc_attr($package_name); ?>">
         <?php if ($available_methods) : ?>
-        <ul id="shipping_method" class="woocommerce-shipping-methods list-unstyled mb-2">
+        <ul id="shipping_method" class="woocommerce-shipping-methods list-unstyled">
             <?php foreach ($available_methods as $method) : ?>
             <li class="mb-1">
                 <div class="form-check">
@@ -52,9 +52,11 @@ $shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
 
         <!-- are we commercial freight?     -->
         <?php if ($shipping_method === 'flexible_shipping_1_1') : ?>
-        <div class="d-block">
-            <p class="pb-3 pt-2 d-block"><strong>Address must be a commercial business</strong><br>
-                <a target="_blank" href="<?php echo site_url(); ?>/shipping">See shipping info for more details</a></p>
+        <div class="d-block mb-3 p-2 border" style="background-color: #f6f6f6;">
+            <p class="d-block mb-1"><strong>Must ship to a commercial business</strong></p>
+            <a target="_blank" href="<?php echo site_url(); ?>/shipping" data-toggle="modal"
+                data-target="#exampleModal">Need to ship to residential?</a>
+
         </div>
         <?php endif; ?>
 
@@ -63,7 +65,7 @@ $shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
             <?php
 					if ($formatted_destination) {
 						// Translators: $s shipping destination.
-						printf(esc_html__('Shipping to %s.', 'woocommerce') . ' ', '<strong>' . esc_html($formatted_destination) . '</strong>');
+						printf(esc_html__('Shipping to %s.', 'woocommerce') . ' ', '<strong><br>' . esc_html($formatted_destination) . '</strong>');
 						$calculator_text = esc_html__('Change address', 'woocommerce');
 					} else {
 						echo wp_kses_post(apply_filters('woocommerce_shipping_estimate_html', __('Shipping options will be updated during checkout.', 'woocommerce')));
