@@ -706,3 +706,18 @@ function woocommerce_related_products_args($args)
     return $args;
 }
 add_filter('woocommerce_output_related_products_args', 'woocommerce_related_products_args');
+
+// order detail 
+
+add_action( 'woocommerce_admin_order_data_after_shipping_address', 'order_address_classification' );
+
+function order_address_classification( $order ){
+
+    $classification = get_post_meta( $order->get_id(), '_wc_address_validation_classification', true );
+
+    if ( $classification ) {
+        echo '<div class="address-classification">Address Type: <strong>' . $classification . '</strong></div>';
+    }
+    
+
+}
