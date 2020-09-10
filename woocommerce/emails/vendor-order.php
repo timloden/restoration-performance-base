@@ -37,9 +37,6 @@ $vendor_account_number = get_field( 'account_number', 'vendor_' . $termid );
 <hr>
 <p><strong>Please drop ship this order</strong></p>
 <p>PO Number: <?php echo esc_html( $order->get_order_number() ); ?></p>
-
-<p><strong>FOR RESIDENTIAL FREIGHT ORDERS PLEASE REQUEST NO LIFTGATE</strong></p>
-
 <p>Ship to address:</p>
 <p>
     <?php 
