@@ -236,14 +236,22 @@ do_action('woocommerce_before_cart');
                 </button>
             </div>
             <div class="modal-body">
-                <p>If you would like to ship your freight order to a residential address, please email us at <a
-                        href="mailto:sales@classicbodyparts.com">sales@classicbodyparts.com</a> or call us at
-                    916-993-5539 and a sales associate will get you an accurate shipping quote.</p>
-                <p class="mb-0">See our <a target="_blank" href="<?php echo site_url(); ?>/shipping" data-toggle="modal"
-                        data-target="#exampleModal">shipping policies</a> for more information.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <p>Please fill out the form below and a sales associate will get you an accurate residential shipping
+                    quote for the items in your cart.</p>
+                <?php
+                        $items = WC()->cart->get_cart();
+                        $cart_contents = '';
+
+                        foreach($items as $item => $values) { 
+                            $_product =  wc_get_product( $values['data']->get_id()); 
+                            $sku = get_post_meta($values['product_id'] , '_sku', true);
+                            $cart_contact_item = $_product->get_title() . ' (' . $sku . ')' . ' x '.$values['quantity'] . '\n'; 
+                            $cart_contents .= $cart_contact_item;
+                        } 
+                        $shortcode = '[gravityform id="3" title="false" description="false" ajax="true" field_values="residential_request_cart=' . $cart_contents . '"]';
+                        echo do_shortcode($shortcode);
+                ?>
+
             </div>
         </div>
     </div>
