@@ -19,6 +19,12 @@
     }
 }
 
+.woocommerce-cart-form {
+    .wc_coupon_message_wrap {
+        display: none;
+    }
+}
+
 // mini cart
 
 .woocommerce-mini-cart {

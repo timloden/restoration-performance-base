@@ -27,9 +27,12 @@ $calculator_text          = '';
 
 $shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
 ?>
+<tr>
+    <th colspan="2"><?php echo wp_kses_post($package_name); ?></th>
+</tr>
 <tr class="woocommerce-shipping-totals shipping">
-    <th><?php echo wp_kses_post($package_name); ?></th>
-    <td data-title="<?php echo esc_attr($package_name); ?>">
+
+    <td style="border-top: none;" colspan="2" data-title="<?php echo esc_attr($package_name); ?>">
         <?php if ($available_methods) : ?>
         <ul id="shipping_method" class="woocommerce-shipping-methods list-unstyled">
             <?php foreach ($available_methods as $method) : ?>
@@ -50,15 +53,7 @@ $shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
             <?php endforeach; ?>
         </ul>
 
-        <!-- are we commercial freight?     -->
-        <?php if ($shipping_method === 'flexible_shipping_1_1') : ?>
-        <div class="d-block mb-3 p-2 border" style="background-color: #f6f6f6;">
-            <p class="d-block mb-1"><strong>Must ship to a commercial business</strong></p>
-            <a target="_blank" href="<?php echo site_url(); ?>/shipping" data-toggle="modal"
-                data-target="#exampleModal">Need to ship to residential?</a>
 
-        </div>
-        <?php endif; ?>
 
         <?php if (is_cart()) : ?>
         <p class="woocommerce-shipping-destination">
@@ -97,3 +92,14 @@ $shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
         <?php endif; ?>
     </td>
 </tr>
+<!-- are we commercial freight?     -->
+<?php if ($shipping_method === 'flexible_shipping_1_1') : ?>
+<tr>
+    <td class="p-0" colspan="2">
+        <div class="d-block p-2" style="background-color: #f6f6f6;">
+            <p class="d-block mb-1 text-center"><strong><i class="las la-exclamation-circle"></i> Must ship to a
+                    commercial business</strong></p>
+        </div>
+    </td>
+</tr>
+<?php endif; ?>
