@@ -3,6 +3,15 @@
         @extend .alert;
         @extend .alert-danger;
     }
+
+    .mailchimp-newsletter {
+        align-items: center;
+
+        label {
+            margin-bottom: 0;
+            margin-left: 0.5em;
+        }
+    }
 }
 
 .quantity {
