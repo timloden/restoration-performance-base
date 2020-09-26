@@ -2820,7 +2820,19 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,#cart-dropdown .dropdown-toggle,.h6{font-w
 .woocommerce-checkout .mailchimp-newsletter{-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .woocommerce-checkout .mailchimp-newsletter label{margin-bottom:0;margin-left:.5em}
 .quantity{width:60px}
+.checkout-cart{background:#fafafa}
+.woocommerce-form-login{display:block !important}
+.wc_coupon_message_wrap{display:none}
 #wc_braintree_paypal_container{padding-top:1em}
+.payment_method_braintree_credit_card .wc-braintree-credit-card-new-payment-method-form{background-color:#fafafa}
+ul.payment_methods li div.sv-wc-payment-gateway-card-icons{margin-left:0 !important}
+#billing_country_field,#shipping_country_field{display:none}
+#billing_first_name_field,#shipping_first_name_field,#billing_email_field{width:47.5%;display:inline-block;margin-right:5%}
+#billing_last_name_field,#shipping_last_name_field,#billing_em_ver_field{width:47.5%;display:inline-block}
+#billing_city_field,#shipping_city_field{width:30%;display:inline-block}
+#billing_state_field,#shipping_state_field{width:30%;display:inline-block;margin-right:5%;margin-left:5%}
+#billing_postcode_field,#shipping_postcode_field{width:30%;display:inline-block}
+#billing_phone_field{display:inline-block}
 .article-single .jumbotron .container{position:relative;z-index:999}
 .hero-overlay{position:absolute;top:0;height:100%;width:100%;background-color:rgba(0,0,0,0.5)}
 @media(prefers-reduced-motion:reduce){.form-control,.gform_wrapper input[type='email'],.gform_wrapper input[type='date'],.gform_wrapper input[type='datetime'],.gform_wrapper input[type='datetime-local'],.gform_wrapper input[type='month'],.gform_wrapper input[type='number'],.gform_wrapper input[type='password'],.gform_wrapper input[type='search'],.gform_wrapper input[type='tel'],.gform_wrapper input[type='text'],.gform_wrapper input[type='time'],.gform_wrapper input[type='week'],.gform_wrapper input[type='url'],.gform_wrapper select,.gform_wrapper textarea,.payment_method_braintree_credit_card .wc-braintree-credit-card-new-payment-method-form .form-row .wc-braintree-hosted-field{-webkit-transition:none;transition:none}
@@ -3696,6 +3708,11 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,#cart-dropdown .dropdown-toggle,.h6{font-w
 }@media(max-width:575.98px){.table-responsive-sm{display:block;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .table-responsive-sm>.table-bordered{border:0}
 .navbar-expand-sm>.container,.navbar-expand-sm>.container-fluid,.navbar-expand-sm>.container-sm,.navbar-expand-sm>.container-md,.navbar-expand-sm>.container-lg,.navbar-expand-sm>.container-xl{padding-right:0;padding-left:0}
+#billing_email_field,#billing_em_ver_field{width:100%;display:block;margin-right:0}
+#billing_city_field,#shipping_city_field{width:47.5%;margin-right:5%}
+#billing_state_field,#shipping_state_field{width:47.5%;margin-left:0;margin-right:0}
+#billing_postcode_field,#shipping_postcode_field{width:47.5%;margin-right:5%}
+#billing_phone_field{width:47.5%;display:inline-block}
 }@media print{.d-print-none{display:none !important}
 .d-print-inline{display:inline !important}
 .d-print-inline-block{display:inline-block !important}

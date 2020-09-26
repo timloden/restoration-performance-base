@@ -23,24 +23,33 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
 
 ?>
 
-<div class="col-12 col-lg-6">
-    <div class="border rounded p-2">
-        <div class="woocommerce-form-coupon-toggle">
-            <p class="mb-0">Have a coupon? <a href="#" class="showcoupon">Click here to enter your code</a></p>
-        </div>
-
-        <form class="checkout_coupon woocommerce-form-coupon pt-2" method="post" style="display:none">
-
-            <div class="coupon input-group">
-                <input type="text" name="coupon_code" class="input-text form-control"
-                    placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code" value="" />
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-secondary" name="apply_coupon"
-                        value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
-                </div>
-                <?php do_action( 'woocommerce_cart_coupon' ); ?>
+<!-- Modal -->
+<div class="modal fade" id="couponModal" tabindex="-1" role="dialog" aria-labelledby="couponModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Enter your coupon below</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <div class="modal-body">
+                <form class="coupon-form" method="post">
 
-        </form>
+                    <div class="coupon input-group">
+                        <input type="text" name="coupon_code" class="input-text form-control"
+                            placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code"
+                            value="" />
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-secondary" name="apply_coupon"
+                                value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
+                        </div>
+                        <?php do_action( 'woocommerce_cart_coupon' ); ?>
+                    </div>
+
+                </form>
+            </div>
+        </div>
     </div>
 </div>
