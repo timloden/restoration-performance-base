@@ -54,19 +54,23 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
             </div>
             <div class="col-12 col-md-5 py-5 px-md-3 px-lg-5 checkout-cart border-right">
                 <?php //do_action('woocommerce_checkout_before_order_review_heading'); ?>
-
+                <h4>Your Order</h4>
                 <?php do_action('woocommerce_checkout_before_order_review'); ?>
 
                 <div id="order_review" class="woocommerce-checkout-review-order">
                     <?php do_action('woocommerce_checkout_order_review'); ?>
                 </div>
 
-                <?php do_action('woocommerce_checkout_after_order_review'); ?>
+                <?php //do_action('woocommerce_checkout_after_order_review'); ?>
             </div>
         </div>
     </div>
 </form>
-
+<script>
+jQuery(document).on('updated_checkout', function() {
+    jQuery("#place_order").html("Securely Place Order");
+});
+</script>
 <?php
 
 do_action('woocommerce_after_checkout_form', $checkout);

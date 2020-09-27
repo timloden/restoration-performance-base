@@ -14,6 +14,10 @@ add_filter( 'woocommerce_checkout_fields' , 'bbloomer_add_email_verification_fie
    
 function bbloomer_add_email_verification_field_checkout( $fields ) {
   
+if (is_user_logged_in()) {
+    return $fields;
+}
+
 $fields['billing']['billing_email']['class'] = array( 'form-row-first' );
   
 $fields['billing']['billing_em_ver'] = array(
@@ -32,7 +36,7 @@ add_action('woocommerce_checkout_process', 'bbloomer_matching_email_addresses');
 function bbloomer_matching_email_addresses() { 
     $email1 = $_POST['billing_email'];
     $email2 = $_POST['billing_em_ver'];
-    if ( $email2 !== $email1 ) {
+    if ( $email2 !== $email1 && !is_user_logged_in() ) {
         wc_add_notice( 'Your email addresses do not match', 'error' );
     }
 }
@@ -64,6 +68,12 @@ function redirect_to_cart_if_checkout() {
 
 }
 
+add_action('woocommerce_review_order_after_cart_contents', 'checkout_payment_heading');
+
+function checkout_payment_heading() {
+    //echo '<h4>Payment</h4>';
+}
+
 // place order button text
 
 add_filter('woocommerce_order_button_text', 'checkout_place_order_button_text');
@@ -73,19 +83,29 @@ function checkout_place_order_button_text($order_button_text)
     return 'Securely Place Order'; // new text is here
 }
 
+// add payment section title before payment options
+
+add_action( 'woocommerce_review_order_before_payment', 'wc_privacy_message_below_checkout_button' );
+ 
+function wc_privacy_message_below_checkout_button() {
+   echo '<p><a class="font-weight-bold" href="#" data-toggle="modal" data-target="#couponModal">
+   Have a coupon code?</a></p><h4>Payment</h4>';
+}
+
+
 // Remove CSS and/or JS for Select2 used by WooCommerce, see https://gist.github.com/Willem-Siebe/c6d798ccba249d5bf080.
  
-    add_action( 'wp_enqueue_scripts', 'wsis_dequeue_stylesandscripts_select2', 100 );
- 
-    function wsis_dequeue_stylesandscripts_select2() {
-        if ( class_exists( 'woocommerce' ) ) {
-            wp_dequeue_style( 'selectWoo' );
-            wp_deregister_style( 'selectWoo' );
-     
-            wp_dequeue_script( 'selectWoo');
-            wp_deregister_script('selectWoo');
-        } 
+add_action( 'wp_enqueue_scripts', 'wsis_dequeue_stylesandscripts_select2', 100 );
+
+function wsis_dequeue_stylesandscripts_select2() {
+    if ( class_exists( 'woocommerce' ) ) {
+        wp_dequeue_style( 'selectWoo' );
+        wp_deregister_style( 'selectWoo' );
+    
+        wp_dequeue_script( 'selectWoo');
+        wp_deregister_script('selectWoo');
     } 
+} 
 
 
 // checkout custom fields

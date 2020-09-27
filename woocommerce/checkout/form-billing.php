@@ -46,12 +46,7 @@ defined( 'ABSPATH' ) || exit;
 		?>
     </div>
     <div class="d-flex justify-content-between flex-wrap pb-4">
-        <div class="col-12 col-md-6 px-0 pb-3 pb-md-0">
-            <a class="font-weight-bold" href="#" data-toggle="modal" data-target="#couponModal">
-                Have a coupon code?
-            </a>
-        </div>
-        <div class="col-12 col-md-6 px-0 text-right">
+        <div class="col-12">
             <?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
         </div>
     </div>
