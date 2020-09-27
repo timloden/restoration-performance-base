@@ -22,20 +22,29 @@ if ( is_user_logged_in() || 'no' === get_option( 'woocommerce_enable_checkout_lo
 }
 
 ?>
-<div class="col-12 col-lg-6">
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Please login below</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?php
 
-    <div class="woocommerce-form-login-toggle">
-        <?php wc_print_notice( apply_filters( 'woocommerce_checkout_login_message', esc_html__( 'Returning customer?', 'woocommerce' ) ) . ' <a href="#" class="showlogin">' . esc_html__( 'Click here to login', 'woocommerce' ) . '</a>', 'notice' ); ?>
+					woocommerce_login_form(
+						array(
+							'message'  => esc_html__( 'If you have shopped with us before, please enter your details below. If you are a new customer, please proceed to the Billing section.', 'woocommerce' ),
+							'redirect' => wc_get_checkout_url(),
+							'hidden'   => true,
+						)
+					);
+					?>
+            </div>
+        </div>
     </div>
-    <?php
-
-woocommerce_login_form(
-	array(
-		'message'  => esc_html__( 'If you have shopped with us before, please enter your details below. If you are a new customer, please proceed to the Billing section.', 'woocommerce' ),
-		'redirect' => wc_get_checkout_url(),
-		'hidden'   => true,
-	)
-);
-?>
-
 </div>

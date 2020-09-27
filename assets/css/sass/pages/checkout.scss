@@ -18,6 +18,122 @@
     width: 60px;
 }
 
+.checkout-cart {
+    background: #fafafa;
+}
+
+.woocommerce-form-login {
+    display: block !important;
+}
+
+.wc_coupon_message_wrap {
+    display: none;
+}
+
 #wc_braintree_paypal_container {
     padding-top: 1em;
+}
+
+.payment_method_braintree_credit_card
+    .wc-braintree-credit-card-new-payment-method-form {
+    background-color: #fafafa;
+}
+
+ul.payment_methods li div.sv-wc-payment-gateway-card-icons {
+    margin-left: 0 !important;
+}
+
+.woocommerce
+    #payment
+    div.payment_method_braintree_credit_card
+    .wc-braintree-hosted-field-card-number {
+    background-size: 35px 24px !important;
+}
+
+button#place_order {
+    &:before {
+        font-family: 'Line Awesome Free';
+        font-weight: 900;
+        display: inline-block;
+        line-height: 1;
+        content: '\f023';
+        margin-right: 5px;
+    }
+}
+
+#billing_country_field,
+#shipping_country_field {
+    display: none;
+}
+
+#billing_first_name_field,
+#shipping_first_name_field,
+#billing_email_field {
+    width: 47.5%;
+    display: inline-block;
+    margin-right: 5%;
+}
+
+#billing_last_name_field,
+#shipping_last_name_field,
+#billing_em_ver_field {
+    width: 47.5%;
+    display: inline-block;
+}
+
+#billing_city_field,
+#shipping_city_field {
+    width: 30%;
+    display: inline-block;
+}
+
+#billing_state_field,
+#shipping_state_field {
+    width: 30%;
+    display: inline-block;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+#billing_postcode_field,
+#shipping_postcode_field {
+    width: 30%;
+    display: inline-block;
+}
+
+#billing_phone_field {
+    display: inline-block;
+}
+
+@media (max-width: 575.98px) {
+    #billing_email_field,
+    #billing_em_ver_field {
+        width: 100%;
+        display: block;
+        margin-right: 0;
+    }
+
+    #billing_city_field,
+    #shipping_city_field {
+        width: 47.5%;
+        margin-right: 5%;
+    }
+
+    #billing_state_field,
+    #shipping_state_field {
+        width: 47.5%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #billing_postcode_field,
+    #shipping_postcode_field {
+        width: 47.5%;
+        margin-right: 5%;
+    }
+
+    #billing_phone_field {
+        width: 47.5%;
+        display: inline-block;
+    }
 }

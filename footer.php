@@ -14,7 +14,7 @@ $newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option');
 
 </div><!-- #content -->
 
-<footer class="site-footer border-top mt-5">
+<footer class="site-footer border-top">
     <div class="container pt-5 pb-4">
         <div class="row">
             <div class="col-12 col-lg-8">

@@ -17,6 +17,7 @@
 
 defined('ABSPATH') || exit;
 ?>
+
 <table class="shop_table woocommerce-checkout-review-order-table table">
     <thead>
         <tr>
@@ -57,9 +58,6 @@ defined('ABSPATH') || exit;
     ?>
     </tbody>
     <tfoot>
-
-
-
         <?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
         <tr class="cart-discount coupon-<?php echo esc_attr(sanitize_title($code)); ?>">
             <th><?php wc_cart_totals_coupon_label($coupon); ?></th>
