@@ -1,0 +1,32 @@
+.tinvwl-table-manage-list {
+    @extend .table;
+}
+
+.tinv-wishlist {
+    .wishlist_item {
+        .product-thumbnail {
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        .product-action {
+            button {
+                @extend .btn;
+                @extend .btn-primary;
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.tinv-wishlist tfoot .tinvwl-to-right {
+    width: 100%;
+    text-align: left;
+
+    button {
+        @extend .btn;
+        @extend .btn-primary;
+    }
+}
