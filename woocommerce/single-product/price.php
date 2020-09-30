@@ -34,7 +34,9 @@ $shipping_class = $product->get_shipping_class();
 
 if (strpos($shipping_class, '-freight') || $shipping_class == 'bundle' || $shipping_class == 'heavy-freight') {
     $shipping = 'Freight';
-}  elseif ($shipping_class == 'ground-oversized') {
+} elseif ($shipping_class == 'free-shipping' || $shipping_class == 'right-stuff') {
+    $shipping = 'FREE SHIPPING';
+} elseif ($shipping_class == 'ground-oversized') {
     $shipping = 'Ground (Oversized)';
 } else {
     $shipping = 'Ground';
