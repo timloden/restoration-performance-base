@@ -40,7 +40,7 @@ $shipping_class = $product->get_shipping_class();
     }
 ?>
 <div class="d-flex align-items-center py-3 flex-wrap">
-    <div class="col-12 col-md-auto text-center text-md-left px-0 pr-md-2 pb-3 pb-md-0">
+    <div class="col-12 col-lg-auto text-center text-md-left px-0 pr-md-2 pb-3 pb-lg-0">
         <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?> h4 mb-0 pr-3 product-price"
             style="font-size: 1.75em;">
             <?php echo $product->get_price_html(); ?></p>

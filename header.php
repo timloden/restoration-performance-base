@@ -51,7 +51,11 @@
                             <a href="<?php echo site_url(); ?>/frequently-asked-questions"
                                 class="border-right pr-2 mr-2">Help</a>
 
-                            <?php echo do_shortcode('[ti_wishlist_products_counter]'); ?>
+                            <?php 
+                            if ( shortcode_exists( 'ti_wishlist_products_counter' ) ) {
+                                echo do_shortcode('[ti_wishlist_products_counter]'); 
+                            }
+                            ?>
 
                         </div>
                     </div>
