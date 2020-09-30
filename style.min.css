@@ -2844,6 +2844,7 @@ button#place_order:before{font-family:'Line Awesome Free';font-weight:900;displa
 .tinv-wishlist .wishlist_item .product-thumbnail img{max-width:100%;height:auto}
 .tinv-wishlist .wishlist_item .product-action button{font-size:12px}
 .tinv-wishlist tfoot .tinvwl-to-right{width:100%;text-align:left}
+.tinvwl-table-manage-list thead th{font-size:12px;font-weight:normal}
 @media(prefers-reduced-motion:reduce){.form-control,.gform_wrapper input[type='email'],.gform_wrapper input[type='date'],.gform_wrapper input[type='datetime'],.gform_wrapper input[type='datetime-local'],.gform_wrapper input[type='month'],.gform_wrapper input[type='number'],.gform_wrapper input[type='password'],.gform_wrapper input[type='search'],.gform_wrapper input[type='tel'],.gform_wrapper input[type='text'],.gform_wrapper input[type='time'],.gform_wrapper input[type='week'],.gform_wrapper input[type='url'],.gform_wrapper select,.gform_wrapper textarea,.payment_method_braintree_credit_card .wc-braintree-credit-card-new-payment-method-form .form-row .wc-braintree-hosted-field{-webkit-transition:none;transition:none}
 .btn,.gform_wrapper .button,.tinv-wishlist .wishlist_item .product-action button,.tinv-wishlist tfoot .tinvwl-to-right button{-webkit-transition:none;transition:none}
 .fade{-webkit-transition:none;transition:none}
