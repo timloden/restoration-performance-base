@@ -48,7 +48,15 @@
                             <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"
                                 class="border-right pr-2 mr-2"><?php echo (is_user_logged_in() ? 'My Account' : 'Login / Create Account'); ?></a>
                             <a href="<?php echo site_url(); ?>/tracking" class="border-right pr-2 mr-2">Track Order</a>
-                            <a href="<?php echo site_url(); ?>/frequently-asked-questions">Help</a>
+                            <a href="<?php echo site_url(); ?>/frequently-asked-questions"
+                                class="border-right pr-2 mr-2">Help</a>
+
+                            <?php 
+                            if ( shortcode_exists( 'ti_wishlist_products_counter' ) ) {
+                                echo do_shortcode('[ti_wishlist_products_counter]'); 
+                            }
+                            ?>
+
                         </div>
                     </div>
                 </div>
@@ -101,7 +109,6 @@
                                     <?php woocommerce_mini_cart(); ?>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

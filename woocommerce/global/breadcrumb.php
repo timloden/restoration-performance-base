@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! empty( $breadcrumb ) ) {
 
 	//echo $wrap_before;
-	echo '<div class="container py-3 d-none d-lg-block">';
+	echo '<div class="container py-3 d-none d-lg-block breadcrumbs">';
 
 	foreach ( $breadcrumb as $key => $crumb ) {
 

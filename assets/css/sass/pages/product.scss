@@ -1,3 +1,7 @@
+.breadcrumbs {
+    font-size: 14px;
+}
+
 .product {
     img.wp-post-image {
         max-width: 100%;
@@ -21,6 +25,26 @@
 
     .onsale {
         position: absolute;
+    }
+
+    @include media-breakpoint-up(md) {
+        .product-stock-wrapper {
+            border-left: 1px solid #dee2e6;
+        }
+    }
+
+    .quantity {
+        .qty {
+            font-size: 18px;
+        }
+    }
+
+    .tinvwl_add_to_wishlist_button {
+        font-size: 18px;
+
+        &:hover {
+            background-color: $white;
+        }
     }
 }
 

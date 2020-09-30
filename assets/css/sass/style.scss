@@ -4,7 +4,7 @@ Theme URI: https://www.restorationperformance.com/
 Author: Restoration Performance
 Author URI: https://www.restorationperformance.com/
 Description: Restoration Performance base theme for all store sites.
-Version: 1.6.0
+Version: 1.7.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -46,3 +46,4 @@ $la-font-path: '/wp-content/themes/restoration-performance-base/assets/fonts/lin
 @import 'pages/my-account';
 @import 'pages/checkout';
 @import 'pages/article-single';
+@import 'pages/tw-wishtlists';

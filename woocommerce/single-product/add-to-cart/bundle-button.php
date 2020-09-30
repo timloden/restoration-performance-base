@@ -19,7 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 
 ?>
-<div class="input-group-append">
-    <button type="submit"
-        class="single_add_to_cart_button bundle_add_to_cart_button button alt btn btn-primary px-5"><?php echo $product->single_add_to_cart_text(); ?></button>
+<div class="col-auto mb-3">
+    <button type="submit" class="single_add_to_cart_button bundle_add_to_cart_button button alt btn btn-primary px-5"
+        style="font-size: 18px;"><i class="las la-shopping-cart"></i>
+        <?php echo $product->single_add_to_cart_text(); ?></button>
 </div>

@@ -19,7 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 
 do_action( 'woocommerce_before_add_to_cart_quantity' );
-
+?>
+<div class="col-auto mb-3" style="font-size: 18px;">
+    <?php
 if ( ! $product->is_sold_individually() ) {
 
 	woocommerce_quantity_input( array(
@@ -29,7 +31,10 @@ if ( ! $product->is_sold_individually() ) {
 	) );
 
 } else {
-	?><input class="qty" type="hidden" name="quantity" value="1" /><?php
+	?><input class="qty" type="hidden" name="quantity" value="1" />
+    <?php
 }
 
 do_action( 'woocommerce_after_add_to_cart_quantity' );
+?>
+</div>
