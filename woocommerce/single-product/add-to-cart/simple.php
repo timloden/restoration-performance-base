@@ -29,40 +29,42 @@ if ( $product->is_in_stock() ) : ?>
 
 <?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
-<form class="cart pb-3"
+<form
     action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>"
-    method="post" enctype='multipart/form-data'>
+    method="post" enctype='multipart/form-data' class="border-top mt-3 pt-3 pb-4">
 
     <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
-    <div class="row">
-        <div class="col-12">
+    <div class="form-row align-items-center justify-content-center justify-content-md-start">
 
-            <div class="input-group mb-3">
-                <?php
-				do_action( 'woocommerce_before_add_to_cart_quantity' );
+        <div class="col-auto" style="font-size: 18px;">
+            <?php
+        do_action( 'woocommerce_before_add_to_cart_quantity' );
 
-				woocommerce_quantity_input(
-					array(
-						'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
-						'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
-						'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
-					)
-				);
+        woocommerce_quantity_input(
+            array(
+                'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
+                'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
+                'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
+            )
+        );
 
-				do_action( 'woocommerce_after_add_to_cart_quantity' );
-				?>
-                <div class="input-group-append">
-                    <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"
-                        class="single_add_to_cart_button btn btn-primary px-5"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
-                </div>
-            </div>
-
+        do_action( 'woocommerce_after_add_to_cart_quantity' );
+        ?>
+        </div>
+        <div class="col-auto">
+            <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"
+                class="single_add_to_cart_button btn btn-primary px-5 font-weight-bold" style="font-size: 18px;"><i
+                    class="las la-shopping-cart"></i>
+                <?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+        </div>
+        <div class="col-auto">
+            <?php echo do_shortcode('[ti_wishlists_addtowishlist]'); ?>
         </div>
     </div>
-
     <?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 </form>
+
 
 <?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
 

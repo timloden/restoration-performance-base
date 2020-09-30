@@ -3,7 +3,20 @@
 console.log('custom js');
 "use strict";
 
-(function ($) {})(jQuery);
+(function ($) {// $('.quantity').on('click', '.plus', function (e) {
+  //     var input = $(this).prev('input.qty');
+  //     var val = parseInt(input.val());
+  //     input.val(val + 1).change();
+  // });
+  // $('.quantity').on('click', '.minus', function (e) {
+  //     var input = $(this).next('input.qty');
+  //     var val = parseInt(input.val());
+  //     console.log(val);
+  //     if (val > 0) {
+  //         input.val(val - 1).change();
+  //     }
+  // });
+})(jQuery);
 "use strict";
 
 (function ($) {
@@ -188,6 +201,15 @@ console.log('custom js');
       $('a.added').html('Add to Cart');
       $('a.added').removeClass('added');
     }, 2000);
+  });
+  $('#show-fitment').on('click', function (e) {
+    console.log('clicked fitment');
+    e.preventDefault();
+    $('#product-tabs a[href="#tab-fitment_tab"]').tab('show');
+    $('body,html').animate({
+      scrollTop: $('#product-tabs').offset().top
+    }, 800 //speed
+    );
   });
 })(jQuery);
 //ScrollReveal().reveal('.title-border');

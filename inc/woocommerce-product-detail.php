@@ -1,6 +1,10 @@
 <?php
 
 
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 25);
+
+
 // product - remove related products
 
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
@@ -30,5 +34,43 @@ add_filter( 'woocommerce_product_tabs', 'remove_product_tabs', 9999 );
   
 function remove_product_tabs( $tabs ) {
     unset( $tabs['additional_information'] ); 
+    unset( $tabs['reviews'] ); 
     return $tabs;
+}
+
+// add vehicle fitment tab
+
+add_filter( 'woocommerce_product_tabs', 'woo_new_product_tab' );
+
+function woo_new_product_tab( $tabs ) {
+	
+	// Adds the new tab
+	if(have_rows('vehicle_fitment')) {
+
+        $tabs['fitment_tab'] = array(
+		'title' 	=> __( 'Vehicle Fitment', 'woocommerce' ),
+		'priority' 	=> 10,
+		'callback' 	=> 'vehicle_fitment'
+        );
+    }
+        
+
+	return $tabs;
+
+}
+
+function vehicle_fitment() {
+    
+    echo '<p class="mb-1"><strong>Fitment:</strong></p>';
+    echo '<ul>';
+    
+    while( have_rows('vehicle_fitment') ): the_row(); 
+                $vehicle = get_sub_field('vehicle');
+    
+            echo '<li>' . $vehicle . '</li>';
+    
+    endwhile;
+    
+    echo '</ul>';
+
 }

@@ -13,4 +13,16 @@
             $('a.added').removeClass('added');
         }, 2000);
     });
+
+    $('#show-fitment').on('click', function (e) {
+        console.log('clicked fitment');
+        e.preventDefault();
+        $('#product-tabs a[href="#tab-fitment_tab"]').tab('show');
+        $('body,html').animate(
+            {
+                scrollTop: $('#product-tabs').offset().top,
+            },
+            800 //speed
+        );
+    });
 })(jQuery);

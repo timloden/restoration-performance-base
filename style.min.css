@@ -2770,12 +2770,16 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,#cart-dropdown .dropdown-toggle,.h6{font-w
 .woocommerce-pagination ul{margin:1em 0;display:-webkit-box;display:-ms-flexbox;display:flex;list-style:none}
 .woocommerce-pagination ul .page-numbers{position:relative;display:block;padding:.5rem .75rem;margin-left:-1px;line-height:1.25;color:#005ca9;background-color:#fff;border:1px solid #dee2e6;margin-right:0}
 .woocommerce-pagination ul .page-numbers.current{background-color:#005ca9;color:#fff}
+.breadcrumbs{font-size:14px}
 .product img.wp-post-image{max-width:100%;height:auto}
 .product .bundled_product_summary{display:-webkit-box;display:-ms-flexbox;display:flex}
 .product .bundled_product_summary .bundled_product_images{width:auto}
 .product .bundled_product_summary .bundled_product_images img{max-width:100px}
 .product .bundled_product_summary .details h5.bundled_product_title{font-size:16px}
 .product .onsale{position:absolute}
+.product .quantity .qty{font-size:18px}
+.product .tinvwl_add_to_wishlist_button{font-size:18px}
+.product .tinvwl_add_to_wishlist_button:hover{background-color:#fff}
 .woocommerce-notices-wrapper{width:100%}
 .woocommerce .star-rating,.woocommerce p.stars [class^='star-'],.woocommerce p.stars [class*=' star-']{font-family:Line Awesome Free;font-weight:900;speak:none;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;font-size:1em}
 .woocommerce .star-rating{overflow:hidden;position:relative;height:1em;width:5em}
@@ -3289,6 +3293,7 @@ button#place_order:before{font-family:'Line Awesome Free';font-weight:900;displa
 .text-md-left{text-align:left !important}
 .text-md-right{text-align:right !important}
 .text-md-center{text-align:center !important}
+.product .product-stock-wrapper{border-left:1px solid #dee2e6}
 }@media(min-width:992px){.container{max-width:960px}
 .container,.container-sm,.container-md,.container-lg{max-width:960px}
 .col-lg{-ms-flex-preferred-size:0;flex-basis:0;-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;max-width:100%}
