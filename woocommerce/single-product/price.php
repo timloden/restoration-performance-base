@@ -31,13 +31,14 @@ if ($stock_status == 'instock') {
 }
 
 $shipping_class = $product->get_shipping_class();
-    if (strpos($shipping_class, '-freight')) {
-        $shipping = 'Freight';
-    } elseif ($shipping_class == 'ground-oversized') {
-        $shipping = 'Ground (Oversized)';
-    } else {
-        $shipping = 'Ground';
-    }
+
+if (strpos($shipping_class, '-freight') || $shipping_class == 'bundle' || $shipping_class == 'heavy-freight') {
+    $shipping = 'Freight';
+}  elseif ($shipping_class == 'ground-oversized') {
+    $shipping = 'Ground (Oversized)';
+} else {
+    $shipping = 'Ground';
+}
 ?>
 <div class="d-flex align-items-center py-3 flex-wrap">
     <div class="col-12 col-lg-auto text-center text-md-left px-0 pr-md-2 pb-3 pb-lg-0">

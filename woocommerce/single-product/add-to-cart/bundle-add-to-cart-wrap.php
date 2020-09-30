@@ -42,7 +42,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				echo $availability_html;
 
 			?></div>
-        <div class="bundle_button input-group"><?php
+
+        <div class="bundle_button form-row align-items-center justify-content-center justify-content-md-start">
+            <?php
 
 				/**
 				 * woocommerce_bundles_add_to_cart_button hook.
@@ -53,6 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			?></div>
         <input type="hidden" name="add-to-cart" value="<?php echo $product_id; ?>" />
+
     </div><?php
 
 		/** WC Core action. */
@@ -65,4 +68,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?></div><?php
 	}
 
-?></div>
+?>
+</div>
