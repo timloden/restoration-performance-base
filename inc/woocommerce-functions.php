@@ -37,7 +37,7 @@ add_filter( 'init', 'wpblog_wc_register_post_statuses' );
 
 // add status to list
 function wpblog_wc_add_order_statuses( $order_statuses ) {
-    $order_statuses['wc-ready-shipping'] = _x( 'Ready for shipping', 'WooCommerce Order status', 'text_domain' );
+    $order_statuses['wc-ready-shipping'] = _x( 'Awaiting Shipping', 'WooCommerce Order status', 'text_domain' );
     return $order_statuses;
     }
 add_filter( 'wc_order_statuses', 'wpblog_wc_add_order_statuses' );
