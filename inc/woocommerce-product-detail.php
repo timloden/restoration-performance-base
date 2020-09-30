@@ -63,13 +63,19 @@ function vehicle_fitment() {
     
     echo '<p class="mb-1"><strong>Fitment:</strong></p>';
     echo '<ul>';
+
+    $vehicles = get_field('vehicle_fitment');
     
-    while( have_rows('vehicle_fitment') ): the_row(); 
-                $vehicle = get_sub_field('vehicle');
+    foreach ($vehicles as $vehicle):
+        echo '<li>' . $vehicle['vehicle'] . '</li>';
+
+    endforeach;
+    // while( have_rows('vehicle_fitment') ): the_row(); 
+    //             $tab_vehicle = get_sub_field('vehicle');
     
-            echo '<li>' . $vehicle . '</li>';
+    //         echo '<li>' . $tab_vehicle . '</li>';
     
-    endwhile;
+    // endwhile;
     
     echo '</ul>';
 
