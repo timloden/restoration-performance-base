@@ -292,7 +292,11 @@ add_filter ( 'woocommerce_account_menu_items', 'account_rename_orders' );
 function account_rename_orders( $menu_links ){
  
 	// $menu_links['TAB ID HERE'] = 'NEW TAB NAME HERE';
-	$menu_links['orders'] = 'My Orders';
+    $menu_links['orders'] = 'My Orders';
+    
+    if ($menu_links['tinv_wishlist']) {
+        $menu_links['tinv_wishlist'] = 'My Buildlist';
+    }
  
 	return $menu_links;
 }
