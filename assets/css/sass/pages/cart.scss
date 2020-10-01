@@ -13,6 +13,16 @@
     }
 }
 
+.tax-total {
+    small {
+        display: none;
+    }
+}
+
+.state_select {
+    @extend .form-control;
+}
+
 .woocommerce-shipping-totals {
     small {
         font-size: 12px;

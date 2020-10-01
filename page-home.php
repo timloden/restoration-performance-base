@@ -187,7 +187,7 @@ get_header();
     </div>
 </div>
 
-<div class="container">
+<div class="container pb-5">
     <div class="home-content pt-3 pb-5">
         <?php
 		while ( have_posts() ) :

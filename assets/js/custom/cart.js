@@ -1,15 +1,11 @@
 (function ($) {
-    // $('.quantity').on('click', '.plus', function (e) {
-    //     var input = $(this).prev('input.qty');
-    //     var val = parseInt(input.val());
-    //     input.val(val + 1).change();
-    // });
-    // $('.quantity').on('click', '.minus', function (e) {
-    //     var input = $(this).next('input.qty');
-    //     var val = parseInt(input.val());
-    //     console.log(val);
-    //     if (val > 0) {
-    //         input.val(val - 1).change();
-    //     }
-    // });
+    // set country to US
+    var country_input = $('.woocommerce-shipping-calculator').find(
+        '#calc_shipping_country'
+    );
+
+    if (country_input) {
+        country_input.val('US');
+        country_input.hide();
+    }
 })(jQuery);

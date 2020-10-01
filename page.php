@@ -15,7 +15,7 @@
 get_header();
 ?>
 
-<div class="container py-3">
+<div class="container pt-3 pb-5">
     <h1 class="py-3 mb-3 title-border"><?php the_title(); ?></h1>
     <?php
 		while ( have_posts() ) :

@@ -1,5 +1,8 @@
 <?php
 
+// hide state field from shipping calc
+
+
 
 // cart custom image size
 
