@@ -23,7 +23,7 @@ do_action( 'woocommerce_before_shipping_calculator' ); ?>
 
     <?php printf( '<a href="#" class="shipping-calculator-button">%s</a>', esc_html( ! empty( $button_text ) ? $button_text : __( 'Calculate shipping', 'woocommerce' ) ) ); ?>
 
-    <section class="shipping-calculator-form pt-3" style="display:none;">
+    <section class="shipping-calculator-form py-3" style="display:none;">
 
         <?php if ( apply_filters( 'woocommerce_shipping_calculator_enable_country', true ) ) : ?>
         <div class="form-group" id="calc_shipping_country_field">
