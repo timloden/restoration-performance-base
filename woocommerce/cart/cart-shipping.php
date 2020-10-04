@@ -102,4 +102,18 @@ $shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
         </div>
     </td>
 </tr>
+<?php elseif ($shipping_method === 'flexible_shipping_1_4') : ?>
+<tr>
+    <td class="p-0" colspan="2">
+        <div class="d-block p-2" style="background-color: #f6f6f6;">
+            <p class="d-block mb-1 text-center"><strong><i class="las la-exclamation-circle"></i> Must ship to a
+                    commercial business</strong></p>
+            <p class="text-center mb-0" style="font-size: 12px;"><a target="_blank"
+                    href="mailto:sales@classicbodyparts.com">Email us
+                    for
+                    residential shipping quote</a></p>
+        </div>
+    </td>
+</tr>
+
 <?php endif; ?>
