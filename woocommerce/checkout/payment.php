@@ -54,8 +54,9 @@ if (! is_ajax() ) {
 
         <?php 
         // moved privacy policy from terms.php
+        do_action('woocommerce_review_order_after_submit'); 
         do_action('woocommerce_checkout_terms_and_conditions');
-        do_action('woocommerce_review_order_after_submit'); ?>
+        ?>
 
         <?php wp_nonce_field('woocommerce-process_checkout', 'woocommerce-process-checkout-nonce'); ?>
     </div>

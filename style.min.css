@@ -2831,6 +2831,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,#cart-dropdown .dropdown-toggle,.h6{font-w
 #wc_braintree_paypal_container{padding-top:1em}
 .payment_method_braintree_credit_card .wc-braintree-credit-card-new-payment-method-form{background-color:#fafafa}
 ul.payment_methods li div.sv-wc-payment-gateway-card-icons{margin-left:0 !important}
+.woocommerce-privacy-policy-text{margin-top:2em;font-size:12px}
 .woocommerce #payment div.payment_method_braintree_credit_card .wc-braintree-hosted-field-card-number{background-size:35px 24px !important}
 button#place_order:before{font-family:'Line Awesome Free';font-weight:900;display:inline-block;line-height:1;content:'\f023';margin-right:5px}
 #billing_country_field,#shipping_country_field{display:none}

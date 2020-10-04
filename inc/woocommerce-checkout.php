@@ -74,6 +74,18 @@ function checkout_payment_heading() {
     //echo '<h4>Payment</h4>';
 }
 
+// add terms full content to checkout
+
+add_action('woocommerce_review_order_after_submit', 'full_terms_window');
+
+function full_terms_window() {
+    $page = get_page_by_title('Terms and Conditions'); 
+    $content = apply_filters('the_content', $page->post_content);
+
+    echo '<div class="overflow-auto mt-4 mb-2 p-2 bg-white border" style="height: 100px; font-size: 12px;">' . $content . '</div>';
+}
+
+
 // place order button text
 
 add_filter('woocommerce_order_button_text', 'checkout_place_order_button_text');
