@@ -52,7 +52,10 @@ if (! is_ajax() ) {
 
         <?php echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" class="btn btn-success d-block w-100" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>' ); // @codingStandardsIgnoreLine ?>
 
-        <?php do_action('woocommerce_review_order_after_submit'); ?>
+        <?php 
+        // moved privacy policy from terms.php
+        do_action('woocommerce_checkout_terms_and_conditions');
+        do_action('woocommerce_review_order_after_submit'); ?>
 
         <?php wp_nonce_field('woocommerce-process_checkout', 'woocommerce-process-checkout-nonce'); ?>
     </div>
