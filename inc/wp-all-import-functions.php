@@ -11,9 +11,9 @@ function dynacorn_pricing( $cost = null, $model = '' ) {
         $cost = preg_replace("/[^0-9,.]/", "", $cost);
 	
 		if ($cost <= 15) {
-			$calculated_price = (round($cost * 1.53)) - 0.05;
+			$calculated_price = (round($cost * 1.55)) - 0.05;
 		} elseif ($cost > 15 && $cost <= 70) {
-			$calculated_price = (round($cost * 1.43)) - 0.05;
+			$calculated_price = (round($cost * 1.45)) - 0.05;
 		} elseif ($cost > 70 && $cost <= 175) {
 			$calculated_price = (round($cost * 1.33)) - 0.05;
 		} elseif ($cost > 175 && $cost <= 800) {
