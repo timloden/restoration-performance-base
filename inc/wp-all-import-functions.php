@@ -36,6 +36,8 @@ function dynacorn_stock_status( $ca = null, $pa = null ) {
 
     if ($ca <= 0 && $pa <= 0) {
         $stock = 'onbackorder';
+    } elseif (($ca + $pa) <= 1 ) {
+        $stock = 'onbackorder';
     } else {
         $stock = 'instock';
     }
