@@ -37,6 +37,13 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 			?>
 
             <div class="col-12 h-50">
+                <?php 
+				if(has_term('sale', 'product_tag')) {
+				
+					echo '<div class="text-left"><span class="onsale badge badge-danger">Sale!</span></div>';
+
+				}
+				?>
                 <?php
 				/**
 				 * Hook: woocommerce_before_shop_loop_item_title.
