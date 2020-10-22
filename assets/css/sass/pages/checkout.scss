@@ -12,6 +12,10 @@
             margin-left: 0.5em;
         }
     }
+
+    label[for='billing_country'] {
+        display: none;
+    }
 }
 
 .quantity {
@@ -68,7 +72,7 @@ button#place_order {
 
 #billing_country_field,
 #shipping_country_field {
-    display: none;
+    // display: none;
 }
 
 #billing_first_name_field,

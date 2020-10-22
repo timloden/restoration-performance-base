@@ -209,10 +209,12 @@ function custom_woocommerce_form_field($key, $args, $value = null)
                 $field .= '<input type="hidden" name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
     value="' . current(array_keys($countries)) . '" ' . implode(' ', $custom_attributes) . '
     class="country_to_state" />';
-            } else {
+            } elseif (is_user_logged_in()) {
+
+                // if logged in, use the country on account
 
                 $field = '<select name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
-    class="country_to_state country_select ' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '>'
+    class="country_to_state country_select d-none ' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '>'
                     . '<option value="">' . esc_html__('Select a country…', 'woocommerce') . '</option>';
 
                 foreach ($countries as $ckey => $cvalue) {
@@ -223,6 +225,20 @@ function custom_woocommerce_form_field($key, $args, $value = null)
 
                 $field .= '<noscript><input type="submit" name="woocommerce_checkout_update_totals"
         value="' . esc_attr__('Update country', 'woocommerce') . '" /></noscript>';
+                
+            } else {
+
+                // if not logged in default to US as country 
+            
+                $field = '<select name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
+    class="country_to_state country_select d-none ' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '>'
+                    . '<option value="US" selected="selected">United States</option>';
+
+                $field .= '</select>';
+
+                $field .= '<noscript><input type="submit" name="woocommerce_checkout_update_totals"
+        value="' . esc_attr__('Update country', 'woocommerce') . '" /></noscript>';
+            
             }
 
             break;
