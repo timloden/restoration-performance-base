@@ -171,6 +171,21 @@ function goodmark_pricing( $cost = null ) {
 
 // Sherman import functions
 
+function get_sherman_product_by_sku( $sku = '' ) {
+    // Add OER to SKU
+    $sku .= "-SHE";
+    
+    // Match by our files SKU and ignore slashes in the database.
+    //$product_id = $wpdb->get_var( $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key='_sku' LIMIT 1", $sku ) );
+
+    $product_id = wc_get_product_id_by_sku($sku);
+
+    // If a match was found return its ID.
+    if ( $product_id ) return $product_id;
+
+    return null;
+}
+
 function sherman_pricing( $cost = null ) {
 
     // Ensure a cost was provided.
