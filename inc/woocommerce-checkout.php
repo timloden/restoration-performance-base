@@ -199,10 +199,8 @@ function custom_woocommerce_form_field($key, $args, $value = null)
     switch ($args['type']) {
         case 'country':
 
-
             $current_user = wp_get_current_user();
-            $first_name = $current_user->billing_first_name;
-            $last_name = $current_user->billing_last_name;
+            $billing_country = $current_user->billing_country;
 
             $countries = 'shipping_country' === $key ? WC()->countries->get_shipping_countries() :
                 WC()->countries->get_allowed_countries();
@@ -214,17 +212,21 @@ function custom_woocommerce_form_field($key, $args, $value = null)
                 $field .= '<input type="hidden" name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
     value="' . current(array_keys($countries)) . '" ' . implode(' ', $custom_attributes) . '
     class="country_to_state" />';
-            } elseif (is_user_logged_in() && $first_name && $last_name) {
-
+            } elseif (is_user_logged_in() && $billing_country) {
+                
                 // if logged in, use the country on account
 
-                $field = '<select name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
-    class="country_to_state country_select d-none ' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '>'
-                    . '<option value="">' . esc_html__('Select a country…', 'woocommerce') . '</option>';
+    //             $field = '<select name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
+    // class="country_to_state country_select ' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '>'
+    //                 . '<option value="">' . esc_html__('Select a country…', 'woocommerce') . '</option>';
 
-                foreach ($countries as $ckey => $cvalue) {
-                    $field .= '<option value="' . esc_attr($ckey) . '" ' . selected($value, $ckey, false) . '>' . $cvalue . '</option>';
-                }
+    //             foreach ($countries as $ckey => $cvalue) {
+    //                 $field .= '<option value="' . esc_attr($ckey) . '" ' . selected($value, $ckey, false) . '>' . $cvalue . '</option>';
+    //             }
+
+                $field = '<select name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
+                class="country_to_state country_select d-none' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '>'
+                    . '<option value="' . $billing_country . '" selected="selected">' . $billing_country . '</option>';
 
                 $field .= '</select>';
 
@@ -232,9 +234,9 @@ function custom_woocommerce_form_field($key, $args, $value = null)
         value="' . esc_attr__('Update country', 'woocommerce') . '" /></noscript>';
                 
             } else {
-
+                
                 // if not logged in default to US as country 
-            
+                
                 $field = '<select name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
     class="country_to_state country_select d-none ' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '>'
                     . '<option value="US" selected="selected">United States</option>';
