@@ -199,6 +199,11 @@ function custom_woocommerce_form_field($key, $args, $value = null)
     switch ($args['type']) {
         case 'country':
 
+
+            $current_user = wp_get_current_user();
+            $first_name = $current_user->first_name;
+            $last_name = $current_user->last_name;
+
             $countries = 'shipping_country' === $key ? WC()->countries->get_shipping_countries() :
                 WC()->countries->get_allowed_countries();
 
@@ -209,7 +214,7 @@ function custom_woocommerce_form_field($key, $args, $value = null)
                 $field .= '<input type="hidden" name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
     value="' . current(array_keys($countries)) . '" ' . implode(' ', $custom_attributes) . '
     class="country_to_state" />';
-            } elseif (is_user_logged_in()) {
+            } elseif (is_user_logged_in() && $first_name && $last_name) {
 
                 // if logged in, use the country on account
 
