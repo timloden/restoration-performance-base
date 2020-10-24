@@ -168,3 +168,33 @@ function goodmark_pricing( $cost = null ) {
 
     }
 }
+
+// Sherman import functions
+
+function sherman_pricing( $cost = null ) {
+
+    // Ensure a cost was provided.
+    if ( !empty( $cost ) ) {
+		
+        // Remove unwanted characters from price.
+        $cost = preg_replace("/[^0-9,.]/", "", $cost);
+	
+		if ($cost <= 20) {
+			$calculated_price = (round($cost * 1.62)) - 0.05;
+		} elseif ($cost > 20 && $cost <= 60) {
+			$calculated_price = (round($cost * 1.57)) - 0.05;
+		} elseif ($cost > 60 && $cost <= 130) {
+			$calculated_price = (round($cost * 1.42)) - 0.05;
+		} elseif ($cost > 130 && $cost <= 200) {
+			$calculated_price = (round($cost * 1.37)) - 0.05;
+		} elseif ($cost > 200 && $cost <= 600) {
+			$calculated_price = (round($cost * 1.32)) - 0.05;
+		} elseif ($cost > 600) {
+			$calculated_price = (round($cost * 1.27)) - 0.05;
+		}
+		
+        // Return price otherwise.
+        return $calculated_price;
+
+    }
+}
