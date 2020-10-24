@@ -201,8 +201,8 @@ function custom_woocommerce_form_field($key, $args, $value = null)
 
 
             $current_user = wp_get_current_user();
-            $first_name = $current_user->first_name;
-            $last_name = $current_user->last_name;
+            $first_name = $current_user->billing_first_name;
+            $last_name = $current_user->billing_last_name;
 
             $countries = 'shipping_country' === $key ? WC()->countries->get_shipping_countries() :
                 WC()->countries->get_allowed_countries();
