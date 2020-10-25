@@ -16,11 +16,14 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
     'restoration-performance-base'
 );
 
+$myUpdateChecker->getVcsApi()->enableReleaseAssets();
+
 //Optional: If you're using a private repository, specify the access token like this:
 //$myUpdateChecker->setAuthentication('your-token-here');
 
 //Optional: Set the branch that contains the stable release.
 //$myUpdateChecker->setBranch('stable-branch-name');
+
 
 if (!function_exists('theme_setup')) :
 
