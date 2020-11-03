@@ -98,12 +98,12 @@ $newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option');
                     alt="credit card logos">
                 <img class="pl-3" src="<?php echo get_template_directory_uri(); ?>/assets/images/paypal-logo.png"
                     alt="PayPal Logo">
-
                 <p class="mt-4" style="font-size: 14px;">
                     <a href="<?php echo site_url(); ?>/policies" class="text-dark">Policies</a> | <a
                         href="<?php echo site_url(); ?>/terms-and-conditions" class="text-dark">Terms and
                         Conditions</a>
                 </p>
+                <p style="font-size: 14px; color: #6c757d">(*$7.50 Shipping excludes oversized items)</p>
             </div>
 
         </div>
