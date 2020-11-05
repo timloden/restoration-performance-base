@@ -19,6 +19,15 @@ function orders_admin_bar_form() {
                       window.location.href = "' . $site_url . '" + "/wp-admin/post.php?post=" + userEntry1 + "&action=edit";
                   }
               });
+              jQuery("#order_id").on("keypress", function (e) {
+                if(e.which === 13){
+                    userEntry1 = jQuery("#order_id").val();
+                    if (jQuery.isNumeric(userEntry1)) {
+                        window.location.href = "' . $site_url . '" + "/wp-admin/post.php?post=" + userEntry1 + "&action=edit";
+                    }
+                }
+          });
+              
             </script>
             '
         ));
