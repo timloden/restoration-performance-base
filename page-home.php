@@ -9,6 +9,11 @@
  */
 
 get_header();
+$commercial_freight = get_field('commercial_freight_starting_at', 'option');
+
+if (!$commercial_freight) {
+    $commercial_freight = '159';
+}
 ?>
 
 <?php if( have_rows('slider_images') ): ?>
@@ -106,7 +111,8 @@ get_header();
             <div class="col-12 col-lg-4 text-center">
                 <i class="las la-shipping-fast text-primary"></i>
                 <h5 class="my-2 font-weight-bold">$7.50 Shipping</h5>
-                <p class="mb-2">Ground orders over $150 ship for only $7.50*! Freight shipping starts at $135!</p>
+                <p class="mb-2">Ground orders over $150 ship for only $7.50*! Freight shipping starts at
+                    $<?php echo esc_attr($commercial_freight); ?>!</p>
                 <p style="font-size: 12px; color: #6c757d">(*excludes oversized items)</p>
             </div>
             <div class="col-12 col-lg-4 text-center">
