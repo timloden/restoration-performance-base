@@ -22,6 +22,7 @@ global $post;
 $heading = apply_filters( 'woocommerce_product_description_heading', __( 'Details', 'woocommerce' ) );
 global $product;
 $brands = wp_get_object_terms( $product->get_id(), 'pwb-brand' );
+$brand_name = get_brand_name($product->get_id());
 
 foreach( $brands as $brand ) {
 $image_size = get_option('wc_pwb_admin_tab_brand_logo_size', 'thumbnail');
@@ -35,7 +36,6 @@ $brand_logo = wp_get_attachment_image_src( $brand_logo, apply_filters( 'pwb_prod
 
 <?php the_content(); ?>
 
-
 <div class="row">
     <div class="col-12 col-lg-8 order-2 order-lg-1">
         <?php if( !empty($brand->description) ) echo do_shortcode($brand->description);?>
@@ -46,3 +46,12 @@ $brand_logo = wp_get_attachment_image_src( $brand_logo, apply_filters( 'pwb_prod
         <?php endif; ?>
     </div>
 </div>
+
+<?php if ($brand_name === 'Dynacorn') : ?>
+<div class="row">
+    <div class="col-12">
+        <p class="text-center alert alert-info">For more information about sheet metal fitment and installation please
+            see our <a href="<?php echo site_url(); ?>/frequently-asked-questions/">Frequently Asked Questions</a>.</p>
+    </div>
+</div>
+<?php endif; ?>
