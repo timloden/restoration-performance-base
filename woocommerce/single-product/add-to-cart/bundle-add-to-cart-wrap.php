@@ -36,8 +36,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <ul class="msg"></ul>
             </div>
         </div>
-        <div class="bundle_availability"><?php
-
+        <div class="bundle_availability">test<?php
+				
 				// Availability html.
 				echo $availability_html;
 
