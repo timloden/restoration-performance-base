@@ -22,9 +22,15 @@ if ( $title === '' ) {
 	return;
 }
 
+$stock_status = $bundled_item->product->get_stock_status();
+
 ?><h5 class="bundled_product_title product_title"><?php
 		$title = '<span class="bundled_product_title_inner">' . WC_PB_Helpers::format_product_shop_title( $title, $quantity, '', $title_suffix ) . '</span>';
 		$link  = $permalink ? apply_filters( 'woocommerce_bundled_item_link_html', ' <span class="bundled_product_title_link"><a class="bundled_product_permalink" href="' . $permalink . '" target="_blank" aria-label="' . __( 'View product', 'woocommerce-product-bundles' ) . '"></a></span>', $bundled_item, $bundle ) : '';
 		echo $title . $link;
-		echo '<p class="mb-0 pt-2">SKU: ' . $bundled_item->product->get_sku() . '</p>';
 ?></h5>
+<?php
+echo '<p class="mb-0">SKU: ' . $bundled_item->product->get_sku() . '</p>';
+		if ( $stock_status === 'onbackorder' ) {
+			echo '<p class="text-primary font-weight-bold pt-2">This item is on backorder and could take up to 30 days to ship</p>';
+		}
