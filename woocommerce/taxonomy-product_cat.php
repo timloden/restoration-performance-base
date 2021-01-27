@@ -2,7 +2,7 @@
 /**
  * The Template for displaying products in a product category. Simply includes the archive template
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/taxonomy-product_cat.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/taxonomy-product-cat.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -12,7 +12,7 @@
  *
  * @see         https://docs.woocommerce.com/document/template-structure/
  * @package     WooCommerce/Templates
- * @version     1.6.4
+ * @version     4.7.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
