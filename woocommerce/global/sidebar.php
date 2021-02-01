@@ -21,7 +21,14 @@ if (!defined('ABSPATH')) {
 }
 
 ?>
-
+<?php if (facetwp_display('facet', 'brands')) : ?>
+<section id="filter-categories" class="widget_text widget widget_custom_html">
+    <p class="h6">Brands</p>
+    <div class="textwidget custom-html-widget">
+        <?php echo facetwp_display('facet', 'brands'); ?>
+    </div>
+</section>
+<?php endif; ?>
 <section id="filter-categories" class="widget_text widget widget_custom_html">
     <p class="h6">Categories</p>
     <div class="textwidget custom-html-widget">
