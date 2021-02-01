@@ -197,8 +197,12 @@ $all_shipping_classes = [];
                 <div class="col-12">
                     <div class="alert alert-info">
                         <p class="mb-1"><strong>Multiple Manufacturer Shipping</strong></p>
-                        <p>It looks like you have parts from multiple different manufacturers, this could lead
-                            to increased shipping costs!</p>
+                        <p>It looks like you have selected items from multiple direct ship manufacturers.
+                            This may cause you to pay more freight than necessary.</p>
+                        <p>We suggest that on truck freight
+                            items to stay with only one manufacturer products. Please contact us if that is not possible
+                            for you so we can assist: <a
+                                href="mailto:sales@classicbodyparts.com">sales@classicbodyparts.com</a></a></p>
                     </div>
                 </div>
             </div>
