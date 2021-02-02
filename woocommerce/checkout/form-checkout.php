@@ -52,7 +52,7 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
 
                 <?php endif; ?>
             </div>
-            <div class="col-12 col-md-5 py-5 px-md-3 px-lg-5 checkout-cart border-right">
+            <div class="col-12 col-md-5 py-5 px-md-3 px-lg-4 checkout-cart border-right">
                 <?php //do_action('woocommerce_checkout_before_order_review_heading'); ?>
                 <h4>Your Order</h4>
                 <?php do_action('woocommerce_checkout_before_order_review'); ?>
