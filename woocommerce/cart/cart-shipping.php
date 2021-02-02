@@ -99,7 +99,7 @@ $shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
         <div class="d-block p-2" style="background-color: #f6f6f6;">
             <p class="d-block mb-1 text-center"><strong><i class="las la-exclamation-circle"></i> Must ship to a
                     commercial location</strong></p>
-            <p class="mb-0 text-center" style="font-size: 12px;">Not shipping to a commercial location may result in
+            <p class="mb-0 text-center" style="font-size: 12px;">Shipping to a residential location may result in
                 additional shipping fees</p>
         </div>
     </td>
