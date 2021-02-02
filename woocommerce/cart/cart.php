@@ -69,7 +69,7 @@ $all_shipping_classes = [];
                             </td>
 
                             <td class="product-name" data-title="<?php esc_attr_e('Product', 'woocommerce'); ?>">
-                                <p class="mb-1">
+                                <p class="mb-2">
                                     <?php
 										if (!$product_permalink) {
 											echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', esc_html( $_product->get_name() ), $cart_item, $cart_item_key ) . '&nbsp;' );
@@ -88,17 +88,23 @@ $all_shipping_classes = [];
 										}
                                         ?>
                                 </p>
-                                <span style="font-size: 12px;">SKU: <?php echo  $_product->get_sku(); ?></span>
+                                <p class="mb-2" style="font-size: 12px;">SKU: <?php echo  $_product->get_sku(); ?> <span
+                                        class="px-2">|</span>
+                                    Brand:
+                                    <?php echo get_brand_name($product_id); ?></p>
+
                                 <?php if ($_product->get_stock_status() === 'onbackorder') : ?>
                                 <p style="font-size: 12px;" class="text-primary font-weight-bold"><i
                                         class="las la-exclamation-circle"></i>
                                     Backordered - could take up to 30 days to ship</p>
                                 <?php endif; ?>
+
                                 <?php if ($_product->get_shipping_class() === 'ground-oversized'): ?>
                                 <p style="font-size: 12px;" class="text-primary font-weight-bold"><i
                                         class="las la-box"></i> <a data-toggle="tooltip" data-placement="top"
                                         title="This product does not qualify for $7.50 shipping">Oversized Ground</a>
                                 </p>
+
                                 <?php elseif ($_product->get_shipping_class() === 'dynacorn-freight' || $_product->get_shipping_class() === 'oer-freight'): ?>
                                 <p style="font-size: 12px;" class="text-primary font-weight-bold"><i
                                         class="las la-shipping-fast"></i> Freight Item</p>
