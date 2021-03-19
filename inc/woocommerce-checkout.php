@@ -36,6 +36,9 @@ add_action('woocommerce_checkout_process', 'bbloomer_matching_email_addresses');
 function bbloomer_matching_email_addresses() { 
     $email1 = $_POST['billing_email'];
     $email2 = $_POST['billing_em_ver'];
+
+    $email1 = str_replace(' ', '', $email1);
+    $email2 = str_replace(' ', '', $email2);
     if ( $email2 !== $email1 && !is_user_logged_in() ) {
         wc_add_notice( 'Your email addresses do not match', 'error' );
     }
