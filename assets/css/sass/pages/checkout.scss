@@ -59,6 +59,12 @@ ul.payment_methods li div.sv-wc-payment-gateway-card-icons {
     background-size: 35px 24px !important;
 }
 
+.woocommerce {
+    .sv-wc-external-checkout {
+        display: none;
+    }
+}
+
 button#place_order {
     &:before {
         font-family: 'Line Awesome Free';
