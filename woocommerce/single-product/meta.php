@@ -22,12 +22,20 @@ if (! defined('ABSPATH') ) {
 global $product;
 $brand_name = get_brand_name($product->get_id());
 $dynacorn_message = get_field('dynacorn_shipping_notice', 'option');
+$oer_message = get_field('oer_shipping_notice', 'option');
+$shipping_class_id   = $product->get_shipping_class_id();
+$shipping_class_term = get_term($shipping_class_id, 'product_shipping_class');
+$shipping_class = $shipping_class_term->slug;
+
 ?>
 <div class="product_meta border-top pt-3">
-
     <?php if ($brand_name == 'Dynacorn' && $dynacorn_message): ?>
     <div class="alert alert-info">
         <i class="las la-exclamation-circle"></i> <?php echo $dynacorn_message; ?>
+    </div>
+    <?php elseif ($oer_message && $shipping_class == 'oer-freight' ): ?>
+    <div class="alert alert-info">
+        <i class="las la-exclamation-circle"></i> <?php echo $oer_message; ?>
     </div>
     <?php endif; ?>
 
