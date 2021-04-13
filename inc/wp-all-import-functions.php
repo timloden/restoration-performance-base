@@ -213,3 +213,19 @@ function sherman_pricing( $cost = null ) {
 
     }
 }
+
+// orders - get order subtotal
+
+function get_subtotal($value) {
+    $order = wc_get_order( $value );
+    $subtotal = $order->get_subtotal();
+    return $subtotal;
+}
+
+// orders - get order discounts
+
+function get_discount_total($value) {
+    $order = wc_get_order( $value );
+    $discount = $order->get_discount_total();
+    return $discount;
+}
