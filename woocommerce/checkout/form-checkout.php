@@ -20,6 +20,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+global $woocommerce;
+
 // If checkout registration is disabled and not logged in, the user cannot checkout.
 if (!$checkout->is_registration_enabled() && $checkout->is_registration_required() && !is_user_logged_in()) {
     echo esc_html(apply_filters('woocommerce_checkout_must_be_logged_in_message', __('You must be logged in to checkout.', 'woocommerce')));
@@ -71,7 +73,48 @@ jQuery(document).on('updated_checkout', function() {
     jQuery("#place_order").html("Securely Place Order");
 });
 </script>
-<?php
 
+<?php
 do_action('woocommerce_after_checkout_form', $checkout);
+
+$has_backorder = false;
+
+$items = $woocommerce->cart->get_cart();
+
+foreach($items as $item => $values) { 
+    $_product =  wc_get_product( $values['data']->get_id()); 
+    $product_stock = $_product->get_stock_status();
+    if ($product_stock == 'onbackorder') {
+        $has_backorder = true;
+    }
+}
+
+if ($has_backorder) :
+
 ?>
+
+<script type="text/javascript">
+jQuery(window).on('load', function() {
+    jQuery('#exampleModal').modal('show');
+});
+</script>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Backordered Items</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Notice: some of the items in your cart are currently on backorder and could take over 30 days to ship.
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-primary">Proceed</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php endif;
