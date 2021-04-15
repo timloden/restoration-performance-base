@@ -108,7 +108,8 @@ jQuery(window).on('load', function() {
                 </button>
             </div>
             <div class="modal-body">
-                Notice: some of the items in your cart are currently on backorder and could take over 30 days to ship.
+                <strong>Notice:</strong> Some of the items in your cart are currently on backorder and could take over
+                30 days to ship.
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-primary">Proceed</button>
