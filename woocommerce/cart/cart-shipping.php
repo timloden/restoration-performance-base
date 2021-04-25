@@ -26,6 +26,23 @@ $show_shipping_calculator = !empty($show_shipping_calculator);
 $calculator_text          = '';
 
 $shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
+
+/*
+
+Shipping ID'S
+------------------------------------
+
+Freight - Residential Address = 4
+
+Freight - Commercial Address = 5
+
+Heavy Freight - Commercial Only = 6
+
+Flat Rate = 7
+
+Free Shipping = 8
+
+*/
 ?>
 <tr>
     <th colspan="2"><?php echo wp_kses_post($package_name); ?></th>
@@ -58,14 +75,14 @@ $shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
         <?php if (is_cart()) : ?>
         <p class="woocommerce-shipping-destination">
             <?php
-					if ($formatted_destination) {
-						// Translators: $s shipping destination.
-						printf(esc_html__('Shipping to %s.', 'woocommerce') . ' ', '<strong><br>' . esc_html($formatted_destination) . '</strong>');
-						$calculator_text = esc_html__('Change address', 'woocommerce');
-					} else {
-						echo wp_kses_post(apply_filters('woocommerce_shipping_estimate_html', __('Shipping options will be updated during checkout.', 'woocommerce')));
-					}
-					?>
+            if ($formatted_destination) {
+                // Translators: $s shipping destination.
+                printf(esc_html__('Shipping to %s.', 'woocommerce') . ' ', '<strong><br>' . esc_html($formatted_destination) . '</strong>');
+                $calculator_text = esc_html__('Change address', 'woocommerce');
+            } else {
+                echo wp_kses_post(apply_filters('woocommerce_shipping_estimate_html', __('Shipping options will be updated during checkout.', 'woocommerce')));
+            }
+            ?>
         </p>
         <?php endif; ?>
         <?php
@@ -93,7 +110,7 @@ $shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
     </td>
 </tr>
 <!-- are we commercial freight?     -->
-<?php if ($shipping_method === 'flexible_shipping_1_1') : ?>
+<?php if ($shipping_method === 'flexible_shipping_single:5') : ?>
 <tr>
     <td class="p-0" colspan="2">
         <div class="d-block p-2" style="background-color: #f6f6f6;">
@@ -104,7 +121,7 @@ $shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
         </div>
     </td>
 </tr>
-<?php elseif ($shipping_method === 'flexible_shipping_1_4') : ?>
+<?php elseif ($shipping_method === 'flexible_shipping_single:6') : ?>
 <tr>
     <td class="p-0" colspan="2">
         <div class="d-block p-2" style="background-color: #f6f6f6;">
