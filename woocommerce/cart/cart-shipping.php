@@ -27,22 +27,21 @@ $calculator_text          = '';
 
 $shipping_method = WC()->session->get( 'chosen_shipping_methods' )[0];
 
-/*
+// Freight - Residential Address
+$residential_freight = 'flexible_shipping_single:5';
 
-Shipping ID'S
-------------------------------------
+// Freight - Commercial Address
+$commercial_freight = 'flexible_shipping_single:6';
 
-Freight - Residential Address = 4
+// Heavy Freight - Commercial Only
+$heavy_freight = 'flexible_shipping_single:7';
 
-Freight - Commercial Address = 5
+// Flat Rate 
+$flat_rate = 'flexible_shipping_single:8';
 
-Heavy Freight - Commercial Only = 6
+// Free Shipping
+$free_rate = 'flexible_shipping_single:9';
 
-Flat Rate = 7
-
-Free Shipping = 8
-
-*/
 ?>
 <tr>
     <th colspan="2"><?php echo wp_kses_post($package_name); ?></th>
@@ -110,7 +109,7 @@ Free Shipping = 8
     </td>
 </tr>
 <!-- are we commercial freight?     -->
-<?php if ($shipping_method === 'flexible_shipping_single:5') : ?>
+<?php if ($shipping_method === $commercial_freight) : ?>
 <tr>
     <td class="p-0" colspan="2">
         <div class="d-block p-2" style="background-color: #f6f6f6;">
@@ -121,7 +120,8 @@ Free Shipping = 8
         </div>
     </td>
 </tr>
-<?php elseif ($shipping_method === 'flexible_shipping_single:6') : ?>
+<!-- are we heavy freight?     -->
+<?php elseif ($shipping_method === $heavy_freight) : ?>
 <tr>
     <td class="p-0" colspan="2">
         <div class="d-block p-2" style="background-color: #f6f6f6;">
