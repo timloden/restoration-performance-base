@@ -18,13 +18,35 @@ add_action( 'woocommerce_before_single_product_summary', 'custom_show_product_im
 
 function custom_show_product_images() {
     global $product;
+    
     $attachment_ids = $product->get_gallery_image_ids();
+    
     $image_id = $product->get_image_id();
-    if ($image_id) {
+    
+    if ($attachment_ids && $image_id) {
+        echo '<div class="product-slider mb-lg-5">';
+
+        echo ( '<div>' . wp_get_attachment_image( $image_id, 'full', "", array( "class" => "img-fluid mb-3" ) ) . '</div>' );
+        
+        foreach ($attachment_ids as $image) {
+            echo ( '<div>' . wp_get_attachment_image( $image, 'full', "", array( "class" => "img-fluid mb-3" ) ) . '</div>' );
+        }
+
+        echo '</div>';
+        echo '<div class="product-thumbnails d-flex justify-content-center mb-lg-5">';
+            echo ( '<div>' . wp_get_attachment_image( $image_id, 'thumbnail', "", array( "class" => "img-fluid mr-3" ) ) . '</div>' );
+            foreach ($attachment_ids as $image) {
+                echo ( '<div>' . wp_get_attachment_image( $image, 'thumbnail', "", array( "class" => "img-fluid" ) ) . '</div>' );
+            }
+        echo '</div>';
+
+    } elseif ($image_id) {
         echo wp_get_attachment_image( $image_id, 'full', "", array( "class" => "img-fluid" ) );
     } else {
         echo '<img class="img-fluid" src="' . get_template_directory_uri() . '/assets/images/woocommerce-placeholder.png">';
     }
+
+    
     
 } 
 
@@ -61,7 +83,7 @@ function woo_new_product_tab( $tabs ) {
 
 function vehicle_fitment() {
     
-    echo '<p class="mb-1"><strong>Fitment:</strong></p>';
+    echo '<pre class="mb-1"><strong>Fitment:</strong></pre>';
     echo '<ul>';
 
     $vehicles = get_field('vehicle_fitment');

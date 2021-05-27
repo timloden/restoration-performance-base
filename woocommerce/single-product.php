@@ -61,4 +61,21 @@ get_header( 'shop' ); ?>
 <?php
 get_footer( 'shop' );
 
+if ($attachment_ids = $product->get_gallery_image_ids()) :
+
+?>
+<script>
+const homeSlider = tns({
+    container: '.product-slider',
+    items: 1,
+    nav: true,
+    navContainer: '.product-thumbnails',
+    navAsThumbnails: true,
+    controls: false,
+    autoplayButtonOutput: false,
+    lazyload: true,
+});
+</script>
+<?php
+endif;
 /* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */
