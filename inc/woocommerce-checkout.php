@@ -34,8 +34,8 @@ return $fields;
 add_action('woocommerce_checkout_process', 'bbloomer_matching_email_addresses');
   
 function bbloomer_matching_email_addresses() { 
-    $email1 = $_POST['billing_email'];
-    $email2 = $_POST['billing_em_ver'];
+    $email1 = strtolower($_POST['billing_email']);
+    $email2 = strtolower($_POST['billing_em_ver']);
 
     $email1 = str_replace(' ', '', $email1);
     $email2 = str_replace(' ', '', $email2);
