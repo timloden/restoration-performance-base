@@ -2813,6 +2813,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,#cart-dropdown .dropdown-toggle,.h6{font-w
 .woocommerce p.stars a.star-5.active:after,.woocommerce p.stars a.star-5:hover:after{content:'\f005\f005\f005\f005\f005'}
 .woocommerce ul.products li.product .star-rating{display:block;text-align:center;margin:0 auto}
 .woocommerce ul.cart_list li .star-rating,.woocommerce ul.product_list_widget li .star-rating{display:block;text-align:center;margin:0 auto}
+#tab-description .subcontainer h2{font-size:1.5rem}
 .cart .product-thumbnail .size-woocommerce_thumbnail{width:100px;height:auto}
 .cart .cart_item td{vertical-align:middle}
 .tax-total small{display:none}

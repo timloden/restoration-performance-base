@@ -39,3 +39,9 @@ class MySearchwpDidYouMean {
 }
 
 new MySearchwpDidYouMean();
+
+
+add_filter( 'woocommerce_redirect_single_search_result', 'my_remove_search_redirect', 10 );
+function my_remove_search_redirect() {
+    return false;	 	 
+}

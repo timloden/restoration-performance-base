@@ -58,7 +58,7 @@ if ( $product->is_in_stock() ) : ?>
                     class="las la-shopping-cart"></i>
                 <?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
         </div>
-        <div class="col-auto">
+        <div class="col-auto mb-3">
             <?php echo do_shortcode('[ti_wishlists_addtowishlist]'); ?>
         </div>
     </div>
