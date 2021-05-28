@@ -34,9 +34,9 @@ function custom_show_product_images() {
 
         echo '</div>';
         echo '<div class="product-thumbnails d-flex justify-content-center mb-lg-5">';
-            echo ( '<div>' . wp_get_attachment_image( $image_id, 'thumbnail', "", array( "class" => "img-fluid mr-3" ) ) . '</div>' );
+            echo ( '<div>' . wp_get_attachment_image( $image_id, 'thumbnail', "", array( "class" => "img-fluid" ) ) . '</div>' );
             foreach ($attachment_ids as $image) {
-                echo ( '<div>' . wp_get_attachment_image( $image, 'thumbnail', "", array( "class" => "img-fluid" ) ) . '</div>' );
+                echo ( '<div><div class="thumb px-3">' . wp_get_attachment_image( $image, 'thumbnail', "", array( "class" => "img-fluid" ) ) . '</div></div>' );
             }
         echo '</div>';
 
