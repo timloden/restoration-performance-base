@@ -130,7 +130,7 @@ $all_shipping_classes = [];
                             echo apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key); // PHPCS: XSS ok.
                             ?>
                         </div>
-                        <div class="product-remove col text-right">
+                        <div class="product-remove col text-right border-left">
                             <?php
                             echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                 'woocommerce_cart_item_remove_link',
