@@ -19,6 +19,16 @@
     }
 }
 
+.calculated_shipping {
+    .shipping-calculator {
+        display: none;
+    }
+}
+
+#calc_shipping_country {
+    display: none;
+}
+
 .state_select {
     @extend .form-control;
 }

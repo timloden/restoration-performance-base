@@ -28,8 +28,8 @@ $all_shipping_classes = [];
             <?php do_action('woocommerce_before_cart_table'); ?>
 
             <?php do_action('woocommerce_before_cart_contents'); ?>
-
-            <?php
+            <div class="shop_table shop_table_responsive cart woocommerce-cart-form__contents">
+                <?php
             foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
                 $_product   = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
                 $product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
@@ -38,11 +38,11 @@ $all_shipping_classes = [];
                 if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key)) {
                     $product_permalink = apply_filters('woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink($cart_item) : '', $cart_item, $cart_item_key);
             ?>
-            <div
-                class="row mb-3 align-items-center border-bottom pb-3 woocommerce-cart-form__cart-item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
+                <div
+                    class="row mb-3 align-items-center border-bottom pb-3 woocommerce-cart-form__cart-item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
 
-                <div class="product-thumbnail col-3 col-lg-2">
-                    <?php
+                    <div class="product-thumbnail col-3 col-lg-2">
+                        <?php
                     $thumbnail = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image('custom-thumb'), $cart_item, $cart_item_key);
                     $thumbnail = str_replace( 'class="', 'class="img-fluid ', $thumbnail );
 
@@ -52,12 +52,12 @@ $all_shipping_classes = [];
                         printf('<a href="%s">%s</a>', esc_url($product_permalink), $thumbnail); // PHPCS: XSS ok.
                     }
                     ?>
-                </div>
-                <div class="col-9 col-lg-6">
+                    </div>
+                    <div class="col-9 col-lg-5">
 
-                    <div class="product-name" data-title="<?php esc_attr_e('Product', 'woocommerce'); ?>">
-                        <p class="mb-2">
-                            <?php
+                        <div class="product-name" data-title="<?php esc_attr_e('Product', 'woocommerce'); ?>">
+                            <p class="mb-2">
+                                <?php
                                 if (!$product_permalink) {
                                     echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', esc_html( $_product->get_name() ), $cart_item, $cart_item_key ) . '&nbsp;' );
                                 } else {
@@ -74,37 +74,37 @@ $all_shipping_classes = [];
                                     echo wp_kses_post(apply_filters('woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__('Available on backorder', 'woocommerce') . '</p>', $product_id));
                                 }
                             ?>
-                        </p>
-                        <p class="mb-2" style="font-size: 12px;">SKU: <?php echo  $_product->get_sku(); ?> <span
-                                class="px-2">|</span>
-                            Brand:
-                            <?php echo get_brand_name($product_id); ?></p>
+                            </p>
+                            <p class="mb-2" style="font-size: 12px;">SKU: <?php echo  $_product->get_sku(); ?> <span
+                                    class="px-2">|</span>
+                                Brand:
+                                <?php echo get_brand_name($product_id); ?></p>
 
-                        <?php if ($_product->get_stock_status() === 'onbackorder') : ?>
-                        <p style="font-size: 12px;" class="text-primary font-weight-bold"><i
-                                class="las la-exclamation-circle"></i>
-                            Backordered - could take over 30 days to ship</p>
-                        <?php endif; ?>
+                            <?php if ($_product->get_stock_status() === 'onbackorder') : ?>
+                            <p style="font-size: 12px;" class="text-primary font-weight-bold"><i
+                                    class="las la-exclamation-circle"></i>
+                                Backordered - could take over 30 days to ship</p>
+                            <?php endif; ?>
 
-                        <?php if ($_product->get_shipping_class() === 'ground-oversized'): ?>
-                        <p style="font-size: 12px;" class="text-primary font-weight-bold"><i class="las la-box"></i> <a
-                                data-toggle="tooltip" data-placement="top"
-                                title="This product does not qualify for $7.50 shipping">Oversized Ground</a>
-                        </p>
+                            <?php if ($_product->get_shipping_class() === 'ground-oversized'): ?>
+                            <p style="font-size: 12px;" class="text-primary font-weight-bold"><i class="las la-box"></i>
+                                <a data-toggle="tooltip" data-placement="top"
+                                    title="This product does not qualify for $7.50 shipping">Oversized Ground</a>
+                            </p>
 
-                        <?php elseif ($_product->get_shipping_class() === 'dynacorn-freight' || $_product->get_shipping_class() === 'oer-freight'): ?>
-                        <p style="font-size: 12px;" class="text-primary font-weight-bold"><i
-                                class="las la-shipping-fast"></i> Freight Item</p>
-                        <?php endif; ?>
+                            <?php elseif ($_product->get_shipping_class() === 'dynacorn-freight' || $_product->get_shipping_class() === 'oer-freight'): ?>
+                            <p style="font-size: 12px;" class="text-primary font-weight-bold"><i
+                                    class="las la-shipping-fast"></i> Freight Item</p>
+                            <?php endif; ?>
+                        </div>
+
                     </div>
 
-                </div>
-
-                <div class="col-12 col-lg-4">
-                    <div class="d-flex align-items-center">
-                        <div class="product-quantity col-auto"
-                            data-title="<?php esc_attr_e('Quantity', 'woocommerce'); ?>">
-                            <?php
+                    <div class="col-12 col-lg-5">
+                        <div class="d-flex align-items-center">
+                            <div class="product-quantity col-auto"
+                                data-title="<?php esc_attr_e('Quantity', 'woocommerce'); ?>">
+                                <?php
                             if ($_product->is_sold_individually()) {
                                 $product_quantity = sprintf('1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key);
                             } else {
@@ -123,15 +123,15 @@ $all_shipping_classes = [];
 
                             echo apply_filters('woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item); // PHPCS: XSS ok.
                             ?>
-                        </div>
-                        <div class="product-price col text-center"
-                            data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>">
-                            <?php
+                            </div>
+                            <div class="product-price col text-center"
+                                data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>">
+                                <?php
                             echo apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key); // PHPCS: XSS ok.
                             ?>
-                        </div>
-                        <div class="product-remove col text-right border-left">
-                            <?php
+                            </div>
+                            <div class="product-remove col text-right border-left">
+                                <?php
                             echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                 'woocommerce_cart_item_remove_link',
                                 sprintf(
@@ -144,15 +144,15 @@ $all_shipping_classes = [];
                                 $cart_item_key
                             );
                             ?>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <?php
+                <?php
 							}
                         }
 						?>
-
+            </div>
             <?php do_action('woocommerce_cart_contents'); ?>
 
             <div class="row justify-content-between">
@@ -191,7 +191,7 @@ $all_shipping_classes = [];
             </div>
             <?php 
             if (count(array_unique($all_shipping_classes)) !== 1): ?>
-            <div class="row pb-4">
+            <div class="row pt-4">
                 <div class="col-12">
                     <div class="alert alert-info">
                         <p class="mb-1"><strong>Multiple Manufacturer Shipping</strong></p>
@@ -205,7 +205,7 @@ $all_shipping_classes = [];
                 </div>
             </div>
             <?php endif; ?>
-            <div class="row pb-4">
+            <div class="row pt-4">
                 <div class="col-12">
                     <p class="mb-1"><strong>Having trouble with a coupon? Shipping seems off?</strong></p>
                     <p>Please email us at <a href="mailto:sales@classicbodyparts.com">sales@classicbodyparts.com</a> and
@@ -231,9 +231,9 @@ $all_shipping_classes = [];
         </div>
     </div>
 </div>
-<div class="row align-items-center">
-    <div class="col-6">
-        <a href="<?php echo site_url();?>/shop"><i class="las la-arrow-left"></i> Continue shopping</a>
+<div class="row align-items-center pt-5">
+    <div class="col-12 col-lg-6 text-center text-lg-left">
+        <a href="<?php echo site_url();?>/shop">Continue shopping</a>
     </div>
     <div class="col-6">
 
@@ -242,7 +242,7 @@ $all_shipping_classes = [];
 <script>
 jQuery(function() {
     jQuery('[data-toggle="tooltip"]').tooltip()
-})
+});
 </script>
 <?php
 	do_action('woocommerce_cross_sell_display');
