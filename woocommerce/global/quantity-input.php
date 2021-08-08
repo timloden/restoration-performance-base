@@ -31,7 +31,9 @@ if ( $max_value && $min_value === $max_value ) {
 <div class="quantity">
     <?php do_action( 'woocommerce_before_quantity_input_field' ); ?>
 
+
     <label class="sr-only" for="<?php echo esc_attr( $input_id ); ?>"><?php echo esc_attr( $label ); ?></label>
+
     <input type="number" id="<?php echo esc_attr( $input_id ); ?>"
         class="<?php echo esc_attr( join( ' ', (array) $classes ) ); ?> form-control"
         step="<?php echo esc_attr( $step ); ?>" min="<?php echo esc_attr( $min_value ); ?>"
@@ -39,6 +41,7 @@ if ( $max_value && $min_value === $max_value ) {
         value="<?php echo esc_attr( $input_value ); ?>"
         title="<?php echo esc_attr_x( 'Qty', 'Product quantity input tooltip', 'woocommerce' ); ?>" size="4"
         placeholder="<?php echo esc_attr( $placeholder ); ?>" inputmode="<?php echo esc_attr( $inputmode ); ?>" />
+
     <?php do_action( 'woocommerce_after_quantity_input_field' ); ?>
 </div>
 <?php

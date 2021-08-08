@@ -20,10 +20,11 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_before_shipping_calculator' ); ?>
 
 <form class="woocommerce-shipping-calculator" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+    <p class="text-center text-lg-left">
+        <?php printf( '<a href="#" class="shipping-calculator-button" onclick="showShippingForm()">%s</a>', esc_html( ! empty( $button_text ) ? $button_text : __( 'Calculate shipping', 'woocommerce' ) ) ); ?>
+    </p>
 
-    <?php printf( '<a href="#" class="shipping-calculator-button">%s</a>', esc_html( ! empty( $button_text ) ? $button_text : __( 'Calculate shipping', 'woocommerce' ) ) ); ?>
-
-    <section class="shipping-calculator-form py-3" style="display:none;">
+    <section id="shipping-calculator-form" class="shipping-calculator">
 
         <?php if ( apply_filters( 'woocommerce_shipping_calculator_enable_country', true ) ) : ?>
         <div class="form-group" id="calc_shipping_country_field">
@@ -58,10 +59,10 @@ do_action( 'woocommerce_before_shipping_calculator' ); ?>
                 data-placeholder="<?php esc_attr_e( 'State / County', 'woocommerce' ); ?>">
                 <option value="">Select a State</option>
                 <?php
-							foreach ( $states as $ckey => $cvalue ) {
-								echo '<option value="' . esc_attr( $ckey ) . '" ' . selected( $current_r, $ckey, false ) . '>' . esc_html( $cvalue ) . '</option>';
-							}
-							?>
+                foreach ( $states as $ckey => $cvalue ) {
+                    echo '<option value="' . esc_attr( $ckey ) . '" ' . selected( $current_r, $ckey, false ) . '>' . esc_html( $cvalue ) . '</option>';
+                }
+                ?>
             </select>
 
             <?php
@@ -99,5 +100,13 @@ do_action( 'woocommerce_before_shipping_calculator' ); ?>
         <?php wp_nonce_field( 'woocommerce-shipping-calculator', 'woocommerce-shipping-calculator-nonce' ); ?>
     </section>
 </form>
+
+<script>
+function showShippingForm() {
+    console.log('clicked');
+    var shippingForm = document.getElementById('shipping-calculator-form');
+    shippingForm.style.display = 'block';
+}
+</script>
 
 <?php do_action( 'woocommerce_after_shipping_calculator' ); ?>

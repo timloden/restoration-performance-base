@@ -2817,6 +2817,8 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,#cart-dropdown .dropdown-toggle,.h6{font-w
 .cart .product-thumbnail .size-woocommerce_thumbnail{width:100px;height:auto}
 .cart .cart_item td{vertical-align:middle}
 .tax-total small{display:none}
+.calculated_shipping .shipping-calculator{display:none}
+#calc_shipping_country{display:none}
 .woocommerce-shipping-totals small{font-size:12px}
 .woocommerce-cart-form .wc_coupon_message_wrap{display:none}
 .woocommerce-mini-cart .woocommerce-mini-cart-item .size-woocommerce_thumbnail{width:50px;height:auto}
