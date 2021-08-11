@@ -107,6 +107,12 @@ function showShippingForm() {
     var shippingForm = document.getElementById('shipping-calculator-form');
     shippingForm.style.display = 'block';
 }
+window.addEventListener('load', function() {
+    console.log();
+    document.getElementsByName('calc_shipping_state')[0].options[0].innerHTML = 'Select a State';
+    //document.getElementsByName('calc_shipping_state').options[0].innerHTML = 'Select a state';
+});
+//
 </script>
 
 <?php do_action( 'woocommerce_after_shipping_calculator' ); ?>
