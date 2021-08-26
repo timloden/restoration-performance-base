@@ -112,3 +112,11 @@ add_filter( 'wcwl_enable_waitlist_for_backorder_products', 'wcwl_force_backorder
 function wcwl_force_backorder_waitlist_true( $product_id ) {
     return true;
 }
+
+// waitlist message 
+
+add_filter( 'wcwl_join_waitlist_message_text', 'change_waitlist_message_text' );
+
+function change_waitlist_message_text( $text ) {
+    return __( '<strong>This item is currently on backorder</strong><br>Enter your email below to be notified when it is back in stock!' );
+}
