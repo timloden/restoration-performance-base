@@ -20,10 +20,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $product;
+$stock_status = $product->get_stock_status();
+if ( 'instock' == $stock_status) {
+	$stock = 'In Stock';
+} else {
+	$stock = 'Backordered';
+}
 ?>
-
-<?php if ( $price_html = $product->get_price_html() ) : ?>
-<p class="price"><?php echo $price_html; ?></p>
-<?php endif; ?>
+<p class="mb-2">Brand: <?php echo get_brand_name($product->get_id()); ?></p>
+<div class="d-flex mb-2">
+    <div class="col border-right">
+        <?php if ( $price_html = $product->get_price_html() ) : ?>
+        <p class="price text-center mb-0"><?php echo $price_html; ?></p>
+        <?php endif; ?>
+    </div>
+    <div class="col">
+        <p class="text-center mb-0"><?php echo $stock; ?></p>
+    </div>
+</div>
 <p>SKU: <?php echo $product->get_sku(); ?></p>
-<p><?php echo get_brand_name($product->get_id()); ?></p>
