@@ -109,7 +109,7 @@ jQuery(window).on('load', function() {
             </div>
             <div class="modal-body">
                 <strong>Notice:</strong> Some of the items in your cart are currently on backorder and could take over
-                30 days to ship.
+                30 days to ship. If there is no ETA, we will refund the cost of the part.
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn btn-primary">Proceed</button>
