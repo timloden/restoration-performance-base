@@ -27,6 +27,17 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
     echo esc_html(apply_filters('woocommerce_checkout_must_be_logged_in_message', __('You must be logged in to checkout.', 'woocommerce')));
     return;
 }
+$has_backorder = false;
+
+$items = $woocommerce->cart->get_cart();
+
+foreach($items as $item => $values) { 
+    $_product =  wc_get_product( $values['data']->get_id()); 
+    $product_stock = $_product->get_stock_status();
+    if ($product_stock == 'onbackorder') {
+        $has_backorder = true;
+    }
+}
 ?>
 <?php do_action('woocommerce_before_checkout_form', $checkout); ?>
 
@@ -62,7 +73,6 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
                 <div id="order_review" class="woocommerce-checkout-review-order">
                     <?php do_action('woocommerce_checkout_order_review'); ?>
                 </div>
-
                 <?php //do_action('woocommerce_checkout_after_order_review'); ?>
             </div>
         </div>
@@ -77,18 +87,6 @@ jQuery(document).on('updated_checkout', function() {
 <?php
 do_action('woocommerce_after_checkout_form', $checkout);
 
-$has_backorder = false;
-
-$items = $woocommerce->cart->get_cart();
-
-foreach($items as $item => $values) { 
-    $_product =  wc_get_product( $values['data']->get_id()); 
-    $product_stock = $_product->get_stock_status();
-    if ($product_stock == 'onbackorder') {
-        $has_backorder = true;
-    }
-}
-
 if ($has_backorder) :
 
 ?>
@@ -98,21 +96,19 @@ jQuery(window).on('load', function() {
     jQuery('#exampleModal').modal('show');
 });
 </script>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Backordered Items</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                 <strong>Notice:</strong> Some of the items in your cart are currently on backorder and could take over
                 30 days to ship. If there is no ETA, we will refund the cost of the part.
             </div>
             <div class="modal-footer">
-                <button type="button" data-dismiss="modal" class="btn btn-primary">Proceed</button>
+                <button type="button" data-dismiss="modal" class="btn btn-primary">I Understand</button>
             </div>
         </div>
     </div>
