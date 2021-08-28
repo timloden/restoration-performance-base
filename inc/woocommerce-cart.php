@@ -14,32 +14,6 @@ if ( function_exists( 'add_image_size' ) ) {
 
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 
-// cart - remove other shipping options if we have $4.50 shipping
-
-add_filter('woocommerce_package_rates', 'custom_shipping_option', 20, 2 );
-
-if (!function_exists('custom_shipping_option')) {
-    function custom_shipping_option($rates){
-        //print_r($rates);
-        // unset rates if $4.50 shipping is available or free shipping
-
-        if ( isset( $rates['flexible_shipping_single:8'] ) || isset( $rates['flexible_shipping_single:9']) ) {
-            unset( $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY'] );
-        }  
-        
-        // if freight, heavy-freight or free shipping, remove fedex fallback
-
-        if ( isset( $rates['flexible_shipping_single:6'] ) || isset( $rates['flexible_shipping_single:7'] ) || isset( $rates['flexible_shipping_single:9'] ) ) {
-            unset( $rates['flexible_shipping_fedex:fallback'] );
-        }   
-
-        
-
-        return $rates;
-    
-    }
-}
-
 // cart - mini cart button classes
 
 remove_action('woocommerce_widget_shopping_cart_buttons', 'woocommerce_widget_shopping_cart_button_view_cart', 10);

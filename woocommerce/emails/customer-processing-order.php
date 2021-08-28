@@ -36,6 +36,8 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 <p>If you have any questions about your shipping times you can go to <a
         href="<?php echo site_url(); ?>/tracking">www.classicbodyparts.com/tracking</a></p>
 <p>It's totally fine to get excited now! We love buying car parts too!</p>
+<p><strong>Note</strong>: If you ordered any parts that are backordered and it is determined that they have no ETA from
+    the manufacturer, we will refund these parts.</p>
 <?php
 
 /*
