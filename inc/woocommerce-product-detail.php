@@ -104,19 +104,3 @@ add_action( 'woocommerce_after_add_to_cart_button', 'see_shipping_price_in_cart'
 function see_shipping_price_in_cart(){
 	echo '<p class="mb-0 mt-2 text-primary font-weight-bold" style="font-size: 18px;"><i class="las la-shipping-fast"></i> See your shipping cost in the cart!</p>';
 }
-
-// waitlist for products on backorder
-
-add_filter( 'wcwl_enable_waitlist_for_backorder_products', 'wcwl_force_backorder_waitlist_true' );
-
-function wcwl_force_backorder_waitlist_true( $product_id ) {
-    return true;
-}
-
-// waitlist message 
-
-add_filter( 'wcwl_join_waitlist_message_text', 'change_waitlist_message_text' );
-
-function change_waitlist_message_text( $text ) {
-    return __( '<strong>This item is currently on backorder</strong><br>Enter your email below to be notified when it is back in stock!' );
-}
