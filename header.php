@@ -45,8 +45,8 @@
                 <div class="container">
                     <div class="row align-items-center py-2">
                         <div class="col-lg-6 d-none d-lg-block">
-                            <span class="border-right mr-2 pr-2"><strong>Orders over $150 ship for
-                                    $7.50!*</strong></span>
+                            <span
+                                class="border-right mr-2 pr-2"><strong><?php echo esc_attr( get_field('ground_shipping_discount', 'option') ); ?></strong></span>
                             <span>Freight shipping starting at $<?php echo esc_attr($commercial_freight); ?></span>
                         </div>
                         <div class="col-12 col-lg-6 text-center text-lg-right">

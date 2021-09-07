@@ -111,7 +111,8 @@ if (!$commercial_freight) {
             <div class="col-12 col-lg-4 text-center">
                 <i class="las la-shipping-fast text-primary"></i>
                 <h5 class="my-2 font-weight-bold">$7.50 Shipping</h5>
-                <p class="mb-2">Ground orders over $150 ship for only $7.50*! Freight shipping starts at
+                <p class="mb-2"><?php echo esc_attr( get_field('ground_shipping_discount', 'option') ); ?> Freight
+                    shipping starts at
                     $<?php echo esc_attr($commercial_freight); ?>!</p>
                 <p style="font-size: 12px; color: #6c757d">(*excludes oversized items)</p>
             </div>
