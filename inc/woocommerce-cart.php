@@ -71,14 +71,14 @@ function on_action_cart_updated()
     if ($has_freight == false) {
         $current_amount = WC()->cart->cart_contents_total;
 
-        if ($current_amount < 150) {
-            $difference = 150 - $current_amount;
+        if ($current_amount < 200) {
+            $difference = 200 - $current_amount;
 
             echo '<div class="alert alert-info mt-3" role="alert">You&apos;re so close! all you need is <strong>$' . $difference . '</strong> more in your cart to get
     <strong>$7.50
         shipping</strong>!
     </div>';
-        } elseif ($current_amount >= 150) {
+        } elseif ($current_amount >= 200) {
             echo '<div class="alert alert-success mt-3" role="alert">
         Congratulations your order can be shipped for only <strong>$7.50</strong>!
     </div>';
