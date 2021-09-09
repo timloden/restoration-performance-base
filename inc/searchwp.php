@@ -45,3 +45,40 @@ add_filter( 'woocommerce_redirect_single_search_result', 'my_remove_search_redir
 function my_remove_search_redirect() {
     return false;	 	 
 }
+
+// Add Weight to Entries (posts) within a Specific Category (taxonomy term) in SearchWP.
+// @link https://searchwp.com/documentation/knowledge-base/add-weight-category-tag-term/
+add_filter( 'searchwp\query\mods', function( $mods ) {
+	global $wpdb;
+
+	$oer_term = get_term_by('name', 'OER', 'pwb-brand');
+	
+	// Taxonomy bonus weight Mods.
+	$bonuses = [ [
+		'term_id' => $oer_term->term_id,  // Term ID to receive extra weight.
+		'weight'  => 200, // How much extra weight for this term.
+	] ];
+
+	$term_mods = [];
+
+	foreach ( $bonuses as $bonus ) {
+		$mod = new \SearchWP\Mod();
+		$index_alias = $mod->get_foreign_alias();
+		$mod->relevance( "IF((
+			SELECT {$wpdb->prefix}posts.ID
+			FROM {$wpdb->prefix}posts
+			LEFT JOIN {$wpdb->prefix}term_relationships ON (
+				{$wpdb->prefix}posts.ID = {$wpdb->prefix}term_relationships.object_id
+			)
+			WHERE {$wpdb->prefix}posts.ID = {$index_alias}.id
+				AND {$wpdb->prefix}term_relationships.term_taxonomy_id = {$bonus['term_id']}
+			LIMIT 1
+		) > 0, {$bonus['weight']}, 0)" );
+
+		$term_mods[] = $mod;
+	}
+
+	$mods = array_merge( $mods, $term_mods );
+
+	return $mods;
+} );
