@@ -111,3 +111,25 @@ defined('ABSPATH') || exit;
     </div>
 
 </div>
+
+<?php if (get_field('enable_google_reviews', 'option')) : 
+    $date = strtotime("+7 day");    
+?>
+
+<script src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script>
+
+<script>
+window.renderOptIn = function() {
+    window.gapi.load('surveyoptin', function() {
+        window.gapi.surveyoptin.render({
+            // REQUIRED FIELDS
+            "merchant_id": <?php echo get_field('google_merchant_id', 'option'); ?>,
+            "order_id": "<?php echo $order->get_order_number(); ?>",
+            "email": "<?php echo $order->get_billing_email(); ?>",
+            "delivery_country": "US",
+            "estimated_delivery_date": "<?php echo date('Y-m-d', $date); ?>",
+        });
+    });
+}
+</script>
+<?php endif; ?>
