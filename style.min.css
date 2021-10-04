@@ -888,7 +888,7 @@ a.bg-light:hover,a.bg-light:focus,button.bg-light:hover,button.bg-light:focus{ba
 a.bg-dark:hover,a.bg-dark:focus,button.bg-dark:hover,button.bg-dark:focus{background-color:#1d2124 !important}
 .bg-white{background-color:#fff !important}
 .bg-transparent{background-color:transparent !important}
-.border{border:1px solid #dee2e6 !important}
+.border,.gform_drop_area{border:1px solid #dee2e6 !important}
 .border-top{border-top:1px solid #dee2e6 !important}
 .border-right{border-right:1px solid #dee2e6 !important}
 .border-bottom{border-bottom:1px solid #dee2e6 !important}
@@ -908,7 +908,7 @@ a.bg-dark:hover,a.bg-dark:focus,button.bg-dark:hover,button.bg-dark:focus{backgr
 .border-dark{border-color:#343a40 !important}
 .border-white{border-color:#fff !important}
 .rounded-sm{border-radius:.2rem !important}
-.rounded{border-radius:.25rem !important}
+.rounded,.gform_drop_area{border-radius:.25rem !important}
 .rounded-top{border-top-left-radius:.25rem !important;border-top-right-radius:.25rem !important}
 .rounded-right{border-top-right-radius:.25rem !important;border-bottom-right-radius:.25rem !important}
 .rounded-bottom{border-bottom-right-radius:.25rem !important;border-bottom-left-radius:.25rem !important}
@@ -2747,6 +2747,8 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,#cart-dropdown .dropdown-toggle,.h6{font-w
 .gform_wrapper form{margin-bottom:0}
 .gform_wrapper .gfield_required{padding-left:1px;color:#dc3545}
 .validation_message{display:none}
+.gform_drop_area{padding:.5rem;margin:.5rem 0;text-align:center}
+.gform_fileupload_rules{font-size:12px}
 .wc-block-grid ul.wc-block-grid__products li.wc-block-grid__product a.wc-block-grid__product-link{margin-bottom:1.5em;padding-right:.75rem;padding-left:.75rem}
 .wc-block-grid ul.wc-block-grid__products li.wc-block-grid__product a.wc-block-grid__product-link img{max-width:100%;height:auto;max-height:200px}
 .slide-arrows{z-index:99;top:50%}

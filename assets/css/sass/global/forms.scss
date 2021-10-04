@@ -68,3 +68,15 @@
     @extend .alert;
     @extend .alert-success;
 }
+
+.gform_drop_area {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    @extend .border;
+    @extend .rounded;
+    text-align: center;
+}
+
+.gform_fileupload_rules {
+    font-size: 12px;
+}
