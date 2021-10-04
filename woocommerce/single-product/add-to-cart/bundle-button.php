@@ -8,7 +8,7 @@
  * We try to do this as little as possible, but it does happen.
  * When this occurs the version of the template file will be bumped and the readme will list any important changes.
  *
- * @version 4.7.4
+ * @version 6.11.0
  */
 
 // Exit if accessed directly.
@@ -20,7 +20,8 @@ global $product;
 
 ?>
 <div class="col-auto mb-3">
-    <button type="submit" class="single_add_to_cart_button bundle_add_to_cart_button button alt btn btn-primary px-5"
-        style="font-size: 18px;"><i class="las la-shopping-cart"></i>
-        <?php echo $product->single_add_to_cart_text(); ?></button>
+    <button style="font-size: 18px;" type="submit" name="add-to-cart"
+        value="<?php echo esc_attr( $product->get_id() ); ?>"
+        class="single_add_to_cart_button bundle_add_to_cart_button button alt btn btn-primary px-5 font-weight-bold"><i
+            class="las la-shopping-cart"></i> <?php echo $product->single_add_to_cart_text(); ?></button>
 </div>
