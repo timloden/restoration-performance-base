@@ -111,6 +111,14 @@ function my_prefix_comments_open( $open, $post_id ) {
 }
 add_filter( 'comments_open', 'my_prefix_comments_open', 10 , 2 );
 
+
+// remove edit link on pages
+function wpse_remove_edit_post_link( $link ) {
+    return '';
+}
+
+add_filter('edit_post_link', 'wpse_remove_edit_post_link');
+
 /**
  * Load includes
  */
