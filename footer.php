@@ -121,6 +121,80 @@ $newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option');
 </footer>
 </div><!-- #page -->
 
+<?php 
+    if (is_checkout() || is_cart()): 
+    $cart_total = WC()->cart->subtotal; 
+?>
+<?php if (!is_user_logged_in() && $cart_total > 200): ?>
+<!-- Modal -->
+<div class="modal fade" id="five-off-modal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">You have a coupon!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <p class="mb-1"><?php echo esc_attr(get_field('modal_coupon_title', 'option')); ?></p>
+                <p class="h3 mb-2 text-primary" style="font-weight: 900;">
+                    <?php echo esc_attr(get_field('modal_coupon_code_text', 'option')); ?>
+                </p>
+                <small
+                    class="text-black-50"><?php echo esc_attr(get_field('modal_coupon_disclaimer', 'option')); ?></small>
+            </div>
+            <div class="modal-footer">
+                <button id="five-off-modal-button" type="button" class="btn btn-primary">Apply Your Coupon</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function getCookie(name) {
+    let value = `; ${document.cookie}`;
+    let parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function setModalCookie() {
+    document.cookie = "five-off-modal=dismissed; max-age=1209600; path=/";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("mouseout", (event) => {
+        let modalCookie = getCookie('five-off-modal');
+        if (!event.toElement && !event.relatedTarget && modalCookie !== 'dismissed') {
+            setTimeout(() => {
+                jQuery('#five-off-modal').modal('show');
+            }, 250)
+
+        }
+    });
+
+    document.addEventListener("touchcancel", (event) => {
+        let modalCookie = getCookie('five-off-modal');
+        if (!event.toElement && !event.relatedTarget && modalCookie !== 'dismissed') {
+            setTimeout(() => {
+                jQuery('#five-off-modal').modal('show');
+            }, 250)
+
+        }
+    });
+});
+
+document.getElementById("five-off-modal-button").addEventListener("click", () => {
+    setModalCookie();
+    window.location.href = '<?php echo get_field('modal_coupon_link', 'option'); ?>';
+});
+
+jQuery('#five-off-modal').on('hidden.bs.modal', function(event) {
+    setModalCookie();
+});
+</script>
+<?php endif; ?>
+<?php endif; ?>
+
 <?php wp_footer(); ?>
 <?php the_field('footer_embed', 'option'); ?>
 </body>
