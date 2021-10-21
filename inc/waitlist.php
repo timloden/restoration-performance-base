@@ -61,23 +61,28 @@ add_action( 'wcwl_after_add_email_to_waitlist', 'add_waitlist_to_newsletter', 30
 
 function add_waitlist_to_newsletter( $product_id, $email ) {
 	
-	$apiKey = 'api-key: ' . get_field('sendinblue_api_key', 'option');
-	$listId = (int)get_field('sendinblue_list_id', 'option');
+	$apiKey = get_field('sendinblue_api_key', 'option');
 	
-	$payload = json_encode(array(
-		'listIds' => array(
-			$listId
-	), 
-	'updateEnabled' => false,
-	'email' => $email
-	));
+	if ($apiKey) {
 	
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL,            "https://api.sendinblue.com/v3/contacts" );
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
-	curl_setopt($ch, CURLOPT_POST,           1 );
-	curl_setopt($ch, CURLOPT_POSTFIELDS,     $payload ); 
-	curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: application/json', $apiKey)); 
+		$apiKeyHeader = 'api-key: ' . $apiKey;
+		$listId = (int)get_field('sendinblue_list_id', 'option');
+	
+		$payload = json_encode(array(
+			'listIds' => array(
+				$listId
+		), 
+		'updateEnabled' => false,
+		'email' => $email
+		));
+		
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL,            "https://api.sendinblue.com/v3/contacts" );
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
+		curl_setopt($ch, CURLOPT_POST,           1 );
+		curl_setopt($ch, CURLOPT_POSTFIELDS,     $payload ); 
+		curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: application/json', $apiKeyHeader)); 
 
-	$result = curl_exec ($ch);
+		$result = curl_exec ($ch);
+	}
 }
