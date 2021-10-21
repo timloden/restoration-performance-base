@@ -56,3 +56,28 @@ function wcwl_perform_custom_mailout( $product_id, $stock_status ) {
     }
   }
 }
+
+add_action( 'wcwl_after_add_email_to_waitlist', 'add_waitlist_to_newsletter', 30, 2);
+
+function add_waitlist_to_newsletter( $product_id, $email ) {
+	
+	$apiKey = 'api-key: ' . get_field('sendinblue_api_key', 'option');
+	$listId = (int)get_field('sendinblue_list_id', 'option');
+	
+	$payload = json_encode(array(
+		'listIds' => array(
+			$listId
+	), 
+	'updateEnabled' => false,
+	'email' => $email
+	));
+	
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL,            "https://api.sendinblue.com/v3/contacts" );
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
+	curl_setopt($ch, CURLOPT_POST,           1 );
+	curl_setopt($ch, CURLOPT_POSTFIELDS,     $payload ); 
+	curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: application/json', $apiKey)); 
+
+	$result = curl_exec ($ch);
+}

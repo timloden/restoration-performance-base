@@ -280,6 +280,44 @@
             "prepend": "",
             "append": "",
             "maxlength": ""
+        },
+        {
+            "key": "field_6170c2dfb8641",
+            "label": "Sendinblue API key",
+            "name": "sendinblue_api_key",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_6170c2eeb8642",
+            "label": "Sendinblue List ID",
+            "name": "sendinblue_list_id",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -299,5 +337,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1634613920
+    "modified": 1634779900
 }
