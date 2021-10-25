@@ -123,9 +123,10 @@ $newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option');
 
 <?php 
     if (is_checkout() || is_cart()): 
-    $cart_total = WC()->cart->subtotal; 
+    $cart_total = WC()->cart->subtotal;
+    $shipping_total  = WC()->cart->shipping_total;
 ?>
-<?php if (!is_user_logged_in() && $cart_total > 200): ?>
+<?php if (!is_user_logged_in() && $cart_total > 200 && $shipping_total > 7.5): ?>
 <!-- Modal -->
 <div class="modal fade" id="five-off-modal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
