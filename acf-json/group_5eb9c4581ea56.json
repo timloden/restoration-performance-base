@@ -65,6 +65,25 @@
             "new_lines": ""
         },
         {
+            "key": "field_61772b8c92db7",
+            "label": "Contact Email",
+            "name": "contact_email",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5f2a0fa03e713",
             "label": "Dynacorn Shipping Notice",
             "name": "dynacorn_shipping_notice",
@@ -337,5 +356,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1634779900
+    "modified": 1635199908
 }

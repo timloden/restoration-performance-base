@@ -200,7 +200,8 @@ $all_shipping_classes = [];
                         <p>We suggest that on truck freight
                             items to stay with only one manufacturer products. Please contact us if that is not possible
                             for you so we can assist: <a
-                                href="mailto:sales@classicbodyparts.com">sales@classicbodyparts.com</a></a></p>
+                                href="mailto:<?php echo esc_attr(get_field('contact_email', 'option')); ?>"><?php echo esc_attr(get_field('contact_email', 'option')); ?></a></a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -208,7 +209,9 @@ $all_shipping_classes = [];
             <div class="row pt-4">
                 <div class="col-12">
                     <p class="mb-1"><strong>Having trouble with a coupon? Shipping seems off?</strong></p>
-                    <p>Please email us at <a href="mailto:sales@classicbodyparts.com">sales@classicbodyparts.com</a> and
+                    <p>Please email us at <a
+                            href="mailto:<?php echo esc_attr(get_field('contact_email', 'option')); ?>"><?php echo esc_attr(get_field('contact_email', 'option')); ?></a>
+                        and
                         we will help!</p>
                 </div>
             </div>
