@@ -54,19 +54,19 @@ do_action('woocommerce_before_mini_cart'); ?>
     <li
         class="woocommerce-mini-cart-item <?php echo esc_attr(apply_filters('woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key)); ?>">
         <?php
-                    // echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                    //     'woocommerce_cart_item_remove_link',
-                    //     sprintf(
-                    //         '<a href="%s" class="remove remove_from_cart_button" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s">&times;</a>',
-                    //         esc_url(wc_get_cart_remove_url($cart_item_key)),
-                    //         esc_attr__('Remove this item', 'woocommerce'),
-                    //         esc_attr($product_id),
-                    //         esc_attr($cart_item_key),
-                    //         esc_attr($_product->get_sku())
-                    //     ),
-                    //     $cart_item_key
-                    // );
-                    ?>
+        echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            'woocommerce_cart_item_remove_link',
+            sprintf(
+                '<a href="%s" class="remove remove_from_cart_button px-1" aria-label="%s" data-product_id="%s" data-cart_item_key="%s" data-product_sku="%s">&times;</a>',
+                esc_url(wc_get_cart_remove_url($cart_item_key)),
+                esc_attr__('Remove this item', 'woocommerce'),
+                esc_attr($product_id),
+                esc_attr($cart_item_key),
+                esc_attr($_product->get_sku())
+            ),
+            $cart_item_key
+        );
+        ?>
         <?php if (empty($product_permalink)) : ?>
         <?php echo $thumbnail . wp_kses_post( $product_name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
                         ?>
