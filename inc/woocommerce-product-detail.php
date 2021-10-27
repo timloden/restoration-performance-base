@@ -83,7 +83,7 @@ function woo_new_product_tab( $tabs ) {
 
 function vehicle_fitment() {
     
-    echo '<pre class="mb-1"><strong>Fitment:</strong></pre>';
+    echo '<p class="mb-1"><strong>Fitment:</strong></p>';
     echo '<ul>';
 
     $vehicles = get_field('vehicle_fitment');
