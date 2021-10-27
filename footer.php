@@ -77,14 +77,14 @@ $newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option');
                 </div>
             </div>
             <div class="col-12 col-lg-4">
-                <p mb-0>Classic Body Parts is a reseller and dealer of replacement restoration parts relating to the
+                <p mb-0><?php echo get_bloginfo ( 'name' ); ?> is a reseller and dealer of replacement restoration parts
+                    relating to the
                     Licensed
                     trademark Chevy, Chevrolet, Ford and Mopar.</p>
                 <div class="mb-3">
                     <?php 
                     if ($newsletter_form_id) {
                         echo '<p class="mb-2 font-weight-bold">Get all the latest product updates, specials and coupons!</p>';
-                        //gravity_form( $newsletter_form_id, false, false, false, '', true, 12 );
                         echo do_shortcode($newsletter_form_id);
                     }
                      ?>
@@ -111,9 +111,8 @@ $newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option');
     </div>
     <div class="copyright bg-primary">
         <div class="container">
-            <p class="text-white m-0 p-2 text-center">&copy; Classic Body Parts <?php echo date("Y"); ?> |
-                Classic Body
-                Parts is solely owned division of Restoration Performance LLC.</p>
+            <p class="text-white m-0 p-2 text-center">&copy;
+                <?php echo get_bloginfo ( 'name' ); ?> <?php echo date("Y"); ?></p>
 
         </div>
 
