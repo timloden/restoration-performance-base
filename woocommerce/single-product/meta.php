@@ -20,13 +20,12 @@ if (! defined('ABSPATH') ) {
 }
 
 global $product;
+
 $brand_name = get_brand_name($product->get_id());
-$dynacorn_message = get_field('dynacorn_shipping_notice', 'option');
-$oer_message = get_field('oer_shipping_notice', 'option');
 $shipping_class_id   = $product->get_shipping_class_id();
 $shipping_class_term = get_term($shipping_class_id, 'product_shipping_class');
 $shipping_class = $shipping_class_term->slug;
-
+$stock_status = $product->get_stock_status();
 ?>
 <div class="product_meta border-top pt-3">
     <?php 
@@ -34,13 +33,13 @@ $shipping_class = $shipping_class_term->slug;
     if($brand) {
         $term = 'term_' . $brand[0]->term_id;
         
-        if ($shipping_class == 'ground' && get_field('ground_notice', $term)) {
+        if ($shipping_class == 'ground' && get_field('ground_notice', $term) && $stock_status == 'instock') {
             echo '<div class="alert alert-info">';
             echo get_field('ground_notice', $term);
             echo '</div>';
         }
         
-        if (strpos($shipping_class, '-freight') !== false && get_field('freight_notice', $term)) {
+        if (strpos($shipping_class, '-freight') !== false && get_field('freight_notice', $term) && $stock_status == 'instock') {
             echo '<div class="alert alert-info">';
             echo get_field('freight_notice', $term);
             echo '</div>';

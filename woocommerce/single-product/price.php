@@ -69,6 +69,6 @@ if (strpos($shipping_class, '-freight')) {
 </div>
 <?php  
 if ( $stock_status === 'onbackorder' ) {
-        echo '<p class="text-primary font-weight-bold"><i class="las la-exclamation-circle"></i> Backorder items could take over 30 days to ship</p>';
+        echo '<p class="text-primary font-weight-bold"><i class="las la-exclamation-circle"></i> Backordered items could take over 30 days to ship</p>';
     }
 ?>
