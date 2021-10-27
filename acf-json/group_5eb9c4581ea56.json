@@ -84,44 +84,6 @@
             "maxlength": ""
         },
         {
-            "key": "field_5f2a0fa03e713",
-            "label": "Dynacorn Shipping Notice",
-            "name": "dynacorn_shipping_notice",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_6075a3f1039fb",
-            "label": "OER Shipping Notice",
-            "name": "oer_shipping_notice",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
             "key": "field_5f44353dab2ee",
             "label": "Footer Newsletter Signup Field ID",
             "name": "footer_newsletter_signup_field_id",
@@ -356,5 +318,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1635199908
+    "modified": 1635364369
 }
