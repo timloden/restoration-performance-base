@@ -130,6 +130,15 @@ function get_brand_name($product_id) {
     }
 }
 
+function get_brand_notice($product_id) {
+    $brand = wp_get_object_terms( $product_id, 'pwb-brand' );
+    if($brand) {
+        $term = 'term_' . $brand[0]->term_id;
+        $notice = get_field('freight_notice', $term);
+        echo $notice;
+    }
+}
+
 // loop - remove link
 
 remove_action('woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10);

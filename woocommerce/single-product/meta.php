@@ -29,15 +29,25 @@ $shipping_class = $shipping_class_term->slug;
 
 ?>
 <div class="product_meta border-top pt-3">
-    <?php if ($brand_name == 'Dynacorn' && $dynacorn_message): ?>
-    <div class="alert alert-info">
-        <i class="las la-exclamation-circle"></i> <?php echo $dynacorn_message; ?>
-    </div>
-    <?php elseif ($oer_message && $shipping_class == 'oer-freight' ): ?>
-    <div class="alert alert-info">
-        <i class="las la-exclamation-circle"></i> <?php echo $oer_message; ?>
-    </div>
-    <?php endif; ?>
+    <?php 
+    $brand = wp_get_object_terms( $product->get_id(), 'pwb-brand' );
+    if($brand) {
+        $term = 'term_' . $brand[0]->term_id;
+        
+        if ($shipping_class == 'ground' && get_field('ground_notice', $term)) {
+            echo '<div class="alert alert-info">';
+            echo get_field('ground_notice', $term);
+            echo '</div>';
+        }
+        
+        if (strpos($shipping_class, '-freight') !== false && get_field('freight_notice', $term)) {
+            echo '<div class="alert alert-info">';
+            echo get_field('freight_notice', $term);
+            echo '</div>';
+        }
+        
+    }
+    ?>
 
     <?php do_action('woocommerce_product_meta_start'); ?>
 
