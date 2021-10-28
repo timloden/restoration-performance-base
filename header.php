@@ -102,8 +102,8 @@
                                 by Vehicle</a>
                             </a>
                             <div id="cart-dropdown" class="dropdown w-50">
-                                <a class="dropdown-toggle" role="button" id="dropdown-mini-cart" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false" href="#">
+                                <a class="dropdown-toggle" role="button" id="dropdown-mini-cart"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
                                     <i class="las la-shopping-cart h5"></i>Cart
                                     <span id="cart-customlocation"
                                         class="badge badge-danger"><?php echo  $woocommerce->cart->cart_contents_count; ?>
@@ -237,7 +237,7 @@
                 <li>
                     <div class="dropdown">
                         <a class="nav-link dropdown-toggle text-white px-lg-4 px-xl-5" href="#" role="button"
-                            id="dropdown-resources" data-toggle="dropdown" aria-haspopup="true"
+                            id="dropdown-resources" data-bs-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">Resources</a>
                         <ul class="dropdown-menu header-resources" id="dropdown-resources-list"
                             aria-labelledby="dropdown-categories">
