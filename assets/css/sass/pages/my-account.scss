@@ -1,5 +1,5 @@
 .woocommerce-MyAccount-navigation {
     .list-group-item.is-active {
-        @extend .list-group-item.active;
+        @extend .list-group-item, .active;
     }
 }
