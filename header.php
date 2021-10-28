@@ -37,6 +37,17 @@
 </head>
 
 <body <?php body_class(); ?>>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="off-canvas-mini-cart"
+        aria-labelledby="off-canvas-mini-cart-label">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="off-canvas-mini-cart-label">Your Cart</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <?php woocommerce_mini_cart(); ?>
+        </div>
+    </div>
+
     <?php wp_body_open(); ?>
     <div id="page" class="site">
         <header class="header">
@@ -46,15 +57,15 @@
                     <div class="row align-items-center py-2">
                         <div class="col-lg-6 d-none d-lg-block">
                             <span
-                                class="border-right mr-2 pr-2"><strong><?php echo esc_attr( get_field('ground_shipping_discount', 'option') ); ?></strong></span>
+                                class="border-end me-2 pe-2"><strong><?php echo esc_attr( get_field('ground_shipping_discount', 'option') ); ?></strong></span>
                             <span>Freight shipping starting at $<?php echo esc_attr($commercial_freight); ?></span>
                         </div>
-                        <div class="col-12 col-lg-6 text-center text-lg-right">
+                        <div class="col-12 col-lg-6 text-center text-lg-end">
                             <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"
-                                class="border-right pr-2 mr-2"><?php echo (is_user_logged_in() ? 'My Account' : 'Login / Create Account'); ?></a>
-                            <a href="<?php echo site_url(); ?>/tracking" class="border-right pr-2 mr-2">Track Order</a>
+                                class="border-end pe-2 me-2"><?php echo (is_user_logged_in() ? 'My Account' : 'Login / Create Account'); ?></a>
+                            <a href="<?php echo site_url(); ?>/tracking" class="border-end pe-2 me-2">Track Order</a>
                             <a href="<?php echo site_url(); ?>/frequently-asked-questions"
-                                class="border-right pr-2 mr-2">Help</a>
+                                class="border-end pe-2 me-2">Help</a>
 
                             <?php 
                             if ( shortcode_exists( 'ti_wishlist_products_counter' ) ) {
@@ -91,7 +102,7 @@
                             <input type="hidden" name="post_type" value="product" />
                         </form>
                     </div>
-                    <div class="col-12 col-lg-4 text-right">
+                    <div class="col-12 col-lg-4 text-end">
                         <div class="d-flex align-items-center justify-content-end">
                             <a class="d-lg-none p-1" data-toggle="collapse" href="#mobile-nav" role="button"
                                 aria-expanded="false" aria-controls="mobile-nav">
@@ -101,19 +112,13 @@
                                 <i class="las la-car h5 mb-0"></i> Shop
                                 by Vehicle</a>
                             </a>
-                            <div id="cart-dropdown" class="dropdown w-50">
-                                <a class="dropdown-toggle" role="button" id="dropdown-mini-cart"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-                                    <i class="las la-shopping-cart h5"></i>Cart
-                                    <span id="cart-customlocation"
-                                        class="badge badge-danger"><?php echo  $woocommerce->cart->cart_contents_count; ?>
-                                </a>
 
-                                <div id="custom-mini-cart" class="dropdown-menu dropdown-menu-right"
-                                    aria-labelledby="dropdown-mini-cart">
-                                    <?php woocommerce_mini_cart(); ?>
-                                </div>
-                            </div>
+                            <a class="h5" role="button" id="mini-cart-link" data-bs-toggle="offcanvas"
+                                href="#off-canvas-mini-cart" role="button" aria-controls="off-canvas-mini-cart">
+                                <i class="las la-shopping-cart h5"></i>Cart
+                                <span id="cart-customlocation"
+                                    class="badge bg-danger"><?php echo  $woocommerce->cart->cart_contents_count; ?>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -233,6 +238,12 @@
                 <li>
                     <a class="nav-link text-white px-lg-4 px-xl-5"
                         href="<?php echo site_url(); ?>/product-tag/special/">Specials</a>
+                </li>
+                <li>
+                    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#off-canvas-mini-cart" role="button"
+                        aria-controls="off-canvas-mini-cart">
+                        New Mini Cart
+                    </a>
                 </li>
                 <li>
                     <div class="dropdown">

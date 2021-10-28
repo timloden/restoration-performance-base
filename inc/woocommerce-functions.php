@@ -84,20 +84,40 @@ function styling_admin_order_list() {
  function woocommerce_header_add_to_cart_fragment( $fragments ) {
 
     ob_start();
-    echo '<div id="cart-dropdown" class="dropdown w-100">';
-    echo '<a class="dropdown-toggle h4" role="button" id="dropdown-mini-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">';
-    echo '<i class="las la-shopping-cart "></i>Cart <span id="cart-customlocation" class="badge badge-danger animated swing">' . WC()->cart->get_cart_contents_count() . '</span></a>';
-
-    echo '<div id="custom-mini-cart" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-mini-cart">';
-    woocommerce_mini_cart(); 
-    echo '</div>';
-    echo '</div>';
+    echo '<a class="h5" role="button" id="mini-cart-link" data-bs-toggle="offcanvas" href="#off-canvas-mini-cart" role="button"
+    aria-controls="off-canvas-mini-cart">';
+    echo '<i class="las la-shopping-cart "></i>Cart <span id="cart-customlocation" class="badge bg-danger animated swing">' . WC()->cart->get_cart_contents_count() . '</span></a>';
     
-    $fragments['div#cart-dropdown'] = ob_get_clean();
-    
+    $fragments['a#mini-cart-link'] = ob_get_clean();
     return $fragments;
 
  }
+
+// mini cart update
+
+ add_filter( 'woocommerce_add_to_cart_fragments', 'woocommerce_mini_cart_fragment'); 
+ 
+ function woocommerce_mini_cart_fragment( $fragments ) {
+
+    ob_start();
+    ?>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="off-canvas-mini-cart"
+    aria-labelledby="off-canvas-mini-cart-label">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="off-canvas-mini-cart-label">Your Cart</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <?php woocommerce_mini_cart(); ?>
+    </div>
+</div>
+<?php 
+    $fragments['div#off-canvas-mini-cart'] = ob_get_clean();
+
+    return $fragments;
+
+} 
 
 // loop - remove breadcrumbs from shop page
 
