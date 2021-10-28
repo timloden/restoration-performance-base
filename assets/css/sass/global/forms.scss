@@ -11,10 +11,6 @@
     @extend .list-unstyled;
 }
 
-.gform_wrapper li {
-    //@extend .form-group;
-}
-
 .gform_wrapper .gfield_required {
     padding-left: 1px;
     color: $danger;
