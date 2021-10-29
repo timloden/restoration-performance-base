@@ -104,13 +104,7 @@ function styling_admin_order_list() {
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="off-canvas-mini-cart"
     aria-labelledby="off-canvas-mini-cart-label">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="off-canvas-mini-cart-label">Your Cart</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <?php woocommerce_mini_cart(); ?>
-    </div>
+    <?php woocommerce_mini_cart(); ?>
 </div>
 <?php 
     $fragments['div#off-canvas-mini-cart'] = ob_get_clean();

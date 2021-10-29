@@ -19,15 +19,13 @@ remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 remove_action('woocommerce_widget_shopping_cart_buttons', 'woocommerce_widget_shopping_cart_button_view_cart', 10);
 remove_action('woocommerce_widget_shopping_cart_buttons', 'woocommerce_widget_shopping_cart_proceed_to_checkout', 20);
 
-function my_woocommerce_widget_shopping_cart_button_view_cart()
-{
-    echo '<a href="' . esc_url(wc_get_cart_url()) . '" class="btn  btn-outline-secondary">' . esc_html__('View cart', 'woocommerce') . '</a>';
-}
 function my_woocommerce_widget_shopping_cart_proceed_to_checkout()
 {
-    echo '<a href="' . esc_url(wc_get_checkout_url()) . '" class="btn btn-success d-block">' . esc_html__('Checkout', 'woocommerce') . '</a>';
+    echo '<div class="col-4"><a href="' . esc_url(wc_get_cart_url()) . '" class="btn btn-outline-primary d-block">' . esc_html__('View cart', 'woocommerce') . '</a></div>';
+    echo '<div class="col-8"><a href="' . esc_url(wc_get_checkout_url()) . '" class="btn btn-success text-white d-block fw-bold">' . esc_html__('Checkout', 'woocommerce') . ' <i class="las la-arrow-right"></i></a></div>';
+    
 }
-//add_action( 'woocommerce_widget_shopping_cart_buttons', 'my_woocommerce_widget_shopping_cart_button_view_cart', 10 );
+
 add_action('woocommerce_widget_shopping_cart_buttons', 'my_woocommerce_widget_shopping_cart_proceed_to_checkout', 20);
 
 // cart - check for shipping discount
