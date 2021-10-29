@@ -134,31 +134,35 @@ if (!$commercial_freight) {
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="row align-items-center py-5">
+        <div class=" col-12 col-lg-6 order-2 order-lg-1">
+            <img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/assets/images/shelby-cobra.jpg">
 
-<div class="row align-items-center no-gutters py-5">
-    <div class=" col-12 col-lg-6 order-2 order-lg-1">
-        <img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/assets/images/shelby-cobra.jpg">
-
-    </div>
-    <div class="col-12 col-lg-6 order-1 order-lg-2 mb-5 mb-lg-5">
-        <div class="px-3">
-            <h2 class="pb-3 mb-3 title-border">Why we should be your first choice for restoration &amp; muscle car parts
-            </h2>
-            <p>We have a history as one of the largest dealers for Dynacorn International. Dynacorn has been supplying
-                the classic muscle car enthusiast quality sheet metal, bright trim and molding since 1984.
-            </p>
-            <p>
-                We strive to meet all your classic car and truck vehicles needs. Don&#39;t be fooled by other companies
-                that
-                offer monthly or weekend sells offering discounts at 15 - 25% off RETAIL price! We have the lowest
-                prices every month all year long! Just try us and you will see.</p>
-
-            <a href="<?php echo site_url(); ?>/shop#ymm-bar" class="btn btn-primary">Browse parts for your vehicle</a>
         </div>
+        <div class="col-12 col-lg-6 order-1 order-lg-2 mb-5 mb-lg-5">
+            <div class="px-3">
+                <h2 class="pb-3 mb-3 title-border">Why we should be your first choice for restoration &amp; muscle car
+                    parts
+                </h2>
+                <p>We have a history as one of the largest dealers for Dynacorn International. Dynacorn has been
+                    supplying
+                    the classic muscle car enthusiast quality sheet metal, bright trim and molding since 1984.
+                </p>
+                <p>
+                    We strive to meet all your classic car and truck vehicles needs. Don&#39;t be fooled by other
+                    companies
+                    that
+                    offer monthly or weekend sells offering discounts at 15 - 25% off RETAIL price! We have the lowest
+                    prices every month all year long! Just try us and you will see.</p>
 
+                <a href="<?php echo site_url(); ?>/shop#ymm-bar" class="btn btn-primary">Browse parts for your
+                    vehicle</a>
+            </div>
+
+        </div>
     </div>
 </div>
-
 <div class="border-bottom pb-5">
     <div class="container py-5">
         <h3 class="text-center pt-3">Need help with your project?</h3>
