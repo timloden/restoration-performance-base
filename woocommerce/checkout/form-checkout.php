@@ -46,7 +46,7 @@ foreach($items as $item => $values) {
     <div class="container">
 
         <div class="row">
-            <div class="col-12 col-md-7 py-5 pr-md-5 border-right">
+            <div class="col-12 col-md-7 py-5 pr-md-5 border-end">
                 <?php if ($checkout->get_checkout_fields()) : ?>
 
                 <?php do_action('woocommerce_checkout_before_customer_details'); ?>
@@ -65,7 +65,7 @@ foreach($items as $item => $values) {
 
                 <?php endif; ?>
             </div>
-            <div class="col-12 col-md-5 py-5 px-md-3 px-lg-4 checkout-cart border-right">
+            <div class="col-12 col-md-5 py-5 px-md-3 px-lg-4 checkout-cart border-end">
                 <?php //do_action('woocommerce_checkout_before_order_review_heading'); ?>
                 <h4>Your Order</h4>
                 <?php do_action('woocommerce_checkout_before_order_review'); ?>

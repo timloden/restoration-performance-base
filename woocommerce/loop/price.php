@@ -28,8 +28,8 @@ if ( 'instock' == $stock_status) {
 }
 ?>
 <p class="mb-2">Brand: <?php echo get_brand_name($product->get_id()); ?></p>
-<div class="d-flex mb-2">
-    <div class="col border-right">
+<div class="d-flex align-items-center mb-2">
+    <div class="col border-end">
         <?php if ( $price_html = $product->get_price_html() ) : ?>
         <p class="price text-center mb-0"><?php echo $price_html; ?></p>
         <?php endif; ?>

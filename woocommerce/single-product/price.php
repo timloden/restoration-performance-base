@@ -50,7 +50,7 @@ if (strpos($shipping_class, '-freight')) {
             style="font-size: 1.75em;">
             <?php echo $product->get_price_html(); ?></p>
     </div>
-    <div class="col-6 col-md-auto pl-0 pl-md-2 border-right product-stock-wrapper text-center text-md-left">
+    <div class="col-6 col-md-auto pl-0 pl-md-2 border-end product-stock-wrapper text-center text-md-left">
         <div class="d-flex w-100 justify-content-center">
             <div>
                 <span class="pl-md-3" style="font-size: 12px;">Stock:</span>
