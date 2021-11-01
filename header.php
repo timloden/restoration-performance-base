@@ -199,7 +199,7 @@
 
             <div class="container">
                 <!-- main header -->
-                <div class="row align-items-center py-lg-3 border-bottom">
+                <div class="row align-items-center py-2 py-lg-3 border-bottom">
                     <div class="col-7 col-lg-3 text-center text-lg-left">
                         <a class="d-block mb-lg-2" href="<?php echo site_url(); ?>">
                             <?php if ($logo) : ?>

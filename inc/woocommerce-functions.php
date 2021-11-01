@@ -132,7 +132,7 @@ add_action('woocommerce_shop_loop_item_title', 'loop_product_title', 10);
 
 function loop_product_title()
 {
-    echo '<a class="mt-2" href="' . get_the_permalink()  . '"><p class="h5 text-dark ' . esc_attr(apply_filters('woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title')) . '"><strong>' . get_the_title() . '</strong></p></a>';
+    echo '<a class="mt-2 d-block text-center" href="' . get_the_permalink()  . '"><p class="text-dark ' . esc_attr(apply_filters('woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title')) . '"><strong>' . get_the_title() . '</strong></p></a>';
 }
 
 // loop / brand - get brand name

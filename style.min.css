@@ -2781,6 +2781,8 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-weight:700}
 .products .added_to_cart{display:none}
 .products .add_to_cart_button.loading{opacity:.5}
 .products .add_to_cart_button.loading:before{margin-right:5px;content:"";height:18px;width:18px;border-width:.2em}
+.products .woocommerce-loop-product__title{font-size:1.1rem;line-height:1.2}
+.products .tinv-wishlist{text-align:center}
 .woocommerce-pagination{display:block}
 .woocommerce-pagination ul{margin:1em 0;display:-webkit-box;display:-ms-flexbox;display:flex;list-style:none}
 .woocommerce-pagination ul .page-numbers{position:relative;display:block;padding:.5rem .75rem;margin-left:-1px;line-height:1.25;color:#005ca9;background-color:#fff;border:1px solid #dee2e6;margin-right:0}
@@ -3354,6 +3356,7 @@ button#place_order:before{font-family:"Line Awesome Free";font-weight:900;displa
 .text-md-start{text-align:left !important}
 .text-md-end{text-align:right !important}
 .text-md-center{text-align:center !important}
+.product-price-container{border-right:none !important}
 .product .product-stock-wrapper{border-left:1px solid #dee2e6}
 }@media(min-width:992px){.container-lg,.container-md,.container-sm,.container{max-width:960px}
 .col-lg{-webkit-box-flex:1;-ms-flex:1 0 0;flex:1 0 0}

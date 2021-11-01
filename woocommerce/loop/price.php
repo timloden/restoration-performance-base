@@ -27,15 +27,18 @@ if ( 'instock' == $stock_status) {
 	$stock = 'Backordered';
 }
 ?>
-<p class="mb-2">Brand: <?php echo get_brand_name($product->get_id()); ?></p>
-<div class="d-flex align-items-center mb-2">
-    <div class="col border-end">
+
+<div class="d-flex flex-wrap align-items-center mb-2">
+    <div class="col col-md-12 border-end product-price-container">
+        <p class="text-center mb-1">Brand: <?php echo get_brand_name($product->get_id()); ?></p>
+    </div>
+    <div class="col col-md-6 border-end">
         <?php if ( $price_html = $product->get_price_html() ) : ?>
         <p class="price text-center mb-0"><?php echo $price_html; ?></p>
         <?php endif; ?>
     </div>
-    <div class="col">
+    <div class="col col-md-6">
         <p class="text-center mb-0"><?php echo $stock; ?></p>
     </div>
 </div>
-<p>SKU: <?php echo $product->get_sku(); ?></p>
+<p class="text-center">SKU: <?php echo $product->get_sku(); ?></p>

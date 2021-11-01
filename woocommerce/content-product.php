@@ -24,10 +24,13 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<div class="col-12 col-md-6 col-lg-4 mb-4">
-    <div class="card h-100 d-block">
-        <div class="card-body flex-wrap justify-content-between no-gutters h-100">
-            <?php
+
+
+<div class="col">
+    <div class="card h-100">
+        <div class="card-body">
+            <div class="d-flex flex-md-column justify-content-between h-100">
+                <?php
 			/**
 			 * Hook: woocommerce_before_shop_loop_item.
 			 *
@@ -36,15 +39,15 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 			do_action( 'woocommerce_before_shop_loop_item' );
 			?>
 
-            <div class="col-12 h-50">
-                <?php 
+                <div class="col-3 col-md-12">
+                    <?php 
 				if(has_term('sale', 'product_tag')) {
 				
 					echo '<div class="text-left"><span class="onsale badge badge-danger">Sale!</span></div>';
 
 				}
 				?>
-                <?php
+                    <?php
 				/**
 				 * Hook: woocommerce_before_shop_loop_item_title.
 				 *
@@ -53,9 +56,10 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 				 */
 				do_action( 'woocommerce_before_shop_loop_item_title' );
 				?>
-            </div>
-            <div class="col-12 h-50 d-flex flex-column text-center justify-content-end">
-                <?php
+                </div>
+
+                <div class="col-9 col-md-12">
+                    <?php
 				/**
 				 * Hook: woocommerce_shop_loop_item_title.
 				 *
@@ -80,8 +84,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 				 */
 				do_action( 'woocommerce_after_shop_loop_item' )
 				?>
+                </div>
             </div>
-
         </div>
     </div>
 </div>

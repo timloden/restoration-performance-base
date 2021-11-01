@@ -100,7 +100,7 @@ if ( woocommerce_product_loop() ) {
 
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-3">
+            <div class="col-12 col-md-3">
                 <?php
 			/**
 			 * Hook: woocommerce_sidebar.
@@ -110,7 +110,7 @@ if ( woocommerce_product_loop() ) {
 			do_action( 'woocommerce_sidebar' );
 			?>
             </div>
-            <div class="col-12 col-md-6 col-lg-9">
+            <div class="col-12 col-md-9">
                 <div class="row">
 
                     <?php
