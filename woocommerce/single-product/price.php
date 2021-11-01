@@ -45,24 +45,24 @@ if (strpos($shipping_class, '-freight')) {
 }
 ?>
 <div class="d-flex align-items-center py-3 flex-wrap">
-    <div class="col-12 col-lg-auto text-center text-md-left px-0 pr-md-2 pb-3 pb-lg-0">
-        <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?> h4 mb-0 pr-3 product-price"
+    <div class="col-12 col-md-auto text-center text-md-left px-0 pe-md-2 pb-3 pb-md-0">
+        <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?> h4 mb-0 pe-3 product-price"
             style="font-size: 1.75em;">
             <?php echo $product->get_price_html(); ?></p>
     </div>
-    <div class="col-6 col-md-auto pl-0 pl-md-2 border-end product-stock-wrapper text-center text-md-left">
+    <div class="col-6 col-md-auto px-0 px-md-3 border-end product-stock-wrapper text-center text-md-start">
         <div class="d-flex w-100 justify-content-center">
             <div>
-                <span class="pl-md-3" style="font-size: 12px;">Stock:</span>
-                <p class="mb-0 px-3 product-stock font-weight-bold" style="font-size: 1em; line-height: 1;">
+                <span class="ps-md-3" style="font-size: 12px;">Stock:</span>
+                <p class="mb-0 px-3 product-stock fw-bold" style="font-size: 1em; line-height: 1;">
                     <?php echo $stock; ?></p>
             </div>
         </div>
 
     </div>
-    <div class="col-6 col-md-auto pr-0 pr-md-2 text-center text-md-left">
-        <span class="pl-md-3" style="font-size: 12px;">Shipping:</span>
-        <p class="mb-0 pl-md-3 product-shipping font-weight-bold" style="font-size: 1em; line-height: 1;">
+    <div class="col-6 col-md-auto ps-0 ps-md-3 text-center text-md-start">
+        <span class="ps-md-3" style="font-size: 12px;">Shipping:</span>
+        <p class="mb-0 ps-md-3 product-shipping fw-bold" style="font-size: 1em; line-height: 1;">
             <?php echo $shipping; ?>
         </p>
     </div>
