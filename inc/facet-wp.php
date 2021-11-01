@@ -60,13 +60,19 @@ add_filter(
     'facetwp_facet_html',
     function ($output, $params) {
         if ('hierarchy_select' == $params['facet']['type']) {
-            $output = str_replace('facetwp-hierarchy_select', 'facetwp-hierarchy_select form-control mb-2', $output);
+            $output = str_replace('facetwp-hierarchy_select', 'facetwp-hierarchy_select form-select', $output);
         }
+
+        if ('pager' == $params['facet']['type']) {
+            $output = str_replace( 'facetwp-pager', 'facetwp-pager justify-content-center', $output );
+        }
+
         return $output;
     },
     10,
     2
 );
+
 
 // remove counts from drop downs
 

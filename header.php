@@ -50,15 +50,6 @@
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
-        <form action="/" method="get" class="form p-2 bg-light border-top border-bottom">
-            <div class="input-group">
-                <input class="form-control" type="search" placeholder="Search by Keyword, Part Number..."
-                    aria-label="Search" name="s" id="mobile-search" data-swplive="true"
-                    value="<?php the_search_query(); ?>">
-                <button class="btn btn-secondary" type="submit">Search</button>
-            </div>
-            <input type="hidden" name="post_type" value="product" />
-        </form>
         <div class="list-group list-group-flush">
             <a class="list-group-item list-group-item-action" href="<?php echo site_url(); ?>/shop">
                 Shop by Vehicle</a>
@@ -240,6 +231,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="row bg-light d-lg-none border-bottom">
+                    <div class="col-12">
+                        <form action="/" method="get" class="form py-2">
+                            <div class="input-group">
+                                <input class="form-control" type="search"
+                                    placeholder="Search by Keyword, Part Number..." aria-label="Search" name="s"
+                                    id="mobile-search" data-swplive="true" value="<?php the_search_query(); ?>">
+                                <button class="btn btn-secondary" type="submit">Search</button>
+                            </div>
+                            <input type="hidden" name="post_type" value="product" />
+                        </form>
+                    </div>
+                </div>
+
         </header>
     </div>
     <!-- Desktop nav -->

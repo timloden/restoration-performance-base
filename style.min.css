@@ -3357,6 +3357,7 @@ button#place_order:before{font-family:"Line Awesome Free";font-weight:900;displa
 .text-md-end{text-align:right !important}
 .text-md-center{text-align:center !important}
 .product-price-container{border-right:none !important}
+#brand-collapse,#category-collapse{display:block}
 .product .product-stock-wrapper{border-left:1px solid #dee2e6}
 }@media(min-width:992px){.container-lg,.container-md,.container-sm,.container{max-width:960px}
 .col-lg{-webkit-box-flex:1;-ms-flex:1 0 0;flex:1 0 0}

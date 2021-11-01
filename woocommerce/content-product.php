@@ -26,7 +26,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 ?>
 
 
-<div class="col">
+<div class="col mb-3">
     <div class="card h-100">
         <div class="card-body">
             <div class="d-flex flex-md-column justify-content-between h-100">

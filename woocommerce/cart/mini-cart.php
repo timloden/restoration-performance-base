@@ -21,12 +21,12 @@
 defined('ABSPATH') || exit;
 
 do_action('woocommerce_before_mini_cart'); ?>
-
-<?php if (!WC()->cart->is_empty()) : ?>
 <div class="offcanvas-header bg-light border-bottom p-2">
     <h5 class="offcanvas-title" id="off-canvas-mini-cart-label">Your Cart</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 </div>
+<?php if (!WC()->cart->is_empty()) : ?>
+
 <div class="mini-cart-items offcanvas-body">
     <ul
         class="woocommerce-mini-cart cart_list product_list_widget list-unstyled <?php echo esc_attr($args['list_class']); ?>">
