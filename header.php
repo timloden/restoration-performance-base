@@ -161,7 +161,7 @@
     <div id="page" class="site">
         <header class="header">
             <!-- top bar -->
-            <div class="top-bar border-bottom">
+            <div class=" top-bar border-bottom">
                 <div class="container">
                     <div class="row align-items-center py-2">
                         <div class="col-lg-6 text-center text-lg-start">
@@ -190,7 +190,7 @@
 
             <div class="container">
                 <!-- main header -->
-                <div class="row align-items-center py-2 py-lg-3 border-bottom">
+                <div class="row align-items-center py-2 py-lg-3">
                     <div class="col-7 col-lg-3 text-center text-lg-left">
                         <a class="d-block mb-lg-2" href="<?php echo site_url(); ?>">
                             <?php if ($logo) : ?>
@@ -231,7 +231,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="row bg-light d-lg-none border-bottom">
+
+
+        </header>
+        <div class="bg-light d-lg-none border-bottom border-top">
+            <div class="container">
+                <div class="row">
                     <div class="col-12">
                         <form action="/" method="get" class="form py-2">
                             <div class="input-group">
@@ -244,8 +249,8 @@
                         </form>
                     </div>
                 </div>
-
-        </header>
+            </div>
+        </div>
     </div>
     <!-- Desktop nav -->
     <div class="nav-wrapper bg-primary d-none d-lg-block border-top">
