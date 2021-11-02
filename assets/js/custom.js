@@ -200,9 +200,9 @@ console.log('custom js');
   $('#show-fitment').on('click', function (e) {
     console.log('clicked fitment');
     e.preventDefault();
-    $('#product-tabs a[href="#tab-fitment_tab"]').tab('show');
+    $('#product-tab #product-fitment_tab-tab').tab('show');
     $('body,html').animate({
-      scrollTop: $('#product-tabs').offset().top
+      scrollTop: $('#product-tab').offset().top
     }, 800 //speed
     );
   });
