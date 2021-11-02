@@ -102,5 +102,5 @@ function vehicle_fitment() {
 add_action( 'woocommerce_after_add_to_cart_button', 'see_shipping_price_in_cart' );
  
 function see_shipping_price_in_cart(){
-	echo '<p class="mb-0 mt-2 text-primary font-weight-bold" style="font-size: 18px;"><i class="las la-shipping-fast"></i> See your shipping cost in the cart!</p>';
+	echo '<p class="mb-0 mt-3 text-primary font-weight-bold text-center text-md-start" style="font-size: 18px;"><i class="las la-shipping-fast"></i> See your shipping cost in the cart!</p>';
 }
