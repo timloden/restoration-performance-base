@@ -55,7 +55,7 @@ if ( $show_downloads ) {
             </tr>
         </thead>
 
-        <tbody>
+        <tbody class="border-top-0">
             <?php
 			do_action( 'woocommerce_order_details_before_order_table_items', $order );
 
@@ -79,7 +79,7 @@ if ( $show_downloads ) {
 			?>
         </tbody>
 
-        <tfoot>
+        <tfoot class="border-top-0">
             <?php
 			foreach ( $order->get_order_item_totals() as $key => $total ) {
 				?>
