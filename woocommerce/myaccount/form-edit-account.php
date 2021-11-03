@@ -24,53 +24,58 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 
     <?php do_action( 'woocommerce_edit_account_form_start' ); ?>
 
-    <div class="form-group">
-        <label for="account_first_name"><?php esc_html_e( 'First name', 'woocommerce' ); ?>&nbsp;<span
-                class="required">*</span></label>
-        <input type="text" class="woocommerce-Input woocommerce-Input--text form-control" name="account_first_name"
-            id="account_first_name" autocomplete="given-name" value="<?php echo esc_attr( $user->first_name ); ?>" />
-    </div>
-    <div class="form-group">
-        <label for="account_last_name"><?php esc_html_e( 'Last name', 'woocommerce' ); ?>&nbsp;<span
-                class="required">*</span></label>
-        <input type="text" class="woocommerce-Input woocommerce-Input--text form-control" name="account_last_name"
-            id="account_last_name" autocomplete="family-name" value="<?php echo esc_attr( $user->last_name ); ?>" />
+    <div class="row mb-2">
+        <div class="col-12 col-md-6">
+            <label class="form-label"
+                for="account_first_name"><?php esc_html_e( 'First name', 'woocommerce' ); ?>&nbsp;<span
+                    class="required">*</span></label>
+            <input type="text" class="woocommerce-Input woocommerce-Input--text form-control" name="account_first_name"
+                id="account_first_name" autocomplete="given-name"
+                value="<?php echo esc_attr( $user->first_name ); ?>" />
+        </div>
+        <div class="col-12 col-md-6">
+            <label class="form-label"
+                for="account_last_name"><?php esc_html_e( 'Last name', 'woocommerce' ); ?>&nbsp;<span
+                    class="required">*</span></label>
+            <input type="text" class="woocommerce-Input woocommerce-Input--text form-control" name="account_last_name"
+                id="account_last_name" autocomplete="family-name" value="<?php echo esc_attr( $user->last_name ); ?>" />
+        </div>
     </div>
 
-    <div class="form-group">
-        <label for="account_display_name"><?php esc_html_e( 'Display name', 'woocommerce' ); ?>&nbsp;<span
+    <div class="mb-2">
+        <label class="form-label"
+            for="account_display_name"><?php esc_html_e( 'Display name', 'woocommerce' ); ?>&nbsp;<span
                 class="required">*</span></label>
         <input type="text" class="woocommerce-Input woocommerce-Input--text form-control" name="account_display_name"
             id="account_display_name" value="<?php echo esc_attr( $user->display_name ); ?>" />
         <small
             class="form-text text-muted"><?php esc_html_e( 'This will be how your name will be displayed in the account section and in reviews', 'woocommerce' ); ?></small>
     </div>
-    <div class="clear"></div>
 
-    <div class="form-group">
-        <label for="account_email"><?php esc_html_e( 'Email address', 'woocommerce' ); ?>&nbsp;<span
+    <div class="mb-2">
+        <label class="form-label" for="account_email"><?php esc_html_e( 'Email address', 'woocommerce' ); ?>&nbsp;<span
                 class="required">*</span></label>
         <input type="email" class="woocommerce-Input woocommerce-Input--email form-control" name="account_email"
             id="account_email" autocomplete="email" value="<?php echo esc_attr( $user->user_email ); ?>" />
     </div>
 
 
-    <p class="font-weight-bold"><?php esc_html_e( 'Password change', 'woocommerce' ); ?></p>
+    <p class="fw-bold mb-1 mt-2"><?php esc_html_e( 'Password change', 'woocommerce' ); ?></p>
 
-    <div class="form-group">
-        <label
+    <div class="mb-2">
+        <label class="form-label"
             for="password_current"><?php esc_html_e( 'Current password (leave blank to leave unchanged)', 'woocommerce' ); ?></label>
         <input type="password" class="woocommerce-Input woocommerce-Input--password form-control"
             name="password_current" id="password_current" autocomplete="off" />
     </div>
-    <div class="form-group">
-        <label
+    <div class="mb-2">
+        <label class="form-label"
             for="password_1"><?php esc_html_e( 'New password (leave blank to leave unchanged)', 'woocommerce' ); ?></label>
         <input type="password" class="woocommerce-Input woocommerce-Input--password form-control" name="password_1"
             id="password_1" autocomplete="off" />
     </div>
-    <div class="form-group">
-        <label for="password_2"><?php esc_html_e( 'Confirm new password', 'woocommerce' ); ?></label>
+    <div class="mb-3">
+        <label class="form-label" for="password_2"><?php esc_html_e( 'Confirm new password', 'woocommerce' ); ?></label>
         <input type="password" class="woocommerce-Input woocommerce-Input--password form-control" name="password_2"
             id="password_2" autocomplete="off" />
     </div>
