@@ -235,7 +235,7 @@ $all_shipping_classes = [];
     </div>
 </div>
 <div class="row align-items-center pt-5">
-    <div class="col-12 col-lg-6 text-center text-lg-left">
+    <div class="col-12 col-lg-6 text-center text-lg-start">
         <a href="<?php echo site_url();?>/shop">Continue shopping</a>
     </div>
     <div class="col-6">
