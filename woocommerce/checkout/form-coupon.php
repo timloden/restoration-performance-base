@@ -30,9 +30,7 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Enter your coupon below</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form class="coupon-form" method="post">
@@ -41,10 +39,9 @@ if ( ! wc_coupons_enabled() ) { // @codingStandardsIgnoreLine.
                         <input type="text" name="coupon_code" class="input-text form-control"
                             placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" id="coupon_code"
                             value="" />
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-secondary" name="apply_coupon"
-                                value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
-                        </div>
+
+                        <button type="submit" class="btn btn-secondary" name="apply_coupon"
+                            value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
                         <?php do_action( 'woocommerce_cart_coupon' ); ?>
                     </div>
 

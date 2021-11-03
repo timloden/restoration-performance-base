@@ -108,7 +108,7 @@ jQuery(window).on('load', function() {
                 30 days to ship. If there is no ETA, we will refund the cost of the part.
             </div>
             <div class="modal-footer">
-                <button type="button" data-dismiss="modal" class="btn btn-primary">I Understand</button>
+                <button type="button" data-bs-dismiss="modal" class="btn btn-primary">I Understand</button>
             </div>
         </div>
     </div>

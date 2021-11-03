@@ -103,7 +103,7 @@ function checkout_place_order_button_text($order_button_text)
 add_action( 'woocommerce_review_order_before_payment', 'wc_privacy_message_below_checkout_button' );
  
 function wc_privacy_message_below_checkout_button() {
-   echo '<p><a class="font-weight-bold" href="#" data-toggle="modal" data-target="#couponModal">
+   echo '<p><a class="font-weight-bold" href="#" data-bs-toggle="modal" data-bs-target="#couponModal">
    Have a coupon code?</a></p><h4>Payment</h4>';
 }
 
@@ -228,7 +228,7 @@ function custom_woocommerce_form_field($key, $args, $value = null)
     //             }
 
                 $field = '<select name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
-                class="country_to_state country_select d-none' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '>'
+                class="country_to_state country_select form-select d-none' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '>'
                     . '<option value="' . $billing_country . '" selected="selected">' . $billing_country . '</option>';
 
                 $field .= '</select>';
@@ -241,7 +241,7 @@ function custom_woocommerce_form_field($key, $args, $value = null)
                 // if not logged in default to US as country 
                 
                 $field = '<select name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
-    class="country_to_state country_select d-none ' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '>'
+    class="country_to_state country_select form-select d-none ' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '>'
                     . '<option value="US" selected="selected">United States</option>';
 
                 $field .= '</select>';
@@ -270,7 +270,7 @@ function custom_woocommerce_form_field($key, $args, $value = null)
             } elseif (!is_null($current_cc) && is_array($states)) {
 
                 $field .= '<select name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
-    class="state_select form-control ' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '
+    class="state_select form-select ' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '
     data-placeholder="' . esc_attr($args['placeholder']) . '">
     <option value="">' . esc_html__('Select a state…', 'woocommerce') . '</option>';
 
@@ -282,7 +282,7 @@ function custom_woocommerce_form_field($key, $args, $value = null)
 </select>';
             } else {
 
-                $field .= '<input type="text" class="input-text form-control ' . esc_attr(implode(' ', $args['input_class'])) . '"
+                $field .= '<input type="text" class="input-text form-control mb-2' . esc_attr(implode(' ', $args['input_class'])) . '"
     value="' . esc_attr($value) . '" placeholder="' . esc_attr($args['placeholder']) . '" name="' . esc_attr($key) . '"
     id="' . esc_attr($args['id']) . '" ' . implode(' ', $custom_attributes) . ' />';
             }
@@ -291,7 +291,7 @@ function custom_woocommerce_form_field($key, $args, $value = null)
         case 'textarea':
 
             $field .= '<textarea name="' . esc_attr($key) . '"
-    class="input-text form-control ' . esc_attr(implode(' ', $args['input_class'])) . '"
+    class="input-text mb-2 form-control ' . esc_attr(implode(' ', $args['input_class'])) . '"
     id="' . esc_attr($args['id']) . '" placeholder="' . esc_attr($args['placeholder']) . '" ' . (empty($args['
     custom_attributes']['rows']) ? ' rows="2"' : '') . (empty($args['custom_attributes']['cols']) ? ' cols="5"' : '')
                 . implode(' ', $custom_attributes) . '>' . esc_textarea($value) . '</textarea>';
@@ -313,7 +313,7 @@ function custom_woocommerce_form_field($key, $args, $value = null)
         case 'number':
 
             $field .= '<input type="' . esc_attr($args['type']) . '"
-    class="input-text form-control ' . esc_attr(implode(' ', $args['input_class'])) . '" name="' . esc_attr($key) . '"
+    class="input-text mb-2 form-control ' . esc_attr(implode(' ', $args['input_class'])) . '" name="' . esc_attr($key) . '"
     id="' . esc_attr($args['id']) . '" placeholder="' . esc_attr($args['placeholder']) . '"
     value="' . esc_attr($value) . '" ' . implode(' ', $custom_attributes) . ' />';
 
@@ -364,7 +364,7 @@ function custom_woocommerce_form_field($key, $args, $value = null)
         $field_html = '';
 
         if ($args['label'] && 'checkbox' != $args['type']) {
-            $field_html .= '<label for="' . esc_attr($label_id) . '" class="' . esc_attr(implode(' ', $args['label_class'])) . '">'
+            $field_html .= '<label for="' . esc_attr($label_id) . '" class="form-label ' . esc_attr(implode(' ', $args['label_class'])) . '">'
                 . $args['label'] . $required . '</label>';
         }
 
