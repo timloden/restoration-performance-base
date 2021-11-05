@@ -38,11 +38,21 @@ if(isset($_COOKIE['vehicle'])) {
     <div class="container py-3">
         <div class="row align-items-center">
             <div class="col-12 col-lg-2">
-                <p class="mb-0 text-primary font-weight-bolder">Choose your vehicle:</p>
+                <div class="d-flex justify-content-between justify-content-lg-end align-items-center mb-2 mb-md-0">
+                    <p class="mb-0 text-primary fw-bold">Your Vehicle:</p>
+                    <button id="clear-vehicle" class="btn fw-bold btn-sm d-md-none">Clear Vehicle</button>
+                </div>
+
             </div>
             <div class="col-12 col-lg-10">
-                <div class="home-ymm">
-                    <?php echo facetwp_display('facet', 'year_make_model'); ?>
+                <div class="d-flex align-items-center">
+                    <div class="home-ymm w-100 col">
+                        <?php echo facetwp_display('facet', 'year_make_model'); ?>
+                    </div>
+                    <div class="d-none d-md-block">
+                        <button id="clear-vehicle" class="btn fw-bold btn-sm">Clear Vehicle</button>
+                    </div>
+
                 </div>
             </div>
         </div>

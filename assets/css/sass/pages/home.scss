@@ -36,9 +36,13 @@
         display: flex;
         margin-bottom: 0 !important;
         .facetwp-hierarchy_select {
-            height: add(1.5em, add(0.75rem, 2px, false));
-            margin-right: 1em;
+            //height: add(1.5em, add(0.75rem, 2px, false));
+            margin-right: 0.5em;
             margin-bottom: 0 !important;
+
+            &:last-child {
+                margin-right: 0;
+            }
         }
     }
 }

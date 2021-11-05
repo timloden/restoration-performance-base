@@ -82,3 +82,14 @@ add_filter( 'searchwp\query\mods', function( $mods ) {
 
 	return $mods;
 } );
+
+// if facet selected add to search
+
+//   add_filter('searchwp\query\search_string', function( $search_string, $query ) {
+// 	if (isset($_COOKIE['facetdata'])) {
+// 		return $search_string . $_COOKIE['facetdata'];
+// 	}
+// 	return $search_string;
+// 	},
+// 	30, 2
+//   );
