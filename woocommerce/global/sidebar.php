@@ -21,12 +21,18 @@ if (!defined('ABSPATH')) {
 }
 
 ?>
+
+
 <div class="row py-2 d-md-none">
-    <div class="col-6 col-lg-12">
+    <div class="col-4 col-lg-12">
         <a class="btn btn-outline-primary d-block" data-bs-toggle="collapse" href="#brand-collapse" role="button"
             aria-expanded="false" aria-controls="brand-collapse">Brands</a>
     </div>
-    <div class="col-6 col-lg-12">
+    <div class="col-4 col-lg-12">
+        <a class="btn btn-outline-primary d-block" data-bs-toggle="collapse" href="#stock-collapse" role="button"
+            aria-expanded="false" aria-controls="stock-collapse">Stock Status</a>
+    </div>
+    <div class="col-4 col-lg-12">
         <a class="btn btn-outline-primary d-block" data-bs-toggle="collapse" href="#category-collapse" role="button"
             aria-expanded="false" aria-controls="category-collapse">Categories</a>
     </div>
@@ -44,6 +50,22 @@ if (!defined('ABSPATH')) {
 
     <div class="textwidget custom-html-widget">
         <?php echo facetwp_display('facet', 'brands'); ?>
+    </div>
+</section>
+<?php endif; ?>
+
+<?php if (facetwp_display('facet', 'stock_status')) : ?>
+<section id="stock-collapse" class="widget_text widget widget_custom_html collapse">
+
+    <div class="d-flex justify-content-between align-items-center my-2">
+        <p class="h6 mb-0">Stock Status</p>
+        <button type="button" class="btn-close text-reset d-md-none" data-bs-toggle="collapse" href="#stock-collapse"
+            aria-expanded="false" aria-controls="stock-collapse"></button>
+    </div>
+
+
+    <div class="textwidget custom-html-widget">
+        <?php echo facetwp_display('facet', 'stock_status'); ?>
     </div>
 </section>
 <?php endif; ?>

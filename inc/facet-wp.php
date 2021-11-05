@@ -98,3 +98,8 @@ add_filter( 'http_request_args', function( $args, $url ) {
     }
     return $args;
 }, 10, 2 );
+
+function create_facet_url_query($facetdata) {
+    // 1967%2Cchevrolet-1967%2Ccamaro-chevrolet-1967
+    return urlencode($facetdata);
+}
