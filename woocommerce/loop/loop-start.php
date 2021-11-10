@@ -19,5 +19,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div class="container">
-    <div class="row products row-cols-1 row-cols-md-2 row-cols-lg-3 position-relative">
+
+<div class="row products row-cols-1 row-cols-md-2 row-cols-lg-3 position-relative">

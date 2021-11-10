@@ -14,56 +14,103 @@ console.log('custom js');
 })(jQuery);
 "use strict";
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 (function ($) {
   /*
   After FacetWP reloads, store any updates into a cookie
   */
   var facetCookie = readCookie('facetdata');
-  $(document).on('facetwp-loaded', function () {
-    var date = new Date();
-    date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
-
-    if (FWP.facets.year_make_model.length === 3 && !facetCookie) {
-      var facets = FWP.facets.year_make_model;
-      document.cookie = "facetdata=" + facets + "; expires=" + date.toGMTString() + "; path=/";
-    }
-
-    $('.facetwp-template .is-loading').remove();
-  });
   /*
   When FacetWP first initializes, look for the "facetdata" cookie
   If it exists, set window.location.search= facetdata
   */
 
   $(document).on('facetwp-refresh', function () {
-    showFacetLoading();
+    if (FWP.loaded) {
+      showFacetLoading();
+    }
 
     if (!FWP.loaded) {
+      showFacetLoading();
+
       if (facetCookie) {
         FWP.facets['year_make_model'] = facetCookie.split(',');
         FWP.fetchData();
       }
     }
   });
+  $(document).on('facetwp-loaded', function () {
+    var date = new Date();
+    date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
+
+    if (window.location.href.indexOf('s=') && FWP.settings.pager.total_rows === 0) {
+      console.log('on search and has no results');
+      $('#ymm-bar').addClass('d-none');
+      $('#search-terms').addClass('d-none');
+      $('.orderby').addClass('d-none');
+      $('#products-container').removeClass('row-cols-md-2 row-cols-lg-3');
+    }
+
+    var facets = FWP.facets.year_make_model;
+
+    if (facets.length === 3) {
+      document.cookie = "facetdata=" + facets + "; expires=" + date.toGMTString() + "; path=/";
+
+      var fullVehicle = _toConsumableArray(facets).pop();
+
+      var ymmArray = fullVehicle.split('-').reverse();
+      var selectedVehicle = uppercase(ymmArray.join(' '));
+      document.cookie = "vehicle=" + selectedVehicle + "; expires=" + date.toGMTString() + "; path=/";
+    } else {
+      $('.facetwp-template .is-loading').remove();
+    } // shown on search page
+
+
+    $('#remove-vehicle').on('click', function () {
+      console.log('clicked remove vehicle');
+      clearVehicle();
+      $('#ymm-bar').addClass('d-none');
+      $(this).html('<i class="las la-check"></i> Cleared!');
+    });
+  });
 
   function showFacetLoading() {
-    $('.facetwp-template').prepend('<div class="is-loading position-absolute w-100 h-100"> <div class="d-flex w-100 h-100 justify-content-center mt-5"><div class="d-block text-center mt-5 text-primary"><p class="fw-bold">Loading parts</p><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div></div></div>');
+    var vehicleCookie = readCookie('vehicle');
+    var vehicle = vehicleCookie ? ' for <br>' + vehicleCookie : '';
+    $('.facetwp-template').prepend('<div class="is-loading position-absolute w-100 h-100"> <div class="d-flex w-100 h-100 justify-content-center mt-5"><div class="d-block text-center mt-5 text-primary"><p class="fw-bold">Loading parts' + vehicle + '</p><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div></div></div>');
   } // shown in YMM bar
 
 
-  $('#clear-vehicle').on('click', function () {
+  $('.clear-vehicle').on('click', function () {
     clearVehicle();
     FWP.reset('year_make_model');
-  }); // shown on search page
-
-  $('#remove-vehicle').on('click', function () {
-    clearVehicle();
-    $('#ymm-bar').addClass('d-none');
-    $(this).html('<i class="las la-check"></i> Cleared!');
   });
+
+  function clearVehicle() {
+    var currentVehicle = readCookie('facetdata');
+
+    if (currentVehicle) {
+      document.cookie = 'vehicle=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+      document.cookie = 'facetdata=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+    }
+
+    console.log('cleared');
+  }
   /*
   Cookie handler
   */
+
 
   function readCookie(name) {
     var nameEQ = name + '=';
@@ -82,19 +129,15 @@ console.log('custom js');
     return null;
   }
 
-  function clearVehicle() {
-    var currentVehicle = readCookie('facetdata');
+  function uppercase(str) {
+    var array1 = str.split(' ');
+    var newarray1 = [];
 
-    if (currentVehicle) {
-      document.cookie = 'vehicle=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
-      document.cookie = 'facetdata=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/'; //$('#clear-vehicle').addClass('d-none');
-
-      $('#your-vehicle').html('');
-      $('#selected-vehicle').addClass('d-none');
-      $('#ymm-bar').removeClass('d-none');
+    for (var x = 0; x < array1.length; x++) {
+      newarray1.push(array1[x].charAt(0).toUpperCase() + array1[x].slice(1));
     }
 
-    console.log('cleared');
+    return newarray1.join(' ');
   }
 })(jQuery);
 "use strict";

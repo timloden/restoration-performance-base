@@ -213,9 +213,7 @@
 
                             </div>
                             <input type="hidden" name="post_type" value="product" />
-                            <?php if ($facetdata) : ?>
-                            <input type="hidden" name="_year_make_model" value="<?php echo $facetdata; ?>" />
-                            <?php endif; ?>
+
                         </form>
                     </div>
                     <div class="col-5 col-lg-4 text-end">
@@ -253,9 +251,7 @@
                                 <button class="btn btn-secondary" type="submit">Search</button>
                             </div>
                             <input type="hidden" name="post_type" value="product" />
-                            <?php if ($facetdata) : ?>
-                            <input type="hidden" name="_year_make_model" value="<?php echo $facetdata; ?>" />
-                            <?php endif; ?>
+
                         </form>
                     </div>
                 </div>
