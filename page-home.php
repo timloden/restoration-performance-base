@@ -174,7 +174,7 @@ if (!$commercial_freight) {
                     style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/images/classic-car-is-in-a-workshop.jpg);">
                     <div class="card-body position-relative">
                         <h4 class="text-white text-center h2">Tech Tips</h4>
-                        <p class="text-white text-center">Helpful hits for your restoration project</p>
+                        <p class="text-white text-center">Helpful hints for your restoration project</p>
                         <a class="text-white text-center d-block mt-5"
                             href="<?php echo site_url(); ?>/category/tech-tips/">Browse
                             all Tech Tips</a>

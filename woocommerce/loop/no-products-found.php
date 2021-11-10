@@ -36,7 +36,7 @@ if (wc_get_loop_prop( 'total' ) === 0) {
         <div>
             <?php if ($vehicle) : ?>
             <p>Try clearing your vehicle and searching again:</p>
-            <p><span class="fw-bold"><?php echo $vehicle; ?></span> <button id="remove-vehicle"
+            <p><span id="no-results-vehicle" class="fw-bold"><?php echo $vehicle; ?></span> <button id="remove-vehicle"
                     class="btn btn-sm btn-outline-primary">Clear Vehicle</button></p>
             <?php endif; ?>
             <form action="/" method="get" class="form">

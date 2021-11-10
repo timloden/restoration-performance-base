@@ -12,6 +12,7 @@
         */
 
         $(document).on('facetwp-refresh', function() {
+            
             if (FWP.loaded) {
                 showFacetLoading();
             }
@@ -23,19 +24,13 @@
                     FWP.fetchData();
                 }
             }
+
+            
         });
 
         $(document).on('facetwp-loaded', function() {
             var date = new Date();
             date.setTime(date.getTime()+(24*60*60*1000));
-            
-            if (window.location.href.indexOf('s=') && FWP.settings.pager.total_rows === 0) {
-                console.log('on search and has no results');
-                $('#ymm-bar').addClass('d-none');
-                $('#search-terms').addClass('d-none');
-                $('.orderby').addClass('d-none');
-                $('#products-container').removeClass('row-cols-md-2 row-cols-lg-3');
-            }
 
             var facets = FWP.facets.year_make_model;
 
@@ -50,12 +45,21 @@
             } else {
                 $('.facetwp-template .is-loading').remove();
             }
-            
+
+            if (window.location.href.indexOf('s=') && FWP.settings.pager.total_rows === 0) {
+                console.log('on search and has no results');
+                $('#ymm-bar').addClass('d-none');
+                $('.orderby').addClass('d-none');
+                $('#search-terms').addClass('d-none');
+                $('#products-container').removeClass('row-cols-md-2 row-cols-lg-3');
+            }
+
            // shown on search page
             $('#remove-vehicle').on('click', function () {
                 console.log('clicked remove vehicle');
                 clearVehicle();
                 $('#ymm-bar').addClass('d-none');
+                $('#no-results-vehicle').remove();
                 $(this).html('<i class="las la-check"></i> Cleared!');
             });
 

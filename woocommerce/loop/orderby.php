@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="col-6">
     <form class="woocommerce-ordering d-flex justify-content-end" method="get">
-        <select name="orderby" class="orderby form-control w-auto"
+        <select name="orderby" class="orderby form-select w-auto"
             aria-label="<?php esc_attr_e( 'Shop order', 'woocommerce' ); ?>">
             <?php foreach ( $catalog_orderby_options as $id => $name ) : ?>
             <option value="<?php echo esc_attr( $id ); ?>" <?php selected( $orderby, $id ); ?>>

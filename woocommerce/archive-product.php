@@ -28,9 +28,7 @@ get_header( 'shop' );
  */
 do_action( 'woocommerce_before_main_content' );
 
-if(isset($_COOKIE['vehicle'])) {
-	$vehicle = $_COOKIE['vehicle'];
-}
+$vehicle = isset($_COOKIE['vehicle']) ? $_COOKIE['vehicle'] : '';
 
 ?>
 
