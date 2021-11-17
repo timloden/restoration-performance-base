@@ -40,10 +40,12 @@
     }
 
     .tinvwl_add_to_wishlist_button {
-        font-size: 18px;
+        font-size: 16px;
+        border: none;
 
         &:hover {
             background-color: $white;
+            color: #6c757d;
         }
     }
 }
