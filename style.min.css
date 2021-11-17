@@ -2864,7 +2864,7 @@ button#place_order:before{font-family:"Line Awesome Free";font-weight:900;displa
 #billing_postcode_field,#shipping_postcode_field{width:30%;display:inline-block}
 #billing_phone_field{display:inline-block}
 .article-single .jumbotron .container{position:relative;z-index:999}
-.hero-overlay{position:absolute;top:0;height:100%;width:100%;background-color:rgba(0,0,0,.5)}
+.hero-overlay{position:absolute;top:0;left:0;height:100%;width:100%;background-color:rgba(0,0,0,.5)}
 .tinv-wishlist .wishlist_item .product-thumbnail img{max-width:100%;height:auto}
 .tinv-wishlist .wishlist_item .product-action button{font-size:12px}
 .tinv-wishlist tfoot .tinvwl-to-right{width:100%;text-align:left}
