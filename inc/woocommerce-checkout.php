@@ -336,7 +336,7 @@ function custom_woocommerce_form_field($key, $args, $value = null)
                 }
 
                 $field .= '<select name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
-    class="select form-control ' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '
+    class="select form-select ' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '
     data-placeholder="' . esc_attr($args['placeholder']) . '">
     ' . $options . '
 </select>';

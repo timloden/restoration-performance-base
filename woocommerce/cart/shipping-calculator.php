@@ -29,7 +29,7 @@ do_action( 'woocommerce_before_shipping_calculator' ); ?>
         <?php if ( apply_filters( 'woocommerce_shipping_calculator_enable_country', true ) ) : ?>
         <div class="form-group" id="calc_shipping_country_field">
             <select name="calc_shipping_country" id="calc_shipping_country"
-                class="country_to_state country_select form-control" rel="calc_shipping_state">
+                class="country_to_state country_select form-select" rel="calc_shipping_state">
                 <option value=""><?php esc_html_e( 'Select a country / region&hellip;', 'woocommerce' ); ?></option>
                 <?php
 					foreach ( WC()->countries->get_shipping_countries() as $key => $value ) {
@@ -109,8 +109,7 @@ function showShippingForm() {
 }
 window.addEventListener('load', function() {
     console.log();
-    document.getElementsByName('calc_shipping_state')[0].options[0].innerHTML = 'Select a State';
-    //document.getElementsByName('calc_shipping_state').options[0].innerHTML = 'Select a state';
+    document.getElementsByName('calc_shipping_state')[0].options[0].innerHTML = 'Select a State...';
 });
 //
 </script>

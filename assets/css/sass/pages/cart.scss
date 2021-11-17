@@ -29,6 +29,10 @@
     display: none;
 }
 
+#calc_shipping_state {
+    @extend .form-select;
+}
+
 .state_select {
     @extend .form-control;
 }
