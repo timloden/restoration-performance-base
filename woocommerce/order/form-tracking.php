@@ -33,25 +33,24 @@ global $post;
             class="woocommerce-form woocommerce-form-track-order track_order border rounded p-3">
 
 
-            <div class="form-group">
-                <label for="orderid"><?php esc_html_e( 'Order ID', 'woocommerce' ); ?></label> <input
-                    class="form-control" type="text" name="orderid" id="orderid"
-                    value="<?php echo isset( $_REQUEST['orderid'] ) ? esc_attr( wp_unslash( $_REQUEST['orderid'] ) ) : ''; ?>"
-                    placeholder="<?php esc_attr_e( 'Found in your order confirmation email.', 'woocommerce' ); ?>" />
-            </div>
-            <?php // @codingStandardsIgnoreLine ?>
-            <div class="form-group"><label
-                    for="order_email"><?php esc_html_e( 'Billing email', 'woocommerce' ); ?></label>
-                <input class="form-control" type="text" name="order_email" id="order_email"
-                    value="<?php echo isset( $_REQUEST['order_email'] ) ? esc_attr( wp_unslash( $_REQUEST['order_email'] ) ) : ''; ?>"
-                    placeholder="<?php esc_attr_e( 'Email you used during checkout.', 'woocommerce' ); ?>" /></div>
-            <?php // @codingStandardsIgnoreLine ?>
 
-            <button type="submit" class="btn btn-primary" name="track"
+            <label class="form-label" for="orderid"><?php esc_html_e( 'Order ID', 'woocommerce' ); ?></label>
+            <input class="form-control mb-2" type="text" name="orderid" id="orderid"
+                value="<?php echo isset( $_REQUEST['orderid'] ) ? esc_attr( wp_unslash( $_REQUEST['orderid'] ) ) : ''; ?>"
+                placeholder="<?php esc_attr_e( 'Found in your order confirmation email.', 'woocommerce' ); ?>" />
+            <label class="form-label" for="order_email"><?php esc_html_e( 'Billing email', 'woocommerce' ); ?></label>
+            <input class="form-control mb-3" type="text" name="order_email" id="order_email"
+                value="<?php echo isset( $_REQUEST['order_email'] ) ? esc_attr( wp_unslash( $_REQUEST['order_email'] ) ) : ''; ?>"
+                placeholder="<?php esc_attr_e( 'Email you used during checkout.', 'woocommerce' ); ?>" />
+            <button type="submit" class="btn btn-primary w-100" name="track"
                 value="<?php esc_attr_e( 'Track', 'woocommerce' ); ?>"><?php esc_html_e( 'Track', 'woocommerce' ); ?></button>
             <?php wp_nonce_field( 'woocommerce-order_tracking', 'woocommerce-order-tracking-nonce' ); ?>
 
         </form>
     </div>
+
+
+
+</div>
 
 </div>
