@@ -8,4 +8,5 @@
         country_input.val('US');
         country_input.hide();
     }
+
 })(jQuery);

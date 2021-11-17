@@ -44,7 +44,9 @@
     <!-- mini cart offcanvas -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="off-canvas-mini-cart"
         aria-labelledby="off-canvas-mini-cart-label">
-        <?php woocommerce_mini_cart(); ?>
+        <div id="mini-cart-content" class="d-flex flex-column h-100">
+            <?php woocommerce_mini_cart(); ?>
+        </div>
     </div>
     <!-- mobile nav offcanvas -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="off-canvas-mobile-nav"

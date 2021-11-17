@@ -102,12 +102,11 @@ function styling_admin_order_list() {
     ob_start();
     ?>
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="off-canvas-mini-cart"
-    aria-labelledby="off-canvas-mini-cart-label">
+<div id="mini-cart-content" class="d-flex flex-column h-100">
     <?php woocommerce_mini_cart(); ?>
 </div>
 <?php 
-    $fragments['div#off-canvas-mini-cart'] = ob_get_clean();
+    $fragments['div#mini-cart-content'] = ob_get_clean();
 
     return $fragments;
 
