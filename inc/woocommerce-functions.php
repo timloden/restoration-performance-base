@@ -86,7 +86,7 @@ function styling_admin_order_list() {
     ob_start();
     echo '<a class="position-relative btn d-inline-flex p-0" role="button" id="mini-cart-link" data-bs-toggle="offcanvas" href="#off-canvas-mini-cart" role="button"
     aria-controls="off-canvas-mini-cart">';
-    echo '<i class="las la-shopping-cart"></i><span style="font-size: 12px;" id="cart-customlocation" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">' . WC()->cart->get_cart_contents_count() . '</span></a>';
+    echo '<i class="las la-shopping-cart position-relative"></i><span style="font-size: 12px;" id="cart-customlocation" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">' . WC()->cart->get_cart_contents_count() . '</span></a>';
     
     $fragments['a#mini-cart-link'] = ob_get_clean();
     return $fragments;
