@@ -24,18 +24,16 @@ if (!defined('ABSPATH')) {
 
 
 <div class="row py-2 d-md-none">
-    <div class="col-4 col-lg-12">
-        <a class="btn btn-outline-primary d-block" data-bs-toggle="collapse" href="#brand-collapse" role="button"
-            aria-expanded="false" aria-controls="brand-collapse">Brands</a>
-    </div>
-    <div class="col-4 col-lg-12">
-        <a class="btn btn-outline-primary d-block" data-bs-toggle="collapse" href="#stock-collapse" role="button"
-            aria-expanded="false" aria-controls="stock-collapse">Stock Status</a>
-    </div>
-    <div class="col-4 col-lg-12">
+
+    <div class="col-6 col-lg-12">
         <a class="btn btn-outline-primary d-block" data-bs-toggle="collapse" href="#category-collapse" role="button"
             aria-expanded="false" aria-controls="category-collapse">Categories</a>
     </div>
+    <div class="col-6 col-lg-12">
+        <a class="btn btn-outline-primary d-block" data-bs-toggle="collapse" href="#brand-collapse" role="button"
+            aria-expanded="false" aria-controls="brand-collapse">Brands</a>
+    </div>
+
 </div>
 
 <?php if (facetwp_display('facet', 'brands')) : ?>

@@ -51,6 +51,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
   });
   $(document).on('facetwp-loaded', function () {
+    // scroll to content if facets loaded
+    if (FWP.loaded) {
+      $('html, body').animate({
+        scrollTop: $('#content').offset().top
+      }, 500);
+    }
+
     var date = new Date();
     date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
     var facets = FWP.facets.year_make_model;
