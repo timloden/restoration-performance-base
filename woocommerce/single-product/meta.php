@@ -53,31 +53,5 @@ $stock_status = $product->get_stock_status();
 
     <?php echo wc_get_product_category_list($product_id, ', ', '<p class="posted_in mb-3">' . _n('', '', count($product->get_category_ids()), 'woocommerce') . ' ', '</p>'); ?>
 
-    <?php if( have_rows('vehicle_fitment') ): 
-        $count = 0;
-        ?>
-    <p class="mb-1"><strong>Vehicle Fitment:</strong></p>
-    <ul class="mb-1">
-        <?php while( have_rows('vehicle_fitment') && $count < 5 ): the_row(); 
-            $vehicle = get_sub_field('vehicle');
-            $total_count = count(get_field('vehicle_fitment'));
-        ?>
-
-        <li>
-            <?php echo $vehicle; ?>
-        </li>
-
-        <?php 
-        $count++;
-        endwhile; 
-        ?>
-    </ul>
-
-    <?php 
-    if ($total_count > 5) {
-        echo '<a class="ml-4" id="show-fitment" href="#">' . $total_count . ' total vehicles, click here to view all</a>';
-    }
-    endif; ?>
-
     <?php do_action('woocommerce_product_meta_end'); ?>
 </div>

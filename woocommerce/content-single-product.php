@@ -33,7 +33,7 @@ if ( post_password_required() ) {
 ?>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
     <div class="row pt-md-3">
-        <div class="col-12 col-md-6 text-center">
+        <div class="col-12 col-md-6 text-center mt-3 mb-3 mt-md-0">
             <?php
 			/**
 			 * Hook: woocommerce_before_single_product_summary.
@@ -60,7 +60,31 @@ if ( post_password_required() ) {
 				 * @hooked WC_Structured_Data::generate_product_data() - 60
 				 */
 				do_action( 'woocommerce_single_product_summary' );
-				?>
+				if( have_rows('vehicle_fitment') ): 
+					$count = 0;
+					?>
+                <p class="mb-1"><strong>Vehicle Fitment:</strong></p>
+                <ul class="mb-3">
+                    <?php while( have_rows('vehicle_fitment') && $count < 5 ): the_row(); 
+						$vehicle = get_sub_field('vehicle');
+						$total_count = count(get_field('vehicle_fitment'));
+					?>
+
+                    <li>
+                        <?php echo $vehicle; ?>
+                    </li>
+
+                    <?php 
+					$count++;
+					endwhile; 
+					?>
+                </ul>
+
+                <?php 
+				if ($total_count > 5) {
+					echo '<div class="mb-3"><a class="ml-4" id="show-fitment" href="#">' . $total_count . ' total vehicles, click here to view all</a></div>';
+				}
+				endif; ?>
             </div>
         </div>
     </div>
