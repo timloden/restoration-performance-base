@@ -32,7 +32,7 @@ if ($stock_status == 'instock') {
 
 $shipping_class = $product->get_shipping_class();
 
-if (strpos($shipping_class, '-freight')) {
+if (strpos($shipping_class, '-freight') || $shipping_class == 'windshield') {
     $shipping = 'Freight';
 } elseif ($shipping_class == 'bundle' || $shipping_class == 'heavy-freight') {
     $shipping = 'Heavy Freight';
