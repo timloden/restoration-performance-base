@@ -2799,7 +2799,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-weight:700}
 .product .tinvwl_add_to_wishlist_button{font-size:16px;border:0}
 .product .tinvwl_add_to_wishlist_button:hover{background-color:#fff;color:#6c757d}
 .woocommerce-notices-wrapper{width:100%}
-.woocommerce .star-rating,.woocommerce p.stars [class^=star-],.woocommerce p.stars [class*=" star-"]{font-family:Line Awesome Free;font-weight:900;speak:none;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;font-size:1em}
+.woocommerce .star-rating,.woocommerce p.stars [class^=star-],.woocommerce p.stars [class*=" star-"]{font-family:Line Awesome Free;font-weight:900;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;font-size:1em}
 .woocommerce .star-rating{overflow:hidden;position:relative;height:1em;width:5em}
 .woocommerce .star-rating:before{content:"";float:left;top:0;left:0;position:absolute;color:#999}
 .woocommerce .star-rating span{overflow:hidden;float:left;top:0;left:0;position:absolute;padding-top:1.5em}

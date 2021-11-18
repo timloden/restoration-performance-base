@@ -39,7 +39,7 @@ $vehicle = isset($_COOKIE['vehicle']) ? $_COOKIE['vehicle'] : '';
             <div class="col-12 col-lg-2">
                 <div class="d-flex justify-content-between justify-content-lg-end align-items-center mb-2 mb-md-0">
                     <p class="mb-0 text-primary fw-bold">Your Vehicle:</p>
-                    <button class="btn fw-bold btn-sm d-md-none clear-vehicle">Clear Vehicle</button>
+                    <button class="btn btn-outline-secondary btn-sm d-md-none clear-vehicle">Clear Vehicle</button>
                 </div>
 
             </div>
@@ -48,8 +48,9 @@ $vehicle = isset($_COOKIE['vehicle']) ? $_COOKIE['vehicle'] : '';
                     <div class="home-ymm w-100 col">
                         <?php echo facetwp_display('facet', 'year_make_model'); ?>
                     </div>
-                    <div class="d-none d-md-block">
-                        <button class="btn fw-bold btn-sm clear-vehicle">Clear Vehicle</button>
+                    <div class="d-none d-md-block ms-2">
+                        <button class="btn btn-outline-secondary btn-sm clear-vehicle"
+                            style="padding: 0.4rem 0.5rem;">Clear Vehicle</button>
                     </div>
 
                 </div>
@@ -103,7 +104,7 @@ if ( woocommerce_product_loop() ) {
 					//woocommerce_product_loop_start();
 
 					if (is_search() && $vehicle) {
-						echo '<h3 id="search-terms" class="mb-3">Search results for "' . get_search_query() . '" for ' . $vehicle . '</h3>';
+						echo '<h3 id="search-terms" class="mb-3">Search results for "' . get_search_query() . '" in a ' . $vehicle . '</h3>';
 					} elseif(is_search()) {
 						echo '<h3 id="search-terms" class="mb-3">Search results for "' . get_search_query() . '"</h3>';
 					}

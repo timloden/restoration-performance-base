@@ -30,21 +30,22 @@ if (wc_get_loop_prop( 'total' ) === 0) {
 
 <?php else : ?>
 <h3 class="pb-3">Sorry, no results were found for
-    "<?php echo get_search_query(); ?>"<?php if ($vehicle) { echo ' in ' . $vehicle; } ?></h3>
+    "<?php echo get_search_query(); ?>"<?php if ($vehicle) { echo ' in a ' . $vehicle; } ?></h3>
 <div class="row">
-    <div class="col-12 col-lg-8">
+    <div class="col-12 col-lg-8 mb-3">
         <div>
             <?php if ($vehicle) : ?>
-            <p>Try clearing your vehicle and searching again:</p>
+            <p><a class="fw-bold" href="http://classicbodyparts.local/shop">Browse
+                    all products for your vehicle</a> or try clearing your vehicle and searching again:</p>
             <p><span id="no-results-vehicle" class="fw-bold"><?php echo $vehicle; ?></span> <button id="remove-vehicle"
-                    class="btn btn-sm btn-outline-primary">Clear Vehicle</button></p>
+                    class="btn btn-sm btn-outline-primary ms-1">Clear Vehicle</button></p>
             <?php endif; ?>
             <form action="/" method="get" class="form">
                 <div class="input-group">
                     <input class="form-control" type="search" placeholder="Search by Vehicle, Part Number..."
                         aria-label="Search" name="s" id="search" value="<?php the_search_query(); ?>">
 
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-secondary" type="submit">Search</button>
                 </div>
                 <input type="hidden" name="post_type" value="product" />
             </form>
