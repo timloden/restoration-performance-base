@@ -103,7 +103,7 @@ function added_to_cart_message_html($message, $products)
         $count, // Number of products added
         'woocommerce' // Textdomain
     ), wc_format_list_of_items($titles));
-    $message    = sprintf('<div class="d-flex justify-content-between"><div class="d-flex"><i class="las la-check-circle text-success h4 mb-0 mr-2"></i> <strong>%s</strong></div> <a href="%s" class="btn btn-success btn-sm">%s</a></div>', esc_html($added_text), esc_url(wc_get_page_permalink('cart')), esc_html__('View cart', 'woocommerce'));
+    $message    = sprintf('<div class="d-flex justify-content-between align-items-center"><div class="d-flex align-items-center mb-2 mb-lg-0"><i class="las la-check-circle text-success h4 me-2 mb-0"></i> <strong>%s</strong></div> <a href="%s" class="btn btn-success btn-sm text-white">%s</a></div>', esc_html($added_text), esc_url(wc_get_page_permalink('cart')), esc_html__('View cart', 'woocommerce'));
 
 
     return $message;

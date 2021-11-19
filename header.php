@@ -173,7 +173,7 @@
                     <div class="col-lg-6 text-center text-lg-start">
                         <span
                             class="border-end me-2 pe-2"><strong><?php echo esc_attr( get_field('ground_shipping_discount', 'option') ); ?></strong></span>
-                        <span>Freight shipping starting at $<?php echo esc_attr($commercial_freight); ?></span>
+                        <span>Freight starting at $<?php echo esc_attr($commercial_freight); ?></span>
                     </div>
                     <div class="col-12 col-lg-6 text-center text-lg-end d-none d-lg-block">
                         <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"
