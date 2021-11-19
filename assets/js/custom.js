@@ -11,6 +11,18 @@ console.log('custom js');
     country_input.val('US');
     country_input.hide();
   }
+
+  $('.woocommerce').on('change', 'input.qty', function () {
+    var timeout;
+
+    if (timeout !== undefined) {
+      clearTimeout(timeout);
+    }
+
+    timeout = setTimeout(function () {
+      $("[name='update_cart']").trigger("click");
+    }, 500); // 1 second delay, half a second (500) seems comfortable too
+  });
 })(jQuery);
 "use strict";
 
