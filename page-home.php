@@ -228,9 +228,9 @@ if (!$commercial_freight) {
         echo '<div class="home-featured mb-5">';
         echo '<h3>Featured Products</h3>';
         echo '<p class="pb-3 mb-3 title-border">Here are some products hand picked by our staff</p>';
-        echo '<div class="row products">';
+        echo '<div class="row products row-cols-1 row-cols-md-2 row-cols-lg-4">';
         while ( $loop->have_posts() ) : $loop->the_post();
-            wc_get_template_part( 'content', 'product-homepage' );
+            wc_get_template_part( 'content', 'product' );
         endwhile;
         echo '</div></div>';
     }
@@ -260,9 +260,9 @@ if (!$commercial_freight) {
         echo '<div class="home-new">';
         echo '<h3>New Products</h3>';
         echo '<p class="pb-3 mb-3 title-border">Browse the latest products from our high quality manufacturers</p>';
-        echo '<div class="row products">';
+        echo '<div class="row products row-cols-1 row-cols-md-2 row-cols-lg-4">';
         while ( $loop->have_posts() ) : $loop->the_post();
-            wc_get_template_part( 'content', 'product-homepage' );
+            wc_get_template_part( 'content', 'product' );
         endwhile;
         echo '</div></div>';
     }
