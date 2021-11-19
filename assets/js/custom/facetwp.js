@@ -34,7 +34,7 @@
             if (FWP.loaded) {
                 $('html, body').animate(
                     {
-                        scrollTop: $('#content').offset().top,
+                        scrollTop: $('#facet-scroll-to').offset().top,
                     },
                     500
                 );
@@ -79,11 +79,8 @@
        
 
         function showFacetLoading() {
-            var vehicleCookie = readCookie('vehicle');
-
-            var vehicle = vehicleCookie ? ' for <br>' + vehicleCookie : '';
             $('.facetwp-template').prepend(
-                '<div class="is-loading position-absolute w-100 h-100"> <div class="d-flex w-100 h-100 justify-content-center mt-5"><div class="d-block text-center mt-5 text-primary"><p class="fw-bold">Loading parts' + vehicle + '</p><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div></div></div>'
+                '<div class="is-loading position-absolute w-100 h-100"> <div class="d-flex w-100 h-100 justify-content-center mt-5"><div class="d-block text-center mt-5 text-primary"><p class="fw-bold">Loading parts</p><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div></div></div>'
             );
         }
 

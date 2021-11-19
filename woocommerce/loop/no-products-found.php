@@ -19,6 +19,7 @@ defined( 'ABSPATH' ) || exit;
 
 $vehicle = isset($_COOKIE['vehicle']) ? $_COOKIE['vehicle'] : '';
 if (wc_get_loop_prop( 'total' ) === 0) {
+    echo '<style>#ymm-bar {display: none;}</style>';
     echo '<div class="container py-3 py-lg-5">';
 }
 ?>

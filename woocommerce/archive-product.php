@@ -33,7 +33,7 @@ $vehicle = isset($_COOKIE['vehicle']) ? $_COOKIE['vehicle'] : '';
 ?>
 
 <div id="ymm-bar"
-    class="bg-light border-bottom border-top <?php if (is_search() || is_product_tag( 'special' )) { echo 'd-none'; } ?>">
+    class="bg-light border-bottom border-top <?php if (is_product_tag( 'special' )) { echo 'd-none'; } ?>">
     <div class="container py-3">
         <div class="row align-items-center">
             <div class="col-12 col-lg-2">
