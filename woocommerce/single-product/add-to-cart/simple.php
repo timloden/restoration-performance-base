@@ -35,9 +35,9 @@ if ( $product->is_in_stock() ) : ?>
 
     <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
-    <div class="form-row align-items-center justify-content-center justify-content-md-start">
+    <div class="row g-3 align-items-center justify-content-center justify-content-md-start">
 
-        <div class="col-auto mb-3" style="font-size: 18px;">
+        <div class="col-auto" style="font-size: 18px;">
             <?php
         do_action( 'woocommerce_before_add_to_cart_quantity' );
 
@@ -52,13 +52,13 @@ if ( $product->is_in_stock() ) : ?>
         do_action( 'woocommerce_after_add_to_cart_quantity' );
         ?>
         </div>
-        <div class="col-auto mb-3">
+        <div class="col-auto">
             <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"
                 class="single_add_to_cart_button btn btn-primary px-5 font-weight-bold" style="font-size: 18px;"><i
                     class="las la-shopping-cart"></i>
                 <?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
         </div>
-        <div class="col-auto mb-3">
+        <div class="col-auto">
             <?php echo do_shortcode('[ti_wishlists_addtowishlist]'); ?>
         </div>
     </div>

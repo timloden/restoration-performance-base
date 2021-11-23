@@ -43,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			?></div>
 
-        <div class="bundle_button form-row align-items-center justify-content-center justify-content-md-start">
+        <div class="bundle_button row align-items-center justify-content-center justify-content-md-start">
             <?php
 
 				/**

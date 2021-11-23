@@ -21,38 +21,38 @@ add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
 
 // universal products
 
-add_filter( 'facetwp_filtered_post_ids', function( $post_ids, $class ) {
+// add_filter( 'facetwp_filtered_post_ids', function( $post_ids, $class ) {
     
-    if ( is_search() ) {
-    // get products from the universal ymm taxonomy
-        $universal_args = array(
-            'fields' => 'ids',
-            'facetwp' => false,
-            'post_type' => 'product',
-            'post_status' => 'publish',
-            'posts_per_page' => -1,
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'ymm',
-                    'field' => 'slug',
-                    'terms' => array( 'universal' )
+//     if ( is_search() ) {
+//     // get products from the universal ymm taxonomy
+//         $universal_args = array(
+//             'fields' => 'ids',
+//             'facetwp' => false,
+//             'post_type' => 'product',
+//             'post_status' => 'publish',
+//             'posts_per_page' => -1,
+//             'tax_query' => array(
+//                 array(
+//                     'taxonomy' => 'ymm',
+//                     'field' => 'slug',
+//                     'terms' => array( 'universal' )
         
-                ),
-            ),
-        );
+//                 ),
+//             ),
+//         );
 
-        $universal_query = new WP_Query( $universal_args );
-        $universal_ids = $universal_query->posts;
+//         $universal_query = new WP_Query( $universal_args );
+//         $universal_ids = $universal_query->posts;
 
-        // if facet selected add universal products to results
-        if ( isset( FWP()->facet->facets['year_make_model'] ) ) {
-            $post_ids = array_merge( $post_ids, $universal_ids );
-        }
+//         // if facet selected add universal products to results
+//         if ( isset( FWP()->facet->facets['year_make_model'] ) ) {
+//             $post_ids = array_merge( $post_ids, $universal_ids );
+//         }
 
-    }
+//     }
 
-    return $post_ids;
-}, 15, 2 );
+//     return $post_ids;
+// }, 15, 2 );
 
 // add bootstrap class to selects
 
@@ -60,13 +60,19 @@ add_filter(
     'facetwp_facet_html',
     function ($output, $params) {
         if ('hierarchy_select' == $params['facet']['type']) {
-            $output = str_replace('facetwp-hierarchy_select', 'facetwp-hierarchy_select form-control mb-2', $output);
+            $output = str_replace('facetwp-hierarchy_select', 'facetwp-hierarchy_select form-select', $output);
         }
+
+        if ('pager' == $params['facet']['type']) {
+            $output = str_replace( 'facetwp-pager', 'facetwp-pager justify-content-center', $output );
+        }
+
         return $output;
     },
     10,
     2
 );
+
 
 // remove counts from drop downs
 
@@ -92,3 +98,8 @@ add_filter( 'http_request_args', function( $args, $url ) {
     }
     return $args;
 }, 10, 2 );
+
+function create_facet_url_query($facetdata) {
+    // 1967%2Cchevrolet-1967%2Ccamaro-chevrolet-1967
+    return urlencode($facetdata);
+}

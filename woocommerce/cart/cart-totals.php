@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 
         <div class="row border-bottom pb-2 mb-2">
             <div class="col"><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></div>
-            <div class="col text-right" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>">
+            <div class="col text-end" data-title="<?php esc_attr_e( 'Subtotal', 'woocommerce' ); ?>">
                 <?php wc_cart_totals_subtotal_html(); ?></div>
         </div>
 
@@ -35,7 +35,7 @@ defined( 'ABSPATH' ) || exit;
         <div
             class="row border-bottom pb-2 mb-2 cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
             <div class="col"><?php wc_cart_totals_coupon_label( $coupon ); ?></div>
-            <div class="col text-right"
+            <div class="col text-end"
                 data-title="<?php echo esc_attr( wc_cart_totals_coupon_label( $coupon, false ) ); ?>">
                 <?php wc_cart_totals_coupon_html( $coupon ); ?></div>
         </div>
@@ -73,7 +73,7 @@ defined( 'ABSPATH' ) || exit;
     foreach ( WC()->cart->get_fees() as $fee ) : ?>
         <div class="row fee border-bottom pb-2 mb-2">
             <div class="col"><?php echo esc_html( $fee->name ); ?></div>
-            <div class="col text-right" data-title="<?php echo esc_attr( $fee->name ); ?>">
+            <div class="col text-end" data-title="<?php echo esc_attr( $fee->name ); ?>">
                 <?php wc_cart_totals_fee_html( $fee ); ?></div>
         </div>
         <?php endforeach; ?>
@@ -96,7 +96,7 @@ defined( 'ABSPATH' ) || exit;
             <div class="col">
                 <?php echo esc_html( $tax->label ) . $estimated_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
             </div>
-            <div class="col text-right" data-title="<?php echo esc_attr( $tax->label ); ?>">
+            <div class="col text-end" data-title="<?php echo esc_attr( $tax->label ); ?>">
                 <?php echo wp_kses_post( $tax->formatted_amount ); ?></div>
         </div>
         <?php
@@ -107,7 +107,7 @@ defined( 'ABSPATH' ) || exit;
             <div class="col">
                 <?php echo esc_html( WC()->countries->tax_or_vat() ) . $estimated_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
             </div>
-            <div class="col text-right" data-title="<?php echo esc_attr( WC()->countries->tax_or_vat() ); ?>">
+            <div class="col text-end" data-title="<?php echo esc_attr( WC()->countries->tax_or_vat() ); ?>">
                 <?php wc_cart_totals_taxes_total_html(); ?></div>
         </div>
         <?php
@@ -119,7 +119,7 @@ defined( 'ABSPATH' ) || exit;
 
         <div class="row order-total">
             <div class="col font-weight-bold"><?php esc_html_e( 'Total', 'woocommerce' ); ?></div>
-            <div class="col text-right" data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>">
+            <div class="col text-end" data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>">
                 <?php wc_cart_totals_order_total_html(); ?></div>
         </div>
 

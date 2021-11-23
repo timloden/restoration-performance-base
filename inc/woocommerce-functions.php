@@ -84,20 +84,33 @@ function styling_admin_order_list() {
  function woocommerce_header_add_to_cart_fragment( $fragments ) {
 
     ob_start();
-    echo '<div id="cart-dropdown" class="dropdown w-100">';
-    echo '<a class="dropdown-toggle h4" role="button" id="dropdown-mini-cart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">';
-    echo '<i class="las la-shopping-cart "></i>Cart <span id="cart-customlocation" class="badge badge-danger animated swing">' . WC()->cart->get_cart_contents_count() . '</span></a>';
-
-    echo '<div id="custom-mini-cart" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-mini-cart">';
-    woocommerce_mini_cart(); 
-    echo '</div>';
-    echo '</div>';
+    echo '<a class="position-relative btn d-inline-flex p-0" role="button" id="mini-cart-link" data-bs-toggle="offcanvas" href="#off-canvas-mini-cart" role="button"
+    aria-controls="off-canvas-mini-cart">';
+    echo '<i class="las la-shopping-cart position-relative"></i><span style="font-size: 12px;" id="cart-customlocation" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">' . WC()->cart->get_cart_contents_count() . '</span></a>';
     
-    $fragments['div#cart-dropdown'] = ob_get_clean();
-    
+    $fragments['a#mini-cart-link'] = ob_get_clean();
     return $fragments;
 
  }
+
+// mini cart update
+
+ add_filter( 'woocommerce_add_to_cart_fragments', 'woocommerce_mini_cart_fragment'); 
+ 
+ function woocommerce_mini_cart_fragment( $fragments ) {
+
+    ob_start();
+    ?>
+
+<div id="mini-cart-content" class="d-flex flex-column h-100">
+    <?php woocommerce_mini_cart(); ?>
+</div>
+<?php 
+    $fragments['div#mini-cart-content'] = ob_get_clean();
+
+    return $fragments;
+
+} 
 
 // loop - remove breadcrumbs from shop page
 
@@ -118,7 +131,7 @@ add_action('woocommerce_shop_loop_item_title', 'loop_product_title', 10);
 
 function loop_product_title()
 {
-    echo '<a class="mt-2" href="' . get_the_permalink()  . '"><p class="h5 text-dark ' . esc_attr(apply_filters('woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title')) . '"><strong>' . get_the_title() . '</strong></p></a>';
+    echo '<a class="mt-2 d-block text-center" href="' . get_the_permalink()  . '"><p class="text-dark ' . esc_attr(apply_filters('woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title')) . '"><strong>' . get_the_title() . '</strong></p></a>';
 }
 
 // loop / brand - get brand name
@@ -154,7 +167,7 @@ function loop_product_image()
 {
     global $post, $woocommerce;
     if ( has_post_thumbnail() ) {
-        echo '<a href="' . get_the_permalink() . '">' .  woocommerce_get_product_thumbnail() . '</a>';
+        echo '<a class="pe-2 pe-md-0 d-block" href="' . get_the_permalink() . '">' .  woocommerce_get_product_thumbnail() . '</a>';
     } else {
         echo '<img class="img-fluid" src="' . get_template_directory_uri() . '/assets/images/woocommerce-placeholder.png">';
     }

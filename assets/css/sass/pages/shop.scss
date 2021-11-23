@@ -19,6 +19,27 @@
             border-width: 0.2em;
         }
     }
+
+    .woocommerce-loop-product__title {
+        font-size: 1.1rem;
+        line-height: 1.2;
+    }
+
+    .tinv-wishlist {
+        text-align: center;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .product-price-container {
+        border-right: none !important;
+    }
+
+    #brand-collapse,
+    #category-collapse,
+    #stock-collapse {
+        display: block;
+    }
 }
 
 .search-no-results {

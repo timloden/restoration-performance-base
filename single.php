@@ -14,11 +14,11 @@ $categories = get_the_category();
 
 <div id="primary" class="content-area article-single">
     <main id="main" class="site-main">
-        <div class="jumbotron jumbotron-fluid"
+        <div class="p-5 mb-3"
             style="background-image: url(<?php the_post_thumbnail_url('full'); ?>); background-position: center center; background-size: cover; position: relative">
 
-            <div class="container">
-                <h1 class="display-4 text-white font-weight-bold"><?php the_title(); ?></h1>
+            <div class="container py-5 position-relative" style="z-index: 999;">
+                <h1 class="fs-1 text-white"><?php the_title(); ?></h1>
                 <p class="lead text-light">Posted on: <?php echo $post_date ?> in
                     <?php echo esc_html( $categories[0]->name ); ?>
                 </p>
@@ -54,7 +54,7 @@ $categories = get_the_category();
 			
 			if ( $loop->have_posts() ) {
 				echo '<h3 class="pt-5 pb-3 mb-3 title-border">Related Articles</h3>';
-				echo '<div class="row row-cols-1 row-cols-md-3">';
+				echo '<div class="row row-cols-1 row-cols-md-3 mb-5">';
 				while ( $loop->have_posts() ) : $loop->the_post();
 					get_template_part( 'template-parts/content', get_post_type() );
 				endwhile;

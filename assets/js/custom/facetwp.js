@@ -1,145 +1,108 @@
 (function ($) {
-    $(function () {
+    
         /*
         After FacetWP reloads, store any updates into a cookie
         */
 
-        $(document).on('facetwp-loaded', function () {
-            var home = $('body.home');
+        var facetCookie = readCookie('facetdata');
 
+         /*
+        When FacetWP first initializes, look for the "facetdata" cookie
+        If it exists, set window.location.search= facetdata
+        */
+
+        $(document).on('facetwp-refresh', function() {
+            
+            if (FWP.loaded) {
+                showFacetLoading();
+            }
+
+            if (! FWP.loaded) {
+                showFacetLoading();
+                if (facetCookie) {
+                    FWP.facets['year_make_model'] = facetCookie.split(',');
+                    FWP.fetchData();
+                }
+            }
+
+            
+        });
+
+        $(document).on('facetwp-loaded', function() {
+            
             // scroll to content if facets loaded
-            if (FWP.loaded && home.length != 1) {
+            if (FWP.loaded) {
                 $('html, body').animate(
                     {
-                        scrollTop: $('#content').offset().top,
+                        scrollTop: $('#facet-scroll-to').offset().top,
                     },
                     500
                 );
             }
 
             var date = new Date();
-            var facets = FWP_HTTP.get._year_make_model;
-            date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
+            date.setTime(date.getTime()+(24*60*60*1000));
 
-            var vehicle = '';
-            //var facetdata = readCookie('facetdata');
+            var facets = FWP.facets.year_make_model;
 
-            if (facets) {
-                var vehicleCookie = readCookie('vehicle');
+            if (facets.length === 3) { 
+                document.cookie = "facetdata=" + facets + "; expires=" + date.toGMTString() + "; path=/";
 
-                if (!vehicleCookie) {
-                    // get vehicle form selected ymm facets
-                    $('.facetwp-type-hierarchy_select option:selected').each(
-                        function () {
-                            var item = $(this).text() + ' ';
-                            vehicle += item;
-                        }
-                    );
+                var fullVehicle = [...facets].pop();
+                var ymmArray = fullVehicle.split('-').reverse();
+                var selectedVehicle = uppercase(ymmArray.join(' '));
 
-                    // set cookie for vehicle
-                    if (FWP.facets.year_make_model.length === 3) {
-                        document.cookie =
-                            'vehicle=' +
-                            vehicle +
-                            '; expires=' +
-                            date.toGMTString() +
-                            '; path=/';
-                    }
-                } else {
-                    vehicle = vehicleCookie;
-                }
-
-                // update the your vehicle with facet selection
-                $('#your-vehicle').html(vehicle);
-
-                // set ymm facet with proper query string
-                facets = '?_year_make_model=' + facets;
-
-                // set ymm facet cookie
-                document.cookie =
-                    'facetdata=' +
-                    facets +
-                    '; expires=' +
-                    date.toGMTString() +
-                    '; path=/';
+                document.cookie = "vehicle=" + selectedVehicle + "; expires=" + date.toGMTString() + "; path=/";
+            } else {
+                $('.facetwp-template .is-loading').remove();
             }
 
-            // remove loader
-            $('.facetwp-template .is-loading').remove();
-
-            // check if have a facet cookie
-            var facetdata = readCookie('facetdata');
-
-            // if on a search page, have facets but are missing facet in the url, add it
-            if (window.location.href.indexOf('s=') && facetdata && !facets) {
-                facetdata = facetdata.replace('?', '&');
-                window.location.search = window.location.search + facetdata;
+            if (window.location.href.indexOf('s=') && FWP.settings.pager.total_rows === 0) {
+                console.log('on search and has no results');
+                $('#ymm-bar').addClass('d-none');
+                $('.orderby').addClass('d-none');
+                $('#search-terms').addClass('d-none');
+                $('#products-container').removeClass('row-cols-md-2 row-cols-lg-3');
             }
+
+           // shown on search page
+            $('#remove-vehicle').on('click', function () {
+                console.log('clicked remove vehicle');
+                clearVehicle();
+                $('#ymm-bar').addClass('d-none');
+                $('#no-results-vehicle').remove();
+                $(this).html('<i class="las la-check"></i> Cleared!');
+            });
+
         });
 
-        /*
-        When FacetWP first initializes, look for the "facetdata" cookie
-        If it exists, set window.location.search= facetdata
-        */
+       
 
-        $(document).on('facetwp-refresh', function () {
-            // add loading screen
+        function showFacetLoading() {
             $('.facetwp-template').prepend(
-                '<div class="is-loading position-absolute w-100 h-100"> <div class="d-flex w-100 h-100 justify-content-center align-items-center"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div></div>'
+                '<div class="is-loading position-absolute w-100 h-100"> <div class="d-flex w-100 h-100 justify-content-center mt-5"><div class="d-block text-center mt-5 text-primary"><p class="fw-bold">Loading parts</p><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div></div></div>'
             );
+        }
 
-            if (!FWP.loaded) {
-                var facets = FWP_HTTP.get._year_make_model;
-                var facetdata = readCookie('facetdata');
-
-                if (
-                    null != facetdata &&
-                    '' != facetdata &&
-                    facets != facetdata
-                ) {
-                    // if we are on a search page, change the ? to a &
-                    if (!window.location.href.indexOf('s=') !== 1 && !facets) {
-                        facetdata = facetdata.replace('?', '&');
-                        window.location.search =
-                            window.location.search + facetdata;
-                    } else if (!window.location.search) {
-                        window.location.search =
-                            window.location.search + facetdata;
-                    }
-                }
-            }
-
-            var home = $('body.home');
-
-            // if home, redirect us to shop after selecting ymm
-            if (home.length === 1 && FWP.facets.year_make_model.length === 3) {
-                if (!facetdata) {
-                    window.location.href = window.location.hostname + '/shop';
-                }
-            }
-
-            // un hide categories and buttons if we have facets
-
-            if (FWP.facets.year_make_model) {
-                if (FWP.facets.year_make_model.length === 3) {
-                    $('#selected-vehicle').removeClass('d-none');
-                    $('#ymm-bar').addClass('d-none');
-                }
-            }
-        });
 
         // shown in YMM bar
-        $('#clear-vehicle').on('click', function () {
+        $('.clear-vehicle').on('click', function () {
             clearVehicle();
             FWP.reset('year_make_model');
         });
 
-        // shown on search page
-        $('#remove-vehicle').on('click', function () {
-            clearVehicle();
-            $('#ymm-bar').addClass('d-none');
-            $(this).html('<i class="las la-check"></i> Cleared!');
-        });
+        
+        function clearVehicle() {
+            var currentVehicle = readCookie('facetdata');
+
+            if (currentVehicle) {
+                document.cookie =
+                    'vehicle=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+                document.cookie =
+                    'facetdata=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+            }
+            console.log('cleared');
+        }
 
         /*
         Cookie handler
@@ -156,22 +119,16 @@
             return null;
         }
 
-        function clearVehicle() {
-            var currentVehicle = readCookie('facetdata');
+       
 
-            if (currentVehicle) {
-                document.cookie =
-                    'vehicle=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
-                document.cookie =
-                    'facetdata=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
-
-                //$('#clear-vehicle').addClass('d-none');
-                $('#your-vehicle').html('');
-                $('#selected-vehicle').addClass('d-none');
-                $('#ymm-bar').removeClass('d-none');
-            }
-
-            console.log('cleared');
+        function uppercase(str) {
+        var array1 = str.split(' ');
+        var newarray1 = [];
+            
+        for(var x = 0; x < array1.length; x++){
+            newarray1.push(array1[x].charAt(0).toUpperCase()+array1[x].slice(1));
         }
-    });
+        return newarray1.join(' ');
+        }
+
 })(jQuery);

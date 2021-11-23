@@ -31,7 +31,7 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
                         <th class="product-total"><?php esc_html_e( 'Totals', 'woocommerce' ); ?></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="border-top-0">
                     <?php if ( count( $order->get_items() ) > 0 ) : ?>
                     <?php foreach ( $order->get_items() as $item_id => $item ) : ?>
                     <?php
@@ -61,7 +61,7 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
                     <?php endforeach; ?>
                     <?php endif; ?>
                 </tbody>
-                <tfoot>
+                <tfoot class="border-top-0">
                     <?php if ( $totals ) : ?>
                     <?php foreach ( $totals as $total ) : ?>
                     <tr>
@@ -97,7 +97,7 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
 
                     <?php do_action( 'woocommerce_pay_order_before_submit' ); ?>
 
-                    <?php echo apply_filters( 'woocommerce_pay_order_button_html', '<button type="submit" class="button alt btn btn-success" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>' ); // @codingStandardsIgnoreLine ?>
+                    <?php echo apply_filters( 'woocommerce_pay_order_button_html', '<button type="submit" class="button alt btn btn-success text-white fw-bold" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>' ); // @codingStandardsIgnoreLine ?>
 
                     <?php do_action( 'woocommerce_pay_order_after_submit' ); ?>
 

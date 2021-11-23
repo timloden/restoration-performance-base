@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || exit;
 
     <h4><?php esc_html_e( 'Contact Information', 'woocommerce' ); ?></h4>
     <?php if ( !is_user_logged_in() ) : ?>
-    <p>Already have an account? <a href="#" data-toggle="modal" data-target="#loginModal">
+    <p>Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
             Click here to login
         </a></p>
     <?php endif; ?>

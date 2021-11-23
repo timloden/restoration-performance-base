@@ -158,7 +158,7 @@ $all_shipping_classes = [];
             <div class="row justify-content-between">
                 <div class="actions col-auto">
 
-                    <button type="submit" class="btn btn-outline-primary" name="update_cart"
+                    <button type="submit" class="btn btn-outline-primary d-none" name="update_cart"
                         value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>"><?php esc_html_e('Update cart', 'woocommerce'); ?></button>
 
                     <?php do_action('woocommerce_cart_actions'); ?>
@@ -235,7 +235,7 @@ $all_shipping_classes = [];
     </div>
 </div>
 <div class="row align-items-center pt-5">
-    <div class="col-12 col-lg-6 text-center text-lg-left">
+    <div class="col-12 col-lg-6 text-center text-lg-start">
         <a href="<?php echo site_url();?>/shop">Continue shopping</a>
     </div>
     <div class="col-6">
@@ -245,17 +245,6 @@ $all_shipping_classes = [];
 <script>
 jQuery(function($) {
     $('[data-toggle="tooltip"]').tooltip();
-    $('.woocommerce').on('change', 'input.qty', function() {
-        var timeout;
-        if (timeout !== undefined) {
-            clearTimeout(timeout);
-        }
-
-        timeout = setTimeout(function() {
-            $("[name='update_cart']").trigger("click");
-        }, 500); // 1 second delay, half a second (500) seems comfortable too
-
-    });
 });
 </script>
 <?php

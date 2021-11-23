@@ -32,13 +32,13 @@ if ( is_user_logged_in() ) {
     <div class="pt-2">
         <?php echo ( $message ) ? wpautop( wptexturize( $message ) ) : ''; // @codingStandardsIgnoreLine ?></div>
 
-    <div class="form-group">
-        <label for="username"><?php esc_html_e( 'Username or email', 'woocommerce' ); ?>&nbsp;<span
+    <div class="mb-2">
+        <label class="form-label" for="username"><?php esc_html_e( 'Username or email', 'woocommerce' ); ?>&nbsp;<span
                 class="required">*</span></label>
         <input type="text" class="form-control" name="username" id="username" autocomplete="username" />
     </div>
-    <div class="form-group">
-        <label for="password"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span
+    <div class="mb-3">
+        <label class="form-label" for="password"><?php esc_html_e( 'Password', 'woocommerce' ); ?>&nbsp;<span
                 class="required">*</span></label>
         <input class="form-control" type="password" name="password" id="password" autocomplete="current-password" />
     </div>
@@ -55,7 +55,7 @@ if ( is_user_logged_in() ) {
                 </label>
             </div>
         </div>
-        <div class="col text-right">
+        <div class="col text-end">
             <button type="submit" class="woocommerce-button button woocommerce-form-login__submit btn btn-primary"
                 name="login"
                 value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>"><?php esc_html_e( 'Login', 'woocommerce' ); ?></button>

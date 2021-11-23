@@ -23,17 +23,17 @@ $newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option');
                         <h6>Shop</h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/shop">Shop by Vehicle</a>
+                                <a class="nav-link ps-0" href="<?php echo site_url(); ?>/shop">Shop by Vehicle</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link pl-0"
+                                <a class="nav-link ps-0"
                                     href="<?php echo site_url(); ?>/product-tag/specials">Specials</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/about">About</a>
+                                <a class="nav-link ps-0" href="<?php echo site_url(); ?>/about">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/contact">Contact</a>
+                                <a class="nav-link ps-0" href="<?php echo site_url(); ?>/contact">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -41,17 +41,17 @@ $newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option');
                         <h6>Account</h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/my-account">My Account</a>
+                                <a class="nav-link ps-0" href="<?php echo site_url(); ?>/my-account">My Account</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/tracking">Tracking</a>
+                                <a class="nav-link ps-0" href="<?php echo site_url(); ?>/tracking">Tracking</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link pl-0"
+                                <a class="nav-link ps-0"
                                     href="<?php echo site_url(); ?>/frequently-asked-questions">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/cart">Cart</a>
+                                <a class="nav-link ps-0" href="<?php echo site_url(); ?>/cart">Cart</a>
                             </li>
                         </ul>
                     </div>
@@ -59,18 +59,18 @@ $newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option');
                         <h6>Resources</h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/resources">All Resources</a>
+                                <a class="nav-link ps-0" href="<?php echo site_url(); ?>/resources">All Resources</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/category/tech-tips/">Tech
+                                <a class="nav-link ps-0" href="<?php echo site_url(); ?>/category/tech-tips/">Tech
                                     Tips</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link pl-0"
+                                <a class="nav-link ps-0"
                                     href="<?php echo site_url(); ?>/frequently-asked-questions">FAQ's</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link pl-0" href="<?php echo site_url(); ?>/shipping">Shipping</a>
+                                <a class="nav-link ps-0" href="<?php echo site_url(); ?>/shipping">Shipping</a>
                             </li>
                         </ul>
                     </div>
@@ -132,9 +132,7 @@ $newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option');
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">You have a coupon!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
                 <p class="mb-1"><?php echo esc_attr(get_field('modal_coupon_title', 'option')); ?></p>
