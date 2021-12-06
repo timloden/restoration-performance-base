@@ -22,7 +22,7 @@ defined('ABSPATH') || exit;
     <thead>
         <tr>
             <th class="product-name border-top-0"><?php esc_html_e('Product', 'woocommerce'); ?></th>
-            <th class="product-total text-right border-top-0"><?php esc_html_e('Subtotal', 'woocommerce'); ?></th>
+            <th class="product-total text-end border-top-0"><?php esc_html_e('Subtotal', 'woocommerce'); ?></th>
         </tr>
     </thead>
     <tbody class="border-top-0">
@@ -46,7 +46,7 @@ defined('ABSPATH') || exit;
                     Backordered - could take over 30 days to ship</p>
                 <?php endif; ?>
             </td>
-            <td class="product-total text-right">
+            <td class="product-total text-end">
                 <?php echo apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
             </td>
         </tr>
