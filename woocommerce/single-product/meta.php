@@ -34,7 +34,7 @@ $stock_status = $product->get_stock_status();
     if($brand) {
         $term = 'term_' . $brand[0]->term_id;
         
-        if ($shipping_class == 'ground' && get_field('ground_notice', $term) && $stock_status == 'instock') {
+        if (strpos($shipping_class, 'ground') !== false && get_field('ground_notice', $term) && $stock_status == 'instock') {
             echo '<div class="alert alert-info">';
             echo get_field('ground_notice', $term);
             echo '</div>';

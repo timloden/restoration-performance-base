@@ -38,7 +38,7 @@ if (strpos($shipping_class, '-freight') || $shipping_class == 'windshield') {
     $shipping = 'Heavy Freight';
 } elseif ($shipping_class == 'free-shipping' || $shipping_class == 'right-stuff') {
     $shipping = 'FREE SHIPPING';
-} elseif ($shipping_class == 'ground-oversized') {
+} elseif ($shipping_class == 'ground-oversized' || $shipping_class == 'ground-oversized-dynacorn') {
     $shipping = 'Ground (Oversized)';
 } else {
     $shipping = 'Ground';

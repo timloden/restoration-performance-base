@@ -86,7 +86,7 @@ $all_shipping_classes = [];
                                 Backordered - could take over 30 days to ship</p>
                             <?php endif; ?>
 
-                            <?php if ($_product->get_shipping_class() === 'ground-oversized'): ?>
+                            <?php if ($_product->get_shipping_class() === 'ground-oversized' || $_product->get_shipping_class() === 'ground-oversized-dynacorn'): ?>
                             <p style="font-size: 12px;" class="text-primary font-weight-bold"><i class="las la-box"></i>
                                 <a data-toggle="tooltip" data-placement="top"
                                     title="This product does not qualify for $7.50 shipping">Oversized Ground</a>
