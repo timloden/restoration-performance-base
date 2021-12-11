@@ -135,8 +135,8 @@ function dynacorn_dropship_fee( $rates, $package ) {
             if ( isset( $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY'] ) ) {
                 // get the cost
                 $old_cost = $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY']->cost;
-                // add the 10 to the old cost
-                $new_cost = $old_cost + 10;
+                // add the 5 to the old cost
+                $new_cost = $old_cost + 5;
                 $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY']->cost = $new_cost;
             }
         }
