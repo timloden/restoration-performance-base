@@ -64,10 +64,6 @@ function on_action_cart_updated()
         if ($shipping_class_slug != 'ground') {
             $has_freight = true;
         }
-
-        if ($shipping_class_slug == 'ground-dynacorn') {
-            $has_freight = false;
-        }
     }
 
     if ($has_freight == false) {
