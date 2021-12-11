@@ -120,26 +120,29 @@ add_filter( 'woocommerce_shipping_calculator_enable_city', '__return_false' );
 
 // adding $10 to drop ship fee fee for Dynacorn
 function dynacorn_dropship_fee( $rates, $package ) {    
-    $brand_list = [];
+    if (get_field('enable_dynacorn_ground_drop_ship_fee', 'option')) {
     
-    foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
-        $product = $cart_item['data'];
-        $product_id = $product->get_id();
-        array_push($brand_list, get_brand_name($product_id));
-    }
+        $brand_list = [];
 
-    if (in_array("Dynacorn", $brand_list)) {
-        //flexible_shipping_fedex:0:GROUND_HOME_DELIVERY
-        if ( isset( $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY'] ) ) {
-            // get the cost
-            $old_cost = $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY']->cost;
-            echo 'old cost: ' . $old_cost;
-
-            $new_cost = $old_cost + 10;
-            echo ' | new cost: ' . $new_cost;
-            $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY']->cost = $new_cost;
+        foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
+            $product = $cart_item['data'];
+            $product_id = $product->get_id();
+            array_push($brand_list, get_brand_name($product_id));
         }
+
+        if (in_array("Dynacorn", $brand_list)) {
+            //flexible_shipping_fedex:0:GROUND_HOME_DELIVERY
+            if ( isset( $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY'] ) ) {
+                // get the cost
+                $old_cost = $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY']->cost;
+                // add the 10 to the old cost
+                $new_cost = $old_cost + 10;
+                $rates['flexible_shipping_fedex:0:GROUND_HOME_DELIVERY']->cost = $new_cost;
+            }
+        }
+
     }
+
     return $rates;
 }
 

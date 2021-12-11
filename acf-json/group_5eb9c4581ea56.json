@@ -141,6 +141,25 @@
             "maxlength": ""
         },
         {
+            "key": "field_61b43018cf36d",
+            "label": "Enable Dynacorn Ground Drop Ship Fee",
+            "name": "enable_dynacorn_ground_drop_ship_fee",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_613a32f643094",
             "label": "Enable Google Reviews?",
             "name": "enable_google_reviews",
@@ -149,7 +168,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -176,7 +195,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -318,5 +337,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1635364369
+    "show_in_rest": 0,
+    "modified": 1639198914
 }
