@@ -245,6 +245,7 @@ $all_shipping_classes = [];
 <script>
 jQuery(function($) {
     $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="dii-tooltip"]').tooltip();
 });
 </script>
 <?php

@@ -52,6 +52,7 @@ function on_action_cart_updated()
     }
 
     $has_freight = false;
+    $has_dynacorn = false;
 
     // check each cart item for our category
     foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
@@ -64,23 +65,33 @@ function on_action_cart_updated()
         if ($shipping_class_slug != 'ground') {
             $has_freight = true;
         }
-    }
 
+        if ($shipping_class_slug == 'ground-dynacorn') {
+            $has_dynacorn = true;
+        }
+    }
+    
+    $current_amount = WC()->cart->cart_contents_total;
+    
     if ($has_freight == false) {
-        $current_amount = WC()->cart->cart_contents_total;
+        
 
         if ($current_amount < 200) {
             $difference = 200 - $current_amount;
 
             echo '<div class="alert alert-info mt-3" role="alert">You&apos;re so close! all you need is <strong>$' . $difference . '</strong> more in your cart to get
-    <strong>$7.50
-        shipping</strong>!
-    </div>';
+            <strong>$7.50
+                shipping</strong>!
+            </div>';
         } elseif ($current_amount >= 200) {
             echo '<div class="alert alert-success mt-3" role="alert">
-        Congratulations your order can be shipped for only <strong>$7.50</strong>!
-    </div>';
+                Congratulations your order can be shipped for only <strong>$7.50</strong>!
+            </div>';
         }
+    }
+
+    if ($has_dynacorn == true && $current_amount >= 200) {
+        echo '<a data-toggle="dii-tooltip" class="btn btn-text text-primary px-0 mb-3" data-placement="top" title="$7.50 shipping is only offered for OER parts shipped ground">Why does my order not qualify for $7.50 shipping?</a>';
     }
 }
 
