@@ -2788,6 +2788,9 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-weight:700}
 .woocommerce-pagination ul{margin:1em 0;display:-webkit-box;display:-ms-flexbox;display:flex;list-style:none}
 .woocommerce-pagination ul .page-numbers{position:relative;display:block;padding:.5rem .75rem;margin-left:-1px;line-height:1.25;color:#005ca9;background-color:#fff;border:1px solid #dee2e6;margin-right:0}
 .woocommerce-pagination ul .page-numbers.current{background-color:#005ca9;color:#fff}
+.metorik-add-cart-email-form h3,.metorik-add-cart-email-form .h3{margin-bottom:10px}
+.metorik-add-cart-email-form .close-button{right:15px;top:5px;color:#000;font-weight:bold}
+.metorik-add-cart-email-form .email-input-wrapper.success:after{top:0;right:5px}
 .breadcrumbs{font-size:14px}
 .product img.wp-post-image{max-width:100%;height:auto}
 .product .bundled_product_summary{display:-webkit-box;display:-ms-flexbox;display:flex}
