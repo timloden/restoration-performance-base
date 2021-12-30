@@ -99,7 +99,7 @@ function get_oer_product_by_sku( $sku = '' ) {
 
 // RPUI import functions
 
-function get_rpui_product_by_sku( $sku = '', $brand ) {
+function get_rpui_product_by_sku( $sku = '', $brand = '' ) {
     // Append brand to SKU
     
     if ($brand == 'Trim Parts') {

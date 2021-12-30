@@ -58,7 +58,7 @@ function bbloomer_status_custom_notification( $order ) {
     $mailer = WC()->mailer();
 
     $subject = 'Classic Body Parts/Restoration Performance Order #' . esc_html( $order->get_order_number() );
-    $content = iconic_get_processing_notification_content( $order, $subject, $mailer );
+    $content = iconic_get_processing_notification_content( $order, $mailer , $subject );
     $headers = "Content-Type: text/html\r\n";
  
     $mailer->send( $recipient, $subject, $content, $headers );
@@ -67,7 +67,7 @@ function bbloomer_status_custom_notification( $order ) {
 
 add_action( 'woocommerce_order_action_wc_vendor_email_action', 'bbloomer_status_custom_notification', 20, 2 );
 
-function iconic_get_processing_notification_content( $order, $heading = false, $mailer ) {
+function iconic_get_processing_notification_content( $order, $mailer, $heading = false ) {
  
     $template = 'emails/vendor-order.php';
  
