@@ -229,7 +229,7 @@ function get_discount_total($value) {
 }
 
 
-// start process for tracking inventory changes in a file
+// create csv for new instock products
 
 function before_xml_import( $import_id ) {
     
@@ -256,7 +256,7 @@ function before_xml_import( $import_id ) {
 }
 add_action('pmxi_before_xml_import', 'before_xml_import', 10, 1);
 
-
+// added items that have been updated form onbackorder to instock
 
 function only_update_if_stock_status_changed ( $continue_import, $post_id, $data, $import_id ) {
 
@@ -301,3 +301,33 @@ function only_update_if_stock_status_changed ( $continue_import, $post_id, $data
 }
 
 add_filter( 'wp_all_import_is_post_to_update', 'only_update_if_stock_status_changed', 10, 4 );
+
+// email out the csv
+
+function send_instock_email($import_id)
+{
+    // Only send emails for import ID 1.
+    if($import_id != 26)
+        return;
+    
+    $uploads = wp_upload_dir();  
+    $todays_date = date('m-d-Y');
+    $file = $uploads['basedir'] . '/vendors/dynacorn/instock-items-' . $todays_date . '.csv';
+    
+    // Destination email address.
+    $to = 'orders@restorationperformance.com';
+
+    // Email subject.
+    $subject = 'Products changed from on backorder to in stock on: ' . $todays_date;
+
+    // Email message.
+    $body = 'CSV Attached';
+
+    // Send the email as HTML.
+    $headers = array('Content-Type: text/html; charset=UTF-8');
+ 
+    // Send via WordPress email.
+    wp_mail( $to, $subject, $body, $headers, $file );
+}
+
+add_action('pmxi_after_xml_import', 'send_instock_email', 10, 1);
