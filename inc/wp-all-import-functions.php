@@ -233,7 +233,7 @@ function get_discount_total($value) {
 
 function before_xml_import( $import_id ) {
     
-    // Only Run for import ID 5.
+    // TODO change this id to pull from admin
     if ($import_id == 130) { 
         $uploads = wp_upload_dir();        
         $todays_date = date('m-d-Y'); 
@@ -260,7 +260,7 @@ add_action('pmxi_before_xml_import', 'before_xml_import', 10, 1);
 
 function only_update_if_stock_status_changed ( $continue_import, $post_id, $data, $import_id ) {
 
-    // Only run for import ID 1.
+    // TODO change this id to pull from admin
     if ($import_id == 130) {
 
         $uploads = wp_upload_dir();        
@@ -306,7 +306,7 @@ add_filter( 'wp_all_import_is_post_to_update', 'only_update_if_stock_status_chan
 
 function send_instock_email($import_id)
 {
-    // Only send emails for import ID 1.
+    // TODO change this id to pull from admin
     if($import_id != 130)
         return;
     
