@@ -227,3 +227,77 @@ function get_discount_total($value) {
     $discount = $order->get_discount_total();
     return $discount;
 }
+
+
+// start process for tracking inventory changes in a file
+
+function before_xml_import( $import_id ) {
+    
+    // Only Run for import ID 5.
+    if ($import_id == 26) { 
+        $uploads = wp_upload_dir();        
+        $todays_date = date('m-d-Y'); 
+
+        $file = $uploads['basedir'] . '/vendors/dynacorn/instock-items-' . $todays_date . '.csv';
+
+        if(!is_file($file)){  
+            $handle = fopen($file, "a");
+            $line = [
+                "ID",
+                "Product Name",
+                "SKU",
+            ];
+            fputcsv($handle, $line);
+            fclose($handle);
+        }
+
+    }
+
+}
+add_action('pmxi_before_xml_import', 'before_xml_import', 10, 1);
+
+
+
+function only_update_if_stock_status_changed ( $continue_import, $post_id, $data, $import_id ) {
+
+    // Only run for import ID 1.
+    if ($import_id == 26) {
+
+        $uploads = wp_upload_dir();        
+        $todays_date = date('m-d-Y'); 
+
+        $file = $uploads['basedir'] . '/vendors/dynacorn/instock-items-' . $todays_date . '.csv';
+
+        $handle = fopen($file, "a");
+        
+        $import_stock_status = dynacorn_stock_status($data["caquantity"], $data["paquantity"]);
+
+        // Retrieve product's current stock status.
+        $woo_stock_status = get_post_meta($post_id, "_stock_status", true);
+
+        if ($woo_stock_status == 'onbackorder' && $import_stock_status == 'instock') {
+
+            $product_sku = get_post_meta($post_id, "_sku", true);
+            $product_title = get_the_title($post_id);
+
+            $line = [
+                $post_id,
+                $product_title,
+                $product_sku,
+            ];
+            
+            if(is_file($file)){
+                fputcsv($handle, $line);
+                fclose($handle);
+            }
+        }
+
+        return true;
+    }
+
+    // Do nothing if it's not our target import.
+    return $continue_import;
+
+}
+
+add_filter( 'wp_all_import_is_post_to_update', 'only_update_if_stock_status_changed', 10, 4 );
