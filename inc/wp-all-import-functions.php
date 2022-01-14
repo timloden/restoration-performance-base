@@ -232,13 +232,23 @@ function get_discount_total($value) {
 // create csv for new instock products
 
 function before_xml_import( $import_id ) {
-    
-    // TODO change this id to pull from admin
-    if ($import_id == 130) { 
-        $uploads = wp_upload_dir();        
-        $todays_date = date('m-d-Y'); 
 
-        $file = $uploads['basedir'] . '/vendors/dynacorn/instock-items-' . $todays_date . '.csv';
+    $dynacorn_import_id = get_field('dynacorn_import_id', 'option');
+    $oer_import_id = get_field('oer_import_id', 'option');
+    $goodmark_import_id = get_field('goodmark_import_id', 'option');
+
+    if ($import_id == $dynacorn_import_id || $import_id == $oer_import_id || $import_id == $goodmark_import_id) { 
+
+        $uploads = wp_upload_dir();        
+        $todays_date = date('m-d-Y');
+
+        if ($import_id == $dynacorn_import_id) {
+            $file = $uploads['basedir'] . '/vendors/dynacorn/instock-items-' . $todays_date . '.csv';
+        } elseif ($import_id == $oer_import_id) {
+            $file = $uploads['basedir'] . '/vendors/oer/instock-items-' . $todays_date . '.csv';
+        } elseif ($import_id == $goodmark_import_id) {
+            $file = $uploads['basedir'] . '/vendors/goodmark/instock-items-' . $todays_date . '.csv';
+        }
 
         if(!is_file($file)){  
             $handle = fopen($file, "a");
@@ -259,18 +269,35 @@ add_action('pmxi_before_xml_import', 'before_xml_import', 10, 1);
 // added items that have been updated form onbackorder to instock
 
 function only_update_if_stock_status_changed ( $continue_import, $post_id, $data, $import_id ) {
+    
+    $dynacorn_import_id = get_field('dynacorn_import_id', 'option');
+    $oer_import_id = get_field('oer_import_id', 'option');
+    $goodmark_import_id = get_field('goodmark_import_id', 'option');
 
-    // TODO change this id to pull from admin
-    if ($import_id == 130) {
+    if ($import_id == $dynacorn_import_id || $import_id == $oer_import_id || $import_id == $goodmark_import_id) { 
 
         $uploads = wp_upload_dir();        
-        $todays_date = date('m-d-Y'); 
+        $todays_date = date('m-d-Y');
 
-        $file = $uploads['basedir'] . '/vendors/dynacorn/instock-items-' . $todays_date . '.csv';
+        // get our file
+        if ($import_id == $dynacorn_import_id) {
+            $file = $uploads['basedir'] . '/vendors/dynacorn/instock-items-' . $todays_date . '.csv';
+        } elseif ($import_id == $oer_import_id) {
+            $file = $uploads['basedir'] . '/vendors/oer/instock-items-' . $todays_date . '.csv';
+        } elseif ($import_id == $goodmark_import_id) {
+            $file = $uploads['basedir'] . '/vendors/goodmark/instock-items-' . $todays_date . '.csv';
+        }
+
+        // get the import stock status
+        if ($import_id == $dynacorn_import_id) {
+            $import_stock_status = dynacorn_stock_status($data["caquantity"], $data["paquantity"]);
+        } elseif ($import_id == $oer_import_id) {
+            $import_stock_status = oer_stock_status($data["availableqty"]);
+        } elseif ($import_id == $goodmark_import_id) {
+            $import_stock_status = oer_stock_status($data["quantityavailable"]);
+        }
 
         $handle = fopen($file, "a");
-        
-        $import_stock_status = dynacorn_stock_status($data["caquantity"], $data["paquantity"]);
 
         // Retrieve product's current stock status.
         $woo_stock_status = get_post_meta($post_id, "_stock_status", true);
@@ -293,6 +320,7 @@ function only_update_if_stock_status_changed ( $continue_import, $post_id, $data
         }
 
         return true;
+
     }
 
     // Do nothing if it's not our target import.
@@ -304,30 +332,45 @@ add_filter( 'wp_all_import_is_post_to_update', 'only_update_if_stock_status_chan
 
 // email out the csv
 
-function send_instock_email($import_id)
-{
-    // TODO change this id to pull from admin
-    if($import_id != 130)
-        return;
+function send_instock_email($import_id) {
+
+    $dynacorn_import_id = get_field('dynacorn_import_id', 'option');
+    $oer_import_id = get_field('oer_import_id', 'option');
+    $goodmark_import_id = get_field('goodmark_import_id', 'option');
+
+    if ($import_id == $dynacorn_import_id || $import_id == $oer_import_id || $import_id == $goodmark_import_id) { 
     
-    $uploads = wp_upload_dir();  
-    $todays_date = date('m-d-Y');
-    $file = $uploads['basedir'] . '/vendors/dynacorn/instock-items-' . $todays_date . '.csv';
+        $uploads = wp_upload_dir();  
+        $todays_date = date('m-d-Y');
     
-    // Destination email address.
-    $to = 'orders@restorationperformance.com';
+        // get our file
+        if ($import_id == $dynacorn_import_id) {
+            $file = $uploads['basedir'] . '/vendors/dynacorn/instock-items-' . $todays_date . '.csv';
+            $brand = 'Dynacorn';
+        } elseif ($import_id == $oer_import_id) {
+            $file = $uploads['basedir'] . '/vendors/oer/instock-items-' . $todays_date . '.csv';
+            $brand = 'OER';
+        } elseif ($import_id == $goodmark_import_id) {
+            $file = $uploads['basedir'] . '/vendors/goodmark/instock-items-' . $todays_date . '.csv';
+            $brand = 'Goodmark';
+        }
 
-    // Email subject.
-    $subject = 'Products changed from on backorder to in stock on: ' . $todays_date;
+        // Destination email address.
+        $to = 'tloden@restorationperformance.com';
 
-    // Email message.
-    $body = 'CSV Attached';
+        // Email subject.
+        $subject = $brand . ' Products changed from on backorder to in stock on: ' . $todays_date;
 
-    // Send the email as HTML.
-    $headers = array('Content-Type: text/html; charset=UTF-8');
- 
-    // Send via WordPress email.
-    wp_mail( $to, $subject, $body, $headers, $file );
+        // Email message.
+        $body = 'CSV Attached';
+
+        // Send the email as HTML.
+        $headers = array('Content-Type: text/html; charset=UTF-8');
+    
+        // Send via WordPress email.
+        wp_mail( $to, $subject, $body, $headers, $file );
+
+    }
 }
 
 add_action('pmxi_after_xml_import', 'send_instock_email', 10, 1);
