@@ -356,7 +356,7 @@ function send_instock_email($import_id) {
         }
 
         // Destination email address.
-        $to = 'tloden@restorationperformance.com';
+        $to = 'orders@restorationperformance.com';
 
         // Email subject.
         $subject = $brand . ' Products changed from on backorder to in stock on: ' . $todays_date;
