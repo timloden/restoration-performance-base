@@ -259,6 +259,7 @@ function before_xml_import( $import_id ) {
                 "ID",
                 "Product Name",
                 "SKU",
+                "Price",
             ];
             fputcsv($handle, $line);
             fclose($handle);
