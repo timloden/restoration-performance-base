@@ -3,6 +3,7 @@
 // Dynacorn import functions
 
 function dynacorn_pricing( $cost = null, $model = '' ) {
+    $global_price_modifier = 0.03;
 
     // Ensure a cost was provided.
     if ( !empty( $cost ) ) {
@@ -11,19 +12,19 @@ function dynacorn_pricing( $cost = null, $model = '' ) {
         $cost = preg_replace("/[^0-9,.]/", "", $cost);
 	
 		if ($cost <= 15) {
-			$calculated_price = (round($cost * 1.65)) - 0.05;
+			$calculated_price = (round($cost * (1.65 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 15 && $cost <= 70) {
-			$calculated_price = (round($cost * 1.55)) - 0.05;
+			$calculated_price = (round($cost * (1.55 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 70 && $cost <= 175) {
-			$calculated_price = (round($cost * 1.38)) - 0.05;
+			$calculated_price = (round($cost * (1.38 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 175 && $cost <= 800) {
-			$calculated_price = (round($cost * 1.3)) - 0.05;
+			$calculated_price = (round($cost * (1.3 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 800) {
-			$calculated_price = (round($cost * 1.27)) - 0.05;
+			$calculated_price = (round($cost * (1.27 + $global_price_modifier))) - 0.05;
 		}
 		
 		if ( $model == 'MUSTANG' ) {
-			$calculated_price = (round($calculated_price * 0.98)) - 0.05;
+			$calculated_price = (round($calculated_price * (0.98 + $global_price_modifier))) - 0.05;
 		}
 		
         // Return price otherwise.
@@ -34,7 +35,7 @@ function dynacorn_pricing( $cost = null, $model = '' ) {
 
 function dynacorn_stock_status( $ca = null, $pa = null ) {
 
-    if ($ca > 1 || $pa > 1) {
+    if ($ca >= 1 && $pa >= 1) {
         $stock = 'instock';
     } else {
         $stock = 'onbackorder';
@@ -47,7 +48,8 @@ function dynacorn_stock_status( $ca = null, $pa = null ) {
 // OER import functions
 
 function oer_pricing( $cost = null ) {
-
+    $global_price_modifier = 0.03;
+    
     // Ensure a cost was provided.
     if ( !empty( $cost ) ) {
 		
@@ -55,13 +57,13 @@ function oer_pricing( $cost = null ) {
         $cost = preg_replace("/[^0-9,.]/", "", $cost);
 	
 		if ($cost <= 20) {
-			$calculated_price = (round($cost * 1.5)) - 0.05;
+			$calculated_price = (round($cost * (1.5 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 20 && $cost <= 50) {
-			$calculated_price = (round($cost * 1.35)) - 0.05;
+			$calculated_price = (round($cost * (1.35 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 50 && $cost <= 150) {
-            $calculated_price = (round($cost * 1.30)) - 0.05;
+            $calculated_price = (round($cost * (1.30 + $global_price_modifier))) - 0.05;
         } elseif ($cost > 150) {
-			$calculated_price = (round($cost * 1.27)) - 0.05;
+			$calculated_price = (round($cost * (1.27 + $global_price_modifier))) - 0.05;
 		}
 
         // Return price otherwise.
@@ -140,6 +142,7 @@ function pui_pricing( $cost = null ) {
 // Goodmark import functions
 
 function goodmark_pricing( $cost = null ) {
+    $global_price_modifier = 0.03;
 
     // Ensure a cost was provided.
     if ( !empty( $cost ) ) {
@@ -148,17 +151,17 @@ function goodmark_pricing( $cost = null ) {
         $cost = preg_replace("/[^0-9,.]/", "", $cost);
 	
 		if ($cost <= 20) {
-			$calculated_price = (round($cost * 1.52)) - 0.05;
+			$calculated_price = (round($cost * (1.52 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 20 && $cost <= 60) {
-			$calculated_price = (round($cost * 1.47)) - 0.05;
+			$calculated_price = (round($cost * (1.47 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 60 && $cost <= 130) {
-			$calculated_price = (round($cost * 1.37)) - 0.05;
+			$calculated_price = (round($cost * (1.37 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 130 && $cost <= 200) {
-			$calculated_price = (round($cost * 1.32)) - 0.05;
+			$calculated_price = (round($cost * (1.32 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 200 && $cost <= 600) {
-			$calculated_price = (round($cost * 1.27)) - 0.05;
+			$calculated_price = (round($cost * (1.27 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 600) {
-			$calculated_price = (round($cost * 1.22)) - 0.05;
+			$calculated_price = (round($cost * (1.22 + $global_price_modifier))) - 0.05;
 		}
 		
         // Return price otherwise.
@@ -256,6 +259,7 @@ function before_xml_import( $import_id ) {
                 "ID",
                 "Product Name",
                 "SKU",
+                "Price",
             ];
             fputcsv($handle, $line);
             fclose($handle);
@@ -306,11 +310,13 @@ function only_update_if_stock_status_changed ( $continue_import, $post_id, $data
 
             $product_sku = get_post_meta($post_id, "_sku", true);
             $product_title = get_the_title($post_id);
+            $product_price = get_post_meta($post_id, "_regular_price", true);
 
             $line = [
                 $post_id,
                 $product_title,
                 $product_sku,
+                $product_price,
             ];
             
             if(is_file($file)){

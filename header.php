@@ -157,6 +157,8 @@
 
             <a class="list-group-item list-group-item-action" href="<?php echo site_url(); ?>/about">About</a>
 
+            <a class="list-group-item list-group-item-action" href="<?php echo site_url(); ?>/returns">Returns</a>
+
             <a class="list-group-item list-group-item-action" href="<?php echo site_url(); ?>/contact">Contact</a>
 
         </div>
@@ -316,6 +318,9 @@
                 </li>
                 <li>
                     <a class="nav-link text-white px-lg-4 px-xl-5" href="<?php echo site_url(); ?>/about">About</a>
+                </li>
+                <li>
+                    <a class="nav-link text-white px-lg-4 px-xl-5" href="<?php echo site_url(); ?>/returns">Returns</a>
                 </li>
                 <li>
                     <a class="nav-link  text-white px-lg-4 px-xl-5" href="<?php echo site_url(); ?>/contact">Contact</a>
