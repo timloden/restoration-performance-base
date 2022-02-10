@@ -296,9 +296,9 @@ function only_update_if_stock_status_changed ( $continue_import, $post_id, $data
         if ($import_id == $dynacorn_import_id) {
             $import_stock_status = dynacorn_stock_status($data["caquantity"], $data["paquantity"]);
         } elseif ($import_id == $oer_import_id) {
-            $import_stock_status = oer_stock_status($data["availableqty"]);
+            $import_stock_status = $data["availableqty"];
         } elseif ($import_id == $goodmark_import_id) {
-            $import_stock_status = oer_stock_status($data["quantityavailable"]);
+            $import_stock_status = $data["quantityavailable"];
         }
 
         $handle = fopen($file, "a");
