@@ -289,3 +289,16 @@ function order_address_classification( $order ){
     
 
 }
+
+add_filter( 'woocommerce_states', 'custom_us_states', 10, 1 );
+
+function custom_us_states( $states ) {
+    $non_allowed_us_states = array( 'AK', 'HI', 'AA', 'AE', 'AP'); 
+
+    // Loop through your non allowed us states and remove them
+    foreach( $non_allowed_us_states as $state_code ) {
+        if( isset($states['US'][$state_code]) )
+            unset( $states['US'][$state_code] );
+    }
+    return $states;
+}
