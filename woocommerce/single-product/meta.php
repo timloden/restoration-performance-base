@@ -22,7 +22,6 @@ if (! defined('ABSPATH') ) {
 global $product;
 $product_id = $product->get_id();
 
-$brand_name = get_brand_name($product_id);
 $shipping_class_id   = $product->get_shipping_class_id();
 $shipping_class_term = get_term($shipping_class_id, 'product_shipping_class');
 $shipping_class = $shipping_class_term->slug;

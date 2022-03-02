@@ -138,9 +138,17 @@ function loop_product_title()
 
 function get_brand_name($product_id) {
     $brand = wp_get_object_terms( $product_id, 'pwb-brand' );
+    $brand_name = '';
+    
     if($brand) {
-        return $brand[0]->name;
+        $brand_name = $brand[0]->name;
     }
+
+    if ($brand_name == 'OER Authorized') {
+        $brand_name = 'OER';
+    }
+
+    return $brand_name;
 }
 
 function get_brand_notice($product_id) {
