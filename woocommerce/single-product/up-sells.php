@@ -25,11 +25,11 @@ if ( $upsells ) : ?>
 
     <h3 class="mb-3"><?php esc_html_e( 'You may also like:', 'woocommerce' ); ?></h3>
 
-    <?php woocommerce_product_loop_start(); ?>
+    <div class="row products row-cols-1 row-cols-md-3 row-cols-lg-4 position-relative">
 
-    <?php foreach ( $upsells as $upsell ) : ?>
+        <?php foreach ( $upsells as $upsell ) : ?>
 
-    <?php
+        <?php
 				$post_object = get_post( $upsell->get_id() );
 
 				setup_postdata( $GLOBALS['post'] =& $post_object );
@@ -37,9 +37,9 @@ if ( $upsells ) : ?>
 				wc_get_template_part( 'content', 'product' );
 				?>
 
-    <?php endforeach; ?>
+        <?php endforeach; ?>
 
-    <?php woocommerce_product_loop_end(); ?>
+    </div>
 
 </section>
 
