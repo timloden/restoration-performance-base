@@ -18,6 +18,7 @@
 defined( 'ABSPATH' ) || exit;
 
 global $product;
+$upsells = $product->get_upsells();
 
 if ( ! $product->is_purchasable() ) {
 	return;
@@ -65,6 +66,11 @@ if ( $product->is_in_stock() ) : ?>
     <?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 </form>
 
+<?php  
+    if ( $upsells ) {
+            echo '<p class="text-center text-md-start mb-4"><a class="text-primary fw-bold" href="#upsells"><i class="las la-exclamation-circle"></i> Check out our related items that might be helpful!</a></p>';
+    }
+    ?>
 
 <?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
 

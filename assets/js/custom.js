@@ -210,3 +210,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 })(jQuery);
 //ScrollReveal().reveal('.title-border');
 "use strict";
+"use strict";
+
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl);
+});

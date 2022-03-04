@@ -22,10 +22,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 $stock_status = $product->get_stock_status();
 
+$current_brand = get_brand_name($product->get_id());
+
 if ($stock_status == 'instock') {
     $stock = 'In Stock';
 } elseif ($stock_status == 'onbackorder') {
-    $stock = 'Backordered';
+    $stock = 'Backordered <a data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="Backordered items could take up to or over 30 days to ship."><i class="las la-exclamation-circle text-primary"></i></a>';
 } else {
     $stock = 'Out of Stock';
 }
@@ -67,8 +69,3 @@ if (strpos($shipping_class, '-freight') || $shipping_class == 'windshield') {
         </p>
     </div>
 </div>
-<?php  
-if ( $stock_status === 'onbackorder' ) {
-        echo '<p class="text-primary fw-bold text-center text-md-start"><i class="las la-exclamation-circle"></i> Backordered items could take over 30 days to ship</p>';
-    }
-?>
