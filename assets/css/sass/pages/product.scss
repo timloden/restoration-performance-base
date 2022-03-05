@@ -48,6 +48,16 @@
             color: #6c757d;
         }
     }
+
+    .wcwl_email_elements {
+        border: none;
+    }
+
+    .wcwl_elements .wcwl_control button {
+        margin-left: -4px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
 }
 
 .woocommerce-notices-wrapper {

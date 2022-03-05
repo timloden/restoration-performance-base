@@ -53,8 +53,18 @@
                     name="wcwl_email" class="wcwl_email form-control"
                     placeholder="<?php echo $email_address_placeholder_text; ?>" <?php
 			if ( $user_email ) {
-				echo 'disabled'; }
+				echo 'disabled'; 
+            }
 			?> />
+                <?php if ($user_email) : ?>
+                <style>
+                .wcwl_elements .wcwl_control button {
+                    margin-left: 0px !important;
+                    border-top-left-radius: 4px !important;
+                    border-bottom-left-radius: 4px !important;
+                }
+                </style>
+                <?php endif; ?>
             </div>
             <?php
 		if ( 'join' === $context && ( 'true' === $is_archive || is_shop() || is_product_category() ) ) {

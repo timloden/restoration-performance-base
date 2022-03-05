@@ -2801,6 +2801,8 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-weight:700}
 .product .quantity .qty{font-size:18px}
 .product .tinvwl_add_to_wishlist_button{font-size:16px;border:0}
 .product .tinvwl_add_to_wishlist_button:hover{background-color:#fff;color:#6c757d}
+.product .wcwl_email_elements{border:0}
+.product .wcwl_elements .wcwl_control button{margin-left:-4px;border-top-left-radius:0;border-bottom-left-radius:0}
 .woocommerce-notices-wrapper{width:100%}
 .woocommerce .star-rating,.woocommerce p.stars [class^=star-],.woocommerce p.stars [class*=" star-"]{font-family:Line Awesome Free;font-weight:900;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;font-size:1em}
 .woocommerce .star-rating{overflow:hidden;position:relative;height:1em;width:5em}
