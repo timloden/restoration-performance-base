@@ -44,8 +44,6 @@ function bbloomer_matching_email_addresses() {
     }
 }
 
-
-
 add_action( 'woocommerce_form_field_text','reigel_custom_heading', 10, 2 );
 
 function reigel_custom_heading( $field, $key ){
@@ -81,16 +79,6 @@ function full_terms_window() {
 
     echo '<div class="overflow-auto mt-4 mb-2 p-2 bg-white border" style="height: 100px; font-size: 12px;">' . $content . '</div>';
 }
-
-
-// place order button text
-
-// add_filter('woocommerce_order_button_text', 'checkout_place_order_button_text');
-
-// function checkout_place_order_button_text($order_button_text)
-// {
-//     return 'Securely Place Order'; // new text is here
-// }
 
 // add payment section title before payment options
 
@@ -145,6 +133,10 @@ function misha_custom_button_html( $button_html ) {
 	
     return $button_html;
 }
+
+// remove order notes
+
+add_filter( 'woocommerce_enable_order_notes_field', '__return_false', 9999 );
 
 
 // checkout custom fields
