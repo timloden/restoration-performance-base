@@ -71,12 +71,6 @@ function redirect_to_cart_if_checkout() {
 
 }
 
-add_action('woocommerce_review_order_after_cart_contents', 'checkout_payment_heading');
-
-function checkout_payment_heading() {
-    //echo '<h4>Payment</h4>';
-}
-
 // add terms full content to checkout
 
 add_action('woocommerce_review_order_after_submit', 'full_terms_window');
@@ -91,12 +85,12 @@ function full_terms_window() {
 
 // place order button text
 
-add_filter('woocommerce_order_button_text', 'checkout_place_order_button_text');
+// add_filter('woocommerce_order_button_text', 'checkout_place_order_button_text');
 
-function checkout_place_order_button_text($order_button_text)
-{
-    return 'Securely Place Order'; // new text is here
-}
+// function checkout_place_order_button_text($order_button_text)
+// {
+//     return 'Securely Place Order'; // new text is here
+// }
 
 // add payment section title before payment options
 
@@ -121,6 +115,36 @@ function wsis_dequeue_stylesandscripts_select2() {
         wp_deregister_script('selectWoo');
     } 
 } 
+
+// place order button
+
+add_filter( 'woocommerce_order_button_html', 'misha_custom_button_html' );
+
+function misha_custom_button_html( $button_html ) {
+	$order_button_text = 'Securely Submit Order';  
+    $shipping_total = WC()->cart->get_shipping_total();
+    $chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
+
+    $disable_checkout = '';
+    $free_shipping = false;
+
+    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        $product = $cart_item['data'];
+        $shipping_class = $product->get_shipping_class();
+
+        if ($shipping_class == 'free-shipping') {
+            $free_shipping = true;
+        }
+    }
+
+    if ($shipping_total <= 0 && !$free_shipping) {
+        $disable_checkout = 'disabled';
+    }
+
+    $button_html = '<button ' . esc_attr($disable_checkout) . ' type="submit" class="btn btn-success text-white fw-bold d-block w-100 fw-bold btn-lg" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>';
+	
+    return $button_html;
+}
 
 
 // checkout custom fields
