@@ -22,6 +22,6 @@ global $product;
 <div class="col-auto mb-3">
     <button style="font-size: 18px;" type="submit" name="add-to-cart"
         value="<?php echo esc_attr( $product->get_id() ); ?>"
-        class="single_add_to_cart_button bundle_add_to_cart_button button alt btn btn-primary px-5 font-weight-bold"><i
+        class="single_add_to_cart_button bundle_add_to_cart_button button alt btn btn-primary px-5 fw-bold"><i
             class="las la-shopping-cart"></i> <?php echo $product->single_add_to_cart_text(); ?></button>
 </div>

@@ -32,7 +32,7 @@ defined( 'ABSPATH' ) || exit;
     </div>
 
     <div class="shipping_address">
-        <p class="font-weight-bold">Note: we will be verifying the secondary address with the card holder prior to
+        <p class="fw-bold">Note: we will be verifying the secondary address with the card holder prior to
             shipment.</p>
         <?php do_action( 'woocommerce_before_checkout_shipping_form', $checkout ); ?>
 

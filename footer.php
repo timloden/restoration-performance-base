@@ -84,7 +84,7 @@ $newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option');
                 <div class="mb-3">
                     <?php 
                     if ($newsletter_form_id) {
-                        echo '<p class="mb-2 font-weight-bold">Get all the latest product updates, specials and coupons!</p>';
+                        echo '<p class="mb-2 fw-bold">Get all the latest product updates, specials and coupons!</p>';
                         echo do_shortcode($newsletter_form_id);
                     }
                      ?>

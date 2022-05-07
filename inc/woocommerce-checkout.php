@@ -85,7 +85,7 @@ function full_terms_window() {
 add_action( 'woocommerce_review_order_before_payment', 'wc_privacy_message_below_checkout_button' );
  
 function wc_privacy_message_below_checkout_button() {
-   echo '<p><a class="font-weight-bold" href="#" data-bs-toggle="modal" data-bs-target="#couponModal">
+   echo '<p><a class="fw-bold" href="#" data-bs-toggle="modal" data-bs-target="#couponModal">
    Have a coupon code?</a></p><h4>Payment</h4>';
 }
 
@@ -279,7 +279,7 @@ function custom_woocommerce_form_field($key, $args, $value = null)
 
             if (is_array($states) && empty($states)) {
 
-                $field_container = '<div class="form-group %1$s" id="%2$s" style="display: none">%3$s</div>';
+                $field_container = '<div class="form-group test %1$s" id="%2$s" style="display: none">%3$s</div>';
 
                 $field .= '<input type="hidden" class="hidden" name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
     value="" ' . implode(' ', $custom_attributes) . ' placeholder="' . esc_attr($args['placeholder']) . '" />';
@@ -288,7 +288,7 @@ function custom_woocommerce_form_field($key, $args, $value = null)
                 $field .= '<select name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
     class="state_select form-select ' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '
     data-placeholder="' . esc_attr($args['placeholder']) . '">
-    <option value="">' . esc_html__('Select a state…', 'woocommerce') . '</option>';
+    <option value="">' . esc_html__('Select a state', 'woocommerce') . '</option>';
 
                 foreach ($states as $ckey => $cvalue) {
                     $field .= '<option value="' . esc_attr($ckey) . '" ' . selected($value, $ckey, false) . '>' . $cvalue . '</option>';

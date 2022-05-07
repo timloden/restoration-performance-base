@@ -54,7 +54,7 @@ if (wc_get_loop_prop( 'total' ) === 0) {
 
     </div>
     <div class="col-12 col-lg-4">
-        <p class="font-weight-bold">Search Tips</p>
+        <p class="fw-bold">Search Tips</p>
         <ul>
             <li>Check for typos or spelling errors</li>
             <li>Simplify your search - try using fewer words</li>

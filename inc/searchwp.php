@@ -23,7 +23,7 @@ class MySearchwpDidYouMean {
 			echo wp_kses(
 				sprintf(
 					// Translators: First placeholder is the quoted search string. Second placeholder is the search string without quotes.
-					__( 'No results found for <em class="searchwp-revised-search-original">%s</em>. Showing results for <em class="searchwp-suggested-revision-query font-weight-bold">%s</em>', 'searchwp' ),
+					__( 'No results found for <em class="searchwp-revised-search-original">%s</em>. Showing results for <em class="searchwp-suggested-revision-query fw-bold">%s</em>', 'searchwp' ),
 					esc_html( $phrase_query ),
 					esc_html( str_replace( '"', '', implode( ' ', $this->args['terms'] ) ) )
 				),

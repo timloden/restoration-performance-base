@@ -50,6 +50,31 @@ defined( 'ABSPATH' ) || exit;
             <?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
         </div>
     </div>
+    <?php  
+    
+    $has_freight = false;
+    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        $product = $cart_item['data'];
+        $shipping_class = $product->get_shipping_class();
+
+        if (str_contains($shipping_class, 'freight')) {
+            $has_freight = true;
+        }
+    }
+
+    if ($has_freight) :
+    ?>
+    <div class="row pb-3">
+        <div class="col-12">
+            <div class="alert alert-warning">
+                <p class="mb-0"><strong>Freight Orders</strong></p>
+                <p class="mb-0">Due to the rising cost of fuel and labor shortages truck freight
+                    charges are subject to change if we cannot ship as is and immediately. If this is the case we
+                    will contact you for approve to proceed.</p>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
 
 </div>
 
