@@ -19,6 +19,7 @@
 defined('ABSPATH') || exit;
 
 do_action('woocommerce_before_cart');
+$all_brands = [];
 $all_shipping_classes = [];
 ?>
 
@@ -33,7 +34,8 @@ $all_shipping_classes = [];
             foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
                 $_product   = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
                 $product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
-                array_push($all_shipping_classes, get_brand_name($product_id));
+                array_push($all_brands, get_brand_name($product_id));
+                array_push($all_shipping_classes, $_product->get_shipping_class());
 
                 if ($_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key)) {
                     $product_permalink = apply_filters('woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink($cart_item) : '', $cart_item, $cart_item_key);
@@ -81,19 +83,19 @@ $all_shipping_classes = [];
                                 <?php echo get_brand_name($product_id); ?></p>
 
                             <?php if ($_product->get_stock_status() === 'onbackorder') : ?>
-                            <p style="font-size: 12px;" class="text-primary font-weight-bold"><i
+                            <p style="font-size: 12px;" class="text-primary fw-bold"><i
                                     class="las la-exclamation-circle"></i>
                                 Backordered - could take over 30 days to ship</p>
                             <?php endif; ?>
 
                             <?php if ($_product->get_shipping_class() === 'ground-oversized' || $_product->get_shipping_class() === 'ground-oversized-dynacorn'): ?>
-                            <p style="font-size: 12px;" class="text-primary font-weight-bold"><i class="las la-box"></i>
+                            <p style="font-size: 12px;" class="text-primary fw-bold"><i class="las la-box"></i>
                                 <a data-toggle="tooltip" data-placement="top"
                                     title="This product does not qualify for $7.50 shipping">Oversized Ground</a>
                             </p>
 
                             <?php elseif ($_product->get_shipping_class() === 'dynacorn-freight' || $_product->get_shipping_class() === 'oer-freight'): ?>
-                            <p style="font-size: 12px;" class="text-primary font-weight-bold"><i
+                            <p style="font-size: 12px;" class="text-primary fw-bold"><i
                                     class="las la-shipping-fast"></i> Freight Item</p>
                             <?php endif; ?>
                         </div>
@@ -190,7 +192,7 @@ $all_shipping_classes = [];
                 </div>
             </div>
             <?php 
-            if (count(array_unique($all_shipping_classes)) !== 1): ?>
+            if (count(array_unique($all_brands)) !== 1): ?>
             <div class="row pt-4">
                 <div class="col-12">
                     <div class="alert alert-info">
@@ -202,6 +204,22 @@ $all_shipping_classes = [];
                             for you so we can assist: <a
                                 href="mailto:<?php echo esc_attr(get_field('contact_email', 'option')); ?>"><?php echo esc_attr(get_field('contact_email', 'option')); ?></a></a>
                         </p>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
+            <?php 
+            $classes = implode('|', $all_shipping_classes);
+            if (stripos($classes,"freight") || stripos($classes,"bundle") || stripos($classes,"windshield")) : 
+            ?>
+            <div class="row pt-4">
+                <div class="col-12">
+                    <div class="alert alert-warning">
+                        <p class="mb-0"><strong>Freight Orders</strong></p>
+                        <p class="mb-0">Due to the rising cost of fuel and labor shortages truck freight
+                            charges are subject to change if we cannot ship as is and immediately. If this is the case
+                            we
+                            will contact you for approve to proceed.</p>
                     </div>
                 </div>
             </div>

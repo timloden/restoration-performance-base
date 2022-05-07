@@ -55,7 +55,7 @@ if ( $product->is_in_stock() ) : ?>
         </div>
         <div class="col-auto">
             <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"
-                class="single_add_to_cart_button btn btn-primary px-5 font-weight-bold" style="font-size: 18px;"><i
+                class="single_add_to_cart_button btn btn-primary px-5 fw-bold" style="font-size: 18px;"><i
                     class="las la-shopping-cart"></i>
                 <?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
         </div>

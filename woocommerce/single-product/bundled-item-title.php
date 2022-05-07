@@ -32,5 +32,5 @@ $stock_status = $bundled_item->product->get_stock_status();
 <?php
 echo '<p class="mb-0">SKU: ' . $bundled_item->product->get_sku() . '</p>';
 		if ( $stock_status === 'onbackorder' ) {
-			echo '<p class="text-primary font-weight-bold pt-2">This item is on backorder and could take up to 30 days to ship</p>';
+			echo '<p class="text-primary fw-bold pt-2">This item is on backorder and could take up to 30 days to ship</p>';
 		}

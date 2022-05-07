@@ -65,7 +65,7 @@ if (!$commercial_freight) {
     <div class="container py-3">
         <div class="row align-items-center">
             <!-- <div class="col-12 col-lg-2">
-                <p class="mb-0 text-primary font-weight-bolder">Start here:</p>
+                <p class="mb-0 text-primary fw-bolder">Start here:</p>
             </div> -->
             <div class="col-12">
                 <div class="home-ymm">
@@ -110,7 +110,7 @@ if (!$commercial_freight) {
             </div>
             <div class="col-12 col-lg-4 text-center">
                 <i class="las la-shipping-fast text-primary"></i>
-                <h5 class="my-2 font-weight-bold">$7.50 Shipping</h5>
+                <h5 class="my-2 fw-bold">$7.50 Shipping</h5>
                 <p class="mb-2"><?php echo esc_attr( get_field('ground_shipping_discount', 'option') ); ?> Freight
                     shipping starts at
                     $<?php echo esc_attr($commercial_freight); ?>!</p>
@@ -118,12 +118,12 @@ if (!$commercial_freight) {
             </div>
             <div class="col-12 col-lg-4 text-center">
                 <i class="las la-check-circle text-primary"></i>
-                <h5 class="my-2 font-weight-bold">High Quality Parts</h5>
+                <h5 class="my-2 fw-bold">High Quality Parts</h5>
                 <p>Restoration parts sourced from high quality manufacturers</p>
             </div>
             <div class="col-12 col-lg-4 text-center">
                 <i class="las la-headset text-primary"></i>
-                <h5 class="my-2 font-weight-bold">Expert Advice</h5>
+                <h5 class="my-2 fw-bold">Expert Advice</h5>
                 <p>Our experts are here to help you with your restoration project</p>
             </div>
         </div>

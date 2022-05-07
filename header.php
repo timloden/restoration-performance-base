@@ -268,7 +268,7 @@
 
             <ul class="nav nav-fill justify-content-between">
                 <li>
-                    <a class="bg-dark-25 nav-link text-white font-weight-bold px-lg-4 px-xl-5"
+                    <a class="bg-dark-25 nav-link text-white fw-bold px-lg-4 px-xl-5"
                         href="<?php echo site_url(); ?>/shop"><i class="las la-car" style="font-size: 20px;"></i>
                         Shop
                         by Vehicle</a>

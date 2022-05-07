@@ -44,8 +44,6 @@ function bbloomer_matching_email_addresses() {
     }
 }
 
-
-
 add_action( 'woocommerce_form_field_text','reigel_custom_heading', 10, 2 );
 
 function reigel_custom_heading( $field, $key ){
@@ -71,12 +69,6 @@ function redirect_to_cart_if_checkout() {
 
 }
 
-add_action('woocommerce_review_order_after_cart_contents', 'checkout_payment_heading');
-
-function checkout_payment_heading() {
-    //echo '<h4>Payment</h4>';
-}
-
 // add terms full content to checkout
 
 add_action('woocommerce_review_order_after_submit', 'full_terms_window');
@@ -88,22 +80,12 @@ function full_terms_window() {
     echo '<div class="overflow-auto mt-4 mb-2 p-2 bg-white border" style="height: 100px; font-size: 12px;">' . $content . '</div>';
 }
 
-
-// place order button text
-
-add_filter('woocommerce_order_button_text', 'checkout_place_order_button_text');
-
-function checkout_place_order_button_text($order_button_text)
-{
-    return 'Securely Place Order'; // new text is here
-}
-
 // add payment section title before payment options
 
 add_action( 'woocommerce_review_order_before_payment', 'wc_privacy_message_below_checkout_button' );
  
 function wc_privacy_message_below_checkout_button() {
-   echo '<p><a class="font-weight-bold" href="#" data-bs-toggle="modal" data-bs-target="#couponModal">
+   echo '<p><a class="fw-bold" href="#" data-bs-toggle="modal" data-bs-target="#couponModal">
    Have a coupon code?</a></p><h4>Payment</h4>';
 }
 
@@ -121,6 +103,40 @@ function wsis_dequeue_stylesandscripts_select2() {
         wp_deregister_script('selectWoo');
     } 
 } 
+
+// place order button
+
+add_filter( 'woocommerce_order_button_html', 'misha_custom_button_html' );
+
+function misha_custom_button_html( $button_html ) {
+	$order_button_text = 'Securely Submit Order';  
+    $shipping_total = WC()->cart->get_shipping_total();
+    $chosen_shipping_methods = WC()->session->get( 'chosen_shipping_methods' );
+
+    $disable_checkout = '';
+    $free_shipping = false;
+
+    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        $product = $cart_item['data'];
+        $shipping_class = $product->get_shipping_class();
+
+        if ($shipping_class == 'free-shipping') {
+            $free_shipping = true;
+        }
+    }
+
+    if ($shipping_total <= 0 && !$free_shipping) {
+        $disable_checkout = 'disabled';
+    }
+
+    $button_html = '<button ' . esc_attr($disable_checkout) . ' type="submit" class="btn btn-success text-white fw-bold d-block w-100 fw-bold btn-lg" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>';
+	
+    return $button_html;
+}
+
+// remove order notes
+
+add_filter( 'woocommerce_enable_order_notes_field', '__return_false', 9999 );
 
 
 // checkout custom fields
@@ -263,7 +279,7 @@ function custom_woocommerce_form_field($key, $args, $value = null)
 
             if (is_array($states) && empty($states)) {
 
-                $field_container = '<div class="form-group %1$s" id="%2$s" style="display: none">%3$s</div>';
+                $field_container = '<div class="form-group test %1$s" id="%2$s" style="display: none">%3$s</div>';
 
                 $field .= '<input type="hidden" class="hidden" name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
     value="" ' . implode(' ', $custom_attributes) . ' placeholder="' . esc_attr($args['placeholder']) . '" />';
@@ -272,7 +288,7 @@ function custom_woocommerce_form_field($key, $args, $value = null)
                 $field .= '<select name="' . esc_attr($key) . '" id="' . esc_attr($args['id']) . '"
     class="state_select form-select ' . esc_attr(implode(' ', $args['input_class'])) . '" ' . implode(' ', $custom_attributes) . '
     data-placeholder="' . esc_attr($args['placeholder']) . '">
-    <option value="">' . esc_html__('Select a state…', 'woocommerce') . '</option>';
+    <option value="">' . esc_html__('Select a state', 'woocommerce') . '</option>';
 
                 foreach ($states as $ckey => $cvalue) {
                     $field .= '<option value="' . esc_attr($ckey) . '" ' . selected($value, $ckey, false) . '>' . $cvalue . '</option>';
