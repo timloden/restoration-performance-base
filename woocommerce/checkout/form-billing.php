@@ -57,7 +57,7 @@ defined( 'ABSPATH' ) || exit;
         $product = $cart_item['data'];
         $shipping_class = $product->get_shipping_class();
 
-        if (str_contains($shipping_class, 'freight')) {
+        if (str_contains($shipping_class, 'freight') || str_contains($shipping_class, 'bundle') || str_contains($shipping_class, 'windshield')) {
             $has_freight = true;
         }
     }
