@@ -3,7 +3,7 @@
 // Dynacorn import functions
 
 function dynacorn_pricing( $cost = null, $model = '' ) {
-    $global_price_modifier = 0.03;
+    $global_price_modifier = 0.05;
 
     // Ensure a cost was provided.
     if ( !empty( $cost ) ) {
@@ -23,9 +23,9 @@ function dynacorn_pricing( $cost = null, $model = '' ) {
 			$calculated_price = (round($cost * (1.27 + $global_price_modifier))) - 0.05;
 		}
 		
-		if ( $model == 'MUSTANG' ) {
-			$calculated_price = (round($calculated_price * (0.98 + $global_price_modifier))) - 0.05;
-		}
+		// if ( $model == 'MUSTANG' ) {
+		// 	$calculated_price = (round($calculated_price * (0.98 + $global_price_modifier))) - 0.05;
+		// }
 		
         // Return price otherwise.
         return $calculated_price;
@@ -48,7 +48,7 @@ function dynacorn_stock_status( $ca = null, $pa = null ) {
 // OER import functions
 
 function oer_pricing( $cost = null ) {
-    $global_price_modifier = 0.03;
+    $global_price_modifier = 0.05;
     
     // Ensure a cost was provided.
     if ( !empty( $cost ) ) {
