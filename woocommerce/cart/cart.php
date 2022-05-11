@@ -219,7 +219,7 @@ $all_shipping_classes = [];
                         <p class="mb-0">Due to the rising cost of fuel and labor shortages truck freight
                             charges are subject to change if we cannot ship as is and immediately. If this is the case
                             we
-                            will contact you for approve to proceed.</p>
+                            will contact you for approval to proceed.</p>
                     </div>
                 </div>
             </div>
