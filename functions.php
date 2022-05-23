@@ -119,6 +119,9 @@ function wpse_remove_edit_post_link( $link ) {
 
 add_filter('edit_post_link', 'wpse_remove_edit_post_link');
 
+// decrease number of action scheduler logs
+add_filter( 'action_scheduler_retention_period', function() { return DAY_IN_SECONDS * 7; } );
+
 /**
  * Load includes
  */
