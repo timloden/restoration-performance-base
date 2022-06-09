@@ -3,7 +3,7 @@
 // Dynacorn import functions
 
 function dynacorn_pricing( $cost = null, $model = '' ) {
-    $global_price_modifier = 0.05;
+    $global_price_modifier = 0;
 
     // Ensure a cost was provided.
     if ( !empty( $cost ) ) {
