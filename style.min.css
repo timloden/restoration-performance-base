@@ -6,7 +6,7 @@ Theme URI: https://www.restorationperformance.com/
 Author: Restoration Performance
 Author URI: https://www.restorationperformance.com/
 Description: Restoration Performance base theme for all store sites.
-Version: 1.15.1
+Version: 1.15.2
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -2798,6 +2798,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-weight:700}
 .product .bundled_product_summary .bundled_product_images img{max-width:100px}
 .product .bundled_product_summary .details h5.bundled_product_title,.product .bundled_product_summary .details .bundled_product_title.h5{font-size:16px}
 .product .onsale{position:absolute}
+.product .product-price-wrapper{border-right:1px solid #dee2e6}
 .product .quantity .qty{font-size:18px}
 .product .tinvwl_add_to_wishlist_button{font-size:16px;border:0}
 .product .tinvwl_add_to_wishlist_button:hover{background-color:#fff;color:#6c757d}
@@ -3364,7 +3365,6 @@ button#place_order:before{font-family:"Line Awesome Free";font-weight:900;displa
 .text-md-center{text-align:center !important}
 .product-price-container{border-right:none !important}
 #brand-collapse,#category-collapse,#stock-collapse{display:block}
-.product .product-stock-wrapper{border-left:1px solid #dee2e6}
 }@media(min-width:992px){.container-lg,.container-md,.container-sm,.container{max-width:960px}
 .col-lg{-webkit-box-flex:1;-ms-flex:1 0 0;flex:1 0 0}
 .row-cols-lg-auto>*{-webkit-box-flex:0;-ms-flex:0 0 auto;flex:0 0 auto;width:auto}

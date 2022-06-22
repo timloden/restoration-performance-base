@@ -3,7 +3,7 @@
 // Dynacorn import functions
 
 function dynacorn_pricing( $cost = null, $model = '' ) {
-    $global_price_modifier = 0.05;
+    $global_price_modifier = 0;
 
     // Ensure a cost was provided.
     if ( !empty( $cost ) ) {
@@ -63,7 +63,7 @@ function oer_pricing( $cost = null ) {
 		} elseif ($cost > 50 && $cost <= 150) {
             $calculated_price = (round($cost * (1.30 + $global_price_modifier))) - 0.05;
         } elseif ($cost > 150) {
-			$calculated_price = (round($cost * (1.27 + $global_price_modifier))) - 0.05;
+			$calculated_price = (round($cost * (1.24 + $global_price_modifier))) - 0.05;
 		}
 
         // Return price otherwise.

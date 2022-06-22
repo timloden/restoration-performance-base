@@ -32,7 +32,7 @@ if ( $product->is_in_stock() ) : ?>
 
 <form
     action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>"
-    method="post" enctype='multipart/form-data' class="border-top mt-3 pt-3 pb-4">
+    method="post" enctype='multipart/form-data' class="border-top mt-3 mt-md-0 pt-3 pt-lg-3 pb-4">
 
     <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 

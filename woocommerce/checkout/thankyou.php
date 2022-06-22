@@ -50,6 +50,13 @@ defined('ABSPATH') || exit;
 																											?></p>
         </div>
 
+        <p style="font-size: 1.1rem;">All order and tracking details will be emailed from
+            <strong>sales@<?php echo $_SERVER['HTTP_HOST']; ?></strong>. <strong>Please make sure this our email address
+                is
+                flagged/added
+                to your contacts so they don't go to spam!</strong>
+        </p>
+
         <div class="row">
             <div class="col-12 col-lg-4">
                 <p>Your account login and password have been emailed to:
