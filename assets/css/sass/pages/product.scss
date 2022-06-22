@@ -27,10 +27,14 @@
         position: absolute;
     }
 
+    .product-price-wrapper {
+        border-right: 1px solid #dee2e6;
+    }
+
     @include media-breakpoint-up(md) {
-        .product-stock-wrapper {
-            border-left: 1px solid #dee2e6;
-        }
+        // .product-stock-wrapper {
+        //     border-left: 1px solid #dee2e6;
+        // }
     }
 
     .quantity {
