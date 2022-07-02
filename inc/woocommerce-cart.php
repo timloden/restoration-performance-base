@@ -32,8 +32,8 @@ add_action('woocommerce_widget_shopping_cart_buttons', 'my_woocommerce_widget_sh
 
 add_action('woocommerce_update_cart_action_cart_updated', 'on_action_cart_updated', 20, 1);
 
-function on_action_cart_updated()
-{
+function on_action_cart_updated() {
+
     if( is_cart() || is_checkout() && !is_wc_endpoint_url( 'order-pay' ) ) {
 
         // HERE Set minimum cart total amount
@@ -72,9 +72,10 @@ function on_action_cart_updated()
     }
     
     $current_amount = WC()->cart->cart_contents_total;
+
+    $shipping_state = WC()->customer->get_shipping_state();
     
-    if ($has_freight == false) {
-        
+    if ($has_freight == false && $shipping_state != 'AK' && $shipping_state != 'HI') {
 
         if ($current_amount < 200) {
             $difference = 200 - $current_amount;

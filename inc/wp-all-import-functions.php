@@ -14,9 +14,9 @@ function dynacorn_pricing( $cost = null, $model = '' ) {
 		if ($cost <= 15) {
 			$calculated_price = (round($cost * (1.65 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 15 && $cost <= 70) {
-			$calculated_price = (round($cost * (1.55 + $global_price_modifier))) - 0.05;
+			$calculated_price = (round($cost * (1.47 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 70 && $cost <= 175) {
-			$calculated_price = (round($cost * (1.38 + $global_price_modifier))) - 0.05;
+			$calculated_price = (round($cost * (1.33 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 175 && $cost <= 800) {
 			$calculated_price = (round($cost * (1.3 + $global_price_modifier))) - 0.05;
 		} elseif ($cost > 800) {
