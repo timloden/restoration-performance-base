@@ -74,6 +74,18 @@ function on_action_cart_updated() {
     $current_amount = WC()->cart->cart_contents_total;
 
     $shipping_state = WC()->customer->get_shipping_state();
+
+    if( $has_freight == true && $shipping_state == 'AK' ) {
+        // Display an error message
+        echo '<div class="alert alert-danger mt-3" role="alert">Sorry, we do not ship freight items to Alaska at this time.</div>';
+        remove_action( 'woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);
+    }
+
+    if( $has_freight == true && $shipping_state == 'HI' ) {
+        // Display an error message
+        echo '<div class="alert alert-danger mt-3" role="alert">Sorry, we do not ship freight items to Hawaii at this time.</div>';
+        remove_action( 'woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);
+    }
     
     if ($has_freight == false && $shipping_state != 'AK' && $shipping_state != 'HI') {
 
