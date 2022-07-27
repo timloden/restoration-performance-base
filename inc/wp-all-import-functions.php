@@ -310,13 +310,13 @@ function only_update_if_stock_status_changed ( $continue_import, $post_id, $data
 
             $product_sku = get_post_meta($post_id, "_sku", true);
             $product_title = get_the_title($post_id);
-            $product_price = get_post_meta($post_id, "_regular_price", true);
+            //$product_price = get_post_meta($post_id, "_regular_price", true);
 
             $line = [
                 $post_id,
                 $product_title,
                 $product_sku,
-                $product_price,
+                $data["price"],
             ];
             
             if(is_file($file)){
