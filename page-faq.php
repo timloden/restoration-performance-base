@@ -18,15 +18,15 @@ get_header();
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
-                            <a class="h5 d-block mb-0" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne">
+                            <a class="h5 d-block mb-0" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Sales tax information
                             </a>
                         </h2>
                     </div>
 
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                        data-parent="#accordionExample">
+                        data-bs-parent="#accordionExample">
                         <div class="card-body">
                             <p>We collect state sales tax on purchases as dictated by state legislation. For certain
                                 states, Restoration Performance is not currently obligated to, and does not, collect
@@ -54,13 +54,14 @@ get_header();
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h2 class="mb-0">
-                            <a class="h5 d-block mb-0 collapsed" type="button" data-toggle="collapse"
-                                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <a class="h5 d-block mb-0 collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 Price Match Guarantee
                             </a>
                         </h2>
                     </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
                         <div class="card-body">
                             <p><strong>If you find a product for less, we will match the price!</strong></p>
                             <p>Restoration Performance will match any competitor’s current advertised retail price for
@@ -85,14 +86,14 @@ get_header();
                 <div class="card">
                     <div class="card-header" id="headingThree">
                         <h2 class="mb-0">
-                            <a class="h5 d-block mb-0 collapsed" type="button" data-toggle="collapse"
-                                data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <a class="h5 d-block mb-0 collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 Product Availability
                             </a>
                         </h2>
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                        data-parent="#accordionExample">
+                        data-bs-parent="#accordionExample">
                         <div class="card-body">
 
                             <p>Availability of all items in this catalog are subject to change without notice. We
@@ -110,14 +111,14 @@ get_header();
                 <div class="card">
                     <div class="card-header" id="headingFour">
                         <h2 class="mb-0">
-                            <a class="h5 d-block mb-0 collapsed" type="button" data-toggle="collapse"
-                                data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <a class="h5 d-block mb-0 collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                 Back Orders
                             </a>
                         </h2>
                     </div>
                     <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                        data-parent="#accordionExample">
+                        data-bs-parent="#accordionExample">
                         <div class="card-body">
 
                             <p>The invoice located in the packing slip of your order will notate any items that were out
@@ -137,14 +138,14 @@ get_header();
                 <div class="card">
                     <div class="card-header" id="headingFive">
                         <h2 class="mb-0">
-                            <a class="h5 d-block mb-0 collapsed" type="button" data-toggle="collapse"
-                                data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            <a class="h5 d-block mb-0 collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                 Billing and Shipping Address
                             </a>
                         </h2>
                     </div>
                     <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
-                        data-parent="#accordionExample">
+                        data-bs-parent="#accordionExample">
                         <div class="card-body">
 
                             <p>Please have the billing address if using a credit card to pay for your order. All credit
@@ -159,13 +160,14 @@ get_header();
                 <div class="card">
                     <div class="card-header" id="headingSix">
                         <h2 class="mb-0">
-                            <a class="h5 d-block mb-0 collapsed" type="button" data-toggle="collapse"
-                                data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            <a class="h5 d-block mb-0 collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                 Payment
                             </a>
                         </h2>
                     </div>
-                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
+                        data-bs-parent="#accordionExample">
                         <div class="card-body">
 
                             <p>We Accept major credit cards including Visa, MasterCard and PayPal. Please have your
@@ -180,14 +182,14 @@ get_header();
                 <div class="card">
                     <div class="card-header" id="headingSeven">
                         <h2 class="mb-0">
-                            <a class="h5 d-block mb-0 collapsed" type="button" data-toggle="collapse"
-                                data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            <a class="h5 d-block mb-0 collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
                                 Sheet Metal Body Parts
                             </a>
                         </h2>
                     </div>
                     <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
-                        data-parent="#accordionExample">
+                        data-bs-parent="#accordionExample">
                         <div class="card-body">
                             <p>The sheet metal you receive may have scratches, dings, small dents and other minor
                                 imperfections which are considered normal sheet metal characteristics due to the nature
@@ -218,14 +220,14 @@ get_header();
                 <div class="card">
                     <div class="card-header" id="headingEight">
                         <h2 class="mb-0">
-                            <a class="h5 d-block mb-0 collapsed" type="button" data-toggle="collapse"
-                                data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                            <a class="h5 d-block mb-0 collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
                                 Classic Car Make / Model Identification Guide
                             </a>
                         </h2>
                     </div>
                     <div id="collapseEight" class="collapse" aria-labelledby="headingEight"
-                        data-parent="#accordionExample">
+                        data-bs-parent="#accordionExample">
                         <div class="card-body">
                             <p>During the 1960’s and 1970’s, the automakers used letter codes to designate which car
                                 platform the models were built off of. Unlike today, there were basically small, midsize
