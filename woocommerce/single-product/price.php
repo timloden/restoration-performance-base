@@ -22,9 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 $product_id = $product->get_id();
 $stock_status = $product->get_stock_status();
-$shipping_class_id   = $product->get_shipping_class_id();
-$shipping_class_term = get_term($shipping_class_id, 'product_shipping_class');
-$shipping_class = $shipping_class_term->slug;
+$shipping_class = $product->get_shipping_class();
 
 $brand = wp_get_object_terms( $product_id, 'pwb-brand' );
 $shipping_time = '';
@@ -37,6 +35,10 @@ if($brand) {
     }
     
     if (strpos($shipping_class, '-freight') !== false && get_field('freight_notice', $term) && $stock_status == 'instock') {
+        $shipping_time = ' (' . get_field('freight_notice', $term) . ')';
+    }
+
+    if (strpos($shipping_class, 'windshield') !== false && get_field('freight_notice', $term) && $stock_status == 'instock') {
         $shipping_time = ' (' . get_field('freight_notice', $term) . ')';
     }
     
@@ -52,16 +54,14 @@ if ($stock_status == 'instock') {
     $stock = 'Out of Stock';
 }
 
-$shipping_class = $product->get_shipping_class();
-
-if (strpos($shipping_class, '-freight') || $shipping_class == 'windshield') {
-    $shipping = 'Freight';
-} elseif ($shipping_class == 'bundle' || $shipping_class == 'heavy-freight') {
+if ($shipping_class == 'bundle' || $shipping_class == 'heavy-freight') {
     $shipping = 'Heavy Freight';
+} elseif (strpos($shipping_class, '-freight') || $shipping_class == 'windshield') {
+    $shipping = 'Freight';
 } elseif ($shipping_class == 'free-shipping' || $shipping_class == 'right-stuff') {
     $shipping = 'FREE SHIPPING';
 } elseif ($shipping_class == 'ground-oversized' || $shipping_class == 'ground-oversized-dynacorn') {
-    $shipping = 'Ground (Oversized)';
+    $shipping = 'Ground - Oversized';
 } else {
     $shipping = 'Ground';
 }

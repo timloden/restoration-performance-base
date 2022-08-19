@@ -1,88 +1,5 @@
 <?php
 
-// Dynacorn import functions
-
-function dynacorn_pricing( $cost = null, $model = '' ) {
-    $global_price_modifier = 0;
-
-    // Ensure a cost was provided.
-    if ( !empty( $cost ) ) {
-		
-        // Remove unwanted characters from price.
-        $cost = preg_replace("/[^0-9,.]/", "", $cost);
-	
-		if ($cost <= 15) {
-			$calculated_price = (round($cost * (1.65 + $global_price_modifier))) - 0.05;
-		} elseif ($cost > 15 && $cost <= 70) {
-			$calculated_price = (round($cost * (1.47 + $global_price_modifier))) - 0.05;
-		} elseif ($cost > 70 && $cost <= 175) {
-			$calculated_price = (round($cost * (1.33 + $global_price_modifier))) - 0.05;
-		} elseif ($cost > 175 && $cost <= 800) {
-			$calculated_price = (round($cost * (1.3 + $global_price_modifier))) - 0.05;
-		} elseif ($cost > 800) {
-			$calculated_price = (round($cost * (1.27 + $global_price_modifier))) - 0.05;
-		}
-		
-		// if ( $model == 'MUSTANG' ) {
-		// 	$calculated_price = (round($calculated_price * (0.98 + $global_price_modifier))) - 0.05;
-		// }
-		
-        // Return price otherwise.
-        return $calculated_price;
-
-    }
-}
-
-function dynacorn_stock_status( $ca = null, $pa = null ) {
-
-    if ($ca >= 1 && $pa >= 1) {
-        $stock = 'instock';
-    } else {
-        $stock = 'onbackorder';
-    }
-
-    return $stock;
-}
-
-
-// OER import functions
-
-function oer_pricing( $cost = null ) {
-    $global_price_modifier = 0.05;
-    
-    // Ensure a cost was provided.
-    if ( !empty( $cost ) ) {
-		
-        // Remove unwanted characters from price.
-        $cost = preg_replace("/[^0-9,.]/", "", $cost);
-	
-		if ($cost <= 20) {
-			$calculated_price = (round($cost * (1.5 + $global_price_modifier))) - 0.05;
-		} elseif ($cost > 20 && $cost <= 50) {
-			$calculated_price = (round($cost * (1.35 + $global_price_modifier))) - 0.05;
-		} elseif ($cost > 50 && $cost <= 150) {
-            $calculated_price = (round($cost * (1.30 + $global_price_modifier))) - 0.05;
-        } elseif ($cost > 150) {
-			$calculated_price = (round($cost * (1.24 + $global_price_modifier))) - 0.05;
-		}
-
-        // Return price otherwise.
-        return $calculated_price;
-
-    }
-}
-
-function oer_stock_status( $ca = null ) {
-
-    if ($ca <= 0 ) {
-        $stock = 'onbackorder';
-    } else {
-        $stock = 'instock';
-    }
-
-    return $stock;
-}
-
 function get_oer_product_by_sku( $sku = '' ) {
     // Add OER to SKU
     $sku .= "-OER";
@@ -294,7 +211,7 @@ function only_update_if_stock_status_changed ( $continue_import, $post_id, $data
 
         // get the import stock status
         if ($import_id == $dynacorn_import_id) {
-            $import_stock_status = dynacorn_stock_status($data["caquantity"], $data["paquantity"]);
+            $import_stock_status = $data["stockstatus"];
         } elseif ($import_id == $oer_import_id) {
             $import_stock_status = $data["availableqty"];
         } elseif ($import_id == $goodmark_import_id) {
@@ -312,13 +229,22 @@ function only_update_if_stock_status_changed ( $continue_import, $post_id, $data
             $product_title = get_the_title($post_id);
             //$product_price = get_post_meta($post_id, "_regular_price", true);
 
-            $line = [
-                $post_id,
-                $product_title,
-                $product_sku,
-                $data["price"],
-            ];
-            
+            if ($import_id == $dynacorn_import_id) {
+                $line = [
+                    $post_id,
+                    $product_title,
+                    $product_sku,
+                    $data["saleprice"],
+                ];
+            } else {
+                $line = [
+                    $post_id,
+                    $product_title,
+                    $product_sku,
+                    $data["price"],
+                ];
+            }
+
             if(is_file($file)){
                 fputcsv($handle, $line);
                 fclose($handle);
