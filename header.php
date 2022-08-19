@@ -81,10 +81,6 @@
                                         <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"
                                             class="dropdown-item"><?php echo (is_user_logged_in() ? 'My Account' : 'Login / Create Account'); ?></a>
                                     </li>
-                                    <li class="cat-item">
-                                        <a href="<?php echo site_url(); ?>/tracking" class="dropdown-item">Track your
-                                            order</a>
-                                    </li>
                                     <?php 
                                     if ( shortcode_exists( 'ti_wishlist_products_counter' ) ) {
                                         echo '<li class="cat-item"><a href="' . site_url() . '/buildlist" class="dropdown-item">Buildlist</a></li>';
@@ -180,8 +176,6 @@
                     <div class="col-12 col-lg-6 text-center text-lg-end d-none d-lg-block">
                         <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>"
                             class="border-end pe-2 me-2"><?php echo (is_user_logged_in() ? 'My Account' : 'Login / Create Account'); ?></a>
-                        <a href="<?php echo site_url(); ?>/tracking" class="border-end pe-2 me-2">Track
-                            Order</a>
                         <a href="<?php echo site_url(); ?>/frequently-asked-questions"
                             class="border-end pe-2 me-2">Help</a>
 
