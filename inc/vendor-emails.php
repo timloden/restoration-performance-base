@@ -5,7 +5,7 @@ function add_vendor_email_order_meta_box_action( $actions ) {
     global $theorder;
 
     // bail if the order has been paid for or this action has been run
-    if ( ! $theorder->is_paid() || get_post_meta( $theorder->get_id(), '_wc_order_marked_printed_for_packaging', true ) ) {
+    if ( get_post_meta( $theorder->get_id(), '_wc_order_marked_printed_for_packaging', true ) ) {
         return $actions;
     }
 
