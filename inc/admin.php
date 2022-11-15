@@ -125,3 +125,36 @@ function oer_invoice_display_admin_order_meta($order){
         echo '<p><a class="button" href="https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $oer_invoice_number . '&invoiceStatusId=3&ra=viewOrders" target="_blank">Open OER Invoice: ' . $oer_invoice_number . '</a></p>';
     }
 }
+
+// Adding a custom column
+add_filter( 'manage_edit-shop_order_columns', 'add_example_column' );
+
+function add_example_column($columns) {
+    $columns['invoice'] = __('Invoice', 'woocommerce');
+    return $columns;
+}
+
+// The column content by row
+add_action( 'manage_shop_order_posts_custom_column' , 'add_example_column_contents', 10, 2 );
+
+function add_example_column_contents( $column, $post_id ) {
+    if ( 'invoice' === $column )
+    {
+        $order = wc_get_order( $post_id ); // Get the WC_Order instance Object
+        $oer_invoice_number = get_post_meta( $order->id, '_oer_invoice_number', true );
+
+        if ($oer_invoice_number) {
+        echo '<p><a target="_blank" class="button wc-action-button" href="https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $oer_invoice_number . '&invoiceStatusId=3&ra=viewOrders">' . $oer_invoice_number . '</a></p>';
+        }
+
+    }
+}
+
+// The CSS styling
+add_action( 'admin_head', 'add_custom_action_button_css' );
+
+function add_custom_action_button_css() {
+    $action_slug = "invoice";
+
+    echo '<style>.wc-action-button-'.$action_slug.'::after { font-family: woocommerce !important; content: "\e029" !important; }</style>';
+}
