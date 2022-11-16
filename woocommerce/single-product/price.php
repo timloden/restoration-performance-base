@@ -66,6 +66,7 @@ if ($shipping_class == 'bundle' || $shipping_class == 'heavy-freight') {
     $shipping = 'Ground';
 }
 ?>
+<?php if ($shipping_class != 'bundle') : ?>
 <div class="d-flex align-items-center py-3 flex-wrap">
     <div class="col-6 col-md-auto text-center text-md-left product-price-wrapper">
         <p class="<?php echo esc_attr( apply_filters( 'woocommerce_product_price_class', 'price' ) ); ?> h4 mb-0 pe-md-3 product-price"
@@ -85,3 +86,4 @@ if ($shipping_class == 'bundle' || $shipping_class == 'heavy-freight') {
         </p>
     </div>
 </div>
+<?php endif;

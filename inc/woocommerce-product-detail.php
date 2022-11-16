@@ -96,3 +96,14 @@ function vehicle_fitment() {
     echo '</ul>';
 
 }
+
+add_filter( 'woocommerce_bundled_item_is_optional_checked', 'wc_pb_is_optional_item_checked', 10, 2 );
+
+function wc_pb_is_optional_item_checked( $checked, $bundled_item ) {
+
+	if ( ! isset( $_GET[ 'update-bundle' ] ) ) {
+		$checked = true;
+	}
+
+	return $checked;
+}

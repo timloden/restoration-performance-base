@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		?>
     <div class="bundle_wrap">
-        <div class="bundle_price"></div>
+        <div class="bundle_price h4" style="font-size: 1.75em;"></div>
         <div class="bundle_error" style="display:none">
             <div class="woocommerce-info">
                 <ul class="msg"></ul>
