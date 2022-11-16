@@ -51,20 +51,17 @@ function my_remove_search_redirect() {
 add_filter( 'searchwp\query\mods', function( $mods ) {
 	global $wpdb;
 
+	$bonuses = [];
 	$dii_term = get_term_by('name', 'Dynacorn', 'pwb-brand');
 	$goodmark_term = get_term_by('name', 'Goodmark', 'pwb-brand');
-	
-	// Taxonomy bonus weight Mods.
-	$bonuses = [ 
-		[
-			'term_id' => $dii_term->term_id,  // Term ID to receive extra weight.
-			'weight'  => 200, // How much extra weight for this term.
-		], 
-		[
-			'term_id' => $goodmark_term->term_id,  // Term ID to receive extra weight.
-			'weight'  => 200, // How much extra weight for this term.
-		],  
-	];
+
+	if ($dii_term) {
+		array_push($bonuses, ['term_id' => $dii_term->term_id, 'weight'  => 1000]);
+	}
+
+	if ($goodmark_term) {
+		array_push($bonuses, ['term_id' => $goodmark_term->term_id, 'weight'  => 500]);
+	}
 
 	$term_mods = [];
 
