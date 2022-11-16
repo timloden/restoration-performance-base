@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         name="<?php echo $bundle_fields_prefix; ?>bundle_selected_optional_<?php echo $bundled_item->get_id(); ?>"
         value=""
         <?php checked( $bundled_item->is_optional_checked() && $bundled_item->is_in_stock(), true ); echo $bundled_item->is_in_stock() ? '' : 'disabled="disabled"' ; ?> /> <?php
-	echo sprintf( __( 'Add%1$s%2$s%3$s', 'woocommerce-product-bundles' ), $label_title, $label_price, '' );
+	echo sprintf( __( 'Add%1$s%2$s%3$s', 'woocommerce-product-bundles' ), '$label_title', $label_price, '' );
 ?></label><?php
 
 if ( $availability_html ) {
