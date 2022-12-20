@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 4.0.0
+ * @version 7.0.1
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -28,6 +28,8 @@ do_action( 'woocommerce_before_shipping_calculator' ); ?>
 
         <?php if ( apply_filters( 'woocommerce_shipping_calculator_enable_country', true ) ) : ?>
         <div class="form-group" id="calc_shipping_country_field">
+            <label for="calc_shipping_country"
+                class="screen-reader-text d-none"><?php esc_html_e( 'Country / region:', 'woocommerce' ); ?></label>
             <select name="calc_shipping_country" id="calc_shipping_country"
                 class="country_to_state country_select form-select" rel="calc_shipping_state">
                 <option value=""><?php esc_html_e( 'Select a country / region&hellip;', 'woocommerce' ); ?></option>
