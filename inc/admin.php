@@ -135,11 +135,14 @@ function invoice_display_admin_order_meta($order){
     
     if ( ! empty( $invoice_number) ) {
 
-        if ($invoice_brand == 'oer') {
+        if ($invoice_brand == 'oer' || !$invoice_brand) {
             $invoice_url = 'https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $invoice_number . '&invoiceStatusId=3&ra=viewOrders';
         } else if ($invoice_brand == 'dynacorn') {
             $invoice_url = 'http://www.dynacorn.com/ViewInvoiceDetails.aspx?id=' . $invoice_number;
+        } else if ($invoice_brand == 'goodmark') {
+            $invoice_url = '#';
         }
+        
         echo '<p><a class="button" href="' . $invoice_url . '" target="_blank">Open Invoice: ' . $invoice_number . '</a></p>';
     }
 }
