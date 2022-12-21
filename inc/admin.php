@@ -68,9 +68,9 @@ if ( ! function_exists( 'invoice_field' ) )
         <p>
             <input type="text" style="width:250px;" name="invoice_number" placeholder="' . $meta_field_data . '" value="' . $meta_field_data . '"></p>';
 
-        echo '<input type="hidden" name="invoice_brand_field_nonce" value="' . wp_create_nonce() . '">
+        echo '
         <p style="padding-bottom:5px;">
-            <select type="text" style="width:250px;" name="invoice_brand_number">
+            <select type="text" style="width:250px;" name="invoice_brand">
                 <option value="oer">OER</option>
                 <option value="dynacorn">Dynacorn</option>
                 <option value="goodmark">Goodmark</option>
@@ -122,6 +122,7 @@ if ( ! function_exists( 'invoice_number_save' ) )
 
         // Sanitize user input  and update the meta field in the database.
         update_post_meta( $post_id, '_invoice_number', $_POST[ 'invoice_number' ] );
+        update_post_meta( $post_id, '_invoice_brand', $_POST[ 'invoice_brand' ] );
     }
 }
 
@@ -130,8 +131,16 @@ add_action( 'woocommerce_admin_order_data_after_billing_address', 'invoice_displ
 
 function invoice_display_admin_order_meta($order){
     $invoice_number = get_post_meta( $order->id, '_invoice_number', true );
+    $invoice_brand = get_post_meta( $order->id, '_invoice_brand', true );
+    
     if ( ! empty( $invoice_number) ) {
-        echo '<p><a class="button" href="https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $invoice_number . '&invoiceStatusId=3&ra=viewOrders" target="_blank">Open Invoice: ' . $invoice_number . '</a></p>';
+
+        if ($invoice_brand == 'oer') {
+            $invoice_url = 'https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $invoice_number . '&invoiceStatusId=3&ra=viewOrders';
+        } else if ($invoice_brand == 'dynacorn') {
+            $invoice_url = 'http://www.dynacorn.com/ViewInvoiceDetails.aspx?id=' . $invoice_number;
+        }
+        echo '<p><a class="button" href="' . $invoice_url . '" target="_blank">Open Invoice: ' . $invoice_number . '</a></p>';
     }
 }
 
@@ -151,9 +160,17 @@ function add_example_column_contents( $column, $post_id ) {
     {
         $order = wc_get_order( $post_id ); // Get the WC_Order instance Object
         $invoice_number = get_post_meta( $order->id, '_invoice_number', true );
+        $invoice_brand = get_post_meta( $order->id, '_invoice_brand', true );
 
         if ($invoice_number) {
-        echo '<p><a target="_blank" class="button wc-action-button" href="https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $invoice_number . '&invoiceStatusId=3&ra=viewOrders">' . $invoice_number . '</a></p>';
+            if ($invoice_brand == 'oer') {
+                $invoice_url = 'https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $invoice_number . '&invoiceStatusId=3&ra=viewOrders';
+            } else if ($invoice_brand == 'dynacorn') {
+                $invoice_url = 'http://www.dynacorn.com/ViewInvoiceDetails.aspx?id=' . $invoice_number;
+            }
+            
+            echo '<p><a target="_blank" class="button wc-action-button" href="' . $invoice_url . '">' . $invoice_number . '</a></p>';
+        
         }
 
     }
