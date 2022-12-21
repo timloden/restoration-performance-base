@@ -66,8 +66,8 @@ if ( ! function_exists( 'invoice_field' ) )
         $invoice_brand_field = get_post_meta( $post->ID, '_invoice_brand', true ) ? get_post_meta( $post->ID, '_invoice_brand', true ) : '';
         
         $brands = [
-            'Dynacorn',
             'OER',
+            'Dynacorn',
             'Goodmark'
         ];
 
