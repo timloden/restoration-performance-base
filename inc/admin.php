@@ -62,19 +62,27 @@ if ( ! function_exists( 'invoice_field' ) )
     {
         global $post;
 
-        $meta_field_data = get_post_meta( $post->ID, '_invoice_number', true ) ? get_post_meta( $post->ID, '_invoice_number', true ) : '';
+        $invoice_number_field = get_post_meta( $post->ID, '_invoice_number', true ) ? get_post_meta( $post->ID, '_invoice_number', true ) : '';
+        $invoice_brand_field = get_post_meta( $post->ID, '_invoice_brand', true ) ? get_post_meta( $post->ID, '_invoice_brand', true ) : '';
+        
+        $brands = [
+            'Dynacorn',
+            'OER',
+            'Goodmark'
+        ];
 
         echo '<input type="hidden" name="invoice_field_nonce" value="' . wp_create_nonce() . '">
         <p>
-            <input type="text" style="width:250px;" name="invoice_number" placeholder="' . $meta_field_data . '" value="' . $meta_field_data . '"></p>';
+            <input type="text" style="width:250px;" name="invoice_number" placeholder="Number" value="' . $invoice_number_field . '"></p>';
 
-        echo '
-        <p style="padding-bottom:5px;">
-            <select type="text" style="width:250px;" name="invoice_brand">
-                <option value="oer">OER</option>
-                <option value="dynacorn">Dynacorn</option>
-                <option value="goodmark">Goodmark</option>
-            </select>
+        echo '<p style="padding-bottom:5px;">
+            <select type="text" style="width:250px;" name="invoice_brand">';
+
+            foreach ($brands as $brand) {
+                $selected = $invoice_brand_field == $brand ? 'selected' : '';
+                echo '<option value="' . $brand .'" ' . $selected .'>' . $brand . '</option>';
+            }
+        echo '</select>
         </p>';
 
     }
@@ -121,8 +129,14 @@ if ( ! function_exists( 'invoice_number_save' ) )
         // --- Its safe for us to save the data ! --- //
 
         // Sanitize user input  and update the meta field in the database.
-        update_post_meta( $post_id, '_invoice_number', $_POST[ 'invoice_number' ] );
-        update_post_meta( $post_id, '_invoice_brand', $_POST[ 'invoice_brand' ] );
+        if ($_POST[ 'invoice_number' ]) {
+            update_post_meta( $post_id, '_invoice_number', $_POST[ 'invoice_number' ] );
+        }
+        
+        if ($_POST[ 'invoice_brand' ]) {
+            update_post_meta( $post_id, '_invoice_brand', $_POST[ 'invoice_brand' ] );
+        }
+        
     }
 }
 
@@ -135,11 +149,13 @@ function invoice_display_admin_order_meta($order){
     
     if ( ! empty( $invoice_number) ) {
 
-        if ($invoice_brand == 'oer' || !$invoice_brand) {
+        if ($invoice_brand == 'OER' || !$invoice_brand) {
             $invoice_url = 'https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $invoice_number . '&invoiceStatusId=3&ra=viewOrders';
-        } else if ($invoice_brand == 'dynacorn') {
+        } else if ($invoice_brand == 'Dynacorn') {
             $invoice_url = 'http://www.dynacorn.com/ViewInvoiceDetails.aspx?id=' . $invoice_number;
-        } else if ($invoice_brand == 'goodmark') {
+        } else if ($invoice_brand == 'Goodmark') {
+            $invoice_url = '#';
+        } else {
             $invoice_url = '#';
         }
         
@@ -167,11 +183,13 @@ function add_example_column_contents( $column, $post_id ) {
 
         if ($invoice_number) {
             // check for oer or legacy oer invoices that dont have a brand
-            if ($invoice_brand == 'oer' || !$invoice_brand) {
+            if ($invoice_brand == 'OER' || !$invoice_brand) {
                 $invoice_url = 'https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $invoice_number . '&invoiceStatusId=3&ra=viewOrders';
-            } else if ($invoice_brand == 'dynacorn') {
+            } else if ($invoice_brand == 'Dynacorn') {
                 $invoice_url = 'http://www.dynacorn.com/ViewInvoiceDetails.aspx?id=' . $invoice_number;
-            } else if ($invoice_brand == 'goodmark') {
+            } else if ($invoice_brand == 'Goodmark') {
+                $invoice_url = '#';
+            } else {
                 $invoice_url = '#';
             }
             
