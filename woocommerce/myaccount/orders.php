@@ -14,7 +14,7 @@
  *
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 3.7.0
+ * @version 7.0.1
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -30,7 +30,8 @@ do_action( 'woocommerce_before_account_orders', $has_orders ); ?>
             <?php foreach ( wc_get_account_orders_columns() as $column_id => $column_name ) : ?>
             <th
                 class="woocommerce-orders-table__header woocommerce-orders-table__header-<?php echo esc_attr( $column_id ); ?>">
-                <span class="nobr"><?php echo esc_html( $column_name ); ?></span></th>
+                <span class="nobr"><?php echo esc_html( $column_name ); ?></span>
+            </th>
             <?php endforeach; ?>
         </tr>
     </thead>
