@@ -130,7 +130,7 @@ if ( ! function_exists( 'invoice_number_save' ) )
 add_action( 'woocommerce_admin_order_data_after_billing_address', 'invoice_display_admin_order_meta', 10, 1 );
 
 function invoice_display_admin_order_meta($order){
-    $invoice_number = get_post_meta( $order->id, '_invoice_number', true );
+    $invoice_number = get_post_meta( $order->id, '_invoice_number', true ) ? get_post_meta( $order->id, '_invoice_number', true ) : get_post_meta( $order->id, '_oer_invoice_number', true );
     $invoice_brand = get_post_meta( $order->id, '_invoice_brand', true );
     
     if ( ! empty( $invoice_number) ) {
@@ -159,14 +159,17 @@ function add_example_column_contents( $column, $post_id ) {
     if ( 'invoice' === $column )
     {
         $order = wc_get_order( $post_id ); // Get the WC_Order instance Object
-        $invoice_number = get_post_meta( $order->id, '_invoice_number', true );
+        $invoice_number = get_post_meta( $order->id, '_invoice_number', true ) ? get_post_meta( $order->id, '_invoice_number', true ) : get_post_meta( $order->id, '_oer_invoice_number', true );
         $invoice_brand = get_post_meta( $order->id, '_invoice_brand', true );
 
         if ($invoice_number) {
-            if ($invoice_brand == 'oer') {
+            // check for oer or legacy oer invoices that dont have a brand
+            if ($invoice_brand == 'oer' || !$invoice_brand) {
                 $invoice_url = 'https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $invoice_number . '&invoiceStatusId=3&ra=viewOrders';
             } else if ($invoice_brand == 'dynacorn') {
                 $invoice_url = 'http://www.dynacorn.com/ViewInvoiceDetails.aspx?id=' . $invoice_number;
+            } else if ($invoice_brand == 'goodmark') {
+                $invoice_url = '#';
             }
             
             echo '<p><a target="_blank" class="button wc-action-button" href="' . $invoice_url . '">' . $invoice_number . '</a></p>';
