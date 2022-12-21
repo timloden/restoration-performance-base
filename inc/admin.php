@@ -42,50 +42,59 @@ function my_admin_title($admin_title, $title) {
     return get_bloginfo('name').' | '.$title;
 }
 
-// OER invoice meta box for order
+// Invoice meta box for order
 
 // Adding Meta container admin shop_order pages
-add_action( 'add_meta_boxes', 'add_OER_meta_boxes' );
+add_action( 'add_meta_boxes', 'add_invoice_meta_boxes' );
 
-if ( ! function_exists( 'add_OER_meta_boxes' ) )
+if ( ! function_exists( 'add_invoice_meta_boxes' ) )
 {
-    function add_OER_meta_boxes()
+    function add_invoice_meta_boxes()
     {
-        add_meta_box( 'mv_other_fields', __('OER Invoice Number','woocommerce'), 'oer_invoice_field', 'shop_order', 'side', 'high' );
+        add_meta_box( 'mv_other_fields', __('Invoice Number','woocommerce'), 'invoice_field', 'shop_order', 'side', 'high' );
     }
 }
 
 // Adding Meta field in the meta container admin shop_order pages
-if ( ! function_exists( 'oer_invoice_field' ) )
+if ( ! function_exists( 'invoice_field' ) )
 {
-    function oer_invoice_field()
+    function invoice_field()
     {
         global $post;
 
-        $meta_field_data = get_post_meta( $post->ID, '_oer_invoice_number', true ) ? get_post_meta( $post->ID, '_oer_invoice_number', true ) : '';
+        $meta_field_data = get_post_meta( $post->ID, '_invoice_number', true ) ? get_post_meta( $post->ID, '_invoice_number', true ) : '';
 
-        echo '<input type="hidden" name="oer_invoice_field_nonce" value="' . wp_create_nonce() . '">
-        <p style="border-bottom:solid 1px #eee;padding-bottom:13px;">
-            <input type="text" style="width:250px;" name="oer_invoice_number" placeholder="' . $meta_field_data . '" value="' . $meta_field_data . '"></p>';
+        echo '<input type="hidden" name="invoice_field_nonce" value="' . wp_create_nonce() . '">
+        <p>
+            <input type="text" style="width:250px;" name="invoice_number" placeholder="' . $meta_field_data . '" value="' . $meta_field_data . '"></p>';
+
+        echo '
+        <p style="padding-bottom:5px;">
+            <select type="text" style="width:250px;" name="invoice_brand">
+                <option value="oer">OER</option>
+                <option value="dynacorn">Dynacorn</option>
+                <option value="goodmark">Goodmark</option>
+            </select>
+        </p>';
 
     }
 }
 
 // Save the data of the Meta field
-add_action( 'save_post', 'oer_invoice_number_save', 10, 1 );
+add_action( 'save_post', 'invoice_number_save', 10, 1 );
 
-if ( ! function_exists( 'oer_invoice_number_save' ) )
+if ( ! function_exists( 'invoice_number_save' ) )
 {
 
-    function oer_invoice_number_save( $post_id ) {
+    function invoice_number_save( $post_id ) {
 
         // We need to verify this with the proper authorization (security stuff).
 
         // Check if our nonce is set.
-        if ( ! isset( $_POST[ 'oer_invoice_field_nonce' ] ) ) {
+        if ( ! isset( $_POST[ 'invoice_field_nonce' ] ) ) {
             return $post_id;
         }
-        $nonce = $_REQUEST[ 'oer_invoice_field_nonce' ];
+        $nonce = $_REQUEST[ 'invoice_field_nonce' ];
 
         //Verify that the nonce is valid.
         if ( ! wp_verify_nonce( $nonce ) ) {
@@ -112,17 +121,29 @@ if ( ! function_exists( 'oer_invoice_number_save' ) )
         // --- Its safe for us to save the data ! --- //
 
         // Sanitize user input  and update the meta field in the database.
-        update_post_meta( $post_id, '_oer_invoice_number', $_POST[ 'oer_invoice_number' ] );
+        update_post_meta( $post_id, '_invoice_number', $_POST[ 'invoice_number' ] );
+        update_post_meta( $post_id, '_invoice_brand', $_POST[ 'invoice_brand' ] );
     }
 }
 
 // Display field value on the order edit page (not in custom fields metabox)
-add_action( 'woocommerce_admin_order_data_after_billing_address', 'oer_invoice_display_admin_order_meta', 10, 1 );
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'invoice_display_admin_order_meta', 10, 1 );
 
-function oer_invoice_display_admin_order_meta($order){
-    $oer_invoice_number = get_post_meta( $order->id, '_oer_invoice_number', true );
-    if ( ! empty( $oer_invoice_number) ) {
-        echo '<p><a class="button" href="https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $oer_invoice_number . '&invoiceStatusId=3&ra=viewOrders" target="_blank">Open OER Invoice: ' . $oer_invoice_number . '</a></p>';
+function invoice_display_admin_order_meta($order){
+    $invoice_number = get_post_meta( $order->id, '_invoice_number', true ) ? get_post_meta( $order->id, '_invoice_number', true ) : get_post_meta( $order->id, '_oer_invoice_number', true );
+    $invoice_brand = get_post_meta( $order->id, '_invoice_brand', true );
+    
+    if ( ! empty( $invoice_number) ) {
+
+        if ($invoice_brand == 'oer' || !$invoice_brand) {
+            $invoice_url = 'https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $invoice_number . '&invoiceStatusId=3&ra=viewOrders';
+        } else if ($invoice_brand == 'dynacorn') {
+            $invoice_url = 'http://www.dynacorn.com/ViewInvoiceDetails.aspx?id=' . $invoice_number;
+        } else if ($invoice_brand == 'goodmark') {
+            $invoice_url = '#';
+        }
+        
+        echo '<p><a class="button" href="' . $invoice_url . '" target="_blank">Open Invoice: ' . $invoice_number . '</a></p>';
     }
 }
 
@@ -141,10 +162,21 @@ function add_example_column_contents( $column, $post_id ) {
     if ( 'invoice' === $column )
     {
         $order = wc_get_order( $post_id ); // Get the WC_Order instance Object
-        $oer_invoice_number = get_post_meta( $order->id, '_oer_invoice_number', true );
+        $invoice_number = get_post_meta( $order->id, '_invoice_number', true ) ? get_post_meta( $order->id, '_invoice_number', true ) : get_post_meta( $order->id, '_oer_invoice_number', true );
+        $invoice_brand = get_post_meta( $order->id, '_invoice_brand', true );
 
-        if ($oer_invoice_number) {
-        echo '<p><a target="_blank" class="button wc-action-button" href="https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $oer_invoice_number . '&invoiceStatusId=3&ra=viewOrders">' . $oer_invoice_number . '</a></p>';
+        if ($invoice_number) {
+            // check for oer or legacy oer invoices that dont have a brand
+            if ($invoice_brand == 'oer' || !$invoice_brand) {
+                $invoice_url = 'https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $invoice_number . '&invoiceStatusId=3&ra=viewOrders';
+            } else if ($invoice_brand == 'dynacorn') {
+                $invoice_url = 'http://www.dynacorn.com/ViewInvoiceDetails.aspx?id=' . $invoice_number;
+            } else if ($invoice_brand == 'goodmark') {
+                $invoice_url = '#';
+            }
+            
+            echo '<p><a target="_blank" class="button wc-action-button" href="' . $invoice_url . '">' . $invoice_number . '</a></p>';
+        
         }
 
     }

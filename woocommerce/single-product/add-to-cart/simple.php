@@ -12,7 +12,7 @@
  *
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 3.4.0
+ * @version 7.0.1
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -60,7 +60,7 @@ if ( $product->is_in_stock() ) : ?>
                 <?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
         </div>
         <div class="col-auto">
-            <?php echo do_shortcode('[ti_wishlists_addtowishlist]'); ?>
+            <?php echo $product->is_virtual() ? '' : do_shortcode('[ti_wishlists_addtowishlist]'); ?>
         </div>
     </div>
     <?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>

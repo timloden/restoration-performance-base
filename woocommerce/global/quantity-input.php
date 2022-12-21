@@ -12,12 +12,14 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 4.0.0
+ * @version 7.2.1
  */
 
 defined( 'ABSPATH' ) || exit;
 
 if ( $max_value && $min_value === $max_value ) {
+    $is_readonly = true;
+	$input_value = $min_value;
 	?>
 <div class="quantity hidden">
     <input type="hidden" id="<?php echo esc_attr( $input_id ); ?>" class="qty"
@@ -25,6 +27,7 @@ if ( $max_value && $min_value === $max_value ) {
 </div>
 <?php
 } else {
+    $is_readonly = false;
 	/* translators: %s: Quantity. */
 	$label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 'woocommerce' ), wp_strip_all_tags( $args['product_name'] ) ) : esc_html__( 'Quantity', 'woocommerce' );
 	?>
@@ -34,15 +37,24 @@ if ( $max_value && $min_value === $max_value ) {
 
     <label class="sr-only" for="<?php echo esc_attr( $input_id ); ?>"><?php echo esc_attr( $label ); ?></label>
 
-    <input type="number" id="<?php echo esc_attr( $input_id ); ?>"
+    <input type="<?php echo $is_readonly ? 'text' : 'number'; ?>" <?php wp_readonly( $is_readonly ); ?>
+        id="<?php echo esc_attr( $input_id ); ?>"
         class="<?php echo esc_attr( join( ' ', (array) $classes ) ); ?> form-control"
-        step="<?php echo esc_attr( $step ); ?>" min="<?php echo esc_attr( $min_value ); ?>"
-        max="<?php echo esc_attr( 0 < $max_value ? $max_value : '' ); ?>" name="<?php echo esc_attr( $input_name ); ?>"
-        value="<?php echo esc_attr( $input_value ); ?>"
+        name="<?php echo esc_attr( $input_name ); ?>" value="<?php echo esc_attr( $input_value ); ?>"
         title="<?php echo esc_attr_x( 'Qty', 'Product quantity input tooltip', 'woocommerce' ); ?>" size="4"
-        placeholder="<?php echo esc_attr( $placeholder ); ?>" inputmode="<?php echo esc_attr( $inputmode ); ?>" />
+        <?php if ( ! $is_readonly ): ?> step="<?php echo esc_attr( $step ); ?>"
+        min="<?php echo esc_attr( $min_value ); ?>" max="<?php echo esc_attr( 0 < $max_value ? $max_value : '' ); ?>"
+        placeholder="<?php echo esc_attr( $placeholder ); ?>" inputmode="<?php echo esc_attr( $inputmode ); ?>"
+        autocomplete="<?php echo esc_attr( isset( $autocomplete ) ? $autocomplete : 'on' ); ?>" <?php endif; ?> />
 
-    <?php do_action( 'woocommerce_after_quantity_input_field' ); ?>
+    <?php 
+    /**
+	 * Hook to output something after quantity input field
+	 *
+	 * @since 3.6.0
+	 */
+    do_action( 'woocommerce_after_quantity_input_field' );
+    ?>
 </div>
 <?php
 }
