@@ -64,9 +64,18 @@ if ( ! function_exists( 'invoice_field' ) )
 
         $meta_field_data = get_post_meta( $post->ID, '_invoice_number', true ) ? get_post_meta( $post->ID, '_invoice_number', true ) : '';
 
-        echo '<input type="hidden" name="oer_invoice_field_nonce" value="' . wp_create_nonce() . '">
-        <p style="border-bottom:solid 1px #eee;padding-bottom:13px;">
-            <input type="text" style="width:250px;" name="oer_invoice_number" placeholder="' . $meta_field_data . '" value="' . $meta_field_data . '"></p>';
+        echo '<input type="hidden" name="invoice_field_nonce" value="' . wp_create_nonce() . '">
+        <p>
+            <input type="text" style="width:250px;" name="invoice_number" placeholder="' . $meta_field_data . '" value="' . $meta_field_data . '"></p>';
+
+        echo '<input type="hidden" name="invoice_brand_field_nonce" value="' . wp_create_nonce() . '">
+        <p style="padding-bottom:5px;">
+            <select type="text" style="width:250px;" name="invoice_brand_number">
+                <option value="oer">OER</option>
+                <option value="dynacorn">Dynacorn</option>
+                <option value="goodmark">Goodmark</option>
+            </select>
+        </p>';
 
     }
 }
@@ -122,7 +131,7 @@ add_action( 'woocommerce_admin_order_data_after_billing_address', 'invoice_displ
 function invoice_display_admin_order_meta($order){
     $invoice_number = get_post_meta( $order->id, '_invoice_number', true );
     if ( ! empty( $invoice_number) ) {
-        echo '<p><a class="button" href="https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $invoice_number . '&invoiceStatusId=3&ra=viewOrders" target="_blank">Open OER Invoice: ' . $invoice_number . '</a></p>';
+        echo '<p><a class="button" href="https://www.oerparts.com/controller.cfm?type=order&action=getOrderDetails&invoiceId=' . $invoice_number . '&invoiceStatusId=3&ra=viewOrders" target="_blank">Open Invoice: ' . $invoice_number . '</a></p>';
     }
 }
 
