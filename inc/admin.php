@@ -62,7 +62,12 @@ if ( ! function_exists( 'invoice_field' ) )
     {
         global $post;
 
-        $invoice_number_field = get_post_meta( $post->ID, '_invoice_number', true ) ? get_post_meta( $post->ID, '_invoice_number', true ) : '';
+        if (get_post_meta( $post->ID, '_oer_invoice_number', true )) {
+            $invoice_number_field = get_post_meta( $post->ID, '_oer_invoice_number', true );
+        } else {
+            $invoice_number_field = get_post_meta( $post->ID, '_invoice_number', true ) ? get_post_meta( $post->ID, '_invoice_number', true ) : '' ;
+        }
+
         $invoice_brand_field = get_post_meta( $post->ID, '_invoice_brand', true ) ? get_post_meta( $post->ID, '_invoice_brand', true ) : '';
         
         $brands = [
