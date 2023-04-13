@@ -25,17 +25,21 @@ $has_calculated_shipping  = !empty($has_calculated_shipping);
 $show_shipping_calculator = !empty($show_shipping_calculator);
 $calculator_text          = '';
 
-$session_rates = array_values( WC()->session->get( 'flexible_shipping_rates' ));
-$most_recent_rate = end($session_rates);
-$shipping_rates = $most_recent_rate['rates'];
+$session_rates = WC()->session->get( 'flexible_shipping_rates' ) != null ? array_values( WC()->session->get( 'flexible_shipping_rates' )) : [];
 
 $ground_rate = [];
 
-foreach ($shipping_rates as $rate) {
-    if ($rate['service_type'] == 'GROUND_HOME_DELIVERY') {
-       array_push($ground_rate, $rate);
+if ($session_rates) {
+    $most_recent_rate = end($session_rates);
+    $shipping_rates = $most_recent_rate['rates'];
+    
+    foreach ($shipping_rates as $rate) {
+        if ($rate['service_type'] == 'GROUND_HOME_DELIVERY') {
+           array_push($ground_rate, $rate);
+        }
     }
 }
+
 
 // flexible_shipping_fedex:0:GROUND_HOME_DELIVERY
 
