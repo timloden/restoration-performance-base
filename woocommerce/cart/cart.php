@@ -13,7 +13,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 7.0.1
+ * @version 7.4.0
  */
 
 defined('ABSPATH') || exit;
@@ -178,7 +178,9 @@ $all_shipping_classes = [];
                         <input type="text" name="coupon_code" class="input-text form-control" id="coupon_code" value=""
                             placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" />
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-secondary" name="apply_coupon"
+                            <button type="submit"
+                                class="btn btn-secondary<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>"
+                                name="apply_coupon"
                                 value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>"><?php esc_attr_e('Apply', 'woocommerce'); ?></button>
                         </div>
                         <?php do_action('woocommerce_cart_coupon'); ?>
