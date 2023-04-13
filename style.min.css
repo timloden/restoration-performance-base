@@ -6,7 +6,7 @@ Theme URI: https://www.restorationperformance.com/
 Author: Restoration Performance
 Author URI: https://www.restorationperformance.com/
 Description: Restoration Performance base theme for all store sites.
-Version: 1.18.0
+Version: 1.19.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -2784,6 +2784,7 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-weight:700}
 .products .add_to_cart_button.loading:before{margin-right:5px;content:"";height:18px;width:18px;border-width:.2em}
 .products .woocommerce-loop-product__title{font-size:1.1rem;line-height:1.2}
 .products .tinv-wishlist{text-align:center}
+.quantity .qty{width:60px;border:1px solid #ced4da;padding:.375rem .75rem;border-radius:.25rem}
 .woocommerce-pagination{display:block}
 .woocommerce-pagination ul{margin:1em 0;display:-webkit-box;display:-ms-flexbox;display:flex;list-style:none}
 .woocommerce-pagination ul .page-numbers{position:relative;display:block;padding:.5rem .75rem;margin-left:-1px;line-height:1.25;color:#005ca9;background-color:#fff;border:1px solid #dee2e6;margin-right:0}
