@@ -9,7 +9,10 @@
  *
  * @package restoration-performance-base
  */
+$logo = get_field('logo', 'option');
 $newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option');
+$merchant_id = get_field('google_merchant_id', 'option');
+$show_review_badge = get_field('enable_google_review_badge', 'option');
 ?>
 
 </div><!-- #content -->
@@ -77,17 +80,31 @@ $newsletter_form_id = get_field('footer_newsletter_signup_field_id', 'option');
                 </div>
             </div>
             <div class="col-12 col-lg-4">
-                <p mb-0><?php echo get_bloginfo ( 'name' ); ?> is a reseller and dealer of replacement restoration parts
+                <?php if ($logo) : ?>
+                <img src="<?php echo $logo['url'] ?>" class="img-fluid mb-2" alt="<?php echo $logo['alt'] ?>"
+                    style="max-width: 250px;"></a>
+                <?php endif; ?>
+                <p><?php echo get_bloginfo ( 'name' ); ?> is a reseller and dealer of replacement restoration parts
                     relating to the
                     Licensed
                     trademark Chevy, Chevrolet, Ford and Mopar.</p>
                 <div class="mb-3">
-                    <?php 
-                    if ($newsletter_form_id) {
-                        echo '<p class="mb-2 fw-bold">Get all the latest product updates, specials and coupons!</p>';
-                        echo do_shortcode($newsletter_form_id);
+                    <?php if ($merchant_id && $show_review_badge) : ?>
+                    <script src="https://apis.google.com/js/platform.js?onload=renderBadge" async defer></script>
+
+                    <script>
+                    window.renderBadge = function() {
+                        var ratingBadgeContainer = document.createElement("div");
+                        document.body.appendChild(ratingBadgeContainer);
+                        window.gapi.load('ratingbadge', function() {
+                            window.gapi.ratingbadge.render(ratingBadgeContainer, {
+                                "merchant_id": <?php echo $merchant_id; ?>
+                            });
+                        });
                     }
-                     ?>
+                    </script>
+
+                    <?php endif; ?>
                 </div>
 
             </div>

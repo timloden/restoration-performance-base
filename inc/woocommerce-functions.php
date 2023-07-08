@@ -200,7 +200,7 @@ function account_rename_orders( $menu_links ){
 	// $menu_links['TAB ID HERE'] = 'NEW TAB NAME HERE';
     $menu_links['orders'] = 'My Orders';
     
-    if ($menu_links['tinv_wishlist']) {
+    if (isset($menu_links['tinv_wishlist'])) {
         $menu_links['tinv_wishlist'] = 'My Buildlist';
     }
  
