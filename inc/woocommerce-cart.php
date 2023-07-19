@@ -87,25 +87,25 @@ function on_action_cart_updated() {
         remove_action( 'woocommerce_proceed_to_checkout','woocommerce_button_proceed_to_checkout', 20);
     }
     
-    if ($has_freight == false && $shipping_state != 'AK' && $shipping_state != 'HI') {
+    // if ($has_freight == false && $shipping_state != 'AK' && $shipping_state != 'HI') {
 
-        if ($current_amount < 200) {
-            $difference = 200 - $current_amount;
+    //     if ($current_amount < 200) {
+    //         $difference = 200 - $current_amount;
 
-            echo '<div class="alert alert-info mt-3" role="alert">You&apos;re so close! all you need is <strong>$' . $difference . '</strong> more in your cart to get
-            <strong>$7.50
-                shipping</strong>!
-            </div>';
-        } elseif ($current_amount >= 200) {
-            echo '<div class="alert alert-success mt-3" role="alert">
-                Congratulations your order can be shipped for only <strong>$7.50</strong>!
-            </div>';
-        }
-    }
+    //         echo '<div class="alert alert-info mt-3" role="alert">You&apos;re so close! all you need is <strong>$' . $difference . '</strong> more in your cart to get
+    //         <strong>$7.50
+    //             shipping</strong>!
+    //         </div>';
+    //     } elseif ($current_amount >= 200) {
+    //         echo '<div class="alert alert-success mt-3" role="alert">
+    //             Congratulations your order can be shipped for only <strong>$7.50</strong>!
+    //         </div>';
+    //     }
+    // }
 
-    if ($has_dynacorn == true && $current_amount >= 200) {
-        echo '<a data-toggle="dii-tooltip" class="btn btn-text text-primary px-0 mb-3" data-placement="top" title="$7.50 shipping is only offered for OER parts shipped ground">Why does my order not qualify for $7.50 shipping?</a>';
-    }
+    // if ($has_dynacorn == true && $current_amount >= 200) {
+    //     echo '<a data-toggle="dii-tooltip" class="btn btn-text text-primary px-0 mb-3" data-placement="top" title="$7.50 shipping is only offered for OER parts shipped ground">Why does my order not qualify for $7.50 shipping?</a>';
+    // }
 }
 
 // cart - notices 
