@@ -74,10 +74,22 @@ function redirect_to_cart_if_checkout() {
 add_action('woocommerce_review_order_after_submit', 'full_terms_window');
 
 function full_terms_window() {
-    $page = get_page_by_title('Terms and Conditions'); 
-    $content = apply_filters('the_content', $page->post_content);
 
-    echo '<div class="overflow-auto mt-4 mb-2 p-2 bg-white border" style="height: 100px; font-size: 12px;">' . $content . '</div>';
+    $array_of_objects = get_posts([
+        'title' => 'Terms and Conditions',
+        'post_type' => 'any',
+    ]);
+
+    if (!empty($array_of_objects)) {
+        $id = $array_of_objects[0];//Be sure you have an array with single post or page 
+        $id = $id->ID;
+        $post = get_post($id); 
+        $content = apply_filters('the_content', $post->post_content);
+        
+        echo '<div class="overflow-auto mt-4 mb-2 p-2 bg-white border" style="height: 100px; font-size: 12px;">' . $content . '</div>';
+    }
+
+    
 }
 
 // add payment section title before payment options
