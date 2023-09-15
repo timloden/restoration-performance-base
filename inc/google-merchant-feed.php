@@ -4,6 +4,26 @@
 
 add_filter( 'woocommerce_gpf_hide_if_no_images_google', '__return_true' );
 
+// remove specific items
+
+function lw_gpf_exclude_product( $excluded, $product_id, $feed_format ) {
+    // return TRUE to exclude this product
+    // return FALSE to include this product
+    $hide_from_feed = false;
+
+    $product = wc_get_product( $product_id );
+    $stock_status = $product->get_stock_status();
+
+    if ($product->get_regular_price() < 35 || $stock_status == 'onbackorder' || $stock_status == 'outofstock') {
+        return true;
+    } else {
+        // return $excluded to keep the standard behaviour for this product.
+        return $excluded;
+    }
+}
+
+add_filter( 'woocommerce_gpf_exclude_product', 'lw_gpf_exclude_product', 11, 3 );
+
 // change weight to use lbs
 
 add_filter( 'woocommerce_gpf_shipping_weight_unit', function ( $unit ) {
