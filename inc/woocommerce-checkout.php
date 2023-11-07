@@ -416,12 +416,12 @@ function custom_woocommerce_form_field($key, $args, $value = null)
     }
 }
 
-add_action( 'template_redirect', 'define_default_payment_gateway' );
+// add_action( 'template_redirect', 'define_default_payment_gateway' );
 
-function define_default_payment_gateway(){
-    if( is_checkout() && ! is_wc_endpoint_url() ) {
-        $default_payment_id = 'ppcp-credit-card-gateway';
+// function define_default_payment_gateway(){
+//     if( is_checkout() && ! is_wc_endpoint_url() ) {
+//         $default_payment_id = 'ppcp-credit-card-gateway';
 
-        WC()->session->set( 'chosen_payment_method', $default_payment_id );
-    }
-}
+//         WC()->session->set( 'chosen_payment_method', $default_payment_id );
+//     }
+// }
