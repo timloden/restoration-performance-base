@@ -16,6 +16,58 @@
     label[for='billing_country'] {
         display: none;
     }
+
+    #wc-ppcp-credit-card-gateway-cc-form {
+        margin-top: 1rem;
+
+        p.form-row {
+            display: flex;
+            width: 100%;
+            flex-direction: column;            
+        }
+
+        p.form-row-first, p.form-row-last {
+            width: 30%;
+        }
+
+        p.form-row-first {
+            margin-right: 1rem;
+        }
+
+        label {
+            @extend .form-label;
+        }
+
+        #ppcp-credit-card-gateway-card-number, #ppcp-credit-card-gateway-card-expiry, #ppcp-credit-card-gateway-card-cvc {
+            width: 100% !important;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0.25rem;
+        }
+    }
+
+    .ppcp-dcc-order-button {
+        float: none;
+        display: block;
+        width: 100%;
+        background-color: #28a745;
+        border-color: #28a745;
+        border: 1px solid transparent;
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        border-radius: 0.3rem;
+        color: #fff;
+        font-weight: 700;
+    }
 }
 
 .quantity {
