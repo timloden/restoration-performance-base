@@ -38,8 +38,7 @@ if ( 'instock' == $stock_status) {
 ?>
 <?php $post_type = get_post_type_object( get_post_type() ); ?>
 <div class="searchwp-live-search-result" role="option" id="" aria-selected="false">
-    <a href="<?php echo esc_url( get_permalink() ); ?>"
-        style="overflow: auto; white-space: initial; text-overflow: initial;">
+    <a href="<?php echo esc_url( get_permalink() ); ?>" style="white-space: initial; text-overflow: initial;">
         <div class="row align-items-center p-2 border-bottom">
             <div class="col-auto">
                 <img src="<?php echo $featured_img_url; ?>" style="width: 75px;">
