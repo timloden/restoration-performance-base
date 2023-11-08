@@ -20,28 +20,7 @@ if (is_user_logged_in()) {
 
 $fields['billing']['billing_email']['class'] = array( 'form-row-first' );
   
-$fields['billing']['billing_em_ver'] = array(
-    'label' => 'Confirm Email',
-    'required' => true,
-    'class' => array( 'mb-4' ),
-    'clear' => true,
-    'priority' => 5,
-);
-  
 return $fields;
-}
-
-add_action('woocommerce_checkout_process', 'bbloomer_matching_email_addresses');
-  
-function bbloomer_matching_email_addresses() { 
-    $email1 = strtolower($_POST['billing_email']);
-    $email2 = strtolower($_POST['billing_em_ver']);
-
-    $email1 = str_replace(' ', '', $email1);
-    $email2 = str_replace(' ', '', $email2);
-    if ( $email2 !== $email1 && !is_user_logged_in() ) {
-        wc_add_notice( 'Your email addresses do not match', 'error' );
-    }
 }
 
 add_action( 'woocommerce_form_field_text','reigel_custom_heading', 10, 2 );
@@ -415,13 +394,3 @@ function custom_woocommerce_form_field($key, $args, $value = null)
         echo $field;
     }
 }
-
-// add_action( 'template_redirect', 'define_default_payment_gateway' );
-
-// function define_default_payment_gateway(){
-//     if( is_checkout() && ! is_wc_endpoint_url() ) {
-//         $default_payment_id = 'ppcp-credit-card-gateway';
-
-//         WC()->session->set( 'chosen_payment_method', $default_payment_id );
-//     }
-// }
