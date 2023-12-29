@@ -13,11 +13,13 @@ function lw_gpf_exclude_product( $excluded, $product_id, $feed_format ) {
 
     $product = wc_get_product( $product_id );
     $stock_status = $product->get_stock_status();
+    $shipping_class = $product->get_shipping_class();
+    
 
-    if ($product->get_regular_price() < 35 || $stock_status == 'onbackorder' || $stock_status == 'outofstock') {
+    if ($product->get_regular_price() < 35 || $stock_status == 'onbackorder' || $stock_status == 'outofstock' || $shipping_class == 'oer-freight' || $shipping_class == 'windshield') {
         return true;
     } else {
-        // return $excluded to keep the standard behaviour for this product.
+        // return $excluded to keep the standard behavior for this product.
         return $excluded;
     }
 }
