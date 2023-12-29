@@ -125,10 +125,10 @@ $free_rate = 'flexible_shipping_single:9';
 <tr>
     <td class="p-0" colspan="2">
         <div class="d-block p-2">
-            <p class=" d-block mb-1 text-center"><strong><i class="las la-exclamation-circle"></i> Must ship to a
-                    commercial location</strong></p>
-            <p class="mb-0 text-center" style="font-size: 12px;">Shipping to a residential location may result in
-                additional shipping fees</p>
+            <p class="d-block mb-1 text-center" style="font-size: 16px;"><strong>PRICING TO A VERIFIED COMMERCIAL
+                    ADDRESS</strong></p>
+            <p class="mb-0 text-center" style="font-size: 14px;">Shipping to a residential address will result in
+                additional fees, our staff will contact you</p>
         </div>
     </td>
 </tr>
@@ -137,8 +137,8 @@ $free_rate = 'flexible_shipping_single:9';
 <tr>
     <td class="p-0" colspan="2">
         <div class="d-block p-2">
-            <p class="d-block mb-1 text-center"><strong><i class="las la-exclamation-circle"></i> Must ship to a
-                    commercial business</strong></p>
+            <p class="d-block mb-1 text-center"><strong>PRICING IS TO A COMMERCIAL
+                    ADDRESS</strong></p>
             <p class="text-center mb-0" style="font-size: 12px;"><a target="_blank"
                     href="mailto:sales@classicbodyparts.com">Email us
                     for
