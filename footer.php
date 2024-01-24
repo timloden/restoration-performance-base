@@ -212,7 +212,7 @@ jQuery('#five-off-modal').on('hidden.bs.modal', function(event) {
 <?php endif; ?>
 
 <?php wp_footer(); ?>
-<?php the_field('footer_embed', 'option'); ?>
+<?php echo get_field('footer_embed', 'option'); ?>
 </body>
 
 </html>
