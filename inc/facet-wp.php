@@ -103,3 +103,12 @@ function create_facet_url_query($facetdata) {
     // 1967%2Cchevrolet-1967%2Ccamaro-chevrolet-1967
     return urlencode($facetdata);
 }
+
+add_filter( 'facetwp_is_main_query', function( $is_main_query, $query ) {
+    if ( $is_main_query && $query->is_main_query() && $query->is_search() ) {
+        if ( true == $query->get( 'wc_query' ) ) {
+            $query->set( 'using_searchwp', '' );
+        }        
+    }
+    return $is_main_query;
+}, 11, 2);
