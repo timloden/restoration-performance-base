@@ -25,7 +25,7 @@ if (!function_exists('change_woocommerce_order_number')) {
 // register the status
 function wpblog_wc_register_post_statuses() {
     register_post_status( 'wc-ready-shipping', array(
-    'label' => _x( 'Ready for shipping', 'WooCommerce Order status', 'text_domain' ),
+    'label' => _x( 'Awaiting Shipping', 'WooCommerce Order status', 'text_domain' ),
     'public' => true,
     'exclude_from_search' => false,
     'show_in_admin_all_list' => true,
@@ -54,14 +54,8 @@ add_filter( 'wc_order_statuses', 'wpblog_wc_add_order_statuses' );
 
 // add custom color for status
 add_action('admin_head', 'styling_admin_order_list' );
+
 function styling_admin_order_list() {
-    global $pagenow, $post;
-
-    if( $pagenow != 'edit.php') return; // Exit
-    //if( get_post_type($post->ID) != 'shop_order' ) return; // Exit
-
-    // HERE we set your custom status
-    $order_status = 'ready-shipping'; // <==== HERE
     ?>
 <style>
 .order-status.status-ready-shipping {
