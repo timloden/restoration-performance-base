@@ -1,5 +1,7 @@
 <?php
 
+use Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController;
+
 //Add Search To Admin Bar
 function orders_admin_bar_form() {
     global $wp_admin_bar;
@@ -47,108 +49,108 @@ function my_admin_title($admin_title, $title) {
 // Adding Meta container admin shop_order pages
 add_action( 'add_meta_boxes', 'add_invoice_meta_boxes' );
 
-if ( ! function_exists( 'add_invoice_meta_boxes' ) )
-{
-    function add_invoice_meta_boxes()
-    {
-        add_meta_box( 'mv_other_fields', __('Invoice Number','woocommerce'), 'invoice_field', 'shop_order', 'side', 'high' );
-    }
+function add_invoice_meta_boxes() {
+    $screen = wc_get_container()->get( CustomOrdersTableController::class )->custom_orders_table_usage_is_enabled()
+		? wc_get_page_screen_id( 'shop-order' )
+		: 'shop_order';
+
+    add_meta_box(
+        'order_invoice_field',
+        __( 'Invoice Number', 'restoration-performance-base' ),
+        'render_invoice_field',
+        $screen,
+        'side',
+        'high'
+    );
 }
 
-// Adding Meta field in the meta container admin shop_order pages
-if ( ! function_exists( 'invoice_field' ) )
-{
-    function invoice_field()
-    {
-        global $post;
+function render_invoice_field() {
+    global $post;
 
-        if (get_post_meta( $post->ID, '_oer_invoice_number', true )) {
-            $invoice_number_field = get_post_meta( $post->ID, '_oer_invoice_number', true );
-        } else {
-            $invoice_number_field = get_post_meta( $post->ID, '_invoice_number', true ) ? get_post_meta( $post->ID, '_invoice_number', true ) : '' ;
+    if (get_post_meta( $post->ID, '_oer_invoice_number', true )) {
+        $invoice_number_field = get_post_meta( $post->ID, '_oer_invoice_number', true );
+    } else {
+        $invoice_number_field = get_post_meta( $post->ID, '_invoice_number', true ) ? get_post_meta( $post->ID, '_invoice_number', true ) : '' ;
+    }
+
+    $invoice_brand_field = get_post_meta( $post->ID, '_invoice_brand', true ) ? get_post_meta( $post->ID, '_invoice_brand', true ) : '';
+    
+    $brands = [
+        'OER',
+        'Dynacorn',
+        'Goodmark'
+    ];
+
+    echo '<input type="hidden" name="invoice_field_nonce" value="' . wp_create_nonce() . '">
+    <p>
+        <input type="text" style="width:250px;" name="invoice_number" placeholder="Number" value="' . $invoice_number_field . '"></p>';
+
+    echo '<p style="padding-bottom:5px;">
+        <select type="text" style="width:250px;" name="invoice_brand">';
+
+        foreach ($brands as $brand) {
+            $selected = $invoice_brand_field == $brand ? 'selected' : '';
+            echo '<option value="' . $brand .'" ' . $selected .'>' . $brand . '</option>';
         }
+    echo '</select>
+    </p>';
 
-        $invoice_brand_field = get_post_meta( $post->ID, '_invoice_brand', true ) ? get_post_meta( $post->ID, '_invoice_brand', true ) : '';
-        
-        $brands = [
-            'OER',
-            'Dynacorn',
-            'Goodmark'
-        ];
-
-        echo '<input type="hidden" name="invoice_field_nonce" value="' . wp_create_nonce() . '">
-        <p>
-            <input type="text" style="width:250px;" name="invoice_number" placeholder="Number" value="' . $invoice_number_field . '"></p>';
-
-        echo '<p style="padding-bottom:5px;">
-            <select type="text" style="width:250px;" name="invoice_brand">';
-
-            foreach ($brands as $brand) {
-                $selected = $invoice_brand_field == $brand ? 'selected' : '';
-                echo '<option value="' . $brand .'" ' . $selected .'>' . $brand . '</option>';
-            }
-        echo '</select>
-        </p>';
-
-    }
 }
+
 
 // Save the data of the Meta field
 add_action( 'save_post', 'invoice_number_save', 10, 1 );
 
-if ( ! function_exists( 'invoice_number_save' ) )
-{
+function invoice_number_save( $post_id ) {
 
-    function invoice_number_save( $post_id ) {
+    // We need to verify this with the proper authorization (security stuff).
 
-        // We need to verify this with the proper authorization (security stuff).
-
-        // Check if our nonce is set.
-        if ( ! isset( $_POST[ 'invoice_field_nonce' ] ) ) {
-            return $post_id;
-        }
-        $nonce = $_REQUEST[ 'invoice_field_nonce' ];
-
-        //Verify that the nonce is valid.
-        if ( ! wp_verify_nonce( $nonce ) ) {
-            return $post_id;
-        }
-
-        // If this is an autosave, our form has not been submitted, so we don't want to do anything.
-        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-            return $post_id;
-        }
-
-        // Check the user's permissions.
-        if ( 'page' == $_POST[ 'post_type' ] ) {
-
-            if ( ! current_user_can( 'edit_page', $post_id ) ) {
-                return $post_id;
-            }
-        } else {
-
-            if ( ! current_user_can( 'edit_post', $post_id ) ) {
-                return $post_id;
-            }
-        }
-        // --- Its safe for us to save the data ! --- //
-
-        // Sanitize user input  and update the meta field in the database.
-        if ($_POST[ 'invoice_number' ]) {
-            update_post_meta( $post_id, '_invoice_number', $_POST[ 'invoice_number' ] );
-        }
-        
-        if ($_POST[ 'invoice_brand' ]) {
-            update_post_meta( $post_id, '_invoice_brand', $_POST[ 'invoice_brand' ] );
-        }
-        
+    // Check if our nonce is set.
+    if ( ! isset( $_POST[ 'invoice_field_nonce' ] ) ) {
+        return $post_id;
     }
+    $nonce = $_REQUEST[ 'invoice_field_nonce' ];
+
+    //Verify that the nonce is valid.
+    if ( ! wp_verify_nonce( $nonce ) ) {
+        return $post_id;
+    }
+
+    // If this is an autosave, our form has not been submitted, so we don't want to do anything.
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return $post_id;
+    }
+
+    // Check the user's permissions.
+    if ( 'page' == $_POST[ 'post_type' ] ) {
+
+        if ( ! current_user_can( 'edit_page', $post_id ) ) {
+            return $post_id;
+        }
+    } else {
+
+        if ( ! current_user_can( 'edit_post', $post_id ) ) {
+            return $post_id;
+        }
+    }
+    // --- Its safe for us to save the data ! --- //
+
+    // Sanitize user input  and update the meta field in the database.
+    if ($_POST[ 'invoice_number' ]) {
+        update_post_meta( $post_id, '_invoice_number', $_POST[ 'invoice_number' ] );
+    }
+    
+    if ($_POST[ 'invoice_brand' ]) {
+        update_post_meta( $post_id, '_invoice_brand', $_POST[ 'invoice_brand' ] );
+    }
+    
 }
+
 
 // Display field value on the order edit page (not in custom fields metabox)
 add_action( 'woocommerce_admin_order_data_after_billing_address', 'invoice_display_admin_order_meta', 10, 1 );
 
-function invoice_display_admin_order_meta($order){
+function invoice_display_admin_order_meta($order) {
     $invoice_number = get_post_meta( $order->id, '_invoice_number', true ) ? get_post_meta( $order->id, '_invoice_number', true ) : get_post_meta( $order->id, '_oer_invoice_number', true );
     $invoice_brand = get_post_meta( $order->id, '_invoice_brand', true );
     
