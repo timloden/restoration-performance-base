@@ -64,16 +64,23 @@ function add_invoice_meta_boxes() {
     );
 }
 
-function render_invoice_field() {
-    global $post;
+function render_invoice_field( $order_object ) {
 
-    if (get_post_meta( $post->ID, '_oer_invoice_number', true )) {
-        $invoice_number_field = get_post_meta( $post->ID, '_oer_invoice_number', true );
+    $order = ( $order_object instanceof WP_Post ) ? wc_get_order( $order_object->ID ) : $order_object;
+
+    if ( ! $order ) {
+        return;
+    }
+    
+    $order_id = $order->get_id();
+
+    if ($order->get_meta( $order_id, '_oer_invoice_number', true )) {
+        $invoice_number_field = $order->get_meta( $order_id, '_oer_invoice_number', true );
     } else {
-        $invoice_number_field = get_post_meta( $post->ID, '_invoice_number', true ) ? get_post_meta( $post->ID, '_invoice_number', true ) : '' ;
+        $invoice_number_field = $order->get_meta( $order_id, '_invoice_number', true ) ? $order->get_meta( $order_id, '_invoice_number', true ) : '' ;
     }
 
-    $invoice_brand_field = get_post_meta( $post->ID, '_invoice_brand', true ) ? get_post_meta( $post->ID, '_invoice_brand', true ) : '';
+    $invoice_brand_field = $order->get_meta( $order_id, '_invoice_brand', true ) ? $order->get_meta( $order_id, '_invoice_brand', true ) : '';
     
     $brands = [
         'OER',
@@ -109,6 +116,7 @@ function invoice_number_save( $post_id ) {
     if ( ! isset( $_POST[ 'invoice_field_nonce' ] ) ) {
         return $post_id;
     }
+    
     $nonce = $_REQUEST[ 'invoice_field_nonce' ];
 
     //Verify that the nonce is valid.
