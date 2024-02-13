@@ -62,6 +62,35 @@ function add_invoice_meta_boxes() {
         'side',
         'high'
     );
+
+    add_meta_box(
+        'order_invoice_totals',
+        __( 'Order Invoice Totals', 'restoration-performance-base' ),
+        'render_invoice_totals',
+        $screen,
+        'side',
+        'high'
+    );
+}
+
+function render_invoice_totals( $order_object ) {
+
+    $order = ( $order_object instanceof WP_Post ) ? wc_get_order( $order_object->id ) : $order_object;
+
+    if ( ! $order ) {
+        return;
+    }
+    
+    $order_id = $order->get_id();
+
+    $invoice_cogs = $order->get_meta( '_invoice_cogs', true );
+    $invoice_shipping = $order->get_meta( '_invoice_shipping', true );
+
+    echo '<label>Invoice COGS</label>';
+    echo '<p><input type="text" style="width:250px;" name="invoice_cogs" placeholder="" value="' . $invoice_cogs . '"></p>';
+    echo '<label>Invoice Shipping</label>';
+    echo '<p><input type="text" style="width:250px;" name="invoice_shipping" placeholder="" value="' . $invoice_shipping . '"></p>';
+
 }
 
 function render_invoice_field( $order_object ) {
@@ -88,9 +117,8 @@ function render_invoice_field( $order_object ) {
         'Goodmark'
     ];
 
-    echo '<input type="hidden" name="invoice_field_nonce" value="' . wp_create_nonce() . '">
-    <p>
-        <input type="text" style="width:250px;" name="invoice_number" placeholder="Number" value="' . $invoice_number_field . '"></p>';
+    echo '<p>
+        <input type="text" style="width:250px;" name="invoice_number" placeholder="" value="' . $invoice_number_field . '"></p>';
 
     echo '<p style="padding-bottom:5px;">
         <select type="text" style="width:250px;" name="invoice_brand">';
@@ -106,7 +134,6 @@ function render_invoice_field( $order_object ) {
 
 
 // Save the data of the Meta field
-//add_action( 'save_post', 'invoice_number_save', 10, 1 );
 
 add_action( 'woocommerce_process_shop_order_meta', 'invoice_number_save' );
 
@@ -115,16 +142,30 @@ function invoice_number_save( $order_id ) {
     $order = wc_get_order( $order_id );
 
     if (isset($_POST['invoice_number'])) {
-        error_log($_POST['invoice_number']);
         $order->update_meta_data( '_invoice_number', $_POST['invoice_number'] );
     }
 
     if (isset($_POST[ 'invoice_brand' ])) {
-        error_log($_POST[ 'invoice_brand' ]);
         $order->update_meta_data( '_invoice_brand', $_POST[ 'invoice_brand' ] );
     }
 
-    $order->save();
+    if (isset($_POST[ 'invoice_cogs' ])) {
+        if ($order->get_meta('_invoice_cogs', true)) {
+            $order->update_meta_data( '_invoice_cogs', $_POST[ 'invoice_cogs' ] );
+        } else {
+            $order->add_meta_data( '_invoice_cogs', $_POST[ 'invoice_cogs' ] );
+        }
+    }
+
+    if (isset($_POST[ 'invoice_shipping' ])) {
+        if ($order->get_meta('_invoice_shipping', true)) {
+            $order->update_meta_data( '_invoice_shipping', $_POST[ 'invoice_shipping' ] );
+        } else {
+            $order->add_meta_data( '_invoice_shipping', $_POST[ 'invoice_cogs' ] );
+        }
+    }
+
+    $order->save_meta_data();
     
 }
 
