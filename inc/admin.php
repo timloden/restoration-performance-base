@@ -66,7 +66,7 @@ function add_invoice_meta_boxes() {
 
 function render_invoice_field( $order_object ) {
 
-    $order = ( $order_object instanceof WP_Post ) ? wc_get_order( $order_object->ID ) : $order_object;
+    $order = ( $order_object instanceof WP_Post ) ? wc_get_order( $order_object->id ) : $order_object;
 
     if ( ! $order ) {
         return;
@@ -75,12 +75,12 @@ function render_invoice_field( $order_object ) {
     $order_id = $order->get_id();
 
     if ($order->get_meta( $order_id, '_oer_invoice_number', true )) {
-        $invoice_number_field = $order->get_meta( $order_id, '_oer_invoice_number', true );
+        $invoice_number_field = $order->get_meta( '_oer_invoice_number', true );
     } else {
-        $invoice_number_field = $order->get_meta( $order_id, '_invoice_number', true ) ? $order->get_meta( $order_id, '_invoice_number', true ) : '' ;
+        $invoice_number_field = $order->get_meta( '_invoice_number', true ) ? $order->get_meta( '_invoice_number', true ) : '' ;
     }
 
-    $invoice_brand_field = $order->get_meta( $order_id, '_invoice_brand', true ) ? $order->get_meta( $order_id, '_invoice_brand', true ) : '';
+    $invoice_brand_field = $order->get_meta( '_invoice_brand', true ) ? $order->get_meta( '_invoice_brand', true ) : '';
     
     $brands = [
         'OER',
@@ -106,51 +106,25 @@ function render_invoice_field( $order_object ) {
 
 
 // Save the data of the Meta field
-add_action( 'save_post', 'invoice_number_save', 10, 1 );
+//add_action( 'save_post', 'invoice_number_save', 10, 1 );
 
-function invoice_number_save( $post_id ) {
+add_action( 'woocommerce_process_shop_order_meta', 'invoice_number_save' );
 
-    // We need to verify this with the proper authorization (security stuff).
+function invoice_number_save( $order_id ) {
 
-    // Check if our nonce is set.
-    if ( ! isset( $_POST[ 'invoice_field_nonce' ] ) ) {
-        return $post_id;
-    }
-    
-    $nonce = $_REQUEST[ 'invoice_field_nonce' ];
+    $order = wc_get_order( $order_id );
 
-    //Verify that the nonce is valid.
-    if ( ! wp_verify_nonce( $nonce ) ) {
-        return $post_id;
+    if (isset($_POST['invoice_number'])) {
+        error_log($_POST['invoice_number']);
+        $order->update_meta_data( '_invoice_number', $_POST['invoice_number'] );
     }
 
-    // If this is an autosave, our form has not been submitted, so we don't want to do anything.
-    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-        return $post_id;
+    if (isset($_POST[ 'invoice_brand' ])) {
+        error_log($_POST[ 'invoice_brand' ]);
+        $order->update_meta_data( '_invoice_brand', $_POST[ 'invoice_brand' ] );
     }
 
-    // Check the user's permissions.
-    if ( 'page' == $_POST[ 'post_type' ] ) {
-
-        if ( ! current_user_can( 'edit_page', $post_id ) ) {
-            return $post_id;
-        }
-    } else {
-
-        if ( ! current_user_can( 'edit_post', $post_id ) ) {
-            return $post_id;
-        }
-    }
-    // --- Its safe for us to save the data ! --- //
-
-    // Sanitize user input  and update the meta field in the database.
-    if ($_POST[ 'invoice_number' ]) {
-        update_post_meta( $post_id, '_invoice_number', $_POST[ 'invoice_number' ] );
-    }
-    
-    if ($_POST[ 'invoice_brand' ]) {
-        update_post_meta( $post_id, '_invoice_brand', $_POST[ 'invoice_brand' ] );
-    }
+    $order->save();
     
 }
 
@@ -159,8 +133,10 @@ function invoice_number_save( $post_id ) {
 add_action( 'woocommerce_admin_order_data_after_billing_address', 'invoice_display_admin_order_meta', 10, 1 );
 
 function invoice_display_admin_order_meta($order) {
-    $invoice_number = get_post_meta( $order->id, '_invoice_number', true ) ? get_post_meta( $order->id, '_invoice_number', true ) : get_post_meta( $order->id, '_oer_invoice_number', true );
-    $invoice_brand = get_post_meta( $order->id, '_invoice_brand', true );
+    $order_id = $order->get_ID();
+
+    $invoice_number = $order->get_meta( '_invoice_number', true ) ? $order->get_meta( '_invoice_number', true ) : $order->get_meta( '_oer_invoice_number', true );
+    $invoice_brand = $order->get_meta( '_invoice_brand', true );
     
     if ( ! empty( $invoice_number) ) {
 
@@ -190,11 +166,14 @@ function add_example_column($columns) {
 add_action( 'manage_shop_order_posts_custom_column' , 'add_example_column_contents', 10, 2 );
 
 function add_example_column_contents( $column, $post_id ) {
-    if ( 'invoice' === $column )
-    {
-        $order = wc_get_order( $post_id ); // Get the WC_Order instance Object
-        $invoice_number = get_post_meta( $order->id, '_invoice_number', true ) ? get_post_meta( $order->id, '_invoice_number', true ) : get_post_meta( $order->id, '_oer_invoice_number', true );
-        $invoice_brand = get_post_meta( $order->id, '_invoice_brand', true );
+    
+    $order = wc_get_order( $post_id ); // Get the WC_Order instance Object
+    $order_id = $order->get_ID();
+
+    if ( 'invoice' === $column ) {
+        
+        $invoice_number = $order->get_meta( 'invoice_number', true ) ? $order->get_meta( 'invoice_number', true ) : $order->get_meta( 'oer_invoice_number', true );
+        $invoice_brand = $order->get_meta( 'invoice_brand', true );
 
         if ($invoice_number) {
             // check for oer or legacy oer invoices that dont have a brand
