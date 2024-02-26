@@ -58,3 +58,13 @@ function lw_woocommerce_gpf_feed_item_google( $feed_item, $product ) {
     return $feed_item;
 }
 add_filter( 'woocommerce_gpf_feed_item_google', 'lw_woocommerce_gpf_feed_item_google', 10, 2 );
+
+// add field to list
+
+function lw_woocommerce_gpf_custom_field_list( $list ) {
+    // Register the _my_custom_field meta field as a pre-population option.
+    $list['meta:_rank_math_gtin_code'] = 'Rank Math MPN';
+    return $list;
+}
+
+add_filter( 'woocommerce_gpf_custom_field_list', 'lw_woocommerce_gpf_custom_field_list' );
