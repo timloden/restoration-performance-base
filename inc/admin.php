@@ -213,3 +213,17 @@ function add_custom_action_button_css() {
 
     echo '<style>.wc-action-button-'.$action_slug.'::after { font-family: woocommerce !important; content: "\e029" !important; }</style>';
 }
+
+// Woocommerce MPN and GTIN
+
+add_action('woocommerce_product_options_inventory_product_data', function() {
+	woocommerce_wp_text_input([
+        	'id' => '_rp_mpn',
+	        'label' => __('RP MPN', 'restoration-performance-base'),
+	]);
+
+    woocommerce_wp_text_input([
+        'id' => '_rp_gtin',
+        'label' => __('RP GTIN', 'restoration-performance-base'),
+    ]);
+});
