@@ -63,7 +63,8 @@ add_filter( 'woocommerce_gpf_feed_item_google', 'lw_woocommerce_gpf_feed_item_go
 
 function lw_woocommerce_gpf_custom_field_list( $list ) {
     // Register the _my_custom_field meta field as a pre-population option.
-    $list['meta:_rank_math_gtin_code'] = 'Rank Math MPN';
+    $list['meta:_rp_mpn'] = 'RP MPN';
+    $list['meta:_rp_gtin'] = 'RP GTIN';
     return $list;
 }
 

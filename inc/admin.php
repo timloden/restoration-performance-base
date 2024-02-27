@@ -227,3 +227,15 @@ add_action('woocommerce_product_options_inventory_product_data', function() {
         'label' => __('RP GTIN', 'restoration-performance-base'),
     ]);
 });
+
+add_action('woocommerce_process_product_meta', function($post_id) {
+	$product = wc_get_product($post_id);
+	
+    $mpn = isset($_POST['_rp_mpn']) ? $_POST['_rp_mpn'] : '';
+    $product->update_meta_data('_rp_mpn', sanitize_text_field($mpn));
+
+    $gtin = isset($_POST['_rp_gtin']) ? $_POST['_rp_gtin'] : '';
+	$product->update_meta_data('_rp_gtin', sanitize_text_field($gtin));
+    
+	$product->save();
+});
