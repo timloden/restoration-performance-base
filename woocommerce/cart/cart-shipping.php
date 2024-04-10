@@ -15,7 +15,7 @@
  *
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 8.6.0
+ * @version 8.8.0
  */
 
 defined('ABSPATH') || exit;
@@ -51,7 +51,7 @@ $free_rate = 'flexible_shipping_single:9';
 <tr class="woocommerce-shipping-totals shipping">
 
     <td style="border-top: none;" colspan="2" data-title="<?php echo esc_attr($package_name); ?>">
-        <?php if (isset( $available_methods ) && is_array( $available_methods )) : ?>
+        <?php if (!empty( $available_methods ) && is_array( $available_methods )) : ?>
         <ul id="shipping_method" class="woocommerce-shipping-methods list-unstyled my-2">
             <?php foreach ($available_methods as $method) : ?>
             <li class="mb-1">
