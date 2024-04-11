@@ -98,6 +98,10 @@ if( function_exists('acf_add_options_page') ) {
 	
 }
 
+// remove prefix from archives
+
+add_filter('get_the_archive_title_prefix','__return_false');
+
 // disable comments for posts 
 
 function my_prefix_comments_open( $open, $post_id ) {

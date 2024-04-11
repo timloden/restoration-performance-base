@@ -110,16 +110,13 @@ if (!$commercial_freight) {
             </div>
             <div class="col-12 col-lg-4 text-center">
                 <i class="las la-shipping-fast text-primary"></i>
-                <h5 class="my-2 fw-bold">$7.50 Shipping</h5>
-                <p class="mb-2"><?php echo esc_attr( get_field('ground_shipping_discount', 'option') ); ?> Freight
-                    shipping starts at
-                    $<?php echo esc_attr($commercial_freight); ?>!</p>
-                <p style="font-size: 12px; color: #6c757d">(*excludes oversized items)</p>
+                <h5 class="my-2 fw-bold">Easy Shipping Price</h5>
+                <p class="mb-2">See accurate shipping in your cart with just a state and zipcode</p>
             </div>
             <div class="col-12 col-lg-4 text-center">
                 <i class="las la-check-circle text-primary"></i>
                 <h5 class="my-2 fw-bold">High Quality Parts</h5>
-                <p>Restoration parts sourced from high quality manufacturers</p>
+                <p>Over 20,000 restoration parts sourced from high quality manufacturers</p>
             </div>
             <div class="col-12 col-lg-4 text-center">
                 <i class="las la-headset text-primary"></i>
@@ -163,9 +160,43 @@ if (!$commercial_freight) {
         </div>
     </div>
 </div>
+
+<?php if( have_rows('brands') ): ?>
+<div class="border-bottom border-top py-5">
+    <div class="container">
+        <h2 class="text-center pt-3 h3">Our featured brands</h2>
+        <p class="text-center pb-3">Classic Body Parts carries a wide range of brands for all stages of car
+            restoration.</p>
+        <div class="row align-items-center justify-content-around">
+            <?php while( have_rows('brands') ): the_row(); 
+
+            $brand_id = get_sub_field('brand');
+            $term = get_term_by('id', $brand_id, 'pwb-brand');
+            $term_link = get_term_link( $term );
+
+            $image_size = get_option('wc_pwb_admin_tab_brand_logo_size', 'thumbnail');
+            $brand_image_id = get_term_meta( $term->term_id, 'pwb_brand_image', true );
+            $brand_logo = wp_get_attachment_image_src( $brand_image_id, apply_filters( 'pwb_product_tab_brand_logo_size', $image_size ) );
+        ?>
+            <div class="col-6 col-md-4 text-center pb-3">
+                <a href="<?php echo $term_link; ?>"><img class="img-fluid" src="<?php echo esc_url($brand_logo[0]); ?>"
+                        alt="<?php echo $term->name; ?>"></a>
+                <h3 class="h4 mt-3"><a class="text-black" href="<?php echo $term_link; ?>"><?php echo $term->name; ?>
+                        Parts</a></h3>
+            </div>
+            <?php endwhile; ?>
+        </div>
+        <div class="text-center pt-5 pt-lg-3">
+            <a href="<?php echo site_url(); ?>/shop#ymm-bar" class="btn btn-primary">Select your vehicle to get
+                started</a>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
+
 <div class="border-bottom pb-5">
     <div class="container py-5">
-        <h3 class="text-center pt-3">Need help with your project?</h3>
+        <h2 class="text-center pt-3 h3">Need help with your project?</h2>
         <p class="text-center pb-5">The Classic Body Parts resource center is here to help answer all of your
             restoration questions.</p>
         <div class="row">
