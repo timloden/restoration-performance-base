@@ -60,21 +60,12 @@ $vehicle = isset($_COOKIE['vehicle']) ? $_COOKIE['vehicle'] : '';
 </div>
 
 <div id="product-content">
-    <?php
-	/**
-	 * Hook: woocommerce_archive_description.
-	 *
-	 * @hooked woocommerce_taxonomy_archive_description - 10
-	 * @hooked woocommerce_product_archive_description - 10
-	 */
-	do_action( 'woocommerce_archive_description' );
-	?>
-
-
 
     <?php
 if ( woocommerce_product_loop() ) {
+?>
 
+    <?php
 	/**
 	 * Hook: woocommerce_before_shop_loop.
 	 *
@@ -85,6 +76,8 @@ if ( woocommerce_product_loop() ) {
 	do_action( 'woocommerce_before_shop_loop' );
 
 	?>
+
+
 
     <div class="container">
         <div class="row">
@@ -158,6 +151,23 @@ if ( woocommerce_product_loop() ) {
 					?>
             </div>
 
+        </div>
+
+        <div class="row py-5">
+            <div class="col-12">
+                <h1 class="h3"><?php echo get_the_archive_title(); ?> Body Parts</h1>
+            </div>
+            <div class="col-12">
+                <?php
+			/**
+			 * Hook: woocommerce_archive_description.
+			 *
+			 * @hooked woocommerce_taxonomy_archive_description - 10
+			 * @hooked woocommerce_product_archive_description - 10
+			 */
+			do_action( 'woocommerce_archive_description' );
+			?>
+            </div>
         </div>
     </div>
 </div>
