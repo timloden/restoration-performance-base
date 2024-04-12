@@ -83,8 +83,21 @@ function render_invoice_totals( $order_object ) {
     
     $order_id = $order->get_id();
 
-    $invoice_cogs = $order->get_meta( '_invoice_cogs', true );
-    $invoice_shipping = $order->get_meta( '_invoice_shipping', true );
+    if ($order->get_meta( 'invoice_cogs', true )) {
+        $invoice_cogs = $order->get_meta( 'invoice_cogs', true );
+    } elseif ($order->get_meta( '_invoice_cogs', true ) && !preg_match('/^field_*/', $order->get_meta( '_invoice_cogs', true ))) {
+        $invoice_cogs = $order->get_meta( '_invoice_cogs', true );
+    } else {
+        $invoice_cogs = '';
+    }
+
+    if ($order->get_meta( 'invoice_shipping', true )) {
+        $invoice_shipping = $order->get_meta( 'invoice_shipping', true );
+    } elseif ($order->get_meta( '_invoice_shipping', true ) && !preg_match('/^field_*/', $order->get_meta( '_invoice_shipping', true )))  {
+        $invoice_shipping = $order->get_meta( '_invoice_shipping', true );
+    } else {
+        $invoice_shipping = '';
+    }
 
     echo '<label>Invoice COGS</label>';
     echo '<p><input type="text" style="width:250px;" name="invoice_cogs" placeholder="" value="' . $invoice_cogs . '"></p>';
