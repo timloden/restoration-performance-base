@@ -83,21 +83,27 @@ function render_invoice_totals( $order_object ) {
     
     $order_id = $order->get_id();
 
-    if ($order->get_meta( 'invoice_cogs', true )) {
-        $invoice_cogs = $order->get_meta( 'invoice_cogs', true );
-    } elseif ($order->get_meta( '_invoice_cogs', true ) && !preg_match('/^field_*/', $order->get_meta( '_invoice_cogs', true ))) {
-        $invoice_cogs = $order->get_meta( '_invoice_cogs', true );
+
+    error_log('COGS: ' . $order->get_meta( '_invoice_cogs'));
+    error_log('SHIPPING: ' . $order->get_meta( '_invoice_shipping'));
+
+    if ($order->get_meta( '_invoice_cogs') && !preg_match('/^field_*/', $order->get_meta( '_invoice_cogs'))) {
+        $invoice_cogs = $order->get_meta( '_invoice_cogs');
+    } elseif ($order->get_meta( 'invoice_cogs') && !preg_match('/^field_*/', $order->get_meta( 'invoice_cogs'))) {
+        $invoice_cogs = $order->get_meta( 'invoice_cogs');
     } else {
         $invoice_cogs = '';
     }
 
-    if ($order->get_meta( 'invoice_shipping', true )) {
-        $invoice_shipping = $order->get_meta( 'invoice_shipping', true );
-    } elseif ($order->get_meta( '_invoice_shipping', true ) && !preg_match('/^field_*/', $order->get_meta( '_invoice_shipping', true )))  {
-        $invoice_shipping = $order->get_meta( '_invoice_shipping', true );
+    if ($order->get_meta( '_invoice_shipping') && !preg_match('/^field_*/', $order->get_meta( '_invoice_shipping'))) {
+        $invoice_shipping = $order->get_meta( '_invoice_shipping');
+    } elseif ($order->get_meta( 'invoice_shipping') && !preg_match('/^field_*/', $order->get_meta( 'invoice_shipping')))  {
+        $invoice_shipping = $order->get_meta( 'invoice_shipping');
     } else {
         $invoice_shipping = '';
     }
+
+
 
     echo '<label>Invoice COGS</label>';
     echo '<p><input type="text" style="width:250px;" name="invoice_cogs" placeholder="" value="' . $invoice_cogs . '"></p>';
@@ -163,22 +169,15 @@ function invoice_number_save( $order_id ) {
     }
 
     if (isset($_POST[ 'invoice_cogs' ])) {
-        if ($order->get_meta('_invoice_cogs', true)) {
-            $order->update_meta_data( '_invoice_cogs', $_POST[ 'invoice_cogs' ] );
-        } else {
-            $order->add_meta_data( '_invoice_cogs', $_POST[ 'invoice_cogs' ] );
-        }
+        $order->update_meta_data( '_invoice_cogs', $_POST[ 'invoice_cogs' ] );
+       
     }
 
     if (isset($_POST[ 'invoice_shipping' ])) {
-        if ($order->get_meta('_invoice_shipping', true)) {
-            $order->update_meta_data( '_invoice_shipping', $_POST[ 'invoice_shipping' ] );
-        } else {
-            $order->add_meta_data( '_invoice_shipping', $_POST[ 'invoice_cogs' ] );
-        }
+        $order->update_meta_data( '_invoice_shipping', $_POST[ 'invoice_shipping' ] );
     }
 
-    $order->save_meta_data();
+    $order->save();
     
 }
 
