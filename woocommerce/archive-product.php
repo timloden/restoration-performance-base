@@ -12,7 +12,7 @@
  *
  * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 3.4.0
+ * @version 8.6.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -62,7 +62,16 @@ $vehicle = isset($_COOKIE['vehicle']) ? $_COOKIE['vehicle'] : '';
 <div id="product-content">
 
     <?php
-if ( woocommerce_product_loop() ) {
+	/**
+	 * Hook: woocommerce_shop_loop_header.
+	 *
+	 * @since 8.6.0
+	 *
+	 * @hooked woocommerce_product_taxonomy_archive_header - 10
+	 */
+	//do_action( 'woocommerce_shop_loop_header' );
+
+	if ( woocommerce_product_loop() ) {
 ?>
 
     <?php
