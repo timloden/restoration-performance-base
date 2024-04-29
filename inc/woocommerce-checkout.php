@@ -86,7 +86,7 @@ function wc_privacy_message_below_checkout_button() {
 add_action( 'wp_enqueue_scripts', 'wsis_dequeue_stylesandscripts_select2', 100 );
 
 function wsis_dequeue_stylesandscripts_select2() {
-    if ( class_exists( 'woocommerce' ) ) {
+    if ( class_exists( 'woocommerce' ) && !is_admin() ) {
         wp_dequeue_style( 'selectWoo' );
         wp_deregister_style( 'selectWoo' );
     
